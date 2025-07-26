@@ -1,0 +1,11 @@
+// 1.20.1	2025-07-23T17:05:42.0949551	orevolution Block States
+736ee2912705f114bbd4f373432c218367f74828 assets/orevolution/blockstates/deepslate_platinum_ore.json
+e2e43bdcdd843f1cbd80627bfbb20446986b97a1 assets/orevolution/blockstates/deepslate_tin_ore.json
+5d6a083a2cc4b90ff72b75d517ffa2f7158ce30d assets/orevolution/blockstates/platinum_ore.json
+384c775590383912d8eddd8090a06a4d3d4ace80 assets/orevolution/blockstates/tin_ore.json
+89c38f4b383ae3af79e31fef67f734ad5ce8f519 assets/orevolution/blockstates/tungsten_ore.json
+5a23dedac034539c6c4fd50a1b6650fcae8d5a9f assets/orevolution/models/block/deepslate_platinum_ore.json
+ef353a6ebf9336a013debaa3b946be6006503642 assets/orevolution/models/block/deepslate_tin_ore.json
+22ac8abe2172957505b9704b0d129e151842fd9f assets/orevolution/models/block/platinum_ore.json
+583c26bf89152e43a44a471f65be16367bf161a3 assets/orevolution/models/block/tin_ore.json
+f8240885df85ea3be0c6d1bfd42af48ae2480e2a assets/orevolution/models/block/tungsten_ore.json

@@ -1,0 +1,47 @@
+[24jul2025 19:37:20.782] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Tablos\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.4, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, orevolution, --all, --output, C:\Users\Tablos\Documents\IntellijProjects\Orevolution\src\generated\resources, --existing, C:\Users\Tablos\Documents\IntellijProjects\Orevolution\src\main\resources]
+[24jul2025 19:37:20.818] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 22.0.2 by Azul Systems, Inc.; OS Windows 10 arch amd64 version 10.0
+[24jul2025 19:37:21.399] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[24jul2025 19:37:21.626] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Tablos/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[24jul2025 19:37:23.067] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Tablos\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.4\c05c04093d241dea1d0f54782d19cfe5db9d0aac\javafmllanguage-1.20.1-47.4.4.jar is missing mods.toml file
+[24jul2025 19:37:23.074] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Tablos\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.4\8a8bd6d44f3f0e6a1145b9066eac84fdcfbe7108\lowcodelanguage-1.20.1-47.4.4.jar is missing mods.toml file
+[24jul2025 19:37:23.081] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Tablos\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.4\a8876f0a1a04237fc48a4a73692ea08e0443d2ba\mclanguage-1.20.1-47.4.4.jar is missing mods.toml file
+[24jul2025 19:37:23.091] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Tablos\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.4\55a693260a8a7b851c3531972ef997294c191b3e\fmlcore-1.20.1-47.4.4.jar is missing mods.toml file
+[24jul2025 19:37:23.883] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[24jul2025 19:37:33.381] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[24jul2025 19:37:33.544] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Tablos\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, orevolution, --all, --output, C:\Users\Tablos\Documents\IntellijProjects\Orevolution\src\generated\resources, --existing, C:\Users\Tablos\Documents\IntellijProjects\Orevolution\src\main\resources]
+[24jul2025 19:37:35.570] [main/INFO] [mixin/]: Remapping refMap emi-xplat-refmap.json using C:\Users\Tablos\Documents\IntellijProjects\Orevolution\build\createSrgToMcp\output.srg
+[24jul2025 19:37:35.582] [main/INFO] [mixin/]: Remapping refMap blueprint.refmap.json using C:\Users\Tablos\Documents\IntellijProjects\Orevolution\build\createSrgToMcp\output.srg
+[24jul2025 19:37:36.038] [main/INFO] [Embeddium/]: Loaded configuration file for Embeddium: 52 options available, 0 override(s) found
+[24jul2025 19:37:36.043] [main/INFO] [Embeddium-GraphicsAdapterProbe/]: Searching for graphics cards...
+[24jul2025 19:37:37.883] [main/INFO] [Embeddium-GraphicsAdapterProbe/]: Found graphics card: GraphicsAdapterInfo[vendor=INTEL, name=Intel(R) UHD Graphics 600, version=DriverVersion=31.0.101.2130]
+[24jul2025 19:37:37.919] [main/INFO] [mixin/]: Remapping refMap embeddium-refmap.json using C:\Users\Tablos\Documents\IntellijProjects\Orevolution\build\createSrgToMcp\output.srg
+[24jul2025 19:37:38.156] [main/WARN] [mixin/]: Error loading class: mezz/jei/library/load/PluginCaller (java.lang.ClassNotFoundException: mezz.jei.library.load.PluginCaller)
+[24jul2025 19:37:42.349] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [orevolution]
+[24jul2025 19:37:42.938] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.3.5).
+[24jul2025 19:38:01.323] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.4, for MC 1.20.1 with MCP 20230612.114412
+[24jul2025 19:38:01.325] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.4 Initialized
+[24jul2025 19:38:06.021] [modloading-worker-0/ERROR] [Embeddium/]: Failed to update fingerprint
+java.lang.NullPointerException: Cannot invoke "net.minecraft.client.Minecraft.getUser()" because the return value of "net.minecraft.client.Minecraft.getInstance()" is null
+	at me.jellysquid.mods.sodium.client.data.fingerprint.FingerprintMeasure.create(FingerprintMeasure.java:19) ~[embeddium-UTbfe5d1_mapped_official_1.20.1.jar%23199!/:?]
+	at me.jellysquid.mods.sodium.client.SodiumClientMod.updateFingerprint(SodiumClientMod.java:108) ~[embeddium-UTbfe5d1_mapped_official_1.20.1.jar%23199!/:?]
+	at me.jellysquid.mods.sodium.client.SodiumClientMod.<init>(SodiumClientMod.java:48) ~[embeddium-UTbfe5d1_mapped_official_1.20.1.jar%23199!/:?]
+	at jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?]
+	at net.minecraftforge.fml.javafmlmod.FMLModContainer.constructMod(FMLModContainer.java:77) ~[javafmllanguage-1.20.1-47.4.4.jar%23192!/:?]
+	at net.minecraftforge.fml.ModContainer.lambda$buildTransitionHandler$5(ModContainer.java:126) ~[fmlcore-1.20.1-47.4.4.jar%23195!/:?]
+	at java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?]
+	at java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1489) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:2071) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2033) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187) ~[?:?]
+[24jul2025 19:38:08.147] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Tablos/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.4_mapped_official_1.20.1/forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[24jul2025 19:38:08.148] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Tablos/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.4_mapped_official_1.20.1/forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[24jul2025 19:38:08.810] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: orevolution Block States
+[24jul2025 19:38:09.351] [main/INFO] [net.minecraft.data.DataGenerator/]: orevolution Block States finished after 553 ms
+[24jul2025 19:38:09.351] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: orevolution Item Models
+[24jul2025 19:38:09.444] [main/INFO] [net.minecraft.data.DataGenerator/]: orevolution Item Models finished after 85 ms
+[24jul2025 19:38:09.444] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 642 ms
+[24jul2025 19:38:09.475] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 49, old count: 41, new count: 50, removed stale: 0, written: 8
