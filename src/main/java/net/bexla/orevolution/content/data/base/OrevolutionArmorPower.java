@@ -2,7 +2,6 @@ package net.bexla.orevolution.content.data.base;
 
 import com.mojang.logging.LogUtils;
 import net.bexla.orevolution.content.data.interfaces.ArmorPower;
-import net.bexla.orevolution.content.data.interfaces.ToolPower;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;

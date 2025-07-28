@@ -1,7 +1,8 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
 import net.bexla.orevolution.content.data.base.OrevolutionToolPower;
-import net.bexla.orevolution.content.data.tags.OrevolutionBlockTags;
+import net.bexla.orevolution.content.data.interfaces.OrevolutionConditional;
+import net.bexla.orevolution.content.data.utility.OrevolutionTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
@@ -15,14 +16,16 @@ public class ToolIncreaseDrops extends OrevolutionToolPower {
     private final int dropMultiplier;
     private final double chanceMultiplier;
 
-    public ToolIncreaseDrops(String tooltip_id, int dropMultiplier, double chanceMultiplier) {
-        super(tooltip_id);
+    public ToolIncreaseDrops(String tooltip_id, OrevolutionConditional conditional, int dropMultiplier, double chanceMultiplier) {
+        super(tooltip_id, conditional);
         this.dropMultiplier = dropMultiplier;
         this.chanceMultiplier = chanceMultiplier;
     }
 
     @Override
     public void onMineBlock(ItemStack stack, Level level, BlockPos pos, Player player, BlockState state) {
+        if(!getCondition(stack, level, player, null)) return;
+
         double chance = 0.30;
         Item item = stack.getItem();
         if (!level.isClientSide && item.isCorrectToolForDrops(state)) {
@@ -30,7 +33,7 @@ public class ToolIncreaseDrops extends OrevolutionToolPower {
                 chance = 0.01;
             if(state.is(BlockTags.NEEDS_STONE_TOOL))
                 chance = 0.15;
-            if(state.is(OrevolutionBlockTags.Ores))
+            if(state.is(OrevolutionTags.Ores))
                 chance = 0.07;
 
             chance = chance * chanceMultiplier;

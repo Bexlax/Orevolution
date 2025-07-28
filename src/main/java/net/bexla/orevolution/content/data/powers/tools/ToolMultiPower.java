@@ -1,5 +1,6 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
+import net.bexla.orevolution.content.data.Conditionals;
 import net.bexla.orevolution.content.data.base.OrevolutionToolPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -16,7 +17,7 @@ public class ToolMultiPower extends OrevolutionToolPower {
     private final List<OrevolutionToolPower> powers;
 
     public ToolMultiPower(List<OrevolutionToolPower> powers) {
-        super("");
+        super("", Conditionals.always());
         this.powers = powers;
     }
 
@@ -32,9 +33,9 @@ public class ToolMultiPower extends OrevolutionToolPower {
         }
     }
 
-    public boolean onUseOverride() {
+    public boolean onUseOverride(ItemStack stack, Level level, LivingEntity player) {
         for(OrevolutionToolPower p : this.powers) {
-            p.onUseOverride();
+            p.onUseOverride(stack, level, player);
         }
         return false;
     }

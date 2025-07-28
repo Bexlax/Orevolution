@@ -9,14 +9,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 
 public interface ToolPower {
     default void onHitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {}
     default void onMineBlock(ItemStack stack, Level level, BlockPos pos, Player player, BlockState state) {}
-    default boolean onUseOverride() {return false;}
+    default boolean onUseOverride(ItemStack stack, Level level, LivingEntity player) {return false;}
     default void onInventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {}
     default void appendTooltip(ItemStack stack, Level level, List<Component> lines) {}
 

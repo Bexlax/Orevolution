@@ -1,7 +1,10 @@
 package net.bexla.orevolution;
 
 import com.mojang.logging.LogUtils;
+import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.bexla.orevolution.content.init.RegItems;
+import net.bexla.orevolution.content.init.RegPowers;
+import net.bexla.orevolution.events.OrevolutionArmorPowersSubscriber;
 import net.bexla.orevolution.providers.BlockStateModels;
 import net.bexla.orevolution.providers.ItemModels;
 import net.minecraft.core.HolderLookup;
@@ -12,7 +15,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.util.MutableHashedLinkedMap;
@@ -22,11 +24,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-
-import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
@@ -45,17 +44,20 @@ public class Orevolution
     {
         IEventBus modEventBus = context.getModEventBus();
 
+        context.registerConfig(ModConfig.Type.COMMON, OrevolutionConfig.SPEC);
+        context.registerConfig(ModConfig.Type.CLIENT, OrevolutionConfigClient.SPEC);
+
         REGISTRY_HELPER.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(OrevolutionArmorPowersSubscriber.class);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::gatherData);
 
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        RegPowers.RegisterArmorPowers();
     }
 
     public void gatherData(GatherDataEvent event) {
@@ -106,11 +108,11 @@ public class Orevolution
         putAfter(entries, Items.DIAMOND, RegItems.RAW_TUNGSTEN);
 
         /*
-        if (farmersDelightLoaded()) {
-            putAfter(entries, ModItems.NETHERITE_KNIFE.get(), OItems.ELECTRUM_KNIFE);
+        if (isModLoaded(FARMERSDELIGHT)) {
+            putAfter(entries, ModItems.NETHERITE_KNIFE.get(), RegItems.TIN_KNIFE);
         }
-        if (shieldExpansionLoaded()) {
-            putAfter(entries, ItemsInit.NETHERITE_SHIELD.get(), OItems.ELECTRUM_SHIELD);
+        if (isModLoaded(SHIELDEX)) {
+            putAfter(entries, ItemsInit.NETHERITE_SHIELD.get(), RegItems.TIN_SHIELD);
         }
         */
     }
@@ -125,15 +127,5 @@ public class Orevolution
         ItemLike key = supplier.get();
         if (!entries.contains(new ItemStack(before))) return;
         entries.putBefore(new ItemStack(before), new ItemStack(key), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-    }
-
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-        }
     }
 }

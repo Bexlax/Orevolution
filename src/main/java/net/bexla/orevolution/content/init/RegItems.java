@@ -2,17 +2,18 @@ package net.bexla.orevolution.content.init;
 
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import net.bexla.orevolution.Orevolution;
-import net.bexla.orevolution.content.data.OrevolutionArmorMats;
 import net.bexla.orevolution.content.data.OrevolutionToolMats;
+import net.bexla.orevolution.content.data.utility.OrevolutionArmorTiers;
 import net.bexla.orevolution.content.types.item.*;
+import net.bexla.orevolution.content.types.item.modeled.AethersteelChestplate;
 import net.minecraft.world.item.ArmorItem;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.RegistryObject;
+
 import java.util.function.Function;
 import java.util.function.Supplier;
-
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.RegistryObject;
 
 
 @Mod.EventBusSubscriber(modid = Orevolution.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -48,8 +49,8 @@ public class RegItems {
     public static final RegistryObject<Item> TIN_NUGGET = normalItem("tin_nugget");
     public static final RegistryObject<Item> PLATINUM_NUGGET = normalItem("platinum_nugget");
     public static final RegistryObject<Item> VERDITE_NUGGET = normalItem("verdite_nugget");
-        /*Plant ores*/
     public static final RegistryObject<Item> LIVINGSTONE_SHARD = normalItem("livingstone_shard");
+
 
 
     //~//~~Armors, Tools and Weapons~~//~//
@@ -60,10 +61,10 @@ public class RegItems {
     public static final RegistryObject<Item> TIN_SHOVEL = HELPER.createItem("tin_shovel", () -> new OrevolutionShovel(OrevolutionToolMats.TIN, 1.5f, -3f, new Item.Properties()));
     public static final RegistryObject<Item> TIN_HOE = HELPER.createItem("tin_hoe", () -> new OrevolutionHoe(OrevolutionToolMats.TIN, -2f, new Item.Properties()));
         /*Platinum set*/
-    public static final RegistryObject<Item> PLATINUM_HELMET = HELPER.createItem("platinum_helmet", () -> new OrevolutionArmor(OrevolutionArmorMats.PLATINUM, ArmorItem.Type.HELMET, new Item.Properties()));
-    public static final RegistryObject<Item> PLATINUM_CHESTPLATE = HELPER.createItem("platinum_chestplate", () -> new OrevolutionArmor(OrevolutionArmorMats.PLATINUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-    public static final RegistryObject<Item> PLATINUM_LEGGINGS = HELPER.createItem("platinum_leggings", () -> new OrevolutionArmor(OrevolutionArmorMats.PLATINUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
-    public static final RegistryObject<Item> PLATINUM_BOOTS = HELPER.createItem("platinum_boots", () -> new OrevolutionArmor(OrevolutionArmorMats.PLATINUM, ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> PLATINUM_HELMET = HELPER.createItem("platinum_helmet", () -> new ArmorItem(OrevolutionArmorTiers.PLATINUM, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> PLATINUM_CHESTPLATE = HELPER.createItem("platinum_chestplate", () -> new ArmorItem(OrevolutionArmorTiers.PLATINUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> PLATINUM_LEGGINGS = HELPER.createItem("platinum_leggings", () -> new ArmorItem(OrevolutionArmorTiers.PLATINUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> PLATINUM_BOOTS = HELPER.createItem("platinum_boots", () -> new ArmorItem(OrevolutionArmorTiers.PLATINUM, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> PLATINUM_SWORD = HELPER.createItem("platinum_sword", () -> new OrevolutionSword(OrevolutionToolMats.PLATINUM, 3, -2.4f, new Item.Properties()));
     public static final RegistryObject<Item> PLATINUM_PICKAXE = HELPER.createItem("platinum_pickaxe", () -> new OrevolutionPickaxe(OrevolutionToolMats.PLATINUM, 1, -2.6f, new Item.Properties()));
@@ -71,10 +72,10 @@ public class RegItems {
     public static final RegistryObject<Item> PLATINUM_SHOVEL = HELPER.createItem("platinum_shovel", () -> new OrevolutionShovel(OrevolutionToolMats.PLATINUM, 1.5f, -3f, new Item.Properties()));
     public static final RegistryObject<Item> PLATINUM_HOE = HELPER.createItem("platinum_hoe", () -> new OrevolutionHoe(OrevolutionToolMats.PLATINUM, -2f, new Item.Properties()));
         /*Aethersteel set*/
-    public static final RegistryObject<Item> AETHERSTEEL_HELMET = HELPER.createItem("aethersteel_helmet", () -> new OrevolutionArmor(OrevolutionArmorMats.AETHERSTEEL, ArmorItem.Type.HELMET, new Item.Properties()));
-    public static final RegistryObject<Item> AETHERSTEEL_CHESTPLATE = HELPER.createItem("aethersteel_chestplate", () -> new OrevolutionArmor(OrevolutionArmorMats.AETHERSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-    public static final RegistryObject<Item> AETHERSTEEL_LEGGINGS = HELPER.createItem("aethersteel_leggings", () -> new OrevolutionArmor(OrevolutionArmorMats.AETHERSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
-    public static final RegistryObject<Item> AETHERSTEEL_BOOTS = HELPER.createItem("aethersteel_boots", () -> new OrevolutionArmor(OrevolutionArmorMats.AETHERSTEEL, ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> AETHERSTEEL_HELMET = HELPER.createItem("aethersteel_helmet", () -> new ArmorItem(OrevolutionArmorTiers.AETHERSTEEL, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> AETHERSTEEL_CHESTPLATE = HELPER.createItem("aethersteel_chestplate", () -> new AethersteelChestplate(OrevolutionArmorTiers.AETHERSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> AETHERSTEEL_LEGGINGS = HELPER.createItem("aethersteel_leggings", () -> new ArmorItem(OrevolutionArmorTiers.AETHERSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> AETHERSTEEL_BOOTS = HELPER.createItem("aethersteel_boots", () -> new ArmorItem(OrevolutionArmorTiers.AETHERSTEEL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> AETHERSTEEL_SWORD = HELPER.createItem("aethersteel_sword", () -> new OrevolutionSword(OrevolutionToolMats.AETHERSTEEL, 3, -2.4f, new Item.Properties()));
     public static final RegistryObject<Item> AETHERSTEEL_PICKAXE = HELPER.createItem("aethersteel_pickaxe", () -> new OrevolutionPickaxe(OrevolutionToolMats.AETHERSTEEL, 1, -2.6f, new Item.Properties()));
