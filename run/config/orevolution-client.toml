@@ -1,0 +1,15 @@
+#Display the text 'You can't harvest this block yet!'
+"Display can't harvest text" = true
+#Display the 'Harvest tier' tooltip on all tiered tools
+"Display harvest tier tip" = true
+#Display the 'power' tooltip on all tools that have one
+"Display power of tools tip" = true
+#Display the 'power' tooltip on all weapons that have one
+"Display power of weapons tip" = true
+#Display the 'power' tooltip on all armors that have one
+"Display power of armors tip" = true
+#Display the 'Tin tier' tooltip on all stone-tiered tools
+"Display tin tier tip" = true
+#Display the 'Platinum tier' tooltip on all iron-tiered tools
+"Display platinum tier tip" = true
+

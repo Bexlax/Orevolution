@@ -58,6 +58,7 @@ public class Orevolution
         modEventBus.addListener(this::gatherData);
 
         RegPowers.RegisterArmorPowers();
+        RegPowers.RegisterToolsPowers();
     }
 
     public void gatherData(GatherDataEvent event) {

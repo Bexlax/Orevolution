@@ -1,7 +1,5 @@
 #Defines if modded tools will have their special characteristic (aka power), like tin's drop duplication
 "Modded Tool Powers" = true
-#Defines if modded weapons will have their special characteristic (aka power), like tin's poison on hit
-"Modded Weapons Powers" = true
 #Defines if modded armors will have their special characteristic (aka power), like platinum's strength II effect
 "Modded Armors Powers" = true
 #Progress changes from [ Stone -> Iron ] to [ Stone -> Tin ->  Iron ]. Can be further adjusted via 'orevolution:tools/tin_progress_followers' tag

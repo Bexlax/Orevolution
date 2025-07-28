@@ -1,0 +1,15 @@
+{
+  "favorites": [],
+  "lookup_history": [
+    "item:minecraft:netherite_helmet{Damage:0}",
+    "item:minecraft:netherite_chestplate{Damage:0}"
+  ],
+  "craft_history": [],
+  "recipe_defaults": {
+    "added": [],
+    "tags": {},
+    "resolutions": {},
+    "disabled": []
+  },
+  "hidden_stacks": []
+}
