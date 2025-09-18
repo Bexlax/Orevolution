@@ -17,6 +17,4 @@ public interface ArmorPower {
     default void onFall(LivingEntity wearer, float distance, float damageMultiplier) {}
     default void onDeath(LivingEntity wearer, LivingEntity killer) {}
     default void appendTooltip(ItemStack stack, Level level, List<Component> lines) {}
-
-    String getTooltipID();
 }

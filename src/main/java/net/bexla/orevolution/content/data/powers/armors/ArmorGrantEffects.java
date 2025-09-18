@@ -1,6 +1,7 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
 import net.bexla.orevolution.content.data.base.OrevolutionArmorPower;
+import net.bexla.orevolution.content.data.interfaces.OrevolutionConditional;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
@@ -17,8 +18,8 @@ public class ArmorGrantEffects extends OrevolutionArmorPower {
     private final int duration;
     private final int amplifier;
 
-    public ArmorGrantEffects(String tooltipId, int duration, int amplifier, List<MobEffect> effect) {
-        super(tooltipId);
+    public ArmorGrantEffects(String tooltipId, OrevolutionConditional conditional, int duration, int amplifier, List<MobEffect> effect) {
+        super(tooltipId, conditional);
         this.effects = effect;
         this.duration = duration;
         this.amplifier = amplifier;
@@ -27,13 +28,15 @@ public class ArmorGrantEffects extends OrevolutionArmorPower {
     @Override
     public void appendTooltip(ItemStack stack, Level level, List<Component> lines) {
         lines.add(Component.translatable("tooltips.orevolution." + getTooltipID()).withStyle(ChatFormatting.GREEN));
-        for (MobEffect p : this.effects) { // check every effect in the list
-            lines.add(Component.literal(p.getDisplayName().getString()).withStyle(ChatFormatting.GREEN)); // add a tooltip for each one of them
+        for (MobEffect p : this.effects) {
+            lines.add(Component.literal(p.getDisplayName().getString()).withStyle(ChatFormatting.GREEN));
         }
     }
 
     @Override
     public void onTickWhileWorn(ItemStack stack, LivingEntity wearer, EquipmentSlot slot) {
+        if(!getCondition(stack, wearer.level(), wearer, null)) return;
+
         for(MobEffect p : this.effects) {
             if(wearer.hasEffect(p)) {
                 wearer.getEffect(p).update(new MobEffectInstance(p, this.duration, this.amplifier));

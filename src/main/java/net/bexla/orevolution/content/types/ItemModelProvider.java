@@ -1,8 +1,6 @@
 package net.bexla.orevolution.content.types;
 
 import com.teamabnormals.blueprint.core.data.client.BlueprintItemModelProvider;
-import java.util.function.Supplier;
-
 import net.bexla.orevolution.Orevolution;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +11,8 @@ import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.Supplier;
 
 // Credits to Oreganized (Team Galena)
 public abstract class ItemModelProvider extends BlueprintItemModelProvider {
@@ -58,13 +58,18 @@ public abstract class ItemModelProvider extends BlueprintItemModelProvider {
         return generated(block, modLoc("block/" + name));
     }
 
-    public ItemModelBuilder normalItem(Supplier<? extends Item> item) {
-        return generated(item, itemTexture(item.get()));
+    public ItemModelBuilder normalItem(Supplier<? extends Item> item, String subfolder) {
+        return generated(item, itemTex(item.get(), subfolder));
+    }
+
+    public static ResourceLocation itemTex(ItemLike item, String subfolder) {
+        ResourceLocation name = key(item);
+        return new ResourceLocation(name.getNamespace(), "item/" + (subfolder + "/") + name.getPath());
     }
 
     public ItemModelBuilder toolItem(Supplier<? extends Item> item) {
         return withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/handheld"))
-                .texture("layer0", itemTexture(item.get()));
+                .texture("layer0", itemTex(item.get(), "tool"));
     }
 
     /*public ItemModelBuilder shieldItem(Supplier<? extends Item> item) {

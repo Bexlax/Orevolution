@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "orevolution:block/tin_ore"
+    "all": "orevolution:block/ore/tin_ore"
   }
 }

@@ -1,6 +1,7 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
 import net.bexla.orevolution.content.data.base.OrevolutionArmorPower;
+import net.bexla.orevolution.content.data.interfaces.OrevolutionConditional;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -18,8 +19,8 @@ public class ArmorCauseEffectsOnAttacked extends OrevolutionArmorPower {
     private final int duration;
     private final int amplifier;
 
-    public ArmorCauseEffectsOnAttacked(String tooltipId, int duration, int amplifier, List<MobEffect> effectsWearer, List<MobEffect> effectsAttacker) {
-        super(tooltipId);
+    public ArmorCauseEffectsOnAttacked(String tooltipId, OrevolutionConditional conditional, int duration, int amplifier, List<MobEffect> effectsWearer, List<MobEffect> effectsAttacker) {
+        super(tooltipId, conditional);
         this.effectsWearer = effectsWearer;
         this.effectsAttacker = effectsAttacker;
         this.duration = duration;
@@ -30,20 +31,24 @@ public class ArmorCauseEffectsOnAttacked extends OrevolutionArmorPower {
     public void appendTooltip(ItemStack stack, Level level, List<Component> lines) {
         if(this.effectsAttacker != null) {
             lines.add(Component.translatable("tooltips.orevolution." + getTooltipID()).withStyle(ChatFormatting.GREEN));
-            for (MobEffect p : this.effectsAttacker) { // check every effect in the list
-                lines.add(Component.literal(p.getDisplayName().getString()).withStyle(ChatFormatting.GREEN)); // add a tooltip for each one of them
+            for (MobEffect p : this.effectsAttacker) {
+                lines.add(Component.literal(p.getDisplayName().getString()).withStyle(ChatFormatting.GREEN));
             }
         }
         if(this.effectsWearer != null) {
             lines.add(Component.translatable("tooltips.orevolution.wearer_" + getTooltipID()).withStyle(ChatFormatting.GREEN));
-            for (MobEffect p : this.effectsWearer) { // check every effect in the list
-                lines.add(Component.literal(p.getDisplayName().getString()).withStyle(ChatFormatting.GREEN)); // add a tooltip for each one of them
+            for (MobEffect p : this.effectsWearer) {
+                lines.add(Component.literal(p.getDisplayName().getString()).withStyle(ChatFormatting.GREEN));
             }
         }
     }
 
     @Override
     public void onAttacked(LivingEntity wearer, DamageSource source, float amount) {
+        LivingEntity attacker = (LivingEntity)source.getEntity();
+
+        if(!getCondition(null, wearer.level(), wearer, attacker)) return;
+
         if(this.effectsWearer != null) {
             for(MobEffect p : this.effectsWearer) {
                 if(wearer.hasEffect(p)) {
@@ -54,8 +59,6 @@ public class ArmorCauseEffectsOnAttacked extends OrevolutionArmorPower {
                 }
             }
         }
-
-        LivingEntity attacker = (LivingEntity)source.getEntity();
 
         if(this.effectsAttacker != null) {
             for(MobEffect p : this.effectsAttacker) {

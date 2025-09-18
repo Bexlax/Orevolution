@@ -71,7 +71,7 @@ java.lang.RuntimeException: null
 		at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
 	Caused by: java.lang.ExceptionInInitializerError
 		at net.bexla.orevolution.content.data.OrevolutionToolMats.<clinit>(OrevolutionToolMats.java:23) ~[%23196!/:?] {re:classloading}
-		at net.bexla.orevolution.content.init.RegItems.lambda$static$3(RegItems.java:58) ~[%23196!/:?] {re:classloading}
+		at net.bexla.orevolution.init.RegItems.lambda$static$3(RegItems.java:58) ~[%23196!/:?] {re:classloading}
 		at net.minecraftforge.registries.DeferredRegister.lambda$addEntries$1(DeferredRegister.java:386) ~[forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23190%23197!/:?] {re:classloading}
 		at net.minecraftforge.registries.RegisterEvent.register(RegisterEvent.java:59) ~[forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23190%23197!/:?] {re:classloading,pl:eventbus:A}
 		at net.minecraftforge.registries.DeferredRegister.addEntries(DeferredRegister.java:386) ~[forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23190%23197!/:?] {re:classloading}
@@ -87,7 +87,7 @@ java.lang.RuntimeException: null
 		at net.minecraftforge.registries.RegistryObject.get(RegistryObject.java:204) ~[forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23190%23197!/:?] {re:classloading}
 		at net.bexla.orevolution.content.data.utility.OrevolutionLists.<clinit>(OrevolutionLists.java:27) ~[%23196!/:?] {re:classloading}
 		at net.bexla.orevolution.content.data.OrevolutionToolMats.<clinit>(OrevolutionToolMats.java:23) ~[%23196!/:?] {re:classloading}
-		at net.bexla.orevolution.content.init.RegItems.lambda$static$3(RegItems.java:58) ~[%23196!/:?] {re:classloading}
+		at net.bexla.orevolution.init.RegItems.lambda$static$3(RegItems.java:58) ~[%23196!/:?] {re:classloading}
 		at net.minecraftforge.registries.DeferredRegister.lambda$addEntries$1(DeferredRegister.java:386) ~[forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23190%23197!/:?] {re:classloading}
 		at net.minecraftforge.registries.RegisterEvent.register(RegisterEvent.java:59) ~[forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23190%23197!/:?] {re:classloading,pl:eventbus:A}
 		at net.minecraftforge.registries.DeferredRegister.addEntries(DeferredRegister.java:386) ~[forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23190%23197!/:?] {re:classloading}

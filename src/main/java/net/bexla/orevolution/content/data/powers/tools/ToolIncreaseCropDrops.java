@@ -11,11 +11,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ToolIncreaseCropDrops extends OrevolutionToolPower {
-    private final int dropMultiplier;
+    private final int dropIncrement;
 
-    public ToolIncreaseCropDrops(String tooltip_id, OrevolutionConditional conditional, int dropMultiplier) {
+    public ToolIncreaseCropDrops(String tooltip_id, OrevolutionConditional conditional, int dropIncrement) {
         super(tooltip_id, conditional);
-        this.dropMultiplier = dropMultiplier;
+        this.dropIncrement = dropIncrement;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class ToolIncreaseCropDrops extends OrevolutionToolPower {
         if(!state.is(BlockTags.CROPS)) return;
 
         if(getCondition(stack, level, player, null)) {
-            for(int i = 0; i < this.dropMultiplier; i++) {
+            for(int i = 0; i < this.dropIncrement; i++) {
                 Block.dropResources(state, level, pos);
             }
         }

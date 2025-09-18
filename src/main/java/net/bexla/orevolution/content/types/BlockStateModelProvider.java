@@ -1,7 +1,5 @@
 package net.bexla.orevolution.content.types;
 
-import java.util.function.Supplier;
-
 import net.bexla.orevolution.Orevolution;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -14,6 +12,8 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.Supplier;
 
 import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
 
@@ -36,8 +36,21 @@ public abstract class BlockStateModelProvider extends BlockStateProvider {
         return name(block.get());
     }
 
-    public void simpleBlock(Supplier<? extends Block> block) {
-        simpleBlock(block.get());
+    public void simpleBlock(Supplier<? extends Block> block, String subfolder) {
+        this.simpleBlock(block.get(), this.cubeAll(block.get(), subfolder));
+    }
+
+    public ModelFile cubeAll(Block block, String subfolder) {
+        return this.models().cubeAll(this.name(block), this.blockTexture(block, subfolder));
+    }
+
+    public ResourceLocation blockTexture(Block block, String subfolder) {
+        ResourceLocation name = this.key(block);
+        return new ResourceLocation(name.getNamespace(), "block/" + subfolder + "/" + name.getPath());
+    }
+
+    private ResourceLocation key(Block block) {
+        return ForgeRegistries.BLOCKS.getKey(block);
     }
 
     public void stairsBlock(Supplier<? extends StairBlock> block, Supplier<? extends Block> fullBlock) {

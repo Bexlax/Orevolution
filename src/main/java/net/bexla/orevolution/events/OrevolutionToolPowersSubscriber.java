@@ -1,6 +1,5 @@
 package net.bexla.orevolution.events;
 
-import net.bexla.orevolution.OrevolutionConfigClient;
 import net.bexla.orevolution.content.data.interfaces.ToolPower;
 import net.bexla.orevolution.content.types.ExternalToolsPowerRegistry;
 import net.minecraft.network.chat.Component;
@@ -21,11 +20,17 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
+import static net.bexla.orevolution.OrevolutionConfig.toolsPowers;
+import static net.bexla.orevolution.OrevolutionConfig.weaponsPowers;
+import static net.bexla.orevolution.OrevolutionConfigClient.toolsPowersTip;
+
 @Mod.EventBusSubscriber
 public class OrevolutionToolPowersSubscriber {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void onItemTooltip(ItemTooltipEvent event) {
+        if (!toolsPowersTip) return;
+
         ItemStack itemstack = event.getItemStack();
         List<Component> tooltip = event.getToolTip();
 
@@ -36,34 +41,44 @@ public class OrevolutionToolPowersSubscriber {
 
         if(power == null) return;
 
-        if (OrevolutionConfigClient.toolsPowersTip) {
-            power.appendTooltip(itemstack, event.getEntity().level(), tooltip);
-        }
+        Player player = event.getEntity();
+
+        if (player == null) return;
+
+        power.appendTooltip(itemstack, player.level(), tooltip);
     }
 
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
+        if(!weaponsPowers) return;
+
         if (!(event.getSource().getEntity() instanceof LivingEntity attacker)) return;
 
-        ItemStack weapon = attacker.getMainHandItem();
-        if (!(weapon.getItem() instanceof TieredItem tiered)) return;
+        ItemStack held = attacker.getMainHandItem();
+        if (!(held.getItem() instanceof TieredItem tiered)) return;
 
-        ToolPower power = ExternalToolsPowerRegistry.getSwordPower(tiered.getTier());
+        ToolPower power = (held.getItem() instanceof SwordItem)
+                ? ExternalToolsPowerRegistry.getSwordPower(tiered.getTier())
+                : ExternalToolsPowerRegistry.getToolPower(tiered.getTier());
 
         if (power != null) {
-            power.onHitEntity(weapon, event.getEntity(), attacker);
+            power.onHitEntity(held, event.getEntity(), attacker);
         }
     }
 
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        if(!toolsPowers) return;
+
         Player player = event.getPlayer();
         if (player == null) return;
 
         ItemStack held = player.getMainHandItem();
         if (!(held.getItem() instanceof TieredItem tiered)) return;
 
-        ToolPower power = ExternalToolsPowerRegistry.getToolPower(tiered.getTier());
+        ToolPower power = (held.getItem() instanceof SwordItem)
+                ? ExternalToolsPowerRegistry.getSwordPower(tiered.getTier())
+                : ExternalToolsPowerRegistry.getToolPower(tiered.getTier());
         if (power != null) {
             power.onMineBlock(held, (Level)event.getLevel(), event.getPos(), player, event.getState());
         }
@@ -71,6 +86,8 @@ public class OrevolutionToolPowersSubscriber {
 
     @SubscribeEvent
     public static void onInventoryTick(TickEvent.PlayerTickEvent event) {
+        if(!toolsPowers) return;
+
         Player player = event.player;
         if (event.phase != TickEvent.Phase.END) return;
 

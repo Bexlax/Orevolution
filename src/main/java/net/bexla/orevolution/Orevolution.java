@@ -2,11 +2,12 @@ package net.bexla.orevolution;
 
 import com.mojang.logging.LogUtils;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
-import net.bexla.orevolution.content.init.RegItems;
-import net.bexla.orevolution.content.init.RegPowers;
-import net.bexla.orevolution.events.OrevolutionArmorPowersSubscriber;
-import net.bexla.orevolution.providers.BlockStateModels;
-import net.bexla.orevolution.providers.ItemModels;
+import net.bexla.orevolution.init.RegItems;
+import net.bexla.orevolution.init.RegMobEffects;
+import net.bexla.orevolution.providers.GENBlockStateModels;
+import net.bexla.orevolution.providers.GENItemModels;
+import net.bexla.orevolution.providers.tags.GENBlockTags;
+import net.bexla.orevolution.providers.tags.GENItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -47,18 +48,13 @@ public class Orevolution
         context.registerConfig(ModConfig.Type.COMMON, OrevolutionConfig.SPEC);
         context.registerConfig(ModConfig.Type.CLIENT, OrevolutionConfigClient.SPEC);
 
+        RegMobEffects.EFFECTS.register(modEventBus);
         REGISTRY_HELPER.register(modEventBus);
 
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(OrevolutionArmorPowersSubscriber.class);
 
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::gatherData);
-
-        RegPowers.RegisterArmorPowers();
-        RegPowers.RegisterToolsPowers();
     }
 
     public void gatherData(GatherDataEvent event) {
@@ -69,10 +65,15 @@ public class Orevolution
         boolean client = event.includeClient();
         boolean server = event.includeServer();
 
-        generator.addProvider(client, new BlockStateModels(output, helper));
-        generator.addProvider(client, new ItemModels(output, helper));
+        // todo: add remaining providers.
+        generator.addProvider(client, new GENBlockStateModels(output, helper));
+        generator.addProvider(client, new GENItemModels(output, helper));
+        GENBlockTags blockTags = new GENBlockTags(output, future, helper);
+        generator.addProvider(server, blockTags);
+        generator.addProvider(client, new GENItemTags(output, future, blockTags.contentsGetter(), helper));
     }
 
+    // todo: Finish and reorganize creative tab
     @SubscribeEvent
     public void addCreative(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tab = event.getTabKey();
@@ -81,6 +82,31 @@ public class Orevolution
         putAfter(entries, Items.STONE_SWORD, RegItems.TIN_SWORD);
         putBefore(entries, Items.DIAMOND_SWORD, RegItems.PLATINUM_SWORD);
         putAfter(entries, Items.NETHERITE_SWORD, RegItems.AETHERSTEEL_SWORD);
+
+        putAfter(entries, Items.IRON_BOOTS, RegItems.PLATINUM_HELMET);
+        putAfter(entries, RegItems.PLATINUM_HELMET.get(), RegItems.PLATINUM_CHESTPLATE);
+        putAfter(entries, RegItems.PLATINUM_CHESTPLATE.get(), RegItems.PLATINUM_LEGGINGS);
+        putAfter(entries, RegItems.PLATINUM_LEGGINGS.get(), RegItems.PLATINUM_BOOTS);
+
+        putAfter(entries, Items.NETHERITE_BOOTS, RegItems.REINFORCED_NETHERITE_HELMET);
+        putAfter(entries, RegItems.REINFORCED_NETHERITE_HELMET.get(), RegItems.REINFORCED_NETHERITE_CHESTPLATE);
+        putAfter(entries, RegItems.REINFORCED_NETHERITE_CHESTPLATE.get(), RegItems.REINFORCED_NETHERITE_LEGGINGS);
+        putAfter(entries, RegItems.REINFORCED_NETHERITE_LEGGINGS.get(), RegItems.REINFORCED_NETHERITE_BOOTS);
+
+        putAfter(entries, RegItems.REINFORCED_NETHERITE_BOOTS.get(), RegItems.AETHERSTEEL_HELMET);
+        putAfter(entries, RegItems.AETHERSTEEL_HELMET.get(), RegItems.AETHERSTEEL_CHESTPLATE);
+        putAfter(entries, RegItems.AETHERSTEEL_CHESTPLATE.get(), RegItems.AETHERSTEEL_LEGGINGS);
+        putAfter(entries, RegItems.AETHERSTEEL_LEGGINGS.get(), RegItems.AETHERSTEEL_BOOTS);
+
+        putBefore(entries, Items.WOODEN_SHOVEL, RegItems.LIVINGSTONE_SHOVEL);
+        putAfter(entries, RegItems.LIVINGSTONE_SHOVEL.get(), RegItems.LIVINGSTONE_PICKAXE);
+        putAfter(entries, RegItems.LIVINGSTONE_PICKAXE.get(), RegItems.LIVINGSTONE_AXE);
+        putAfter(entries, RegItems.LIVINGSTONE_AXE.get(), RegItems.LIVINGSTONE_HOE);
+
+        putAfter(entries, RegItems.LIVINGSTONE_HOE.get(), RegItems.VERDITE_SHOVEL);
+        putAfter(entries, RegItems.VERDITE_SHOVEL.get(), RegItems.VERDITE_PICKAXE);
+        putAfter(entries, RegItems.VERDITE_PICKAXE.get(), RegItems.VERDITE_AXE);
+        putAfter(entries, RegItems.VERDITE_AXE.get(), RegItems.VERDITE_HOE);
 
         putAfter(entries, Items.STONE_HOE, RegItems.TIN_SHOVEL);
         putAfter(entries, RegItems.TIN_SHOVEL.get(), RegItems.TIN_PICKAXE);
@@ -106,7 +132,8 @@ public class Orevolution
 
         putBefore(entries, Items.RAW_IRON, RegItems.RAW_TIN);
         putAfter(entries, Items.RAW_IRON, RegItems.RAW_PLATINUM);
-        putAfter(entries, Items.DIAMOND, RegItems.RAW_TUNGSTEN);
+        putAfter(entries, RegItems.RAW_PLATINUM.get(), RegItems.RAW_TUNGSTEN);
+
 
         /*
         if (isModLoaded(FARMERSDELIGHT)) {

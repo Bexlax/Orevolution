@@ -15,8 +15,10 @@ public class ArmorPowerRegistry {
 
     public static void register(OrevolutionArmorMaterial material) {
         if (POWER_MAP.containsKey(material.getTier())) {
-            throw new IllegalStateException("Duplicate ArmorPower for material: " + material.getTier());
+            LOGGER.error("Found duplicate registration for armor material: {}, stopping duplicate registration", material.getTier());
+            return;
         }
+
         POWER_MAP.put(material.getTier(), material.getArmorPowers());
         LOGGER.debug("Registered power for: ${}", material);
     }

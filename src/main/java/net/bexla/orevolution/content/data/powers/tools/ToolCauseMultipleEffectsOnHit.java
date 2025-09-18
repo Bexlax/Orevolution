@@ -54,7 +54,7 @@ public class ToolCauseMultipleEffectsOnHit extends OrevolutionToolPower {
                 else {
                     target.addEffect(new MobEffectInstance(p, this.duration, this.amplifier)); // if it doesn't then add it
                 }
-            }
+            } // (only reason i do it like this is because of health boost, idk of other issues of not using update)
         }
         if(this.effectAttacker != null) {
             for(MobEffect p : this.effectAttacker) {

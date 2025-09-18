@@ -74,15 +74,14 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    implementation fg.deobf("maven.modrinth:blueprint:${blueprint_ver}")
 
-    //compileOnly fg.deobf("maven.modrinth:farmers_delight:${farmersdelight_ver}")
-    //runtimeOnly fg.deobf("maven.modrinth:farmers-delight:${farmersdelight_ver}")
+    implementation fg.deobf("maven.modrinth:blueprint:${blueprint_ver}")
+    implementation fg.deobf("maven.modrinth:oreganized:${oreganized_ver}")
+    // implementation fg.deobf("maven.modrinth:farmers_delight:${farmersdelight_ver}")
 
     runtimeOnly fg.deobf("maven.modrinth:embeddium:${embeddium_ver}")
     //runtimeOnly fg.deobf("maven.modrinth:shield-expansion:${shieldex_ver}")
 
-    //runtimeOnly fg.deobf("maven.modrinth:oreganized:${oreganized_ver}"
     runtimeOnly fg.deobf("maven.modrinth:emi:${emi_ver}")
 }
 

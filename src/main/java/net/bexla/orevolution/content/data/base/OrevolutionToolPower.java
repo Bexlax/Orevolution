@@ -24,10 +24,9 @@ public class OrevolutionToolPower implements ToolPower {
 
     @Override
     public void appendTooltip(ItemStack stack, Level level, List<Component> lines) {
-        lines.add(Component.translatable("tooltip.orevolution." + this.tooltip_id).withStyle(ChatFormatting.GREEN));
+        lines.add(1, Component.translatable("tooltip.orevolution." + this.tooltip_id).withStyle(ChatFormatting.GREEN));
     }
 
-    @Override
     public String getTooltipID() {
         return this.tooltip_id;
     }

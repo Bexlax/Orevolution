@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "net/bexla/orevolution/mixins/ItemstackMixin": {
+      "isCorrectToolForDrops": "Lnet/minecraft/world/item/ItemStack;m_41735_(Lnet/minecraft/world/level/block/state/BlockState;)Z"
+    }
+  },
+  "data": {
+    "searge": {
+      "net/bexla/orevolution/mixins/ItemstackMixin": {
+        "isCorrectToolForDrops": "Lnet/minecraft/world/item/ItemStack;m_41735_(Lnet/minecraft/world/level/block/state/BlockState;)Z"
+      }
+    }
+  }
+}

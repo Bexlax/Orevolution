@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "orevolution:item/bronze_ingot"
+    "layer0": "orevolution:item/ingredient/bronze_ingot"
   }
 }

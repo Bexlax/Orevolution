@@ -13,12 +13,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ToolIncreaseDrops extends OrevolutionToolPower {
-    private final int dropMultiplier;
+    private final int dropIncrement;
     private final double chanceMultiplier;
 
-    public ToolIncreaseDrops(String tooltip_id, OrevolutionConditional conditional, int dropMultiplier, double chanceMultiplier) {
+    public ToolIncreaseDrops(String tooltip_id, OrevolutionConditional conditional, int dropIncrement, double chanceMultiplier) {
         super(tooltip_id, conditional);
-        this.dropMultiplier = dropMultiplier;
+        this.dropIncrement = dropIncrement;
         this.chanceMultiplier = chanceMultiplier;
     }
 
@@ -33,13 +33,13 @@ public class ToolIncreaseDrops extends OrevolutionToolPower {
                 chance = 0.01;
             if(state.is(BlockTags.NEEDS_STONE_TOOL))
                 chance = 0.15;
-            if(state.is(OrevolutionTags.Ores))
+            if(state.is(OrevolutionTags.Blocks.Ores))
                 chance = 0.07;
 
             chance = chance * chanceMultiplier;
 
             if(Math.random() < chance) {
-                for(int i = 0; i < dropMultiplier; i++) {
+                for(int i = 0; i < dropIncrement; i++) {
                     Block.dropResources(state, level, pos);
                 }
             }

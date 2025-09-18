@@ -1,0 +1,18 @@
+// 1.20.1	2025-08-30T17:36:44.1927559	Orevolution Item Tags
+442367ef0c014fd9830c7761c2ce613771a166f8 data/forge/tags/items/ingots/enderite.json
+a5be60e57995bd33c8c8c75e5d43aadb11a37b91 data/forge/tags/items/ingots/platinum.json
+25d174420c15cc01213da4aaf97fe03052fb97cb data/forge/tags/items/ingots/tin.json
+d42592e626703b21725ca8be7275bf4f4e789c8a data/forge/tags/items/ingots/tungsten.json
+db1ce3bc2bd6276efbb4f28079235611ba60605e data/forge/tags/items/ingots/verdite.json
+4830de97773dc444402fcf2ed55d09285c0630f3 data/forge/tags/items/nuggets/electrum.json
+2d33b3b84fc7957787ea2d9f4179e6915c558050 data/forge/tags/items/nuggets/lead.json
+9518af438511b0f3589ff289242449298f8844d6 data/forge/tags/items/nuggets/netherite.json
+9811e51f428a83eb74c6092701298fcdfaa8733d data/forge/tags/items/nuggets/silver.json
+d68907306bddd828e657b8d2e617cbf241b2adff data/forge/tags/items/raw_materials/raw_platinum.json
+c6860f2d5c74f402af1296f91a4615869afcd98e data/forge/tags/items/raw_materials/raw_tin.json
+471a0cda528da0e1d0b88402f1a55e2738c8d710 data/forge/tags/items/raw_materials/raw_tungsten.json
+5e7dc129f5a4a50c6f44ecec4cd52d6b41c51352 data/minecraft/tags/items/axes.json
+3b8ff512c3a803c16f1ca6c170735c11793e5218 data/minecraft/tags/items/hoes.json
+8f44e2e9e2ee043f141b036227f1956dc0eec2c4 data/minecraft/tags/items/pickaxes.json
+3be50fb36b8b555dd6945a67c8bab940670e17a1 data/minecraft/tags/items/shovels.json
+e0c074b8994b916250ae17be363b529577158755 data/minecraft/tags/items/swords.json

@@ -26,26 +26,25 @@ public class OrevolutionTooltipSubscriber {
 
         if(itemstack.getItem() instanceof TieredItem tiered) {
             int tiernum = tiered.getTier().getLevel();
-            String return_string = String.valueOf(tiernum);
+            String return_string = tiernum >= 0 ? String.valueOf(tiernum) : String.valueOf(tiernum).replace("-", "neg.");
 
-            if (tiered.getTier() == Tiers.STONE && !itemstack.is(OrevolutionTags.TinProgExcept) && OrevolutionConfigClient.tinProgTip) {
-                return_string = "ex1";
+            boolean tinCondition = tiered.getTier() == Tiers.STONE && !itemstack.is(OrevolutionTags.Items.TinProgExcept);
+            boolean platinumCondition = tiered.getTier() == Tiers.IRON && !itemstack.is(OrevolutionTags.Items.PlatProgExcept);
+
+            if ((tinCondition || itemstack.is(OrevolutionTags.Items.TinProgFollow)) && OrevolutionConfigClient.tinProgTip) {
+                return_string = "extra.1";
             }
-            else if (tiered.getTier() == Tiers.IRON && !itemstack.is(OrevolutionTags.PlatProgExcept) && OrevolutionConfigClient.platProgTip) {
-                return_string = "ex2";
-            }
-            else if (tiernum == -1 || tiernum == -2) {
-                return_string = "all";
+            else if ((platinumCondition || itemstack.is(OrevolutionTags.Items.PlatProgFollow)) && OrevolutionConfigClient.platProgTip) {
+                return_string = "extra.2";
             }
 
             if (OrevolutionConfigClient.harvestTip) {
                 String combined = Component.translatable("tooltip.orevolution.harvest_tier").getString()
                         + "\n"
-                        + (" \u00A79" + Component.translatable("tooltip.orevolution." + return_string + "_harvest").getString());
+                        + ("§9" + Component.translatable("tooltip.orevolution." + return_string + "_harvest").getString());
 
-                int insertIndex = 1;
                 for (String line : combined.split("\n")) {
-                    tooltip.add(insertIndex++, Component.literal(line));
+                    tooltip.add(2, Component.literal(line));
                 }
             }
         }

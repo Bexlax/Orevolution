@@ -1,5 +1,6 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
+import net.bexla.orevolution.content.data.Conditionals;
 import net.bexla.orevolution.content.data.base.OrevolutionArmorPower;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -14,7 +15,7 @@ public class ArmorMultiPower extends OrevolutionArmorPower {
     private final List<OrevolutionArmorPower> powers;
 
     public ArmorMultiPower(List<OrevolutionArmorPower> powers) {
-        super("");
+        super("", Conditionals.always());
         this.powers = powers;
     }
 
