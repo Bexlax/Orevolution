@@ -15,6 +15,11 @@ import static net.bexla.orevolution.content.data.utility.OrevolutionUtils.modLoc
 public class OrevolutionTags {
 
     public static class Items {
+        public static final TagKey<Item> TinOres = forgeTag("ores/tin");
+        public static final TagKey<Item> PlatOres = forgeTag("ores/platinum");
+        public static final TagKey<Item> TungsOres = forgeTag("ores/tungsten");
+        public static final TagKey<Item> XPOres = forgeTag("ores/experience");
+
         public static final TagKey<Item> TinProgFollow = tag("tools/tin_progress_followers");
         public static final TagKey<Item> PlatProgFollow = tag("tools/platinum_progress_followers");
         public static final TagKey<Item> TinProgExcept = tag("tools/tin_progress_exceptions");
@@ -35,20 +40,27 @@ public class OrevolutionTags {
         public static final TagKey<Item> PlatRaws = forgeTag("raw_materials/raw_platinum");
         public static final TagKey<Item> TungsRaws = forgeTag("raw_materials/raw_tungsten");
 
+        public static final TagKey<Item> TinStorages = forgeTag("storage_blocks/tin");
+        public static final TagKey<Item> PlatStorages = forgeTag("storage_blocks/platinum");
+        public static final TagKey<Item> TungsStorages = forgeTag("storage_blocks/tungsten");
+        public static final TagKey<Item> EnderiteStorages = forgeTag("storage_blocks/enderite");
+        public static final TagKey<Item> LivingstoneStorages = forgeTag("storage_blocks/livingstone");
+        public static final TagKey<Item> VerditeStorages = forgeTag("storage_blocks/verdite");
+
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(modLocat(name));
         }
+
         private static TagKey<Item> forgeTag(String name) {
             return ItemTags.create(new ResourceLocation(ForgeVersion.MOD_ID, name));
         }
     }
 
     public static class Blocks {
-        public static final TagKey<Block> Ores = forgeTag("ores");
-
         public static final TagKey<Block> TinOres = forgeTag("ores/tin");
         public static final TagKey<Block> PlatOres = forgeTag("ores/platinum");
         public static final TagKey<Block> TungsOres = forgeTag("ores/tungsten");
+        public static final TagKey<Block> XPOres = forgeTag("ores/experience");
 
         public static final TagKey<Block> TinStorages = forgeTag("storage_blocks/tin");
         public static final TagKey<Block> PlatStorages = forgeTag("storage_blocks/platinum");
@@ -65,12 +77,16 @@ public class OrevolutionTags {
         public static final TagKey<Block> PlatTiered = tag("needs_platinum_tool");
         public static final TagKey<Block> AethersteelTiered = tag("needs_aethersteel_tool");
 
-
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(modLocat(name));
         }
+
         private static TagKey<Block> forgeTag(String name) {
             return BlockTags.create(new ResourceLocation(ForgeVersion.MOD_ID, name));
+        }
+
+        private static TagKey<Block> vanillaTag(String name) {
+            return BlockTags.create(new ResourceLocation("minecraft", name));
         }
     }
 

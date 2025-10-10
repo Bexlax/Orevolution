@@ -313,12 +313,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/chain": {
-    "criteria": {
-      "has_iron_ingot": "2025-07-22 01:39:41 -0300"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/iron_block": {
     "criteria": {
       "has_iron_ingot": "2025-07-22 01:39:41 -0300"
@@ -483,6 +477,7 @@
   },
   "minecraft:husbandry/balanced_diet": {
     "criteria": {
+      "caverns_and_chasms:bejeweled_apple": "2025-09-28 21:22:52 -0300",
       "enchanted_golden_apple": "2025-07-26 20:12:09 -0300"
     },
     "done": false
@@ -625,21 +620,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/iron_ingot_from_smelting_raw_iron": {
-    "criteria": {
-      "has_raw_iron": "2025-08-30 17:20:02 -0300"
-    },
-    "done": true
-  },
   "minecraft:recipes/misc/iron_ingot_from_smelting_iron_ore": {
     "criteria": {
       "has_iron_ore": "2025-08-30 17:19:42 -0300"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/raw_iron_block": {
-    "criteria": {
-      "has_raw_iron": "2025-08-30 17:20:02 -0300"
     },
     "done": true
   },
@@ -649,9 +632,315 @@
     },
     "done": true
   },
+  "minecraft:recipes/misc/iron_ingot_from_smelting_raw_iron": {
+    "criteria": {
+      "has_raw_iron": "2025-08-30 17:20:02 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/raw_iron_block": {
+    "criteria": {
+      "has_raw_iron": "2025-08-30 17:20:02 -0300"
+    },
+    "done": true
+  },
   "minecraft:recipes/misc/iron_ingot_from_blasting_raw_iron": {
     "criteria": {
       "has_raw_iron": "2025-08-30 17:20:02 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_nugget_from_smelting": {
+    "criteria": {
+      "has_golden_pickaxe": "2025-09-19 00:19:46 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_nugget_from_blasting": {
+    "criteria": {
+      "has_golden_pickaxe": "2025-09-19 00:19:46 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/diamond_from_smelting_diamond_ore": {
+    "criteria": {
+      "has_diamond_ore": "2025-09-19 00:42:00 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/diamond_from_blasting_diamond_ore": {
+    "criteria": {
+      "has_diamond_ore": "2025-09-19 00:42:00 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_leggings": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_sword": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/jukebox": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_chestplate": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_helmet": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_pickaxe": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/diamond_block": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_hoe": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_shovel": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:story/mine_diamond": {
+    "criteria": {
+      "diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_axe": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_boots": {
+    "criteria": {
+      "has_diamond": "2025-09-19 00:42:08 -0300"
+    },
+    "done": true
+  },
+  "oreganized:recipes/misc/blast_deepslate_lead_ore": {
+    "criteria": {
+      "has_deepslate_lead_ore": "2025-09-19 00:46:31 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_ingot_from_blasting_gold_ore": {
+    "criteria": {
+      "has_gold_ore": "2025-09-19 00:46:33 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_ingot_from_smelting_gold_ore": {
+    "criteria": {
+      "has_gold_ore": "2025-09-19 00:46:33 -0300"
+    },
+    "done": true
+  },
+  "oreganized:recipes/misc/blast_lead_ore": {
+    "criteria": {
+      "has_lead_ore": "2025-09-19 00:46:45 -0300"
+    },
+    "done": true
+  },
+  "oreganized:story/lead_to_dust": {
+    "criteria": {
+      "in_lead_cloud": "2025-09-19 00:46:46 -0300"
+    },
+    "done": true
+  },
+  "oreganized:recipes/building_blocks/raw_lead_block": {
+    "criteria": {
+      "has_raw_lead": "2025-09-19 00:46:56 -0300"
+    },
+    "done": true
+  },
+  "oreganized:recipes/misc/blast_raw_lead": {
+    "criteria": {
+      "has_raw_lead": "2025-09-19 00:46:56 -0300"
+    },
+    "done": true
+  },
+  "oreganized:story/like_the_romans": {
+    "criteria": {
+      "has_brain_damage": "2025-09-19 00:46:56 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_ingot_from_smelting_raw_gold": {
+    "criteria": {
+      "has_raw_gold": "2025-09-19 00:47:13 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/raw_gold_block": {
+    "criteria": {
+      "has_raw_gold": "2025-09-19 00:47:13 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_ingot_from_blasting_raw_gold": {
+    "criteria": {
+      "has_raw_gold": "2025-09-19 00:47:13 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/repeater": {
+    "criteria": {
+      "has_redstone_torch": "2025-09-19 21:43:54 -0300"
+    },
+    "done": true
+  },
+  "farmersdelight:main/root": {
+    "criteria": {
+      "seeds": "2025-09-23 20:55:26 -0300"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/decorations/cooking_pot": {
+    "criteria": {
+      "has_iron_ingot": "2025-09-23 20:56:28 -0300"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/combat/iron_knife": {
+    "criteria": {
+      "has_iron_ingot": "2025-09-23 20:56:28 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/building_blocks/rocky_dirt": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/building_blocks/cobblestone_tile_stairs_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/decorations/cobblestone_tile_wall_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/decorations/cobblestone_brick_wall_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/building_blocks/cobblestone_tiles_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/building_blocks/cobblestone_bricks_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/building_blocks/cobblestone_bricks": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/building_blocks/cobblestone_tile_slab_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/building_blocks/cobblestone_brick_slab_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/building_blocks/cobblestone_brick_stairs_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2025-09-23 23:08:36 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/misc/silver_nugget_from_blasting": {
+    "criteria": {
+      "has_silver_pickaxe": "2025-09-24 00:17:12 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/misc/silver_nugget_from_smelting": {
+    "criteria": {
+      "has_silver_pickaxe": "2025-09-24 00:17:12 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/misc/spinel": {
+    "criteria": {
+      "has_spinel_block": "2025-09-25 21:58:55 -0300"
+    },
+    "done": true
+  },
+  "minecraft:story/obtain_armor": {
+    "criteria": {
+      "iron_helmet": "2025-09-29 00:00:26 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_ingot_from_gold_block": {
+    "criteria": {
+      "has_gold_block": "2025-10-04 20:11:08 -0300"
+    },
+    "done": true
+  },
+  "caverns_and_chasms:recipes/misc/golden_bucket": {
+    "criteria": {
+      "has_gold_block": "2025-10-04 20:11:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_ingot_from_iron_block": {
+    "criteria": {
+      "has_iron_block": "2025-10-04 20:11:10 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/anvil": {
+    "criteria": {
+      "has_iron_block": "2025-10-04 20:11:10 -0300"
     },
     "done": true
   },

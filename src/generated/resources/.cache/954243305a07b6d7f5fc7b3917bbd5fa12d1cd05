@@ -1,18 +1,27 @@
-// 1.20.1	2025-08-30T17:36:44.1927559	Orevolution Item Tags
+// 1.20.1	2025-10-09T19:55:06.7523845	Orevolution Item Tags
+a6e73227bfdd1930b3404acc2b9f5d1b6b0c652f data/forge/tags/items/ingots.json
 442367ef0c014fd9830c7761c2ce613771a166f8 data/forge/tags/items/ingots/enderite.json
 a5be60e57995bd33c8c8c75e5d43aadb11a37b91 data/forge/tags/items/ingots/platinum.json
 25d174420c15cc01213da4aaf97fe03052fb97cb data/forge/tags/items/ingots/tin.json
 d42592e626703b21725ca8be7275bf4f4e789c8a data/forge/tags/items/ingots/tungsten.json
 db1ce3bc2bd6276efbb4f28079235611ba60605e data/forge/tags/items/ingots/verdite.json
+ecba5d070ab794f58b1ecd4e50396e5f1501ff78 data/forge/tags/items/nuggets.json
 4830de97773dc444402fcf2ed55d09285c0630f3 data/forge/tags/items/nuggets/electrum.json
 2d33b3b84fc7957787ea2d9f4179e6915c558050 data/forge/tags/items/nuggets/lead.json
 9518af438511b0f3589ff289242449298f8844d6 data/forge/tags/items/nuggets/netherite.json
 9811e51f428a83eb74c6092701298fcdfaa8733d data/forge/tags/items/nuggets/silver.json
+b73814dc142013cb94cf63c8618a681174b9f20d data/forge/tags/items/ores/experience.json
+f2e218c14305a90ba7b844964ce25789521c606d data/forge/tags/items/ores/platinum.json
+584fbea15319fe3febb7b0ae40aa665a04495ff7 data/forge/tags/items/ores/tin.json
+852d9a35ddaca4fae07cf2bc1163758698dc45d2 data/forge/tags/items/ores/tungsten.json
+1eb491d781d3be85f11184bb71b0d9017aa1af49 data/forge/tags/items/raw_materials.json
 d68907306bddd828e657b8d2e617cbf241b2adff data/forge/tags/items/raw_materials/raw_platinum.json
 c6860f2d5c74f402af1296f91a4615869afcd98e data/forge/tags/items/raw_materials/raw_tin.json
 471a0cda528da0e1d0b88402f1a55e2738c8d710 data/forge/tags/items/raw_materials/raw_tungsten.json
-5e7dc129f5a4a50c6f44ecec4cd52d6b41c51352 data/minecraft/tags/items/axes.json
-3b8ff512c3a803c16f1ca6c170735c11793e5218 data/minecraft/tags/items/hoes.json
-8f44e2e9e2ee043f141b036227f1956dc0eec2c4 data/minecraft/tags/items/pickaxes.json
-3be50fb36b8b555dd6945a67c8bab940670e17a1 data/minecraft/tags/items/shovels.json
-e0c074b8994b916250ae17be363b529577158755 data/minecraft/tags/items/swords.json
+3cac97884f2893ace61a052fb99fde12561c5059 data/forge/tags/items/storage_blocks.json
+d9b9e88cec85312f660463b4cd227dbfc69e112a data/forge/tags/items/storage_blocks/enderite.json
+350a789d01aaf5a0b2e3c0fa34d4cfdab82f817d data/forge/tags/items/storage_blocks/livingstone.json
+f3d8897eccb60d9c9710040b3f37ce40c5162d7c data/forge/tags/items/storage_blocks/platinum.json
+2577854e80fb7de2b01e20b7be4f7450643cd0ce data/forge/tags/items/storage_blocks/tin.json
+65ae20af3f24550e90041ba34f51b5f704e86d2c data/forge/tags/items/storage_blocks/tungsten.json
+6c7298679c0ffe71918437bca8c694f475e5a244 data/forge/tags/items/storage_blocks/verdite.json

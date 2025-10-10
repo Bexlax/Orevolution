@@ -1,4 +1,10 @@
-// 1.20.1	2025-08-30T17:36:44.1657225	Orevolution Block Tags
+// 1.20.1	2025-10-09T19:55:06.7493741	Orevolution Block Tags
+cd5057ba4bf304697fbeab8b143cdba1a0b7142c data/forge/tags/blocks/ores.json
+b73814dc142013cb94cf63c8618a681174b9f20d data/forge/tags/blocks/ores/experience.json
+f2e218c14305a90ba7b844964ce25789521c606d data/forge/tags/blocks/ores/platinum.json
+584fbea15319fe3febb7b0ae40aa665a04495ff7 data/forge/tags/blocks/ores/tin.json
+852d9a35ddaca4fae07cf2bc1163758698dc45d2 data/forge/tags/blocks/ores/tungsten.json
+3cac97884f2893ace61a052fb99fde12561c5059 data/forge/tags/blocks/storage_blocks.json
 d9b9e88cec85312f660463b4cd227dbfc69e112a data/forge/tags/blocks/storage_blocks/enderite.json
 350a789d01aaf5a0b2e3c0fa34d4cfdab82f817d data/forge/tags/blocks/storage_blocks/livingstone.json
 f3d8897eccb60d9c9710040b3f37ce40c5162d7c data/forge/tags/blocks/storage_blocks/platinum.json

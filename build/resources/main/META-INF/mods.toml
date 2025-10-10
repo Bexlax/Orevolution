@@ -13,7 +13,7 @@ authors="BexLa"
 logoFile="logo.png"
 logoBlur=false
 itemIcon="orevolution:platinum_ingot"
-configBackground="oreganized:textures/block/config_background.png"
+configBackground="orevolution:textures/block/config_background.png"
 description='''something '''
 
 
@@ -29,3 +29,45 @@ description='''something '''
     versionRange="[1.20.1,1.21)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.orevolution]]
+modId="oreganized"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.orevolution]]
+modId="galosphere"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.orevolution]]
+modId="caverns_and_chasms"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.orevolution]]
+modId="farmersdelight"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.orevolution]]
+modId="spelunkery"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.orevolution]]
+modId="shieldexp"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"

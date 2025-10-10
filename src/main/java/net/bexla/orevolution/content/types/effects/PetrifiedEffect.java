@@ -19,8 +19,8 @@ public class PetrifiedEffect extends MobEffect {
     public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
         super.removeAttributeModifiers(entity, attributeMap, amplifier);
 
-        if (entity instanceof LivingEntity ent && !ent.level().isClientSide())
-            ent.addEffect(new MobEffectInstance(MobEffects.HARM, 5, (int) amplifier));
+        if (!entity.level().isClientSide())
+            entity.addEffect(new MobEffectInstance(MobEffects.HARM, 5, (int) amplifier));
     }
 
     @Override

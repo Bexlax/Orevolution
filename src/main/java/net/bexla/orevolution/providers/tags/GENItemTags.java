@@ -1,16 +1,14 @@
 package net.bexla.orevolution.providers.tags;
 
 import net.bexla.orevolution.Orevolution;
-import net.bexla.orevolution.content.data.utility.OrevolutionLists;
 import net.bexla.orevolution.content.data.utility.OrevolutionTags;
 import net.bexla.orevolution.init.RegItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -44,10 +42,44 @@ public class GENItemTags extends ItemTagsProvider {
         tag(OrevolutionTags.Items.PlatRaws).add(RegItems.RAW_PLATINUM.get());
         tag(OrevolutionTags.Items.TungsRaws).add(RegItems.RAW_TUNGSTEN.get());
 
-        OrevolutionLists.TOOLS.forEach((tag, items) -> {
-            for (RegistryObject<Item> item : items) {
-                tag(tag).add(item.get());
-            }
-        });
+        tag(Tags.Items.INGOTS).addTags(
+                OrevolutionTags.Items.TinIngots,
+                OrevolutionTags.Items.PlatIngots,
+                OrevolutionTags.Items.TungsIngots,
+                OrevolutionTags.Items.EnderiteIngots,
+                OrevolutionTags.Items.VerditeIngots
+        );
+        tag(Tags.Items.NUGGETS).addTags(
+                OrevolutionTags.Items.TinNuggets,
+                OrevolutionTags.Items.PlatNuggets,
+                OrevolutionTags.Items.TungsNuggets,
+                OrevolutionTags.Items.VerditeNuggets
+        );
+        tag(Tags.Items.RAW_MATERIALS).addTags(
+                OrevolutionTags.Items.TinRaws,
+                OrevolutionTags.Items.PlatRaws,
+                OrevolutionTags.Items.TungsRaws
+        );
+
+        copy(OrevolutionTags.Blocks.TinStorages, OrevolutionTags.Items.TinStorages);
+        copy(OrevolutionTags.Blocks.PlatStorages, OrevolutionTags.Items.PlatStorages);
+        copy(OrevolutionTags.Blocks.TungsStorages, OrevolutionTags.Items.TungsStorages);
+        copy(OrevolutionTags.Blocks.VerditeStorages, OrevolutionTags.Items.VerditeStorages);
+        copy(OrevolutionTags.Blocks.EnderiteStorages, OrevolutionTags.Items.EnderiteStorages);
+        copy(OrevolutionTags.Blocks.LivingstoneStorages, OrevolutionTags.Items.LivingstoneStorages);
+
+        copy(OrevolutionTags.Blocks.PlatOres, OrevolutionTags.Items.PlatOres);
+        copy(OrevolutionTags.Blocks.TinOres, OrevolutionTags.Items.TinOres);
+        copy(OrevolutionTags.Blocks.TungsOres, OrevolutionTags.Items.TungsOres);
+        copy(OrevolutionTags.Blocks.XPOres, OrevolutionTags.Items.XPOres);
+
+        tag(Tags.Items.STORAGE_BLOCKS).addTags(
+                OrevolutionTags.Items.TinStorages,
+                OrevolutionTags.Items.PlatStorages,
+                OrevolutionTags.Items.TungsStorages,
+                OrevolutionTags.Items.VerditeStorages,
+                OrevolutionTags.Items.EnderiteStorages,
+                OrevolutionTags.Items.LivingstoneStorages
+        );
     }
 }
