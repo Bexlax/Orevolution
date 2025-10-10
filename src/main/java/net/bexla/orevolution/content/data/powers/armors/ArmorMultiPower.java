@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
 import net.bexla.orevolution.content.data.Conditionals;
-import net.bexla.orevolution.content.data.base.OrevolutionArmorPower;
+import net.bexla.orevolution.content.types.base.OrevolutionArmorPower;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;

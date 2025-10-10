@@ -13,7 +13,7 @@ authors="${mod_authors}"
 logoFile="logo.png"
 logoBlur=false
 itemIcon="orevolution:platinum_ingot"
-configBackground="oreganized:textures/block/config_background.png"
+configBackground="orevolution:textures/block/config_background.png"
 description='''something '''
 
 
@@ -29,3 +29,45 @@ description='''something '''
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="oreganized"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="galosphere"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="caverns_and_chasms"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="farmersdelight"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="spelunkery"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="shieldexp"
+mandatory=false
+versionRange="*"
+ordering="AFTER"
+side="BOTH"

@@ -5,17 +5,27 @@ plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id("org.spongepowered.mixin") version "0.7-SNAPSHOT"
     id("com.diffplug.spotless") version "7.0.4"
+    id("org.parchmentmc.librarian.forgegradle") version "1.+"
+    id("org.sonarqube") version "6.2.0.5505"
+    id("com.modrinth.minotaur") version "2.+"
+    id("net.darkhax.curseforgegradle") version "1.1.15"
 }
 
 version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = mod_id
+    archivesName = "$mod_id-$mod_version-forge"
 }
 
-// Note: due to a weird crash happening with java 17, i had to switch to zulu 22.
-java.toolchain.languageVersion = JavaLanguageVersion.of(22)
+mixin {
+    add sourceSets.main, 'orevolution.refmap.json'
+    config 'orevolution.mixins.json'
+
+    dumpTargetOnFailure = true
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
@@ -59,7 +69,9 @@ minecraft {
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+sourceSets.main {
+    resources.srcDir("src/generated/resources")
+}
 
 repositories {
     maven {
@@ -68,7 +80,18 @@ repositories {
             includeGroup("maven.modrinth")
         }
     }
+
+    maven {
+        url = uri("https://registry.somethingcatchy.net/repository/maven-releases/")
+        content {
+            includeGroup("com.possible-triangle")
+        }
+    }
+
+    maven { url = "https://maven.terraformersmc.com/" }
 }
+
+jarJar.enable()
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
@@ -77,12 +100,16 @@ dependencies {
 
     implementation fg.deobf("maven.modrinth:blueprint:${blueprint_ver}")
     implementation fg.deobf("maven.modrinth:oreganized:${oreganized_ver}")
-    // implementation fg.deobf("maven.modrinth:farmers_delight:${farmersdelight_ver}")
+    implementation fg.deobf("maven.modrinth:caverns-and-chasms:${cac_ver}")
+    implementation fg.deobf("maven.modrinth:farmers-delight:${farmersdelight_ver}")
 
+    // oreganized extras
+    implementation fg.deobf("com.possible-triangle:multikulti-core-forge:1.20.1-1.0.4")
+    implementation fg.deobf("com.possible-triangle:multikulti-datagen-forge:1.20.1-1.0.4")
+    implementation fg.deobf("com.possible-triangle:multikulti-datagen-forge-fix:1.20.1-1.0.4")
+
+    // runtimeOnly fg.deobf("maven.modrinth:shield-expansion:${shieldex_ver}")
     runtimeOnly fg.deobf("maven.modrinth:embeddium:${embeddium_ver}")
-    //runtimeOnly fg.deobf("maven.modrinth:shield-expansion:${shieldex_ver}")
-
-    runtimeOnly fg.deobf("maven.modrinth:emi:${emi_ver}")
 }
 
 tasks.named('processResources', ProcessResources).configure {

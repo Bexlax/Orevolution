@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.data.base.OrevolutionToolPower;
-import net.bexla.orevolution.content.data.interfaces.OrevolutionConditional;
+import net.bexla.orevolution.content.types.base.OrevolutionToolPower;
+import net.bexla.orevolution.content.types.base.interfaces.Conditional;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
@@ -18,7 +18,7 @@ public class ToolCauseMultipleEffectsOnHit extends OrevolutionToolPower {
     private final int duration;
     private final int amplifier;
 
-    public ToolCauseMultipleEffectsOnHit(String tooltip_id, OrevolutionConditional conditional, int duration, int amplifier, List<MobEffect> effectTarget, List<MobEffect> effectAttacker) {
+    public ToolCauseMultipleEffectsOnHit(String tooltip_id, Conditional conditional, int duration, int amplifier, List<MobEffect> effectTarget, List<MobEffect> effectAttacker) {
         super(tooltip_id, conditional);
         this.effectTarget = effectTarget;
         this.effectAttacker = effectAttacker;
@@ -30,29 +30,29 @@ public class ToolCauseMultipleEffectsOnHit extends OrevolutionToolPower {
     public void appendTooltip(ItemStack stack, Level level, List<Component> lines) {
         if(this.effectTarget != null) {
             lines.add(Component.translatable("tooltips.orevolution." + getTooltipID()).withStyle(ChatFormatting.GREEN));
-            for (MobEffect p : this.effectTarget) { // check every effect in the list
-                lines.add(Component.literal(p.getDisplayName().getString()).withStyle(ChatFormatting.GREEN)); // add a tooltip for each one of them
+            for (MobEffect p : this.effectTarget) {
+                lines.add(Component.literal(" - " + p.getDisplayName().getString()).withStyle(ChatFormatting.AQUA));
             }
         }
         if(this.effectAttacker != null) {
             lines.add(Component.translatable("tooltips.orevolution.attacker_" + getTooltipID()).withStyle(ChatFormatting.GREEN));
-            for (MobEffect p : this.effectAttacker) { // check every effect in the list
-                lines.add(Component.literal(p.getDisplayName().getString()).withStyle(ChatFormatting.GREEN)); // add a tooltip for each one of them
+            for (MobEffect p : this.effectAttacker) {
+                lines.add(Component.literal(" - " + p.getDisplayName().getString()).withStyle(ChatFormatting.AQUA));
             }
         }
     }
 
     @Override
     public void onHitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if(!getCondition(stack, attacker.level(), attacker, target)) return; // Get the condition assigned to the power. If condition didn't return a true value, then don't do anything else.
+        if(!getCondition(stack, null, attacker.level(), attacker, target)) return;
 
-        if(this.effectTarget != null) { // verify effects
-            for(MobEffect p : this.effectTarget) { // retrieve every effect in the list
-                if(target.hasEffect(p)) { // check if the effect already exists in this entity
-                    target.getEffect(p).update(new MobEffectInstance(p, this.duration, this.amplifier)); // if it does, then update the already existing effect
+        if(this.effectTarget != null) {
+            for(MobEffect p : this.effectTarget) {
+                if(target.hasEffect(p)) {
+                    target.getEffect(p).update(new MobEffectInstance(p, this.duration, this.amplifier));
                 }
                 else {
-                    target.addEffect(new MobEffectInstance(p, this.duration, this.amplifier)); // if it doesn't then add it
+                    target.addEffect(new MobEffectInstance(p, this.duration, this.amplifier));
                 }
             } // (only reason i do it like this is because of health boost, idk of other issues of not using update)
         }
@@ -66,9 +66,5 @@ public class ToolCauseMultipleEffectsOnHit extends OrevolutionToolPower {
                 }
             }
         }
-    }
-
-    public int getDuration() {
-        return duration;
     }
 }

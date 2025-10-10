@@ -39,7 +39,6 @@ public class RegBlocks {
     }
 
 
-    // todo: Finish adding remaining blocks
     //~//~~ Ores ~~//~//
     public static final RegistryObject<Block> TIN_ORE = register("tin_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.COPPER_ORE)));
     public static final RegistryObject<Block> PLATINUM_ORE = register("platinum_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)));
@@ -71,18 +70,20 @@ public class RegBlocks {
 
     //~//~~ Decorative Blocks ~~//~//
     public static final RegistryObject<Block> AETHERROCK = register("aetherrock", () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).strength(25F, 100F)));
-
+        /* Polished */
     public static final RegistryObject<Block> POLISHED_AETHERROCK = register("polished_aetherrock", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
-    public static final RegistryObject<Block> POLISHED_TUNGSTEN = register("polished_tungsten", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
-
+    public static final RegistryObject<Block> POLISHED_TUNGSTEN = register("polished_tungsten_block", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
+        /* Bricks */
     public static final RegistryObject<Block> AETHERROCK_BRICKS = register("aetherrock_bricks", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
-
+    public static final RegistryObject<Block> CRACKED_AETHERROCK_BRICKS = register("cracked_aetherrock_bricks", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
+        /* Tiles */
     public static final RegistryObject<Block> AETHERROCK_TILES = register("aetherrock_tiles", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
     public static final RegistryObject<Block> BRONZE_TILES = register("bronze_tiles", () -> new Block(BlockBehaviour.Properties.copy(BRONZE_BLOCK.get())));
-
+        /* Cut */
     public static final RegistryObject<Block> CUT_TUNGSTEN_BLOCK = register("cut_tungsten_block", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
+    public static final RegistryObject<Block> CUT_STEEL_BLOCK = register("cut_steel_block", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
 
-        /* Stairs */
+    /* Stairs */
         /* Slabs */
         /* Doors */
         /* Bars */

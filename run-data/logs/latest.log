@@ -1,59 +1,93 @@
-[30ago2025 17:35:34.098] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Tablos\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.4, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, orevolution, --all, --output, C:\Users\Tablos\Documents\IntellijProjects\Orevolution\src\generated\resources, --existing, C:\Users\Tablos\Documents\IntellijProjects\Orevolution\src\main\resources]
-[30ago2025 17:35:34.118] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 22.0.2 by Azul Systems, Inc.; OS Windows 10 arch amd64 version 10.0
-[30ago2025 17:35:34.485] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[30ago2025 17:35:34.743] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Tablos/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[30ago2025 17:35:36.660] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Tablos\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.4\c05c04093d241dea1d0f54782d19cfe5db9d0aac\javafmllanguage-1.20.1-47.4.4.jar is missing mods.toml file
-[30ago2025 17:35:36.683] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Tablos\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.4\8a8bd6d44f3f0e6a1145b9066eac84fdcfbe7108\lowcodelanguage-1.20.1-47.4.4.jar is missing mods.toml file
-[30ago2025 17:35:36.702] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Tablos\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.4\a8876f0a1a04237fc48a4a73692ea08e0443d2ba\mclanguage-1.20.1-47.4.4.jar is missing mods.toml file
-[30ago2025 17:35:36.715] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Tablos\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.4\55a693260a8a7b851c3531972ef997294c191b3e\fmlcore-1.20.1-47.4.4.jar is missing mods.toml file
-[30ago2025 17:35:38.273] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 3 dependencies adding them to mods collection
-[30ago2025 17:35:52.410] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[30ago2025 17:35:52.534] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Tablos\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, orevolution, --all, --output, C:\Users\Tablos\Documents\IntellijProjects\Orevolution\src\generated\resources, --existing, C:\Users\Tablos\Documents\IntellijProjects\Orevolution\src\main\resources]
-[30ago2025 17:35:54.201] [main/INFO] [mixin/]: Remapping refMap emi-xplat-refmap.json using C:\Users\Tablos\Documents\IntellijProjects\Orevolution\build\createSrgToMcp\output.srg
-[30ago2025 17:35:54.212] [main/INFO] [mixin/]: Remapping refMap blueprint.refmap.json using C:\Users\Tablos\Documents\IntellijProjects\Orevolution\build\createSrgToMcp\output.srg
-[30ago2025 17:35:54.237] [main/INFO] [Embeddium/]: Loaded configuration file for Embeddium: 53 options available, 0 override(s) found
-[30ago2025 17:35:54.243] [main/INFO] [Embeddium-GraphicsAdapterProbe/]: Searching for graphics cards...
-[30ago2025 17:35:58.054] [main/INFO] [Embeddium-GraphicsAdapterProbe/]: Found graphics card: GraphicsAdapterInfo[vendor=INTEL, name=Intel(R) UHD Graphics 600, version=DriverVersion=31.0.101.2130]
-[30ago2025 17:35:58.150] [main/INFO] [mixin/]: Remapping refMap embeddium-refmap.json using C:\Users\Tablos\Documents\IntellijProjects\Orevolution\build\createSrgToMcp\output.srg
-[30ago2025 17:35:58.158] [main/INFO] [mixin/]: Remapping refMap oreganized.refmap.json using C:\Users\Tablos\Documents\IntellijProjects\Orevolution\build\createSrgToMcp\output.srg
-[30ago2025 17:35:58.162] [main/INFO] [mixin/]: Remapping refMap galena_hats.refmap.json using C:\Users\Tablos\Documents\IntellijProjects\Orevolution\build\createSrgToMcp\output.srg
-[30ago2025 17:35:58.861] [main/WARN] [mixin/]: Error loading class: mezz/jei/library/load/PluginCaller (java.lang.ClassNotFoundException: mezz.jei.library.load.PluginCaller)
-[30ago2025 17:36:01.364] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/kinetics/fan/AirCurrent (java.lang.ClassNotFoundException: com.simibubi.create.content.kinetics.fan.AirCurrent)
-[30ago2025 17:36:01.365] [main/WARN] [mixin/]: @Mixin target com.simibubi.create.content.kinetics.fan.AirCurrent was not found oreganized.mixins.json:compat.AirCurrentMixin
-[30ago2025 17:36:01.373] [main/WARN] [mixin/]: Error loading class: net/mehvahdjukaar/supplementaries/common/block/tiles/BellowsBlockTile (java.lang.ClassNotFoundException: net.mehvahdjukaar.supplementaries.common.block.tiles.BellowsBlockTile)
-[30ago2025 17:36:01.374] [main/WARN] [mixin/]: @Mixin target net.mehvahdjukaar.supplementaries.common.block.tiles.BellowsBlockTile was not found oreganized.mixins.json:compat.BellowBlockTileMixin
-[30ago2025 17:36:01.380] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/foundation/data/recipe/LogStrippingFakeRecipes (java.lang.ClassNotFoundException: com.simibubi.create.foundation.data.recipe.LogStrippingFakeRecipes)
-[30ago2025 17:36:01.380] [main/WARN] [mixin/]: @Mixin target com.simibubi.create.foundation.data.recipe.LogStrippingFakeRecipes was not found oreganized.mixins.json:compat.LogStrippingFakeRecipesMixin
-[30ago2025 17:36:03.920] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [orevolution]
-[30ago2025 17:36:04.173] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.0-rc.3).
-[30ago2025 17:36:31.971] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.4, for MC 1.20.1 with MCP 20230612.114412
-[30ago2025 17:36:31.973] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.4 Initialized
-[30ago2025 17:36:36.927] [modloading-worker-0/ERROR] [Embeddium/]: Failed to update fingerprint
+[09oct.2025 20:34:49.440] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Quinteros\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.4, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, orevolution, --all, --output, Z:\Benja\Intellij Projects\Orevolution\src\generated\resources, --existing, Z:\Benja\Intellij Projects\Orevolution\src\main\resources, --mixin.config, orevolution.mixins.json]
+[09oct.2025 20:34:49.446] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.16 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[09oct.2025 20:34:49.678] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[09oct.2025 20:34:49.771] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Quinteros/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[09oct.2025 20:34:50.338] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Quinteros\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.4\c05c04093d241dea1d0f54782d19cfe5db9d0aac\javafmllanguage-1.20.1-47.4.4.jar is missing mods.toml file
+[09oct.2025 20:34:50.348] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Quinteros\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.4\8a8bd6d44f3f0e6a1145b9066eac84fdcfbe7108\lowcodelanguage-1.20.1-47.4.4.jar is missing mods.toml file
+[09oct.2025 20:34:50.359] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Quinteros\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.4\a8876f0a1a04237fc48a4a73692ea08e0443d2ba\mclanguage-1.20.1-47.4.4.jar is missing mods.toml file
+[09oct.2025 20:34:50.369] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Quinteros\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.4\55a693260a8a7b851c3531972ef997294c191b3e\fmlcore-1.20.1-47.4.4.jar is missing mods.toml file
+[09oct.2025 20:34:51.034] [main/WARN] [net.minecraftforge.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: multikulti_datagen_fixes. Using Mod File: C:\Users\Quinteros\.gradle\caches\forge_gradle\deobf_dependencies\com\possible-triangle\multikulti-datagen-forge-fix\1.20.1-1.0.4_mapped_official_1.20.1\multikulti-datagen-forge-fix-1.20.1-1.0.4_mapped_official_1.20.1.jar
+[09oct.2025 20:34:51.034] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 4 dependencies adding them to mods collection
+[09oct.2025 20:34:53.885] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[09oct.2025 20:34:53.963] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Quinteros\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, orevolution, --all, --output, Z:\Benja\Intellij Projects\Orevolution\src\generated\resources, --existing, Z:\Benja\Intellij Projects\Orevolution\src\main\resources]
+[09oct.2025 20:34:54.113] [main/WARN] [mixin/]: Reference map '${mod_id}.refmap.json' for orevolution.mixins.json could not be read. If this is a development environment you can ignore this message
+[09oct.2025 20:34:54.625] [main/INFO] [mixin/]: Remapping refMap farmersdelight.refmap.json using Z:\Benja\Intellij Projects\Orevolution\build\createSrgToMcp\output.srg
+[09oct.2025 20:34:54.804] [main/INFO] [mixin/]: Remapping refMap multikulti_datagen_fixes.refmap.json using Z:\Benja\Intellij Projects\Orevolution\build\createSrgToMcp\output.srg
+[09oct.2025 20:34:54.808] [main/INFO] [mixin/]: Remapping refMap multikulti_datagen.refmap.json using Z:\Benja\Intellij Projects\Orevolution\build\createSrgToMcp\output.srg
+[09oct.2025 20:34:54.810] [main/INFO] [mixin/]: Remapping refMap multikulti_datagen.refmap.json using Z:\Benja\Intellij Projects\Orevolution\build\createSrgToMcp\output.srg
+[09oct.2025 20:34:54.813] [main/INFO] [mixin/]: Remapping refMap blueprint.refmap.json using Z:\Benja\Intellij Projects\Orevolution\build\createSrgToMcp\output.srg
+[09oct.2025 20:34:54.816] [main/INFO] [mixin/]: Remapping refMap oreganized.refmap.json using Z:\Benja\Intellij Projects\Orevolution\build\createSrgToMcp\output.srg
+[09oct.2025 20:34:54.819] [main/INFO] [mixin/]: Remapping refMap caverns_and_chasms.refmap.json using Z:\Benja\Intellij Projects\Orevolution\build\createSrgToMcp\output.srg
+[09oct.2025 20:34:54.830] [main/INFO] [Embeddium/]: Loaded configuration file for Embeddium: 58 options available, 0 override(s) found
+[09oct.2025 20:34:54.833] [main/INFO] [Embeddium-GraphicsAdapterProbe/]: Searching for graphics cards...
+[09oct.2025 20:34:55.441] [main/INFO] [Embeddium-GraphicsAdapterProbe/]: Found graphics card: GraphicsAdapterInfo[vendor=UNKNOWN, name=Parsec Virtual Display Adapter, version=DriverVersion=0.45.0.0]
+[09oct.2025 20:34:55.442] [main/INFO] [Embeddium-GraphicsAdapterProbe/]: Found graphics card: GraphicsAdapterInfo[vendor=AMD, name=Radeon RX 570 Series, version=DriverVersion=31.0.21923.11000]
+[09oct.2025 20:34:55.457] [main/INFO] [mixin/]: Remapping refMap embeddium-refmap.json using Z:\Benja\Intellij Projects\Orevolution\build\createSrgToMcp\output.srg
+[09oct.2025 20:34:55.459] [main/INFO] [mixin/]: Remapping refMap galena_hats.refmap.json using Z:\Benja\Intellij Projects\Orevolution\build\createSrgToMcp\output.srg
+[09oct.2025 20:34:55.692] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder$DataGenResult)
+[09oct.2025 20:34:55.693] [main/WARN] [mixin/]: @Mixin target com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder$DataGenResult was not found multikulti_datagen.mixins.json:ConditionalMixin
+[09oct.2025 20:34:55.697] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/sequenced/SequencedAssemblyRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder$DataGenResult)
+[09oct.2025 20:34:55.697] [main/WARN] [mixin/]: @Mixin target com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder$DataGenResult was not found multikulti_datagen.mixins.json:ConditionalMixin
+[09oct.2025 20:34:55.715] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder)
+[09oct.2025 20:34:55.716] [main/WARN] [mixin/]: @Mixin target com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder was not found multikulti_datagen.mixins.json:ProcessingRecipeBuilderMixin
+[09oct.2025 20:34:55.722] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/sequenced/SequencedAssemblyRecipeBuilder (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder)
+[09oct.2025 20:34:55.723] [main/WARN] [mixin/]: @Mixin target com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder was not found multikulti_datagen.mixins.json:ProcessingRecipeBuilderMixin
+[09oct.2025 20:34:56.376] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/kinetics/fan/AirCurrent (java.lang.ClassNotFoundException: com.simibubi.create.content.kinetics.fan.AirCurrent)
+[09oct.2025 20:34:56.377] [main/WARN] [mixin/]: @Mixin target com.simibubi.create.content.kinetics.fan.AirCurrent was not found oreganized.mixins.json:compat.AirCurrentMixin
+[09oct.2025 20:34:56.382] [main/WARN] [mixin/]: Error loading class: net/mehvahdjukaar/supplementaries/common/block/tiles/BellowsBlockTile (java.lang.ClassNotFoundException: net.mehvahdjukaar.supplementaries.common.block.tiles.BellowsBlockTile)
+[09oct.2025 20:34:56.382] [main/WARN] [mixin/]: @Mixin target net.mehvahdjukaar.supplementaries.common.block.tiles.BellowsBlockTile was not found oreganized.mixins.json:compat.BellowBlockTileMixin
+[09oct.2025 20:34:56.386] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/foundation/data/recipe/LogStrippingFakeRecipes (java.lang.ClassNotFoundException: com.simibubi.create.foundation.data.recipe.LogStrippingFakeRecipes)
+[09oct.2025 20:34:56.386] [main/WARN] [mixin/]: @Mixin target com.simibubi.create.foundation.data.recipe.LogStrippingFakeRecipes was not found oreganized.mixins.json:compat.LogStrippingFakeRecipesMixin
+[09oct.2025 20:34:56.489] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder$DataGenResult)
+[09oct.2025 20:34:56.491] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/sequenced/SequencedAssemblyRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder$DataGenResult)
+[09oct.2025 20:34:56.495] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder$DataGenResult)
+[09oct.2025 20:34:56.498] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/sequenced/SequencedAssemblyRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder$DataGenResult)
+[09oct.2025 20:34:56.501] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder$DataGenResult)
+[09oct.2025 20:34:56.504] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/sequenced/SequencedAssemblyRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder$DataGenResult)
+[09oct.2025 20:34:57.357] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [orevolution]
+[09oct.2025 20:34:57.515] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.0).
+[09oct.2025 20:35:06.195] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.4, for MC 1.20.1 with MCP 20230612.114412
+[09oct.2025 20:35:06.196] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.4 Initialized
+[09oct.2025 20:35:07.220] [modloading-worker-0/ERROR] [Embeddium/]: Failed to update fingerprint
 java.lang.NullPointerException: Cannot invoke "net.minecraft.client.Minecraft.getUser()" because the return value of "net.minecraft.client.Minecraft.getInstance()" is null
-	at me.jellysquid.mods.sodium.client.data.fingerprint.FingerprintMeasure.create(FingerprintMeasure.java:19) ~[embeddium-UTbfe5d1_mapped_official_1.20.1.jar%23200!/:?]
-	at me.jellysquid.mods.sodium.client.SodiumClientMod.updateFingerprint(SodiumClientMod.java:108) ~[embeddium-UTbfe5d1_mapped_official_1.20.1.jar%23200!/:?]
-	at me.jellysquid.mods.sodium.client.SodiumClientMod.<init>(SodiumClientMod.java:48) ~[embeddium-UTbfe5d1_mapped_official_1.20.1.jar%23200!/:?]
-	at jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?]
-	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?]
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?]
+	at me.jellysquid.mods.sodium.client.data.fingerprint.FingerprintMeasure.create(FingerprintMeasure.java:19) ~[embeddium-0.3.31+mc1.20.1_mapped_official_1.20.1.jar%23205!/:?]
+	at me.jellysquid.mods.sodium.client.SodiumClientMod.updateFingerprint(SodiumClientMod.java:108) ~[embeddium-0.3.31+mc1.20.1_mapped_official_1.20.1.jar%23205!/:?]
+	at me.jellysquid.mods.sodium.client.SodiumClientMod.<init>(SodiumClientMod.java:48) ~[embeddium-0.3.31+mc1.20.1_mapped_official_1.20.1.jar%23205!/:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:481) ~[?:?]
 	at net.minecraftforge.fml.javafmlmod.FMLModContainer.constructMod(FMLModContainer.java:77) ~[javafmllanguage-1.20.1-47.4.4.jar%23192!/:?]
 	at net.minecraftforge.fml.ModContainer.lambda$buildTransitionHandler$5(ModContainer.java:126) ~[fmlcore-1.20.1-47.4.4.jar%23195!/:?]
 	at java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?]
 	at java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796) ~[?:?]
-	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507) ~[?:?]
-	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1489) ~[?:?]
-	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:2071) ~[?:?]
-	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2033) ~[?:?]
-	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187) ~[?:?]
-[30ago2025 17:36:40.767] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Tablos/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.4_mapped_official_1.20.1/forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[30ago2025 17:36:40.768] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Tablos/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.4_mapped_official_1.20.1/forge-1.20.1-47.4.4_mapped_official_1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[30ago2025 17:36:42.736] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: orevolution Block States
-[30ago2025 17:36:43.533] [main/INFO] [net.minecraft.data.DataGenerator/]: orevolution Block States finished after 808 ms
-[30ago2025 17:36:43.549] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: orevolution Item Models
-[30ago2025 17:36:43.992] [main/INFO] [net.minecraft.data.DataGenerator/]: orevolution Item Models finished after 441 ms
-[30ago2025 17:36:43.992] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Orevolution Block Tags
-[30ago2025 17:36:44.101] [main/INFO] [net.minecraft.data.DataGenerator/]: Orevolution Block Tags finished after 108 ms
-[30ago2025 17:36:44.101] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Orevolution Item Tags
-[30ago2025 17:36:44.162] [main/INFO] [net.minecraft.data.DataGenerator/]: Orevolution Item Tags finished after 60 ms
-[30ago2025 17:36:44.163] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 1426 ms
-[30ago2025 17:36:44.284] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 142, old count: 114, new count: 143, removed stale: 0, written: 28
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
+[09oct.2025 20:35:07.577] [modloading-worker-0/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder$DataGenResult)
+[09oct.2025 20:35:07.585] [modloading-worker-0/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/sequenced/SequencedAssemblyRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder$DataGenResult)
+[09oct.2025 20:35:09.292] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Quinteros/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.4_mapped_official_1.20.1/forge-1.20.1-47.4.4_mapped_official_1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[09oct.2025 20:35:09.294] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Quinteros/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.4_mapped_official_1.20.1/forge-1.20.1-47.4.4_mapped_official_1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[09oct.2025 20:35:09.371] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder$DataGenResult)
+[09oct.2025 20:35:09.375] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/sequenced/SequencedAssemblyRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder$DataGenResult)
+[09oct.2025 20:35:09.446] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder$DataGenResult)
+[09oct.2025 20:35:09.450] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/sequenced/SequencedAssemblyRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder$DataGenResult)
+[09oct.2025 20:35:09.478] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder$DataGenResult)
+[09oct.2025 20:35:09.482] [main/WARN] [mixin/]: Error loading class: com/simibubi/create/content/processing/sequenced/SequencedAssemblyRecipeBuilder$DataGenResult (java.lang.ClassNotFoundException: com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder$DataGenResult)
+[09oct.2025 20:35:09.938] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: orevolution Block States
+[09oct.2025 20:35:10.181] [main/INFO] [net.minecraft.data.DataGenerator/]: orevolution Block States finished after 241 ms
+[09oct.2025 20:35:10.182] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: orevolution Item Models
+[09oct.2025 20:35:10.247] [main/INFO] [net.minecraft.data.DataGenerator/]: orevolution Item Models finished after 64 ms
+[09oct.2025 20:35:10.248] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Orevolution Block Tags
+[09oct.2025 20:35:10.270] [main/INFO] [net.minecraft.data.DataGenerator/]: Orevolution Block Tags finished after 22 ms
+[09oct.2025 20:35:10.272] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Orevolution Item Tags
+[09oct.2025 20:35:10.278] [main/INFO] [net.minecraft.data.DataGenerator/]: Orevolution Item Tags finished after 6 ms
+[09oct.2025 20:35:10.279] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: orevolution Languages: en_us
+[09oct.2025 20:35:10.287] [main/INFO] [net.minecraft.data.DataGenerator/]: orevolution Languages: en_us finished after 7 ms
+[09oct.2025 20:35:10.288] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: orevolution Languages: es_ar
+[09oct.2025 20:35:10.295] [main/INFO] [net.minecraft.data.DataGenerator/]: orevolution Languages: es_ar finished after 6 ms
+[09oct.2025 20:35:10.296] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 357 ms
+[09oct.2025 20:35:10.334] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 205, old count: 205, new count: 206, removed stale: 0, written: 2

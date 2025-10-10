@@ -1,12 +1,11 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
 import net.bexla.orevolution.content.data.Conditionals;
-import net.bexla.orevolution.content.data.base.OrevolutionToolPower;
+import net.bexla.orevolution.content.types.base.OrevolutionToolPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,17 +26,10 @@ public class ToolMultiPower extends OrevolutionToolPower {
         }
     }
 
-    public void onMineBlock(ItemStack stack, Level level, BlockPos pos, Player player, BlockState state) {
+    public void onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state) {
         for(OrevolutionToolPower p : this.powers) {
             p.onMineBlock(stack, level, pos, player, state);
         }
-    }
-
-    public boolean onUseOverride(ItemStack stack, Level level, LivingEntity player) {
-        for(OrevolutionToolPower p : this.powers) {
-            p.onUseOverride(stack, level, player);
-        }
-        return false;
     }
 
     public void onInventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {

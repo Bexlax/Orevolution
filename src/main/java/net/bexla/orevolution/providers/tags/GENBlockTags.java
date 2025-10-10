@@ -13,6 +13,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -54,11 +55,32 @@ public class GENBlockTags extends IntrinsicHolderTagsProvider<Block> {
         tag(OrevolutionTags.Blocks.RawPlatStorages).add(RegBlocks.RAW_PLATINUM_BLOCK.get());
         tag(OrevolutionTags.Blocks.RawTungsStorages).add(RegBlocks.RAW_TUNGSTEN_BLOCK.get());
 
+        tag(OrevolutionTags.Blocks.TinOres).add(RegBlocks.TIN_ORE.get()).add(RegBlocks.DEEPSLATE_TIN_ORE.get());
+        tag(OrevolutionTags.Blocks.TungsOres).add(RegBlocks.NETHER_TUNGSTEN_ORE.get());
+        tag(OrevolutionTags.Blocks.PlatOres).add(RegBlocks.PLATINUM_ORE.get()).add(RegBlocks.DEEPSLATE_PLATINUM_ORE.get());
+        tag(OrevolutionTags.Blocks.XPOres).add(RegBlocks.END_XP_ORE.get()).add(RegBlocks.NETHER_XP_ORE.get());
+
         tag(OrevolutionTags.Blocks.TinTiered).add(Blocks.IRON_BLOCK).add(Blocks.IRON_ORE).add(Blocks.DEEPSLATE_IRON_ORE).add(Blocks.RAW_IRON_BLOCK)
                 .add(Blocks.IRON_BARS).add(Blocks.IRON_DOOR).add(Blocks.IRON_TRAPDOOR).add(Blocks.HOPPER)
                 .addTag(BlockTags.ANVIL);
 
         tag(OrevolutionTags.Blocks.PlatTiered).add(Blocks.DIAMOND_BLOCK).add(Blocks.DIAMOND_ORE).add(Blocks.DEEPSLATE_DIAMOND_ORE)
                 .add(Blocks.REDSTONE_BLOCK).add(Blocks.REDSTONE_ORE).add(Blocks.DEEPSLATE_REDSTONE_ORE);
+
+        tag(Tags.Blocks.STORAGE_BLOCKS).addTags(
+                OrevolutionTags.Blocks.TinStorages,
+                OrevolutionTags.Blocks.PlatStorages,
+                OrevolutionTags.Blocks.TungsStorages,
+                OrevolutionTags.Blocks.VerditeStorages,
+                OrevolutionTags.Blocks.EnderiteStorages,
+                OrevolutionTags.Blocks.LivingstoneStorages
+        );
+
+        tag(Tags.Blocks.ORES).addTags(
+                OrevolutionTags.Blocks.TinOres,
+                OrevolutionTags.Blocks.PlatOres,
+                OrevolutionTags.Blocks.TungsOres,
+                OrevolutionTags.Blocks.XPOres
+        ).add(RegBlocks.NETHER_TUNGSTEN_ORE.get()).add(RegBlocks.PRIMITIVE_AETHERROCK.get());
     }
 }

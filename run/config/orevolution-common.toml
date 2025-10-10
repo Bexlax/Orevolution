@@ -1,11 +1,39 @@
-#Defines if tools will have their special characteristic (aka power), like tin's drop duplication
-"Tool Powers" = true
-#Defines if weapons will have their special characteristic (aka power), like tin's drop duplication
-"Weapons Powers" = true
-#Defines if armors will have their special characteristic (aka power), like platinum's strength II effect
-"Armors Powers" = true
-#Progress changes from [ Stone -> Iron ] to [ Stone -> Tin ->  Iron ]. Can be further adjusted using datapacks
-"Tin progression" = true
-#Progress changes from [ Iron -> Diamond ] to [ Iron -> Platinum ->  Diamond ]. Can be further adjusted via 'orevolution:tools/platinum_progress_followers' tag
-"Platinum progression" = true
+
+[powers]
+	#Defines if tools will have their special characteristic (aka power), like tin's drop duplication
+	tools_powers = true
+	#Defines if weapons will have their special characteristic (aka power), like tin's drop duplication
+	weapons_powers = true
+	#Defines if armors will have their special characteristic (aka power), like platinum's strength II effect
+	armors_powers = true
+
+[gameplay_progression]
+	#Progress changes from [ Stone -> Iron ] to [ Stone -> Tin ->  Iron ]. Can be further adjusted through datapacks
+	tin_progression = true
+	#Progress changes from [ Iron -> Diamond ] to [ Iron -> Platinum ->  Diamond ]. Can be further adjusted through datapacks
+	platinum_progression = true
+
+[gameplay_durability]
+	#Modifies the max uses of wood tools and weapons. vanilla is 59
+	#Range: > 1
+	wood_max_uses = 64
+	#Modifies the max uses of gold tools and weapons. vanilla is 32
+	#Range: > 1
+	gold_max_uses = 64
+	#Modifies the max uses of stone tools and weapons. vanilla is 131
+	#Range: > 1
+	stone_max_uses = 192
+	#Modifies the max uses of iron tools and weapons. vanilla is 250
+	#Range: > 1
+	iron_max_uses = 448
+	#Modifies the max uses of diamond tools and weapons. vanilla is 1561
+	#Range: > 1
+	diamond_max_uses = 1600
+	#Modifies the max uses of netherite tools and weapons. vanilla is 2031
+	#Range: > 1
+	netherite_max_uses = 2432
+
+[gameplay_general]
+	#Ores won't break if mined with the incorrect tool
+	safe_ore_breaking = true
 

@@ -1,10 +1,10 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.data.base.OrevolutionToolPower;
-import net.bexla.orevolution.content.data.interfaces.OrevolutionConditional;
+import net.bexla.orevolution.content.types.base.OrevolutionToolPower;
+import net.bexla.orevolution.content.types.base.interfaces.Conditional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -12,13 +12,13 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class ToolMultiBreaking extends OrevolutionToolPower {
 
-    public ToolMultiBreaking(String tooltip_id, OrevolutionConditional conditional) {
+    public ToolMultiBreaking(String tooltip_id, Conditional conditional) {
         super(tooltip_id, conditional);
     }
 
     @Override
-    public void onMineBlock(ItemStack stack, Level level, BlockPos pos, Player player, BlockState state) {
-        if (!getCondition(stack, level, player, null)) return;
+    public void onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state) {
+        if (!getCondition(stack, state, level, player, null)) return;
 
         if (level.isClientSide) return;
 

@@ -13,13 +13,13 @@ import java.util.function.Supplier;
 
 // import net.minecraft.world.item.Tiers;
 public enum OrevolutionToolTiers implements Tier {
-    TIN(1, 174, 5F, 1F, 7, () -> Ingredient.of(RegItems.TIN_INGOT.get()), OrevolutionTags.Blocks.TinTiered),
-    PLATINUM(2,429,7F,2F,11, () -> Ingredient.of(RegItems.PLATINUM_INGOT.get()), OrevolutionTags.Blocks.PlatTiered),
-    AETHERSTEEL(5,3341,10F,5F,22, () -> Ingredient.of(RegItems.AETHERSTEEL_INGOT.get()), OrevolutionTags.Blocks.AethersteelTiered),
-    TUMBAGA(2, 211, 9F, 3F, 17, () -> Ingredient.of(RegItems.TUMBAGA_ALLOY.get()), BlockTags.NEEDS_STONE_TOOL),
-    STEEL(2, 453, 3F, 4F, 12, () -> Ingredient.of(RegItems.STEEL_ALLOY.get()), BlockTags.NEEDS_IRON_TOOL),
-    LIVINGSTONE(1, 142, 4F, 1F, 8, () -> Ingredient.of(RegItems.LIVINGSTONE_SHARD.get()), BlockTags.NEEDS_STONE_TOOL),
-    VERDITE(2, 286, 6F, 2F, 16, () -> Ingredient.of(RegItems.VERDITE_INGOT.get()), BlockTags.NEEDS_IRON_TOOL);
+    TIN(1, 256, 5F, 1F, 7, () -> Ingredient.of(RegItems.TIN_INGOT.get()), OrevolutionTags.Blocks.TinTiered),
+    PLATINUM(2,768,7F,2F,11, () -> Ingredient.of(RegItems.PLATINUM_INGOT.get()), OrevolutionTags.Blocks.PlatTiered),
+    AETHERSTEEL(5,3520,10F,5F,22, () -> Ingredient.of(RegItems.AETHERSTEEL_INGOT.get()), OrevolutionTags.Blocks.AethersteelTiered),
+    TUMBAGA(2, 256, 9F, 3F, 17, () -> Ingredient.of(RegItems.TUMBAGA_ALLOY.get()), OrevolutionTags.Blocks.TinTiered),
+    STEEL(2, 1152, 3F, 4F, 12, () -> Ingredient.of(RegItems.STEEL_ALLOY.get()), OrevolutionTags.Blocks.PlatTiered),
+    LIVINGSTONE(1, 192, 4F, 1F, 8, () -> Ingredient.of(RegItems.LIVINGSTONE_SHARD.get()), OrevolutionTags.Blocks.TinTiered),
+    VERDITE(2, 448, 6F, 2F, 16, () -> Ingredient.of(RegItems.VERDITE_INGOT.get()), BlockTags.NEEDS_IRON_TOOL);
 
     private final int level;
     private final int durability;

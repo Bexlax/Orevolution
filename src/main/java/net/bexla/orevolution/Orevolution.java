@@ -2,10 +2,14 @@ package net.bexla.orevolution;
 
 import com.mojang.logging.LogUtils;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
+import net.bexla.orevolution.events.ClientSubscriber;
 import net.bexla.orevolution.init.RegItems;
+import net.bexla.orevolution.init.RegMisc;
 import net.bexla.orevolution.init.RegMobEffects;
-import net.bexla.orevolution.providers.GENBlockStateModels;
-import net.bexla.orevolution.providers.GENItemModels;
+import net.bexla.orevolution.providers.langs.GENLangENUS;
+import net.bexla.orevolution.providers.langs.GENLangESAR;
+import net.bexla.orevolution.providers.models.GENBlockStateModels;
+import net.bexla.orevolution.providers.models.GENItemModels;
 import net.bexla.orevolution.providers.tags.GENBlockTags;
 import net.bexla.orevolution.providers.tags.GENItemTags;
 import net.minecraft.core.HolderLookup;
@@ -16,6 +20,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.util.MutableHashedLinkedMap;
@@ -23,8 +28,9 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -45,16 +51,21 @@ public class Orevolution
     {
         IEventBus modEventBus = context.getModEventBus();
 
-        context.registerConfig(ModConfig.Type.COMMON, OrevolutionConfig.SPEC);
-        context.registerConfig(ModConfig.Type.CLIENT, OrevolutionConfigClient.SPEC);
+        OrevolutionConfig.register();
 
         RegMobEffects.EFFECTS.register(modEventBus);
         REGISTRY_HELPER.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
+        RegMisc.RegisterAll();
+
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::gatherData);
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientSubscriber::setup);
     }
 
     public void gatherData(GatherDataEvent event) {
@@ -65,12 +76,15 @@ public class Orevolution
         boolean client = event.includeClient();
         boolean server = event.includeServer();
 
-        // todo: add remaining providers.
+        var lang = new GENLangENUS(output);
+
         generator.addProvider(client, new GENBlockStateModels(output, helper));
         generator.addProvider(client, new GENItemModels(output, helper));
         GENBlockTags blockTags = new GENBlockTags(output, future, helper);
         generator.addProvider(server, blockTags);
         generator.addProvider(client, new GENItemTags(output, future, blockTags.contentsGetter(), helper));
+        generator.addProvider(client, lang);
+        generator.addProvider(client, new GENLangESAR(output));
     }
 
     // todo: Finish and reorganize creative tab
@@ -142,6 +156,7 @@ public class Orevolution
         if (isModLoaded(SHIELDEX)) {
             putAfter(entries, ItemsInit.NETHERITE_SHIELD.get(), RegItems.TIN_SHIELD);
         }
+        artifacts, improvedmobs, al menos 6 mods de dungeons
         */
     }
 
