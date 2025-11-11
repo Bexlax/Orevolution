@@ -20,10 +20,12 @@ public class OrevolutionConfig
         public final ConfigValue<Boolean> weaponsPowers;
         public final ConfigValue<Boolean> armorsPowers;
 
+        public final ConfigValue<Boolean> generateTinOre;
+        public final ConfigValue<Boolean> generatePlatOre;
+
         public final ConfigValue<Boolean> safeOreBreaking;
 
-        public final ConfigValue<Boolean> tinProgression;
-        public final ConfigValue<Boolean> platinumProgression;
+        public final ConfigValue<Boolean> modProgression;
 
         public final ConfigValue<Integer> woodMaxUses;
         public final ConfigValue<Integer> stoneMaxUses;
@@ -49,22 +51,22 @@ public class OrevolutionConfig
 
             builder.push("gameplay_general");
 
+            generateTinOre = builder
+                    .comment("Defines if tin ore will generate in your world")
+                    .define("generate_tin_ore", true);
+
+            generatePlatOre = builder
+                    .comment("Defines if platinum ore will generate in your world")
+                    .define("generate_platinum_ore", true);
+
             safeOreBreaking = builder
                     .comment("Ores won't break if mined with the incorrect tool")
                     .define("safe_ore_breaking", true);
 
-            builder.pop();
+            modProgression = builder
+                    .comment("Replaces the original ore progression of the game")
+                    .define("modded_progression", true);
 
-
-            builder.push("gameplay_progression");
-
-            tinProgression = builder
-                    .comment("Progress changes from [ Stone -> Iron ] to [ Stone -> Tin ->  Iron ]. Can be further adjusted through datapacks")
-                    .define("tin_progression", true);
-
-            platinumProgression = builder
-                    .comment("Progress changes from [ Iron -> Diamond ] to [ Iron -> Platinum ->  Diamond ]. Can be further adjusted through datapacks")
-                    .define("platinum_progression", true);
 
             builder.pop();
 
@@ -95,20 +97,20 @@ public class OrevolutionConfig
     }
 
     public static class Client {
-        public final ConfigValue<Boolean> warnOre;
+        public final ConfigValue<Boolean> warnBreak;
         public final ConfigValue<Boolean> harvestTip;
         public final ConfigValue<Boolean> toolsPowersTip;
         public final ConfigValue<Boolean> weaponsPowersTip;
         public final ConfigValue<Boolean> armorsPowersTip;
-        public final ForgeConfigSpec.BooleanValue tinProgTip;
-        public final ForgeConfigSpec.BooleanValue platProgTip;
+        public final ConfigValue<Boolean> tinProgTip;
+        public final ConfigValue<Boolean> platProgTip;
 
         private Client(ForgeConfigSpec.Builder builder) {
             builder.push("gameplay");
 
-            warnOre = builder
+            warnBreak = builder
                     .comment("Display the text 'You can't harvest this block yet!'")
-                    .define("warn_ore", true);
+                    .define("warn_break", true);
 
             builder.pop();
 

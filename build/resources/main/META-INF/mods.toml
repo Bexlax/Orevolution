@@ -9,13 +9,14 @@ repository="https://github.com/Bexlax/Orevolution"
 modId="orevolution"
 version="3.0.0"
 displayName="Orevolution!"
-authors="BexLa"
+authors="BeXla"
 logoFile="logo.png"
 logoBlur=false
 itemIcon="orevolution:platinum_ingot"
 configBackground="orevolution:textures/block/config_background.png"
-description='''something '''
-
+description='''
+Orevolution focuses on adding more value to the mining aspect of minecraft, doing so by adding new ores, rebalancing tools and implementing new mechanics for them.
+'''
 
 [[dependencies.orevolution]]
     modId="forge"
@@ -29,45 +30,52 @@ description='''something '''
     versionRange="[1.20.1,1.21)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.orevolution]]
+    modId="blueprint"
+    mandatory=true
+    versionRange="[7.1.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
 
 [[dependencies.orevolution]]
-modId="oreganized"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="oreganized"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.orevolution]]
-modId="galosphere"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="galosphere"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.orevolution]]
-modId="caverns_and_chasms"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="caverns_and_chasms"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.orevolution]]
-modId="farmersdelight"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="farmersdelight"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.orevolution]]
-modId="spelunkery"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="spelunkery"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.orevolution]]
-modId="shieldexp"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="shieldexp"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"

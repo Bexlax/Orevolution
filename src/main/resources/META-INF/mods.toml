@@ -14,8 +14,9 @@ logoFile="logo.png"
 logoBlur=false
 itemIcon="orevolution:platinum_ingot"
 configBackground="orevolution:textures/block/config_background.png"
-description='''something '''
-
+description='''
+Orevolution focuses on adding more value to the mining aspect of minecraft, doing so by adding new ores, rebalancing tools and implementing new mechanics for them.
+'''
 
 [[dependencies.${mod_id}]]
     modId="forge"
@@ -29,45 +30,52 @@ description='''something '''
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="blueprint"
+    mandatory=true
+    versionRange="[7.1.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
 
 [[dependencies.${mod_id}]]
-modId="oreganized"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="oreganized"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.${mod_id}]]
-modId="galosphere"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="galosphere"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.${mod_id}]]
-modId="caverns_and_chasms"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="caverns_and_chasms"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.${mod_id}]]
-modId="farmersdelight"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="farmersdelight"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.${mod_id}]]
-modId="spelunkery"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="spelunkery"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
 
 [[dependencies.${mod_id}]]
-modId="shieldexp"
-mandatory=false
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
+    modId="shieldexp"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"

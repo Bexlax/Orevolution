@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
 import net.bexla.orevolution.content.data.Conditionals;
-import net.bexla.orevolution.content.types.base.OrevolutionArmorPower;
+import net.bexla.orevolution.content.types.OrevolutionArmorPower;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -20,10 +20,11 @@ public class ArmorMultiPower extends OrevolutionArmorPower {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, Level level, List<Component> lines) {
+    public List<Component> appendTooltip(ItemStack stack, Level level, List<Component> lines) {
         for(OrevolutionArmorPower p : this.powers) {
-            p.appendTooltip(stack, level, lines);
+            return p.appendTooltip(stack, level, lines);
         }
+        return List.of();
     }
 
     public void onTickWhileWorn(ItemStack stack, LivingEntity wearer, EquipmentSlot slot) {
@@ -46,17 +47,19 @@ public class ArmorMultiPower extends OrevolutionArmorPower {
     }
 
     @Override
-    public void onDeath(LivingEntity wearer, LivingEntity killer) {
+    public boolean onDeath(LivingEntity wearer, LivingEntity killer) {
         for(OrevolutionArmorPower p : this.powers) {
-            p.onDeath(wearer, killer);
+            return p.onDeath(wearer, killer);
         }
+        return false;
     }
 
     @Override
-    public void onFall(LivingEntity wearer, float distance, float damageMultiplier) {
+    public boolean onFall(LivingEntity wearer, float distance, float damageMultiplier) {
         for(OrevolutionArmorPower p : this.powers) {
-            p.onFall(wearer, distance, damageMultiplier);
+            return p.onFall(wearer, distance, damageMultiplier);
         }
+        return false;
     }
 
     @Override
