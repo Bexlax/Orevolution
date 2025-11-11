@@ -30,16 +30,18 @@ public class OrevolutionSmithingTemplate extends SmithingTemplateItem {
     private static final Component AETHERSTEEL_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.ingredients"))).withStyle(DESCRIPTION_FORMAT);
     private static final Component AETHERSTEEL_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.base_slot_description")));
     private static final Component AETHERSTEEL_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.additions_slot_description")));
-    private static final Component TUNGSTEN_UPGRADE = Component.translatable(Util.makeDescriptionId("upgrade", modLocat("aethersteel_upgrade"))).withStyle(TITLE_FORMAT);
-    private static final Component TUNGSTEN_UPGRADE_APPLIES_TO = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.applies_to"))).withStyle(DESCRIPTION_FORMAT);
-    private static final Component TUNGSTEN_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.ingredients"))).withStyle(DESCRIPTION_FORMAT);
-    private static final Component TUNGSTEN_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.base_slot_description")));
-    private static final Component TUNGSTEN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.additions_slot_description")));
-    private static final Component BASIC_UPGRADE = Component.translatable(Util.makeDescriptionId("upgrade", modLocat("aethersteel_upgrade"))).withStyle(TITLE_FORMAT);
-    private static final Component BASIC_UPGRADE_APPLIES_TO = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.applies_to"))).withStyle(DESCRIPTION_FORMAT);
-    private static final Component BASIC_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.ingredients"))).withStyle(DESCRIPTION_FORMAT);
-    private static final Component BASIC_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.base_slot_description")));
-    private static final Component BASIC_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.aethersteel_upgrade.additions_slot_description")));
+    
+    private static final Component TUNGSTEN_UPGRADE = Component.translatable(Util.makeDescriptionId("upgrade", modLocat("tungsten_upgrade"))).withStyle(TITLE_FORMAT);
+    private static final Component TUNGSTEN_UPGRADE_APPLIES_TO = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.tungsten_upgrade.applies_to"))).withStyle(DESCRIPTION_FORMAT);
+    private static final Component TUNGSTEN_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.tungsten_upgrade.ingredients"))).withStyle(DESCRIPTION_FORMAT);
+    private static final Component TUNGSTEN_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.tungsten_upgrade.base_slot_description")));
+    private static final Component TUNGSTEN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.tungsten_upgrade.additions_slot_description")));
+    
+    private static final Component BASIC_UPGRADE = Component.translatable(Util.makeDescriptionId("upgrade", modLocat("basic_upgrade"))).withStyle(TITLE_FORMAT);
+    private static final Component BASIC_UPGRADE_APPLIES_TO = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.basic_upgrade.applies_to"))).withStyle(DESCRIPTION_FORMAT);
+    private static final Component BASIC_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.basic_upgrade.ingredients"))).withStyle(DESCRIPTION_FORMAT);
+    private static final Component BASIC_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.basic_upgrade.base_slot_description")));
+    private static final Component BASIC_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", modLocat("smithing_template.basic_upgrade.additions_slot_description")));
 
     public OrevolutionSmithingTemplate(Component applies_to, Component ingredients, Component title_description, Component base_slot_description, Component additions_slot_description, List<ResourceLocation> armor_icon_list, List<ResourceLocation> material_icon_list) {
         super(applies_to, ingredients, title_description, base_slot_description, additions_slot_description, armor_icon_list, material_icon_list);
@@ -54,12 +56,17 @@ public class OrevolutionSmithingTemplate extends SmithingTemplateItem {
     }
 
     public static SmithingTemplateItem createBasicUpgradeTemplate() {
-        return new SmithingTemplateItem(BASIC_UPGRADE_APPLIES_TO, BASIC_UPGRADE_INGREDIENTS, BASIC_UPGRADE, BASIC_UPGRADE_BASE_SLOT_DESCRIPTION, BASIC_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList());
+        return new SmithingTemplateItem(BASIC_UPGRADE_APPLIES_TO, BASIC_UPGRADE_INGREDIENTS, BASIC_UPGRADE, BASIC_UPGRADE_BASE_SLOT_DESCRIPTION, BASIC_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createArmorlessIconList(), createUpgradeMaterialList());
     }
 
     protected static List<ResourceLocation> createUpgradeIconList() {
         return List.of(EMPTY_SLOT_HELMET, EMPTY_SLOT_SWORD, EMPTY_SLOT_CHESTPLATE, EMPTY_SLOT_PICKAXE, EMPTY_SLOT_LEGGINGS, EMPTY_SLOT_AXE, EMPTY_SLOT_BOOTS, EMPTY_SLOT_HOE, EMPTY_SLOT_SHOVEL);
     }
+
+    protected static List<ResourceLocation> createArmorlessIconList() {
+        return List.of(EMPTY_SLOT_SWORD, EMPTY_SLOT_PICKAXE, EMPTY_SLOT_AXE, EMPTY_SLOT_HOE, EMPTY_SLOT_SHOVEL);
+    }
+
 
     protected static List<ResourceLocation> createUpgradeMaterialList() {
         return List.of(EMPTY_SLOT_INGOT);

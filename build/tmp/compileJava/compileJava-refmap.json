@@ -2,9 +2,7 @@
   "mappings": {
     "net/bexla/orevolution/mixins/ItemstackMixin": {
       "mineBlock": "Lnet/minecraft/world/item/ItemStack;m_41686_(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;)V",
-      "isCorrectToolForDrops": "Lnet/minecraft/world/item/ItemStack;m_41735_(Lnet/minecraft/world/level/block/state/BlockState;)Z",
       "hurtEnemy": "Lnet/minecraft/world/item/ItemStack;m_41640_(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/player/Player;)V",
-      "getDestroySpeed": "Lnet/minecraft/world/item/ItemStack;m_41691_(Lnet/minecraft/world/level/block/state/BlockState;)F",
       "getMaxDamage": "Lnet/minecraft/world/item/ItemStack;m_41776_()I"
     },
     "net/bexla/orevolution/mixins/DiggerItemMixin": {
@@ -16,28 +14,17 @@
       "inventoryTick": "Lnet/minecraft/world/item/Item;m_6883_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;IZ)V",
       "appendHoverText": "Lnet/minecraft/world/item/Item;m_7373_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V"
     },
-    "net/bexla/orevolution/mixins/TieredItemMixin": {
-      "isValidRepairItem": "Lnet/minecraft/world/item/TieredItem;m_6832_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z"
-    },
     "net/bexla/orevolution/mixins/SwordItemMixin": {
       "getDamage": "Lnet/minecraft/world/item/SwordItem;m_43299_()F",
       "mineBlock": "Lnet/minecraft/world/item/SwordItem;m_6813_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/LivingEntity;)Z",
       "hurtEnemy": "Lnet/minecraft/world/item/SwordItem;m_7579_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z"
-    },
-    "net/bexla/orevolution/mixins/ArmorItemMixin": {
-      "isValidRepairItem": "Lnet/minecraft/world/item/ArmorItem;m_6832_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z",
-      "getToughness": "Lnet/minecraft/world/item/ArmorItem;m_40405_()F",
-      "getDefense": "Lnet/minecraft/world/item/ArmorItem;m_40404_()I",
-      "getDefaultAttributeModifiers": "Lnet/minecraft/world/item/ArmorItem;m_7167_(Lnet/minecraft/world/entity/EquipmentSlot;)Lcom/google/common/collect/Multimap;"
     }
   },
   "data": {
     "searge": {
       "net/bexla/orevolution/mixins/ItemstackMixin": {
         "mineBlock": "Lnet/minecraft/world/item/ItemStack;m_41686_(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;)V",
-        "isCorrectToolForDrops": "Lnet/minecraft/world/item/ItemStack;m_41735_(Lnet/minecraft/world/level/block/state/BlockState;)Z",
         "hurtEnemy": "Lnet/minecraft/world/item/ItemStack;m_41640_(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/player/Player;)V",
-        "getDestroySpeed": "Lnet/minecraft/world/item/ItemStack;m_41691_(Lnet/minecraft/world/level/block/state/BlockState;)F",
         "getMaxDamage": "Lnet/minecraft/world/item/ItemStack;m_41776_()I"
       },
       "net/bexla/orevolution/mixins/DiggerItemMixin": {
@@ -49,19 +36,10 @@
         "inventoryTick": "Lnet/minecraft/world/item/Item;m_6883_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;IZ)V",
         "appendHoverText": "Lnet/minecraft/world/item/Item;m_7373_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V"
       },
-      "net/bexla/orevolution/mixins/TieredItemMixin": {
-        "isValidRepairItem": "Lnet/minecraft/world/item/TieredItem;m_6832_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z"
-      },
       "net/bexla/orevolution/mixins/SwordItemMixin": {
         "getDamage": "Lnet/minecraft/world/item/SwordItem;m_43299_()F",
         "mineBlock": "Lnet/minecraft/world/item/SwordItem;m_6813_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/LivingEntity;)Z",
         "hurtEnemy": "Lnet/minecraft/world/item/SwordItem;m_7579_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z"
-      },
-      "net/bexla/orevolution/mixins/ArmorItemMixin": {
-        "isValidRepairItem": "Lnet/minecraft/world/item/ArmorItem;m_6832_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z",
-        "getToughness": "Lnet/minecraft/world/item/ArmorItem;m_40405_()F",
-        "getDefense": "Lnet/minecraft/world/item/ArmorItem;m_40404_()I",
-        "getDefaultAttributeModifiers": "Lnet/minecraft/world/item/ArmorItem;m_7167_(Lnet/minecraft/world/entity/EquipmentSlot;)Lcom/google/common/collect/Multimap;"
       }
     }
   }

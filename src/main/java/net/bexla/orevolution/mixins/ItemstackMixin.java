@@ -1,17 +1,12 @@
 package net.bexla.orevolution.mixins;
 
 import net.bexla.orevolution.OrevolutionConfig;
-import net.bexla.orevolution.content.types.PropertiesModifierRegistry;
 import net.bexla.orevolution.content.types.ToolPowerRegistry;
-import net.bexla.orevolution.content.types.base.interfaces.ItemPropertiesModifiers;
-import net.bexla.orevolution.content.types.base.interfaces.ToolPower;
+import net.bexla.orevolution.content.types.interfaces.ToolPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DiggerItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.TieredItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,6 +14,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Map;
+import java.util.function.Supplier;
 
 @Mixin(ItemStack.class)
 public class ItemstackMixin {
@@ -68,30 +66,36 @@ public class ItemstackMixin {
         }
     }
 
-    @Inject(method = "getDestroySpeed", at = @At("TAIL"), cancellable = true)
-    private void orevolution$injectModifierDestroySpeed(BlockState state, CallbackInfoReturnable<Float> cir) {
-        ItemStack stack = (ItemStack)(Object)this;
+    private static final Map<Tier, Supplier<Integer>> BALANCED_DURABILITIES = Map.of(
+            Tiers.IRON, OrevolutionConfig.COMMON.ironMaxUses,
+            Tiers.DIAMOND, OrevolutionConfig.COMMON.diamondMaxUses,
+            Tiers.GOLD, OrevolutionConfig.COMMON.goldMaxUses,
+            Tiers.NETHERITE, OrevolutionConfig.COMMON.netheriteMaxUses,
+            Tiers.STONE, OrevolutionConfig.COMMON.stoneMaxUses,
+            Tiers.WOOD, OrevolutionConfig.COMMON.woodMaxUses
+    );
 
-        for(ItemPropertiesModifiers modifier : PropertiesModifierRegistry.getModifiers()) {
-            cir.setReturnValue(modifier.setDestroySpeed(stack, state, cir.getReturnValue()));
-        }
-    }
-
-    @Inject(method = "isCorrectToolForDrops", at = @At("HEAD"), cancellable = true)
-    private void orevolution$injectConditionStart(BlockState state, CallbackInfoReturnable<Boolean> cir) {
-        ItemStack stack = (ItemStack)(Object)this;
-
-        for(ItemPropertiesModifiers modifier : PropertiesModifierRegistry.getModifiers()) {
-            cir.setReturnValue(modifier.setCorrectToolForDrops(stack, state, cir.getReturnValue()));
-        }
-    }
 
     @Inject(method = "getMaxDamage", at = @At("RETURN"), cancellable = true)
     private void orevolution$injectModifierMaxUses(CallbackInfoReturnable<Integer> cir) {
         ItemStack stack = (ItemStack)(Object)this;
 
-        for(ItemPropertiesModifiers modifier : PropertiesModifierRegistry.getModifiers()) {
-            cir.setReturnValue(modifier.setMaxUses(stack, cir.getReturnValue()));
+        int uses = cir.getReturnValue();
+
+        if (!(stack.getItem() instanceof TieredItem tiered)) return;
+
+        Supplier<Integer> override = BALANCED_DURABILITIES.get(tiered.getTier());
+        if (override != null) {
+            uses = override.get();
         }
+
+        if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
+            uses = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
+        }
+        else if (tiered instanceof DiggerItem && OrevolutionConfig.COMMON.toolsPowers.get()) {
+            uses = ToolPowerRegistry.getToolPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
+        }
+
+        cir.setReturnValue(uses);
     }
 }

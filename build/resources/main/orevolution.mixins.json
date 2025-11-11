@@ -6,14 +6,12 @@
   "mixins": [
     "ItemstackMixin",
     "ItemMixin",
-    "ArmorItemMixin",
     "DiggerItemMixin",
-    "SwordItemMixin",
-    "TieredItemMixin"
+    "SwordItemMixin"
   ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "${mod_id}.refmap.json"
+  "refmap": "orevolution.refmap.json"
 }

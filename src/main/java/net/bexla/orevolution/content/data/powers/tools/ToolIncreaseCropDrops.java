@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.base.OrevolutionToolPower;
-import net.bexla.orevolution.content.types.base.interfaces.Conditional;
+import net.bexla.orevolution.content.types.OrevolutionToolPower;
+import net.bexla.orevolution.content.types.interfaces.Conditional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,15 +13,17 @@ import org.jetbrains.annotations.NotNull;
 
 public class ToolIncreaseCropDrops extends OrevolutionToolPower {
     private final int dropIncrement;
+    private final double baseChance;
 
-    public ToolIncreaseCropDrops(String tooltip_id, Conditional conditional, int dropIncrement) {
+    public ToolIncreaseCropDrops(String tooltip_id, Conditional conditional, int dropIncrement, double chance) {
         super(tooltip_id, conditional);
         this.dropIncrement = dropIncrement;
+        this.baseChance = chance;
     }
 
     @Override
     public @NotNull Object addTooltipValue() {
-        return dropIncrement;
+        return baseChance;
     }
 
     @Override
@@ -29,6 +31,8 @@ public class ToolIncreaseCropDrops extends OrevolutionToolPower {
         if(!state.is(BlockTags.CROPS)) return;
 
         if(getCondition(stack, state, level, player, null)) {
+            if(!(Math.random() < baseChance)) return;
+
             for(int i = 1; i < this.dropIncrement; i++) {
                 Block.dropResources(state, level, pos);
             }

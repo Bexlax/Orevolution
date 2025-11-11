@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.base.OrevolutionToolPower;
-import net.bexla.orevolution.content.types.base.interfaces.Conditional;
+import net.bexla.orevolution.content.types.OrevolutionToolPower;
+import net.bexla.orevolution.content.types.interfaces.Conditional;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;

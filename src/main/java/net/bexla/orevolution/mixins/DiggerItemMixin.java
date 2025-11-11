@@ -1,14 +1,14 @@
 package net.bexla.orevolution.mixins;
 
 import net.bexla.orevolution.OrevolutionConfig;
-import net.bexla.orevolution.content.types.PropertiesModifierRegistry;
 import net.bexla.orevolution.content.types.ToolPowerRegistry;
-import net.bexla.orevolution.content.types.base.interfaces.ItemPropertiesModifiers;
-import net.bexla.orevolution.content.types.base.interfaces.ToolPower;
+import net.bexla.orevolution.content.types.interfaces.ToolPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,11 +24,20 @@ public class DiggerItemMixin {
 
         ItemStack stack = item.getDefaultInstance();
 
-        if(stack == null || item == null) return;
+        if (!(stack.getItem() instanceof TieredItem tiered)) return;
 
-        for(ItemPropertiesModifiers modifier : PropertiesModifierRegistry.getModifiers()) {
-            cir.setReturnValue(modifier.setAttackDamage(stack, cir.getReturnValue()));
+        float dmg = cir.getReturnValue();
+
+        if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
+            ToolPower power = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier());
+            dmg = power.setAttackDamage(stack, cir.getReturnValue());
         }
+        else if (tiered instanceof DiggerItem && OrevolutionConfig.COMMON.toolsPowers.get()) {
+            ToolPower power = ToolPowerRegistry.getToolPowerForTier(tiered.getTier());
+            dmg = power.setAttackDamage(stack, cir.getReturnValue());
+        }
+
+        cir.setReturnValue(dmg);
     }
 
 

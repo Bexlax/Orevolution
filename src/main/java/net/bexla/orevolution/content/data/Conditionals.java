@@ -1,6 +1,6 @@
 package net.bexla.orevolution.content.data;
 
-import net.bexla.orevolution.content.types.base.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.Conditional;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -22,6 +22,26 @@ public class Conditionals {
     @Contract(pure = true)
     public static @NotNull Conditional byChance(double chance) {
         return (stack, state, level, player, possibleTarget) -> level.getRandom().nextDouble() < chance;
+    }
+
+    /** Conditional that activates if the target entity's current health percentage is less than or equal to the specified percentage.
+     *
+     * @param percentage The health percentage threshold (between 0.0 and 1.0).
+     * @return A Conditional that activates if the target entity's health percentage is below or equal to the specified value.
+     */
+    @Contract(pure = true)
+    public static @NotNull Conditional isTargetHPPercentage(float percentage) {
+        return (stack, state, level, player, possibleTarget) -> possibleTarget != null && (possibleTarget.getHealth() / possibleTarget.getMaxHealth()) <= percentage;
+    }
+
+    /** Returns a conditional that activates if the target entity's current health amount is less than or equal to the specified amount.
+     *
+     * @param amount The health amount threshold.
+     * @return A Conditional that activates if the target entity's health amount is below or equal to the specified value.
+     */
+    @Contract(pure = true)
+    public static @NotNull Conditional isTargetHPAmount(float amount) {
+        return (stack, state, level, player, possibleTarget) -> possibleTarget != null && possibleTarget.getHealth() <= amount;
     }
 
     /** Conditional that activates if the target entity is of the specified MobType.
@@ -97,7 +117,7 @@ public class Conditionals {
      */
     @Contract(pure = true)
     public static @NotNull Conditional isBlockstateTaggedAs(TagKey<Block> blockTag) {
-        return (stack, state, level, player, possibleTarget) -> state.is(blockTag);
+        return (stack, state, level, player, possibleTarget) -> state != null && state.is(blockTag);
     }
 
     /** Combines two OrevolutionConditionals with a logical AND operation.
@@ -120,6 +140,14 @@ public class Conditionals {
     @Contract(pure = true)
     public static @NotNull Conditional or(Conditional a, Conditional b) {
         return (stack, state, level, player, possibleTarget) -> a.shouldActivate(stack, state, level, player, possibleTarget) || b.shouldActivate(stack, state, level, player, possibleTarget);
+    }
+
+    @Contract(pure = true)
+    public static @NotNull Conditional listConditionals(Conditional... conditionals) {
+        for(Conditional conditional : conditionals) {
+            return conditional;
+        }
+        return (stack, state, level, player, possibleTarget) -> false;
     }
 
     /** Negates a Conditional with a logical NOT operation.

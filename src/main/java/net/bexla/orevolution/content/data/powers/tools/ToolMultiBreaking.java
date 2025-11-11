@@ -1,13 +1,12 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.base.OrevolutionToolPower;
-import net.bexla.orevolution.content.types.base.interfaces.Conditional;
+import net.bexla.orevolution.content.types.OrevolutionToolPower;
+import net.bexla.orevolution.content.types.interfaces.Conditional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ToolMultiBreaking extends OrevolutionToolPower {
@@ -19,8 +18,6 @@ public class ToolMultiBreaking extends OrevolutionToolPower {
     @Override
     public void onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state) {
         if (!getCondition(stack, state, level, player, null)) return;
-
-        if (level.isClientSide) return;
 
         Direction facing = player.getDirection();
         boolean vertical = Math.abs(player.getXRot()) > 36;
@@ -52,11 +49,11 @@ public class ToolMultiBreaking extends OrevolutionToolPower {
                 offsetPos.set(pos.getX() + ox, pos.getY() + oy, pos.getZ() + oz);
                 BlockState targetState = level.getBlockState(offsetPos);
 
-                if (!targetState.isAir() && stack.isCorrectToolForDrops(targetState)) {
-                    Block block = targetState.getBlock();
-
-                    if (!level.isEmptyBlock(offsetPos) && !offsetPos.equals(pos)) {
+                if (!targetState.isAir() && stack.isCorrectToolForDrops(targetState)) { // Check if the tool can break this block
+                    if (!offsetPos.equals(pos)) {
+                        int dam = stack.getDamageValue();
                         level.destroyBlock(offsetPos, true, player);
+                        stack.setDamageValue(dam - 1);
                     }
                 }
             }

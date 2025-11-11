@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.types;
 
 import com.mojang.logging.LogUtils;
-import net.bexla.orevolution.content.types.base.interfaces.ToolPower;
+import net.bexla.orevolution.content.types.interfaces.ToolPower;
 import net.minecraft.world.item.Tier;
 import org.slf4j.Logger;
 
@@ -23,8 +23,14 @@ public class ToolPowerRegistry {
      * @param swordPower The ToolPower to register for swords of this tier.
      */
     public static void registerTier(Tier tier, ToolPower toolPower, ToolPower swordPower) {
+        if (tierTagMap.containsKey(tier)) {
+            LOGGER.warn("Overriding existing ToolPower registration for tier: {}", tier);
+        }
+
         tierTagMap.put(tier, new ToolPowerPair(toolPower, swordPower));
-        LOGGER.debug("Registered tool power for: {}", tier);
+
+        LOGGER.debug("Registered powers for tier {} -> Tool: {}, Sword: {}",
+                tier, toolPower.getClass().getSimpleName(), swordPower.getClass().getSimpleName());
     }
 
     public static ToolPower getToolPowerForTier(Tier tier) {

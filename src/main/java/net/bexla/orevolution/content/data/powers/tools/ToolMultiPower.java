@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
 import net.bexla.orevolution.content.data.Conditionals;
-import net.bexla.orevolution.content.types.base.OrevolutionToolPower;
+import net.bexla.orevolution.content.types.OrevolutionToolPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -38,9 +38,10 @@ public class ToolMultiPower extends OrevolutionToolPower {
         }
     }
 
-    public void appendTooltip(ItemStack stack, Level level, List<Component> lines) {
+    public List<Component> appendTooltip(ItemStack stack, Level level, List<Component> lines) {
         for(OrevolutionToolPower p : this.powers) {
-            p.appendTooltip(stack, level, lines);
+            return p.appendTooltip(stack, level, lines);
         }
+        return List.of();
     }
 }
