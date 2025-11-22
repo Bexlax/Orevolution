@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.4,
+  "group": "orevolution:platinum_ingot",
+  "ingredient": {
+    "item": "orevolution:platinum_ore_diorite"
+  },
+  "result": "orevolution:platinum_ingot"
+}

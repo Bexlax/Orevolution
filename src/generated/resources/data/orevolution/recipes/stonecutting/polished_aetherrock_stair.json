@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "orevolution:polished_aetherrock"
+  },
+  "result": "orevolution:polished_aetherrock_stair"
+}

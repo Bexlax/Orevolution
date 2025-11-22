@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "orevolution:bronze_crown"
+    },
+    "B": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "pattern": [
+    "AB"
+  ],
+  "result": {
+    "item": "orevolution:bronze_crown_emerald"
+  },
+  "show_notification": true
+}

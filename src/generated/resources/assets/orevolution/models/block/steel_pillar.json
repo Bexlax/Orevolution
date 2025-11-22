@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "orevolution:block/decorative/steel_pillar_top",
+    "side": "orevolution:block/decorative/steel_pillar_side",
+    "top": "orevolution:block/decorative/steel_pillar_top"
+  }
+}

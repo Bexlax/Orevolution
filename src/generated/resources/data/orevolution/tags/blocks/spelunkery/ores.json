@@ -1,0 +1,40 @@
+{
+  "values": [
+    {
+      "id": "orevolution:nether_tungsten_ore_blackstone",
+      "required": false
+    },
+    {
+      "id": "orevolution:tin_ore_andesite",
+      "required": false
+    },
+    {
+      "id": "orevolution:tin_ore_diorite",
+      "required": false
+    },
+    {
+      "id": "orevolution:tin_ore_granite",
+      "required": false
+    },
+    {
+      "id": "orevolution:tin_ore_tuff",
+      "required": false
+    },
+    {
+      "id": "orevolution:platinum_ore_andesite",
+      "required": false
+    },
+    {
+      "id": "orevolution:platinum_ore_diorite",
+      "required": false
+    },
+    {
+      "id": "orevolution:platinum_ore_granite",
+      "required": false
+    },
+    {
+      "id": "orevolution:platinum_ore_tuff",
+      "required": false
+    }
+  ]
+}

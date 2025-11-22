@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "orevolution:aethersteel_ingot"
+  },
+  "base": {
+    "item": "farmersdelight:netherite_knife"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "farmersdelight"
+      ]
+    }
+  ],
+  "result": {
+    "item": "orevolution:aethersteel_knife"
+  },
+  "template": {
+    "item": "orevolution:aethersteel_smithing_template"
+  }
+}

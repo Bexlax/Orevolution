@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#minecraft:needs_stone_tool",
+    "#minecraft:needs_iron_tool",
+    "#minecraft:anvil",
+    "#forge:gravel"
+  ]
+}

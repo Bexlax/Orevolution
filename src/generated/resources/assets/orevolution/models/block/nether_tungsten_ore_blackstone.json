@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "orevolution:block/compat/spelunkery/nether_tungsten_ore_blackstone"
+  }
+}

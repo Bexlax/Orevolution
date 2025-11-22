@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "orevolution:aethersteel_ingot"
+  },
+  "base": {
+    "item": "orevolution:reinforced_netherite_boots"
+  },
+  "result": {
+    "item": "orevolution:aethersteel_boots"
+  },
+  "template": {
+    "item": "orevolution:aethersteel_smithing_template"
+  }
+}

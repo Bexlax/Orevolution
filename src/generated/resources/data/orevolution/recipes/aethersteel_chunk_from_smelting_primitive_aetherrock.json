@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 600,
+  "experience": 3.0,
+  "group": "orevolution:aethersteel_chunk",
+  "ingredient": {
+    "item": "orevolution:primitive_aetherrock"
+  },
+  "result": "orevolution:aethersteel_chunk"
+}

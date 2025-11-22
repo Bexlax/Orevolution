@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "orevolution:aethersteel_ingot"
+  },
+  "base": {
+    "item": "minecraft:netherite_axe"
+  },
+  "result": {
+    "item": "orevolution:aethersteel_axe"
+  },
+  "template": {
+    "item": "orevolution:aethersteel_smithing_template"
+  }
+}

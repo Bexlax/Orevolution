@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "orevolution:verdite_knife"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_verdite_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/verdite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "farmersdelight"
+      ]
+    }
+  ],
+  "requirements": [
+    [
+      "has_verdite_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "orevolution:verdite_knife"
+    ]
+  },
+  "sends_telemetry_event": false
+}

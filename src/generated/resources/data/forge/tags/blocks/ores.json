@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#forge:ores/tin",
+    "#forge:ores/platinum",
+    "#forge:ores/tungsten",
+    "#forge:ores/experience",
+    "orevolution:nether_tungsten_ore",
+    "orevolution:primitive_aetherrock",
+    {
+      "id": "#orevolution:spelunkery/ores",
+      "required": false
+    }
+  ]
+}

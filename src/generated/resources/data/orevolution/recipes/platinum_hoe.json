@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "forge:ingots/platinum"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "AA",
+    " S",
+    " S"
+  ],
+  "result": {
+    "item": "orevolution:platinum_hoe"
+  },
+  "show_notification": true
+}

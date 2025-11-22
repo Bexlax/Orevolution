@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "orevolution:aethersteel_ingot"
+  },
+  "base": {
+    "item": "orevolution:reinforced_netherite_helmet"
+  },
+  "result": {
+    "item": "orevolution:aethersteel_helmet"
+  },
+  "template": {
+    "item": "orevolution:aethersteel_smithing_template"
+  }
+}
