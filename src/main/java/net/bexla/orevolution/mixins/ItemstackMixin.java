@@ -89,6 +89,8 @@ public class ItemstackMixin {
             uses = override.get();
         }
 
+        if(uses == tiered.getTier().getUses()) return;
+
         if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
             uses = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
         }

@@ -1,4 +1,4 @@
-package net.bexla.orevolution.content.types;
+package net.bexla.orevolution.content.types.power.armor;
 
 import com.mojang.logging.LogUtils;
 import net.bexla.orevolution.content.types.interfaces.ArmorPower;
@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class OrevolutionArmorPower implements ArmorPower {
     private final String tooltip_id;
     private final Conditional conditional;
 
-    public OrevolutionArmorPower(String tooltipId, Conditional conditional) {
+    public OrevolutionArmorPower(String tooltipId, @NotNull Conditional conditional) {
         this.tooltip_id = tooltipId;
         this.conditional = conditional;
     }
@@ -33,6 +34,9 @@ public class OrevolutionArmorPower implements ArmorPower {
         else {
             tips.add(Component.translatable("tooltip.orevolution." + this.tooltip_id).withStyle(ChatFormatting.GREEN));
         }
+
+        tips.add(Component.empty());
+
         return tips;
     }
 
@@ -44,7 +48,7 @@ public class OrevolutionArmorPower implements ArmorPower {
         return this.tooltip_id;
     }
 
-    public boolean getCondition(ItemStack stack, Level level, LivingEntity player, LivingEntity possibleTarget) {
+    public boolean getCBoolean(ItemStack stack, Level level, LivingEntity player, LivingEntity possibleTarget) {
         return conditional.shouldActivate(stack, null, level, player, possibleTarget);
     }
 }

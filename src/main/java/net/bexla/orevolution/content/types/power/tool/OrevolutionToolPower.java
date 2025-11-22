@@ -1,4 +1,4 @@
-package net.bexla.orevolution.content.types;
+package net.bexla.orevolution.content.types.power.tool;
 
 import com.mojang.logging.LogUtils;
 import net.bexla.orevolution.content.types.interfaces.Conditional;
@@ -29,7 +29,7 @@ public class OrevolutionToolPower implements ToolPower {
     @Override
     public List<Component> appendTooltip(ItemStack stack, Level level, List<Component> lines) {
         Object tooltipval = addTooltipValue();
-        MutableComponent shiftComponent = shiftTooltip();
+        MutableComponent shiftComponent = ctrlTooltip();
         List<Component> tips = new ArrayList<>();
         if(tooltipval != null) {
             tips.add(Component.translatable("tooltip.orevolution." + this.tooltip_id, tooltipval).withStyle(ChatFormatting.GREEN));
@@ -38,17 +38,24 @@ public class OrevolutionToolPower implements ToolPower {
             tips.add(Component.translatable("tooltip.orevolution." + this.tooltip_id).withStyle(ChatFormatting.GREEN));
         }
 
-        if(Screen.hasShiftDown() && shiftComponent != null) {
+        if(shiftComponent == null) {
+            tips.add(Component.literal(""));
+            return tips;
+        }
+
+        if(Screen.hasControlDown()) {
             tips.add(shiftComponent.withStyle(ChatFormatting.DARK_GRAY));
         }
-        else if(shiftComponent != null) {
-            tips.add(Component.translatable("tooltip.orevolution.press_key", Component.translatable("key.keyboard.left.shift").getString()).withStyle(ChatFormatting.DARK_GRAY));
+        else {
+            tips.add(Component.translatable("tooltip.orevolution.press_key", Component.translatable("key.keyboard.left.control").getString()).withStyle(ChatFormatting.DARK_GRAY));
         }
+
+        tips.add(Component.literal(""));
 
         return tips;
     }
 
-    public MutableComponent shiftTooltip() {
+    public MutableComponent ctrlTooltip() {
         return null;
     }
 
@@ -60,7 +67,7 @@ public class OrevolutionToolPower implements ToolPower {
         return this.tooltip_id;
     }
 
-    public boolean getCondition(ItemStack stack, BlockState state, Level level, LivingEntity player, LivingEntity possibleTarget) {
+    public boolean getCBoolean(ItemStack stack, BlockState state, Level level, LivingEntity player, LivingEntity possibleTarget) {
         return conditional.shouldActivate(stack, state, level, player, possibleTarget);
     }
 }

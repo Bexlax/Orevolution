@@ -14,6 +14,10 @@ public class GENLangESAR extends LangProvider {
         super(output, Orevolution.MODID, "es_ar");
     }
 
+    public void addCondition(String tooltipID, String name) {
+        add("conditional.orevolution." + tooltipID, name);
+    }
+
     public void addTooltip(String tooltipID, String name) {
         add("tooltip.orevolution." + tooltipID, name);
     }
@@ -30,25 +34,38 @@ public class GENLangESAR extends LangProvider {
         add("item.orevolution.smithing_template." + nameID + "_upgrade.additions_slot_description", additionsSlotDescription);
     }
 
-
     @Override
     protected void addTranslations() {
-        addTooltip("duplication", "Tiene una probabilidad (Maxima de %s porciento) de incrementar los drops de los bloques");
+        addTooltip("duplication", "Tiene una probabilidad (Maxima de %s) de duplicar los drops de los bloques");
+        addTooltip("triplication", "Tiene una probabilidad (Maxima de %s) de triplicar los drops de los bloques");
+
         addTooltip("duplication_explanation",
                 "Lista de probabilidades dependiendo de los bloques:\n" +
                         " - Cualquier mineral (ej. Mineral de cobre) -> prob. del 5%\n" +
-                        " - Bloques inusuales (ej Yunque) -> mitad de la prob. maxima\n" +
+                        " - Bloques inusuales (ej. Yunque) -> mitad de la prob. maxima\n" +
                         " - Bloques raros (ej. Cualquier bloque de mineral) -> un quinto de la prob. maxima\n" +
                         " - Bloques 'siempre' (ej. Cualquier hoja de arbol) -> prob. del 100%\n" +
                         " - Bloques 'nunca' (ej. Bloque de acero ètereo) -> prob. del 0%"
         );
 
-        addTooltip("duplication_crops", "Tiene una probabilidad (Maxima de %s porciento) de incrementar los drops de las plantas");
+        addTooltip("triplication_explanation",
+                "Lista de probabilidades dependiendo de los bloques:\n" +
+                        " - Bloques 'siempre' (ej. Cualquier hoja de arbol) -> prob. del 100%\n" +
+                        " - Bloques inusuales (ej Yunque) -> mitad de la prob. maxima\n" +
+                        " - Bloques raros (ej. Cualquier bloque de mineral) -> un quinto de la prob. maxima\n" +
+                        " - Cualquier mineral (ej. Mineral de cobre) -> prob. del 5%\n" +
+                        " - Bloques 'nunca' (ej. Bloque de acero ètereo) -> prob. del 0%"
+        );
+
+        addTooltip("duplication_crops", "Tiene una probabilidad (Maxima de %s porciento) de duplicar los drops de las plantas");
+        addTooltip("triplication_crops", "Tiene una probabilidad (Maxima de %s porciento) de triplicar los drops de las plantas");
 
         addTooltip("iron_tool_tooltip", "Velocidad de mineria incrementada en Pizarra Profunda, Tablones de madera y Tierra");
         addTooltip("gold_tool_tooltip", "Durabilidad incrementada cuando el objeto esta encantado");
 
-        addTooltip("increase_loot", "Tiene una probabilidad del %s porciento de aumentar el loot de los mobs");
+        addTooltip("increase_loot", "Tiene una probabilidad del %s de aumentar el botin de los mobs");
+
+        addTooltip("aethersteel_loot", "Tiene una probabilidad del %s de triplicar el botin de los mobs");
 
         addTooltip("on_hit_effect", "Causa el siguiente efecto(s) al atacar:");
         addTooltip("attacker_on_hit_effect", "Te causa el siguiente efecto(s) a vos al atacar");
@@ -65,8 +82,11 @@ public class GENLangESAR extends LangProvider {
         addTooltip("full_set_bonus", "Bono por set completo:");
 
         addTooltip("armor_wearer_grants", "Da los siguientes efecto(s):");
-        addTooltip("armor_wearer_on_attacked", "Da los siguientes efecto(s) al atacar y recibir daño:");
+        addTooltip("armor_wearer_on_attacked", "Da los siguientes efecto(s) al recibir daño:");
         addTooltip("armor_wearer_on_attacked_target", "Da los siguientes efecto(s) al enemigo cuando te atacan:");
+
+        addTooltip("armor_wearer_on_hit_wearer", "Da los siguientes efecto(s) al atacar:");
+        addTooltip("armor_wearer_on_hit_target", "Causa los siguientes efecto(s) al enemigo al atacarlo:");
 
         addTooltip("armor_immunity", "Da los siguientes efecto(s):");
         addTooltip("armor_immunity_daylight", "Da inmunidad los siguientes efecto(s):");
@@ -84,7 +104,7 @@ public class GENLangESAR extends LangProvider {
         add("trim_material.orevolution.tin", "Material de estaño");
         add("trim_material.orevolution.tungsten", "Material de tungsteno");
 
-        add("tooltip.orevolution.press_key", "Presiona %s para ver mas informacion");
+        addTooltip("press_key", "Presiona %s para ver mas informacion");
 
         addTooltip("harvest_tier", "Nivel de mineria:");
         addTier("wood", "Piedra");
@@ -98,6 +118,12 @@ public class GENLangESAR extends LangProvider {
 
         addEffect(RegMobEffects.CRUSHED, "Aplastado");
         addEffect(RegMobEffects.PETRIFIED, "Petrificado");
+
+        addItem(RegItems.DEAD_SEED, "Semilla muerta");
+        addBlock(RegBlocks.VERDITE_CROP, "Cultivo de verdita");
+        addBlock(RegBlocks.LIVINGSTONE_BLOCK, "Bloque de piedra viva");
+        addItem(RegItems.PETRIFIED_SEED, "Semilla petrificada");
+        addBlock(RegBlocks.LIVINGSTONE_CROP, "Cultivo de piedra viva");
 
         addItem(RegItemsFD.PLATINUM_KNIFE, "Cuchillo de platino");
         addItem(RegItems.PLATINUM_SWORD, "Espada de platino");
@@ -232,5 +258,6 @@ public class GENLangESAR extends LangProvider {
         addBlock(RegBlocksSK.PLATINUM_ORE_GRANITE, "Mineral de platino de granito");
         addBlock(RegBlocksSK.PLATINUM_ORE_DIORITE, "Mineral de platino de diorita");
         addBlock(RegBlocksSK.PLATINUM_ORE_TUFF, "Mineral de platino de toba");
+        addBlock(RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE, "Mineral de tungsteno del Nether de piedra negra");
     }
 }

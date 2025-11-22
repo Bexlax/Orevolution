@@ -5,7 +5,9 @@ import net.bexla.orevolution.content.data.powers.armors.ArmorCauseEffectsOnAttac
 import net.bexla.orevolution.content.data.powers.armors.ArmorCauseEffectsOnHit;
 import net.bexla.orevolution.content.data.powers.armors.ArmorGrantEffects;
 import net.bexla.orevolution.content.data.powers.armors.ArmorGrantImmunityEffects;
-import net.bexla.orevolution.content.types.OrevolutionArmorPower;
+import net.bexla.orevolution.content.data.powers.tools.*;
+import net.bexla.orevolution.content.types.power.armor.OrevolutionArmorPower;
+import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
@@ -62,11 +64,26 @@ public class OrevolutionLists {
 
     public static final List<OrevolutionArmorPower> AETHERSTEEL_ARMOR_POWERS = List.of(
             new ArmorGrantEffects("armor_wearer_grants", Conditionals.always(), 20, 1, AETHERSTEEL_ARMOR_GRANTS_EFFECTS),
-            new ArmorCauseEffectsOnAttacked("armor_wearer_on_attacked_wearer", "armor_wearer_on_attacked_target", Conditionals.always(), 200, 0, AETHERSTEEL_ARMOR_ATTACKED_EFFECTS_WEARER, AETHERSTEEL_ARMOR_ATTACKED_EFFECTS_ATTACKER)
+            new ArmorCauseEffectsOnAttacked("armor_wearer_on_attacked_target", "armor_wearer_on_attacked_wearer", Conditionals.always(), 200, 0, AETHERSTEEL_ARMOR_ATTACKED_EFFECTS_WEARER, AETHERSTEEL_ARMOR_ATTACKED_EFFECTS_ATTACKER)
     );
 
     public static final List<OrevolutionArmorPower> VERDITE_ARMOR_POWERS = List.of(
             new ArmorGrantImmunityEffects("armor_immunity_daylight", Conditionals.isReceivingDayLight(), VERDITE_ARMOR_GRANTS_IMMUNITY),
-            new ArmorCauseEffectsOnHit("verdite_armor", "", Conditionals.isReceivingDayLight(), 200, 0, () -> MobEffects.REGENERATION, null)
+            new ArmorCauseEffectsOnHit("", "verdite_armor", Conditionals.isReceivingDayLight(), 200, 0, () -> MobEffects.REGENERATION, null)
+    );
+
+    public static final List<OrevolutionToolPower> AETHERSTEEL_TOOL_POWERS = List.of(
+            new ToolAvoidDamageOnUse("avoid_damage", Conditionals.byChance(0.03)),
+            new ToolIncreaseDrops("triplication", Conditionals.always(), 2, 0.15)
+    );
+    public static final List<OrevolutionToolPower> AETHERSTEEL_SWORD_POWERS = List.of(
+            new ToolCauseEffectOnHit("attacker_on_hit_effect", "", Conditionals.byChance(0.7), 80, 0, () -> MobEffects.REGENERATION, null),
+            new ToolIncreaseMobLoot("triplicate_loot", Conditionals.always(), 2F, 0.1)
+    );
+
+
+    public static final List<OrevolutionToolPower> ELECTRUM_POWERS = List.of(
+            new ToolAddEffectPerBlockAmount("grant_on_mine", Conditionals.always(), () -> MobEffects.DIG_SPEED, 6, 120, 3),
+            new OrevolutionToolPower("electrum", Conditionals.always())
     );
 }

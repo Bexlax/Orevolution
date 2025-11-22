@@ -48,9 +48,9 @@ public class OrevolutionTags {
         public static final TagKey<Item> verditeStorages = forgeTag("storage_blocks/verdite");
 
         public static final TagKey<Item> toolsKnives = forgeTag("tools/knives");
-        public static final TagKey<Item> toolsKnivesFD = ItemTags.create(new ResourceLocation(ModCompat.FARMERSDELIGHT.getId(), "tools/knives"));
+        public static final TagKey<Item> toolsKnivesFD = ItemTags.create(new ResourceLocation(ModCompat.farmersdelight(), "tools/knives"));
         public static final TagKey<Item> shields = forgeTag("shields");
-        public static final TagKey<Item> shieldsSE = ItemTags.create(new ResourceLocation(ModCompat.SHIELDEXPANSION.getId(), "shields"));
+        public static final TagKey<Item> shieldsSE = ItemTags.create(new ResourceLocation(ModCompat.shieldexp(), "shields"));
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(modLocat(name));
@@ -69,15 +69,16 @@ public class OrevolutionTags {
 
         public static final TagKey<Block> spelunkeryOres = tag("spelunkery/ores");
 
-        public static final TagKey<Block> neverDuplicateChance = forgeTag("never_duplicate");
-        public static final TagKey<Block> rareDuplicateChance = forgeTag("rare_duplicate_chance");
-        public static final TagKey<Block> uncommonDuplicateChance = forgeTag("uncommon_duplicate_chance");
-        public static final TagKey<Block> alwaysDuplicateChance = forgeTag("always_duplicate");
+        public static final TagKey<Block> neverDuplicateChance = tag("never_duplicate");
+        public static final TagKey<Block> rareDuplicateChance = tag("rare_duplicate_chance");
+        public static final TagKey<Block> uncommonDuplicateChance = tag("uncommon_duplicate_chance");
+        public static final TagKey<Block> alwaysDuplicateChance = tag("always_duplicate");
 
-        public static final TagKey<Block> tuffs = tag("tuffs");
-        public static final TagKey<Block> andesites = tag("andesites");
-        public static final TagKey<Block> diorites = tag("diorites");
-        public static final TagKey<Block> granites = tag("granites");
+        public static final TagKey<Block> tuffs = forgeTag("tuffs");
+        public static final TagKey<Block> andesites = forgeTag("andesites");
+        public static final TagKey<Block> diorites = forgeTag("diorites");
+        public static final TagKey<Block> granites = forgeTag("granites");
+        public static final TagKey<Block> deepslates = forgeTag("deepslates");
 
         public static final TagKey<Block> tinStorages = forgeTag("storage_blocks/tin");
         public static final TagKey<Block> platStorages = forgeTag("storage_blocks/platinum");
@@ -94,14 +95,14 @@ public class OrevolutionTags {
         public static final TagKey<Block> needsPlatinumTool = forgeTag("needs_platinum_tool");
         public static final TagKey<Block> needsAethersteelTool = forgeTag("needs_aethersteel_tool");
 
-        public static final TagKey<Block> woodTiered = tag("exceptions/wood_tiered");
-        public static final TagKey<Block> stoneTiered = tag("exceptions/stone_tiered");
-        public static final TagKey<Block> ironTiered = tag("exceptions/iron_tiered");
-        public static final TagKey<Block> diamondTiered = tag("exceptions/diamond_tiered");
-        public static final TagKey<Block> netheriteTiered = tag("exceptions/netherite_tiered");
-        public static final TagKey<Block> tinTiered = tag("exceptions/tin_tiered");
-        public static final TagKey<Block> platTiered = tag("exceptions/platinum_tiered");
-        public static final TagKey<Block> aethersteelTiered = tag("exceptions/aethersteel_tiered");
+        public static final TagKey<Block> woodExceptions = tag("exceptions/wood_tiered");
+        public static final TagKey<Block> stoneExceptions = tag("exceptions/stone_tiered");
+        public static final TagKey<Block> ironExceptions = tag("exceptions/iron_tiered");
+        public static final TagKey<Block> diamondExceptions = tag("exceptions/diamond_tiered");
+        public static final TagKey<Block> netheriteExceptions = tag("exceptions/netherite_tiered");
+        public static final TagKey<Block> tinExceptions = tag("exceptions/tin_tiered");
+        public static final TagKey<Block> platExceptions = tag("exceptions/platinum_tiered");
+        public static final TagKey<Block> aetherExceptions = tag("exceptions/aethersteel_tiered");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(modLocat(name));

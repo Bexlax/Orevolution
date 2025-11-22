@@ -34,7 +34,7 @@ public class OrevolutionUtils {
 
     public static class Conditions {
         public static Conditional IronConditionals = Conditionals.listConditionals(
-                Conditionals.isBlockstateTaggedAs(BlockTags.DEEPSLATE_ORE_REPLACEABLES),
+                Conditionals.isBlockstateTaggedAs(OrevolutionTags.Blocks.deepslates),
                 Conditionals.isBlockstateTaggedAs(BlockTags.PLANKS),
                 Conditionals.isBlockstateTaggedAs(BlockTags.DIRT)
         );

@@ -132,11 +132,13 @@ public class TierProgressRegistry {
 
 
     public static synchronized void removeTier(ResourceLocation name) {
-        Tier tier = tiers.remove(name);
+        Tier tier = tiers.get(name);
         if (tier == null) {
             LOGGER.warn("Tried to remove unregistered tier: {}", name);
             return;
         }
+
+        tiers.remove(name);
 
         // Remove all edges related to this tier
         edges.removeAll(name);
@@ -161,8 +163,7 @@ public class TierProgressRegistry {
                 new ResourceLocation("stone"),
                 new ResourceLocation("iron"),
                 new ResourceLocation("diamond"),
-                new ResourceLocation("netherite"),
-                new ResourceLocation("gold")
+                new ResourceLocation("netherite")
         );
 
         tiers.keySet().removeIf(name -> !vanilla.contains(name));

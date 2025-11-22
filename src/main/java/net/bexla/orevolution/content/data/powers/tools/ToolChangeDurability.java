@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.OrevolutionToolPower;
 import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
 import net.minecraft.world.item.ItemStack;
 
 public class ToolChangeDurability extends OrevolutionToolPower {
@@ -27,7 +27,7 @@ public class ToolChangeDurability extends OrevolutionToolPower {
 
     @Override
     public int setMaxUses(ItemStack stack, int defaultUses) {
-        if(!getCondition(stack, null, null, null, null)) return defaultUses;
+        if(!getCBoolean(stack, null, null, null, null)) return defaultUses;
 
         stack.setDamageValue(stack.getDamageValue() + durability);
         return replaceOriginalValue? durability : defaultUses + durability;

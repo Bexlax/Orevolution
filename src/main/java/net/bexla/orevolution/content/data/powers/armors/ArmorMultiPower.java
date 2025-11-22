@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
 import net.bexla.orevolution.content.data.Conditionals;
-import net.bexla.orevolution.content.types.OrevolutionArmorPower;
+import net.bexla.orevolution.content.types.power.armor.OrevolutionArmorPower;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArmorMultiPower extends OrevolutionArmorPower {
@@ -21,10 +22,11 @@ public class ArmorMultiPower extends OrevolutionArmorPower {
 
     @Override
     public List<Component> appendTooltip(ItemStack stack, Level level, List<Component> lines) {
+        List<Component> tips = new ArrayList<>();
         for(OrevolutionArmorPower p : this.powers) {
-            return p.appendTooltip(stack, level, lines);
+            tips.addAll(p.appendTooltip(stack, level, lines));
         }
-        return List.of();
+        return tips;
     }
 
     public void onTickWhileWorn(ItemStack stack, LivingEntity wearer, EquipmentSlot slot) {

@@ -3,11 +3,13 @@ package net.bexla.orevolution.datagens.models;
 import net.bexla.orevolution.Orevolution;
 import net.bexla.orevolution.compatibility.ModCompat;
 import net.bexla.orevolution.compatibility.spelunkery.RegBlocksSK;
+import net.bexla.orevolution.content.types.block.OreCropBlock;
 import net.bexla.orevolution.content.types.providers.BlockStateModelProvider;
 import net.bexla.orevolution.init.RegBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
@@ -36,6 +38,10 @@ public class GENBlockStateModels extends BlockStateModelProvider {
 
     private void compat(String modid, Supplier<? extends Block> block) {
         simpleBlock(block, "compat/" + modid);
+    }
+
+    public void makeCrop(RegistryObject<Block> block, String modelName, String textureName) {
+        makeCrop((OreCropBlock) block.get(), modelName, textureName);
     }
 
     @Override
@@ -84,13 +90,18 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         doorBlock(RegBlocks.STEEL_DOOR);
         trapdoorBlock(RegBlocks.STEEL_TRAPDOOR);
 
-        compat(ModCompat.SPELUNKERY.getId(), RegBlocksSK.TIN_ORE_ANDESITE);
-        compat(ModCompat.SPELUNKERY.getId(), RegBlocksSK.TIN_ORE_GRANITE);
-        compat(ModCompat.SPELUNKERY.getId(), RegBlocksSK.TIN_ORE_DIORITE);
-        compat(ModCompat.SPELUNKERY.getId(), RegBlocksSK.TIN_ORE_TUFF);
-        compat(ModCompat.SPELUNKERY.getId(), RegBlocksSK.PLATINUM_ORE_ANDESITE);
-        compat(ModCompat.SPELUNKERY.getId(), RegBlocksSK.PLATINUM_ORE_GRANITE);
-        compat(ModCompat.SPELUNKERY.getId(), RegBlocksSK.PLATINUM_ORE_DIORITE);
-        compat(ModCompat.SPELUNKERY.getId(), RegBlocksSK.PLATINUM_ORE_TUFF);
+        makeCrop(RegBlocks.VERDITE_CROP, "verdite_crop_stage", "verdite_crop_stage");
+        makeCrop(RegBlocks.LIVINGSTONE_CROP, "livingstone_crop_stage", "livingstone_crop_stage");
+
+        compat(ModCompat.spelunkery(), RegBlocksSK.TIN_ORE_ANDESITE);
+        compat(ModCompat.spelunkery(), RegBlocksSK.TIN_ORE_GRANITE);
+        compat(ModCompat.spelunkery(), RegBlocksSK.TIN_ORE_DIORITE);
+        compat(ModCompat.spelunkery(), RegBlocksSK.TIN_ORE_TUFF);
+        compat(ModCompat.spelunkery(), RegBlocksSK.PLATINUM_ORE_ANDESITE);
+        compat(ModCompat.spelunkery(), RegBlocksSK.PLATINUM_ORE_GRANITE);
+        compat(ModCompat.spelunkery(), RegBlocksSK.PLATINUM_ORE_DIORITE);
+        compat(ModCompat.spelunkery(), RegBlocksSK.PLATINUM_ORE_TUFF);
+
+        compat(ModCompat.spelunkery(), RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE);
     }
 }

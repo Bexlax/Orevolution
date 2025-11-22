@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-08T23:19:17.5708634	orevolution Item Models
+// 1.20.1	2025-11-15T22:12:25.0752244	orevolution Item Models
 91b4da5ec7f75ef045509b8dfb4da69c769c5d44 assets/orevolution/models/item/aetherrock.json
 1c9f8fb1d84079321282d5bee4524c22ce6f7c64 assets/orevolution/models/item/aetherrock_bricks.json
 096830346ffc98d5007ec8e130110ce4a07fe185 assets/orevolution/models/item/aetherrock_tiles.json
@@ -30,6 +30,7 @@ e5ba808803f77bc33690a52f1540dd53c1d4dcac assets/orevolution/models/item/chiseled
 0ec60961a95712bab41dc8ce8aa73f08406d759f assets/orevolution/models/item/cracked_aetherrock_bricks.json
 1efcc3775b0b75c600734ff080dac182c89281a7 assets/orevolution/models/item/cut_steel_block.json
 f6edae93dc392d7395eb711d4e1be823fdb90dd8 assets/orevolution/models/item/cut_tungsten_block.json
+a94aa1fb46877e64b953caba72207bf15f805dda assets/orevolution/models/item/dead_seed.json
 5b111418827f565ca8653e7f480a97ebcdd7487e assets/orevolution/models/item/deepslate_platinum_ore.json
 9d14cdd7a2b2fcfe083d483e2df36026f2afeab2 assets/orevolution/models/item/deepslate_tin_ore.json
 e6c73fd50bcdb693b6cc30cffdf555286cebf35c assets/orevolution/models/item/end_experience_ore.json
@@ -46,6 +47,9 @@ edd0c73e4d0bd11083fc89dacf71477db1a01f86 assets/orevolution/models/item/livingst
 9e0b52ae9b581765087113c03cae60e37993d684 assets/orevolution/models/item/livingstone_shovel.json
 e1d01b294931aa8acbd8ff4046123855e48309c3 assets/orevolution/models/item/livingstone_sword.json
 7f7639b34e8986042087c822c1323ec465d31e54 assets/orevolution/models/item/nether_experience_ore.json
+64e7719bea942f7ce9c69d7d54a94932e039cb13 assets/orevolution/models/item/nether_tungsten_ore.json
+41d2dab852d0924919a515bf019db17ef905e112 assets/orevolution/models/item/nether_tungsten_ore_blackstone.json
+57e4634696fe48f34222572708ceb0b7c2e9aea4 assets/orevolution/models/item/petrified_seed.json
 3b307c205dbab740b20928929980936ca72a2638 assets/orevolution/models/item/platinum_axe.json
 d6d242b8e0e78adb956786739964511db705347e assets/orevolution/models/item/platinum_block.json
 1f356c2c69a0c68437e899ceb4dea887975f599a assets/orevolution/models/item/platinum_boots.json
@@ -146,7 +150,6 @@ eded377bbc27f5f0928d84d0845b81367549be15 assets/orevolution/models/item/tin_pick
 2b81170be5fd12001a1b64fab416b77400c8f5e8 assets/orevolution/models/item/tungsten_block.json
 e430dd43e77da5e3f70bb39aa207f26f318a728b assets/orevolution/models/item/tungsten_ingot.json
 3533e7851addb6a23cf5f3540e0cb4c0ad969ef4 assets/orevolution/models/item/tungsten_nugget.json
-d32bff57b2589347a77168db70d8fc3dab9c8900 assets/orevolution/models/item/tungsten_ore.json
 e9bf5f5716c6c5d819521a3636daa1a88cdade68 assets/orevolution/models/item/verdite_apple.json
 24170d62ec0c68128e12d17d231642009c93c540 assets/orevolution/models/item/verdite_axe.json
 bb0eeac2586741ce0d040216cb9f5f3f5e3b29ab assets/orevolution/models/item/verdite_block.json

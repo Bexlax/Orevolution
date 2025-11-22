@@ -1,8 +1,8 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.OrevolutionToolPower;
 import net.bexla.orevolution.content.types.TierProgressRegistry;
 import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -43,7 +43,7 @@ public class ToolAddEffectPerBlockAmount extends OrevolutionToolPower {
 
     @Override
     public void onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state) {
-        if(!getCondition(stack, state, level, player, null)) return;
+        if(!getCBoolean(stack, state, level, player, null)) return;
 
         MobEffect eff = effect.get();
 

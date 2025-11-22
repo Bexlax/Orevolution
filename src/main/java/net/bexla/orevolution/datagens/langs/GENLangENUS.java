@@ -14,6 +14,10 @@ public class GENLangENUS extends LangProvider {
         super(output, Orevolution.MODID, "en_us");
     }
 
+    public void addCondition(String tooltipID, String name) {
+        add("conditional.orevolution." + tooltipID, name);
+    }
+
     public void addTooltip(String tooltipID, String name) {
         add("tooltip.orevolution." + tooltipID, name);
     }
@@ -32,22 +36,35 @@ public class GENLangENUS extends LangProvider {
 
     @Override
     protected void addTranslations() {
-        addTooltip("duplication", "Has a chance (Max of %s percent) to increase most block drops");
+        addTooltip("duplication", "Has a chance (Max of %s) to duplicate most block drops");
+        addTooltip("triplication", "Has a chance (Max of %s) to triplicate most block drops");
+
         addTooltip("duplication_explanation",
                 "List of chances depending on blocks:\n" +
-                        " - Any Ore (eg. Copper Ore) -> 5% chance\n" +
+                        " - 'Always' blocks (eg. Any Leave Block) -> 100% chance\n" +
                         " - Uncommon blocks (eg. Anvil) -> half of Max\n" +
                         " - Rare blocks (eg. Any Ore Block) -> fifth of Max\n" +
-                        " - 'Always' blocks (eg. Any Leave Block) -> 100% chance\n" +
+                        " - Any Ore (eg. Copper Ore) -> tenth of Max\n" +
                         " - 'Never' blocks (eg. Aethersteel Block) -> 0% chance"
         );
 
-        addTooltip("duplication_crops", "Has a chance (Max of %s percent) to increase crop drops");
+        addTooltip("triplication_explanation",
+                "List of chances depending on blocks:\n" +
+                        " - 'Always' blocks (eg. Any Leave Block) -> 100% chance\n" +
+                        " - Uncommon blocks (eg. Anvil) -> half of Max\n" +
+                        " - Rare blocks (eg. Any Ore Block) -> tenth of Max\n" +
+                        " - Any Ore (eg. Copper Ore) -> fifth of Max\n" +
+                        " - 'Never' blocks (eg. Aethersteel Block) -> 0% chance"
+        );
+
+        addTooltip("duplication_crops", "Has a chance (Max of %s) to duplicate crop drops");
+        addTooltip("triplication_crops", "Has a chance (Max of %s) to triplicate crop drops");
 
         addTooltip("iron_tool_tooltip", "Breaking speed increased by 2.5X on Deepslate, Planks and Dirt");
         addTooltip("gold_tool_tooltip", "Durability increased by 160 when enchanted");
 
-        addTooltip("increase_loot", "Has a chance of %s percent to increase mob loot");
+        addTooltip("increase_loot", "Has a chance of %s to increase mob loot");
+        addTooltip("triplicate_loot", "Has a chance of %s to triplicate mob loot");
 
         addTooltip("on_hit_effect", "Inflicts the following effect(s) to attacked mobs:");
         addTooltip("attacker_on_hit_effect", "Has a chance to inflict the following effect(s) to you when attacking mobs:");
@@ -64,7 +81,6 @@ public class GENLangENUS extends LangProvider {
         addTooltip("full_set_bonus", "Full set bonus:");
 
         addTooltip("armor_wearer_grants", "Grants the following effect(s):");
-
         addTooltip("armor_wearer_on_attacked_wearer", "Grants the following effect(s) to you when you receive damage:");
         addTooltip("armor_wearer_on_attacked_target", "Causes the following effect(s) to the attacker when you receive damage:");
 
@@ -87,7 +103,7 @@ public class GENLangENUS extends LangProvider {
         add("trim_material.orevolution.tin", "Tin Material");
         add("trim_material.orevolution.tungsten", "Tungsten Material");
 
-        add("tooltip.orevolution.press_key", "Press %s to view more information");
+        addTooltip("press_key", "Press %s to view more information");
 
         addTooltip("harvest_tier", "Mining tier:");
         addTier("wood", "Stone");
@@ -102,9 +118,11 @@ public class GENLangENUS extends LangProvider {
         addEffect(RegMobEffects.CRUSHED, "Crushed");
         addEffect(RegMobEffects.PETRIFIED, "Petrified");
 
-        addTier("electrum", "Electrum");
-        addTier("silver", "Silver");
-        addTier("necromium", "Necromium");
+        addItem(RegItems.DEAD_SEED, "Dead Seed");
+        addBlock(RegBlocks.VERDITE_CROP, "Verdite Crop");
+        addBlock(RegBlocks.LIVINGSTONE_BLOCK, "Livingstone Block");
+        addItem(RegItems.PETRIFIED_SEED, "Petrified Seed");
+        addBlock(RegBlocks.LIVINGSTONE_CROP, "Livingstone Crop");
 
         addItem(RegItemsFD.PLATINUM_KNIFE, "Platinum Knife");
         addItem(RegItems.PLATINUM_SWORD, "Platinum Sword");
@@ -240,5 +258,6 @@ public class GENLangENUS extends LangProvider {
         addBlock(RegBlocksSK.PLATINUM_ORE_GRANITE, "Granite Platinum Ore");
         addBlock(RegBlocksSK.PLATINUM_ORE_DIORITE, "Diorite Platinum Ore");
         addBlock(RegBlocksSK.PLATINUM_ORE_TUFF, "Tuff Platinum Ore");
+        addBlock(RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE, "Blackstone Nether Tungsten Ore");
     }
 }
