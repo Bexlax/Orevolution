@@ -2,6 +2,8 @@ package net.bexla.orevolution.init;
 
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import net.bexla.orevolution.Orevolution;
+import net.bexla.orevolution.content.types.block.LivingstoneCrop;
+import net.bexla.orevolution.content.types.block.VerditeCrop;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -9,6 +11,8 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -37,16 +41,42 @@ public class RegBlocks {
 
     // todo: add missing blocks
 
+    public static VoxelShape cropSize(double width, double height, double lenght) {
+        return Shapes.box(0.0D / 16.0D, 0.0D / 16.0D, 0.0D / 16.0D, width / 16.0D, height / 16.0D, lenght / 16.0D);
+    }
+
+    public static VoxelShape cropHeight(double height) {
+        return cropSize(16.0D, height, 16.0D);
+    }
+
     //~//~~ Ores ~~//~//
     public static final RegistryObject<Block> TIN_ORE = register("tin_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)));
     public static final RegistryObject<Block> PLATINUM_ORE = register("platinum_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)));
-    public static final RegistryObject<Block> NETHER_TUNGSTEN_ORE = register("tungsten_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_QUARTZ_ORE)));
+    public static final RegistryObject<Block> NETHER_TUNGSTEN_ORE = register("nether_tungsten_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_QUARTZ_ORE)));
     public static final RegistryObject<Block> NETHER_XP_ORE = register("nether_experience_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_QUARTZ_ORE).noLootTable(), UniformInt.of(4, 12)));
     public static final RegistryObject<Block> END_XP_ORE = register("end_experience_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_QUARTZ_ORE).noLootTable().sound(SoundType.STONE).strength(5.0F, 4.0F), UniformInt.of(12, 25)));
     public static final RegistryObject<Block> DEEPSLATE_TIN_ORE = register("deepslate_tin_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)));
     public static final RegistryObject<Block> DEEPSLATE_PLATINUM_ORE = register("deepslate_platinum_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_GOLD_ORE)));
     public static final RegistryObject<Block> PRIMITIVE_AETHERROCK = register("primitive_aetherrock", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.ANCIENT_DEBRIS).hasPostProcess((blkState, reader, pos) -> true).emissiveRendering((blkState, reader, pos) -> true).strength(40F, 2200F)));
 
+    public static final RegistryObject<Block> LIVINGSTONE_CROP = HELPER.createBlockNoItem("livingstone_crop", () -> new LivingstoneCrop(RegItems.PETRIFIED_SEED,
+            new VoxelShape[]{
+                    cropHeight(2.0D),
+                    cropHeight(5.0D),
+                    cropHeight(8.0D),
+                    cropHeight(13.0D),
+                    cropHeight(16.0D)
+            }, BlockBehaviour.Properties.copy(Blocks.WHEAT).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> VERDITE_CROP = HELPER.createBlockNoItem("verdite_crop", () -> new VerditeCrop(RegItems.DEAD_SEED,
+            new VoxelShape[]{
+                    cropHeight(2.0D),
+                    cropHeight(4.0D),
+                    cropHeight(6.0D),
+                    cropHeight(9.0D),
+                    cropHeight(12.0D),
+                    cropHeight(13.0D),
+                    cropHeight(14.0D)
+            }, BlockBehaviour.Properties.copy(Blocks.WHEAT).requiresCorrectToolForDrops()));
 
     //~//~~ Storage Blocks ~~//~//
         /* Ore Blocks */

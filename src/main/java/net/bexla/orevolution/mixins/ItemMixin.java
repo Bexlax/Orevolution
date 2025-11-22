@@ -21,6 +21,8 @@ import java.util.List;
 
 @Mixin(Item.class)
 public class ItemMixin {
+    private static final Component HARVEST_TIER = Component.translatable("tooltip.orevolution.harvest_tier");
+
     @Inject(method = "appendHoverText", at = @At("TAIL"))
     private void orevolution$injectPowerTooltip(ItemStack stack, @Nullable Level level, List<Component> lines, TooltipFlag flag, CallbackInfo ci) {
         if(stack.getItem() instanceof TieredItem tieredItem) {
@@ -54,9 +56,7 @@ public class ItemMixin {
             }
 
             if (OrevolutionConfig.CLIENT.harvestTip.get() && !return_string.isEmpty()) {
-                if(!tip.isEmpty()) tip.add(Component.literal(""));
-
-                tip.add(Component.translatable("tooltip.orevolution.harvest_tier"));
+                tip.add(HARVEST_TIER);
                 tip.add(Component.literal(" - " + Component.translatable("tiers.orevolution." + return_string.toLowerCase()).getString()).withStyle(ChatFormatting.YELLOW));
             }
 

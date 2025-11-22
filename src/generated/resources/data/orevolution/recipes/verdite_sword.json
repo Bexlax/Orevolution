@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "forge:ingots/verdite"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "A",
+    "A",
+    "S"
+  ],
+  "result": {
+    "item": "orevolution:verdite_sword"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "orevolution:aethersteel_ingot"
+  },
+  "base": {
+    "item": "minecraft:netherite_pickaxe"
+  },
+  "result": {
+    "item": "orevolution:aethersteel_pickaxe"
+  },
+  "template": {
+    "item": "orevolution:aethersteel_smithing_template"
+  }
+}

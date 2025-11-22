@@ -1,0 +1,45 @@
+{
+  "type": "orevolution:tin_ore_spelunkery_feature",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 13,
+    "targets": [
+      {
+        "state": {
+          "Name": "orevolution:tin_ore_tuff"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "forge:tuffs"
+        }
+      },
+      {
+        "state": {
+          "Name": "orevolution:tin_ore_andesite"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "forge:andesites"
+        }
+      },
+      {
+        "state": {
+          "Name": "orevolution:tin_ore_granite"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "forge:diorites"
+        }
+      },
+      {
+        "state": {
+          "Name": "orevolution:tin_ore_diorite"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "forge:granites"
+        }
+      }
+    ]
+  }
+}

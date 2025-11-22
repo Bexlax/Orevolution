@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "forge:ingots/platinum"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "AA",
+    "AS",
+    " S"
+  ],
+  "result": {
+    "item": "orevolution:platinum_axe"
+  },
+  "show_notification": true
+}

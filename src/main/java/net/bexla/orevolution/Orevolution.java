@@ -11,6 +11,7 @@ import net.bexla.orevolution.content.data.AddLootModifier;
 import net.bexla.orevolution.content.data.DataRegistries;
 import net.bexla.orevolution.datagens.GENLootDrops;
 import net.bexla.orevolution.datagens.GENRecipes;
+import net.bexla.orevolution.datagens.GenFeatures;
 import net.bexla.orevolution.datagens.OrevolutionSpriteSourceProvider;
 import net.bexla.orevolution.datagens.langs.GENLangENUS;
 import net.bexla.orevolution.datagens.langs.GENLangESAR;
@@ -18,7 +19,10 @@ import net.bexla.orevolution.datagens.models.GENBlockStateModels;
 import net.bexla.orevolution.datagens.models.GENItemModels;
 import net.bexla.orevolution.datagens.tags.GENBlockTags;
 import net.bexla.orevolution.datagens.tags.GENItemTags;
-import net.bexla.orevolution.init.*;
+import net.bexla.orevolution.init.RegBlocks;
+import net.bexla.orevolution.init.RegItems;
+import net.bexla.orevolution.init.RegMisc;
+import net.bexla.orevolution.init.RegMobEffects;
 import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -60,7 +64,6 @@ import java.util.stream.Collectors;
 @Mod(Orevolution.MODID)
 public class Orevolution
 {
-
     public static final String MODID = "orevolution";
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -82,15 +85,15 @@ public class Orevolution
 
         REGISTRY_HELPER.register(modEventBus);
 
-        RegFeatures.FEATURES.register(modEventBus);
+        GenFeatures.FEATURES.register(modEventBus);
 
         RegMisc.RegisterAll();
 
         LOOT_MODIFIERS.register(modEventBus);
 
-        if(ModCompat.isModLoaded(ModCompat.FARMERSDELIGHT)) RegItemsFD.register(modEventBus);
+        if(ModCompat.isModLoaded(ModCompat.farmersdelight())) RegItemsFD.register(modEventBus);
 
-        if(ModCompat.isModLoaded(ModCompat.SPELUNKERY)) RegItemsSK.register(modEventBus);RegBlocksSK.register(modEventBus);
+        if(ModCompat.isModLoaded(ModCompat.spelunkery())) RegItemsSK.register(modEventBus);RegBlocksSK.register(modEventBus);
 
         modEventBus.addListener(this::gatherData);
         modEventBus.addListener(this::addCreative);
@@ -255,7 +258,7 @@ public class Orevolution
             putAfter(entries, Items.NETHER_QUARTZ_ORE, RegBlocks.NETHER_TUNGSTEN_ORE);
             putAfter(entries, Blocks.ANCIENT_DEBRIS, RegBlocks.PRIMITIVE_AETHERROCK);
             
-            if(ModCompat.isModLoaded(ModCompat.SPELUNKERY)) {
+            if(ModCompat.isModLoaded(ModCompat.spelunkery())) {
                 putAfter(entries, RegBlocks.DEEPSLATE_PLATINUM_ORE.get(), RegBlocksSK.PLATINUM_ORE_ANDESITE);
                 putAfter(entries, RegBlocksSK.PLATINUM_ORE_ANDESITE.get(), RegBlocksSK.PLATINUM_ORE_GRANITE);
                 putAfter(entries, RegBlocksSK.PLATINUM_ORE_GRANITE.get(), RegBlocksSK.PLATINUM_ORE_DIORITE);
@@ -275,9 +278,12 @@ public class Orevolution
         putAfter(entries, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, RegItems.REINFORCED_TEMPLATE);
         putAfter(entries, RegItems.REINFORCED_TEMPLATE.get(), RegItems.AETHERSTEEL_TEMPLATE);
 
-        ResourceLocation FD_TAB = new ResourceLocation(ModCompat.FARMERSDELIGHT.getId(), ModCompat.FARMERSDELIGHT.getId());
+        putAfter(entries, Items.WHEAT_SEEDS, RegItems.PETRIFIED_SEED);
+        putAfter(entries, RegItems.PETRIFIED_SEED.get(), RegItems.DEAD_SEED);
 
-        if (ModCompat.isModLoaded(ModCompat.FARMERSDELIGHT) && tab.location().equals(FD_TAB)) {
+        ResourceLocation FD_TAB = new ResourceLocation(ModCompat.farmersdelight(), ModCompat.farmersdelight());
+
+        if (ModCompat.isModLoaded(ModCompat.farmersdelight()) && tab.location().equals(FD_TAB)) {
             putAfter(entries, ModItems.FLINT_KNIFE.get(), RegItemsFD.TIN_KNIFE);
             putAfter(entries, RegItemsFD.TIN_KNIFE.get(), RegItemsFD.LIVINGSTONE_KNIFE);
             putAfter(entries, RegItemsFD.LIVINGSTONE_KNIFE.get(), RegItemsFD.VERDITE_KNIFE);

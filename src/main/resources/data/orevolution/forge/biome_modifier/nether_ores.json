@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": [
+    "orevolution:tungsten_ore",
+    "orevolution:tungsten_ore_spelunkery",
+    "orevolution:nether_experience_ore"
+  ],
+  "step": "underground_ores"
+}

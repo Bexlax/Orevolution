@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.OrevolutionToolPower;
 import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -24,7 +24,7 @@ public class ToolChangeBreakSpeed extends OrevolutionToolPower {
 
     @Override
     public float setDestroySpeed(ItemStack stack, BlockState state, float defaultSpeed) {
-        if(!getCondition(stack, state, null, null, null)) return defaultSpeed;
+        if(!getCBoolean(stack, state, null, null, null)) return defaultSpeed;
 
         return replaceOriginalValue? speedIncrease : defaultSpeed + speedIncrease;
     }

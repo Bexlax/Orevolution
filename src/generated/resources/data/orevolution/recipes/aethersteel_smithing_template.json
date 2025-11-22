@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "orevolution:aetherrock"
+    },
+    "B": {
+      "item": "minecraft:diamond"
+    },
+    "C": {
+      "item": "orevolution:aethersteel_smithing_template"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "item": "orevolution:aethersteel_smithing_template"
+  },
+  "show_notification": true
+}

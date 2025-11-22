@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#forge:storage_blocks/tin",
+    "#forge:storage_blocks/platinum",
+    "#forge:storage_blocks/tungsten",
+    "#forge:storage_blocks/verdite",
+    "#forge:storage_blocks/enderite",
+    "#forge:storage_blocks/livingstone",
+    "#forge:storage_blocks/raw_platinum",
+    "#forge:storage_blocks/raw_tin",
+    "#forge:storage_blocks/raw_tungsten"
+  ]
+}

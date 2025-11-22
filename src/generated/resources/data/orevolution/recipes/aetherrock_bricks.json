@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "orevolution:aetherrock"
+    }
+  },
+  "pattern": [
+    "A",
+    "A"
+  ],
+  "result": {
+    "count": 2,
+    "item": "orevolution:aetherrock_bricks"
+  },
+  "show_notification": true
+}

@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
-import net.bexla.orevolution.content.types.OrevolutionArmorPower;
 import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.power.armor.OrevolutionArmorPower;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
@@ -34,12 +34,15 @@ public class ArmorGrantImmunityEffects extends OrevolutionArmorPower {
         for (Supplier<MobEffect> p : this.effects) {
             tips.add(Component.literal(" - " + p.get().getDisplayName().getString()).withStyle(ChatFormatting.AQUA));
         }
+
+        tips.add(Component.empty());
+
         return tips;
     }
 
     @Override
     public void onTickWhileWorn(ItemStack stack, LivingEntity wearer, EquipmentSlot slot) {
-        if(!getCondition(stack, wearer.level(), wearer, null)) return;
+        if(!getCBoolean(stack, wearer.level(), wearer, null)) return;
 
         for(Supplier<MobEffect> p : this.effects) {
             wearer.removeEffect(p.get());

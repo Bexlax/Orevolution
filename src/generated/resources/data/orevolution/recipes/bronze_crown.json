@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "orevolution:bronze_ingot"
+    }
+  },
+  "pattern": [
+    "A A",
+    "AAA"
+  ],
+  "result": {
+    "count": 2,
+    "item": "orevolution:bronze_crown"
+  },
+  "show_notification": true
+}

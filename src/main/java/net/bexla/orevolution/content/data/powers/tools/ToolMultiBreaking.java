@@ -1,7 +1,7 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.OrevolutionToolPower;
 import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,7 +17,7 @@ public class ToolMultiBreaking extends OrevolutionToolPower {
 
     @Override
     public void onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state) {
-        if (!getCondition(stack, state, level, player, null)) return;
+        if (!getCBoolean(stack, state, level, player, null)) return;
 
         Direction facing = player.getDirection();
         boolean vertical = Math.abs(player.getXRot()) > 36;

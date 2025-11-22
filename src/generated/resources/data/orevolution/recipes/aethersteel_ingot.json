@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "orevolution:aethersteel_chunk"
+    },
+    {
+      "item": "orevolution:aethersteel_chunk"
+    },
+    {
+      "item": "orevolution:aethersteel_chunk"
+    },
+    {
+      "item": "orevolution:aethersteel_chunk"
+    },
+    {
+      "tag": "forge:ingots/platinum"
+    },
+    {
+      "tag": "forge:ingots/platinum"
+    },
+    {
+      "tag": "forge:ingots/platinum"
+    },
+    {
+      "tag": "forge:ingots/platinum"
+    }
+  ],
+  "result": {
+    "item": "orevolution:aethersteel_ingot"
+  }
+}

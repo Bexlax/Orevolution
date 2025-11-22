@@ -120,4 +120,8 @@ public class RegItems {
 
     //~//~~Consumables~~//~//
     public static final RegistryObject<Item> VERDITE_APPLE = HELPER.createItem("verdite_apple", () -> new VerditeApple(new Item.Properties()));
+
+    //~//~~Others~~//~//
+    public static final RegistryObject<Item> PETRIFIED_SEED = HELPER.createItem("petrified_seed", () -> new ItemNameBlockItem(RegBlocks.LIVINGSTONE_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DEAD_SEED = HELPER.createItem("dead_seed", () -> new ItemNameBlockItem(RegBlocks.VERDITE_CROP.get(), new Item.Properties()));
 }

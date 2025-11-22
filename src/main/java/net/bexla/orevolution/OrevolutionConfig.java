@@ -21,7 +21,11 @@ public class OrevolutionConfig
         public final ConfigValue<Boolean> armorsPowers;
 
         public final ConfigValue<Boolean> generateTinOre;
+        public final ConfigValue<Boolean> generateExperienceOre;
+        public final ConfigValue<Boolean> generateTungstenOre;
         public final ConfigValue<Boolean> generatePlatOre;
+        public final ConfigValue<Boolean> generateAethersteelOre;
+        public final ConfigValue<Boolean> generateAetherrockMeteor;
 
         public final ConfigValue<Boolean> safeOreBreaking;
 
@@ -29,10 +33,16 @@ public class OrevolutionConfig
 
         public final ConfigValue<Integer> woodMaxUses;
         public final ConfigValue<Integer> stoneMaxUses;
+        public final ConfigValue<Integer> tinMaxUses;
         public final ConfigValue<Integer> goldMaxUses;
         public final ConfigValue<Integer> ironMaxUses;
+        public final ConfigValue<Integer> platMaxUses;
         public final ConfigValue<Integer> diamondMaxUses;
         public final ConfigValue<Integer> netheriteMaxUses;
+        public final ConfigValue<Integer> aetherMaxUses;
+        public final ConfigValue<Integer> livingstoneMaxUses;
+        public final ConfigValue<Integer> verditeMaxUses;
+        public final ConfigValue<Integer> steelMaxUses;
 
         private Common(ForgeConfigSpec.Builder builder) {
             builder.push("powers");
@@ -59,6 +69,22 @@ public class OrevolutionConfig
                     .comment("Defines if platinum ore will generate in your world")
                     .define("generate_platinum_ore", true);
 
+            generateTungstenOre = builder
+                    .comment("Defines if tungsten ore will generate in your world")
+                    .define("generate_tungsten_ore", true);
+
+            generateExperienceOre = builder
+                    .comment("Defines if experience ore will generate in your world")
+                    .define("generate_experience_ore", true);
+
+            generateAethersteelOre = builder.
+                    comment("Defines if aethersteel ore will generate in your world")
+                    .define("generate_aethersteel_ore", true);
+
+            generateAetherrockMeteor = builder.
+                    comment("Defines if aetherrock meteor will generate in your world (this will also disable aethersteel)")
+                    .define("generate_aetherrock_meteor", true);
+
             safeOreBreaking = builder
                     .comment("Ores won't break if mined with the incorrect tool")
                     .define("safe_ore_breaking", true);
@@ -66,7 +92,6 @@ public class OrevolutionConfig
             modProgression = builder
                     .comment("Replaces the original ore progression of the game")
                     .define("modded_progression", true);
-
 
             builder.pop();
 
@@ -76,21 +101,41 @@ public class OrevolutionConfig
             woodMaxUses = builder
                     .comment("Modifies the max uses of wood tools and weapons. vanilla is 59")
                     .defineInRange("wood_max_uses", 64, 1, Integer.MAX_VALUE);
+
             goldMaxUses = builder
                     .comment("Modifies the max uses of gold tools and weapons. vanilla is 32")
                     .defineInRange("gold_max_uses", 128, 1, Integer.MAX_VALUE);
             stoneMaxUses = builder
                     .comment("Modifies the max uses of stone tools and weapons. vanilla is 131")
                     .defineInRange("stone_max_uses", 192, 1, Integer.MAX_VALUE);
+            tinMaxUses = builder
+                    .comment("Modifies the max uses of tin tools and weapons. vanilla is 256")
+                    .defineInRange("tin_max_uses", 256, 1, Integer.MAX_VALUE);
             ironMaxUses = builder
                     .comment("Modifies the max uses of iron tools and weapons. vanilla is 250")
                     .defineInRange("iron_max_uses", 448, 1, Integer.MAX_VALUE);
+            platMaxUses = builder
+                    .comment("Modifies the max uses of platinum tools and weapons. vanilla is 768")
+                    .defineInRange("platinum_max_uses", 768, 1, Integer.MAX_VALUE);
             diamondMaxUses = builder
                     .comment("Modifies the max uses of diamond tools and weapons. vanilla is 1561")
                     .defineInRange("diamond_max_uses", 1600, 1, Integer.MAX_VALUE);
             netheriteMaxUses = builder
                     .comment("Modifies the max uses of netherite tools and weapons. vanilla is 2031")
                     .defineInRange("netherite_max_uses", 2432, 1, Integer.MAX_VALUE);
+            aetherMaxUses = builder
+                    .comment("Modifies the max uses of aethersteel tools and weapons. vanilla is 3520")
+                    .defineInRange("aetherite_max_uses", 3520, 1, Integer.MAX_VALUE);
+            livingstoneMaxUses = builder
+                    .comment("Modifies the max uses of livingstone tools and weapons. vanilla is 192")
+                    .defineInRange("livingstone_max_uses", 192, 1, Integer.MAX_VALUE);
+            verditeMaxUses = builder
+                    .comment("Modifies the max uses of verdite tools and weapons. vanilla is 448")
+                    .defineInRange("verdite_max_uses", 448, 1, Integer.MAX_VALUE);
+            steelMaxUses = builder
+                    .comment("Modifies the max uses of steel tools. vanilla is 1152")
+                    .defineInRange("steel_max_uses", 1152, 1, Integer.MAX_VALUE);
+
 
             builder.pop();
         }

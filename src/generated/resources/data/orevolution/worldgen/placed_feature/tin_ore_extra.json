@@ -1,0 +1,27 @@
+{
+  "feature": "orevolution:tin_ore_extra",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 10
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 320
+        },
+        "min_inclusive": {
+          "absolute": 60
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

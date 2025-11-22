@@ -12,7 +12,6 @@ import net.bexla.orevolution.content.data.powers.tools.*;
 import net.bexla.orevolution.content.data.utility.OrevolutionLists;
 import net.bexla.orevolution.content.data.utility.OrevolutionTags;
 import net.bexla.orevolution.content.types.ArmorPowerRegistry;
-import net.bexla.orevolution.content.types.OrevolutionToolPower;
 import net.bexla.orevolution.content.types.TierProgressRegistry;
 import net.bexla.orevolution.content.types.ToolPowerRegistry;
 import net.minecraft.resources.ResourceLocation;
@@ -30,42 +29,31 @@ import static net.bexla.orevolution.content.data.utility.OrevolutionUtils.modLoc
 public class RegMisc {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private static boolean loadOrevolutionTiers = true;
-
-    /**
-     * Allows external mods to enable/disable vanilla tier registration before Orevolution initializes.
-     */
-    public static void setLoadOrevolutionTiers(boolean shouldLoad) {
-        loadOrevolutionTiers = shouldLoad;
-    }
-
     public static void RegisterSortedTiers() {
-        if(!loadOrevolutionTiers) return;
-
-        var wood = new ResourceLocation("wood");
-        var stone = new ResourceLocation("stone");
-        var iron = new ResourceLocation("iron");
-        var diamond = new ResourceLocation("diamond");
-        var netherite = new ResourceLocation("netherite");
+        final ResourceLocation wood = new ResourceLocation("wood");
+        final ResourceLocation stone = new ResourceLocation("stone");
+        final ResourceLocation iron = new ResourceLocation("iron");
+        final ResourceLocation diamond = new ResourceLocation("diamond");
+        final ResourceLocation netherite = new ResourceLocation("netherite");
 
         TierProgressRegistry.registerTier(Tiers.WOOD, wood,
-                List.of(), List.of(), OrevolutionTags.Blocks.woodTiered);
+                List.of(), List.of(), OrevolutionTags.Blocks.woodExceptions);
 
         TierProgressRegistry.registerTier(Tiers.STONE, stone,
-                List.of(wood), List.of(iron), OrevolutionTags.Blocks.stoneTiered);
+                List.of(wood), List.of(iron), OrevolutionTags.Blocks.stoneExceptions);
 
         TierProgressRegistry.registerTier(Tiers.IRON, iron,
-                List.of(stone), List.of(diamond), OrevolutionTags.Blocks.ironTiered);
+                List.of(stone), List.of(diamond), OrevolutionTags.Blocks.ironExceptions);
 
         TierProgressRegistry.registerTier(Tiers.DIAMOND, diamond,
-                List.of(iron), List.of(netherite), OrevolutionTags.Blocks.diamondTiered);
+                List.of(iron), List.of(netherite), OrevolutionTags.Blocks.diamondExceptions);
 
         TierProgressRegistry.registerTier(Tiers.NETHERITE, netherite,
-                List.of(diamond), List.of(), OrevolutionTags.Blocks.netheriteTiered);
+                List.of(diamond), List.of(), OrevolutionTags.Blocks.netheriteExceptions);
 
-        TierProgressRegistry.registerTier(OrevolutionToolTiers.TIN, modLocat("tin"), List.of(Tiers.STONE), List.of(Tiers.IRON), OrevolutionTags.Blocks.tinTiered);
-        TierProgressRegistry.registerTier(OrevolutionToolTiers.PLATINUM, modLocat("platinum"), List.of(Tiers.IRON), List.of(Tiers.DIAMOND), OrevolutionTags.Blocks.platTiered);
-        TierProgressRegistry.registerTier(OrevolutionToolTiers.AETHERSTEEL, modLocat("aethersteel"), List.of(Tiers.NETHERITE), List.of(), OrevolutionTags.Blocks.aethersteelTiered);
+        TierProgressRegistry.registerTier(OrevolutionToolTiers.TIN, modLocat("tin"), List.of(Tiers.STONE), List.of(Tiers.IRON), OrevolutionTags.Blocks.tinExceptions);
+        TierProgressRegistry.registerTier(OrevolutionToolTiers.PLATINUM, modLocat("platinum"), List.of(Tiers.IRON), List.of(Tiers.DIAMOND), OrevolutionTags.Blocks.platExceptions);
+        TierProgressRegistry.registerTier(OrevolutionToolTiers.AETHERSTEEL, modLocat("aethersteel"), List.of(Tiers.NETHERITE), List.of(), OrevolutionTags.Blocks.aetherExceptions);
 
         TierProgressRegistry.registerSecondaryTier(OrevolutionToolTiers.LIVINGSTONE, OrevolutionToolTiers.TIN);
         TierProgressRegistry.registerSecondaryTier(OrevolutionToolTiers.VERDITE, OrevolutionToolTiers.PLATINUM);
@@ -96,16 +84,12 @@ public class RegMisc {
 
         ArmorPowerRegistry.registerItem(RegItems.BRONZE_CROWN,
                 new ArmorGrantImmunityEffects("armor_immunity", Conditionals.always(), () -> MobEffects.HUNGER));
-
         ArmorPowerRegistry.registerItem(RegItems.BRONZE_CROWN_REDSTONE,
                 new ArmorGrantEffects("armor_grants", Conditionals.always(), 20, 0, OrevolutionLists.BRONZE_REDSTONE_EFFECTS));
-
         ArmorPowerRegistry.registerItem(RegItems.BRONZE_CROWN_DIAMOND,
                 new ArmorCauseEffectsOnAttacked("", "armor_wearer_on_attacked_wearer", Conditionals.always(), 140, 0, null, () -> MobEffects.REGENERATION));
-
         ArmorPowerRegistry.registerItem(RegItems.BRONZE_CROWN_EMERALD,
                 new ArmorGrantEffects("armor_immunity", Conditionals.always(), 20, 0, () -> MobEffects.HERO_OF_THE_VILLAGE));
-
         ArmorPowerRegistry.registerItem(RegItems.BRONZE_CROWN_LAPIS,
                 new ArmorGrantEffects("armor_grants", Conditionals.always(), 30, 0, () -> MobEffects.NIGHT_VISION));
 
@@ -114,7 +98,7 @@ public class RegMisc {
 
     public static void RegisterToolsPowers() {
         ToolPowerRegistry.registerTier(OrevolutionToolTiers.TIN,
-                new ToolIncreaseDrops("duplication", Conditionals.always(), 1, 0.3, 1),
+                new ToolIncreaseDrops("duplication", Conditionals.always(), 1, 0.3),
                 new ToolCauseEffectOnHit("on_hit_effect_chance", "", Conditionals.byChance(0.3), 120, 0, () -> MobEffects.POISON, null)
         );
         ToolPowerRegistry.registerTier(Tiers.IRON,
@@ -134,8 +118,8 @@ public class RegMisc {
                 new ToolCauseMultipleEffectsOnHit("undead_on_hit", "", Conditionals.isTargetMobType(MobType.UNDEAD), 160, 0, OrevolutionLists.PLATINUM_TOOL_EFFECTS, null)
         );
         ToolPowerRegistry.registerTier(OrevolutionToolTiers.AETHERSTEEL,
-                new ToolAvoidDamageOnUse("avoid_damage", Conditionals.byChance(0.05)),
-                new ToolCauseEffectOnHit("attacker_on_hit_effect", "", Conditionals.byChance(0.7), 80, 0, () -> MobEffects.REGENERATION, null)
+                new ToolMultiPower(OrevolutionLists.AETHERSTEEL_TOOL_POWERS),
+                new ToolMultiPower(OrevolutionLists.AETHERSTEEL_SWORD_POWERS)
         );
         ToolPowerRegistry.registerTier(OrevolutionToolTiers.LIVINGSTONE,
                 new ToolIncreaseCropDrops("duplication_crops", Conditionals.always(), 1, 0.4),
@@ -146,15 +130,15 @@ public class RegMisc {
                 new ToolCauseEffectOnHit("", "on_hit_effect_chance", Conditionals.byChance(0.2), 2, 0, null, () -> MobEffects.SATURATION)
         );
 
-        if(ModCompat.isModLoaded(ModCompat.OREGANIZED)) {
+        if(ModCompat.isModLoaded(ModCompat.oreganized())) {
             // I've also removed the kinetic damage effect to all tools except the sword via tags.
             ToolPowerRegistry.registerTier(OItemTiers.ELECTRUM,
-                    new ToolAddEffectPerBlockAmount("grant_on_mine", Conditionals.always(), () -> MobEffects.DIG_SPEED, 6, 120, 3),
-                    new OrevolutionToolPower("electrum", Conditionals.always()) // doesn't do anything, only adds a tooltip
+                    new ToolMultiPower(OrevolutionLists.ELECTRUM_POWERS),
+                    new ToolMultiPower(OrevolutionLists.ELECTRUM_POWERS)
             );
         }
 
-        if (ModCompat.isModLoaded(ModCompat.CAC)) {
+        if (ModCompat.isModLoaded(ModCompat.cac())) {
             // silver has the exact same powers as platinum.
             ToolPowerRegistry.registerTier(CCTiers.CCItemTiers.SILVER,
                     new ToolAvoidDamageOnUse("avoid_damage", Conditionals.byChance(0.25)),

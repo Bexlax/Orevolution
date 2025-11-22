@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "orevolution:bronze_crown"
+    },
+    "B": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "AB"
+  ],
+  "result": {
+    "item": "orevolution:bronze_crown_lapis"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,9 @@
+{
+  "values": [
+    "orevolution:nether_tungsten_ore",
+    {
+      "id": "orevolution:nether_tungsten_ore_blackstone",
+      "required": false
+    }
+  ]
+}

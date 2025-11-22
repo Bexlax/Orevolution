@@ -1,0 +1,22 @@
+{
+  "values": [
+    "orevolution:tin_ore",
+    "orevolution:deepslate_tin_ore",
+    {
+      "id": "orevolution:tin_ore_andesite",
+      "required": false
+    },
+    {
+      "id": "orevolution:tin_ore_diorite",
+      "required": false
+    },
+    {
+      "id": "orevolution:tin_ore_granite",
+      "required": false
+    },
+    {
+      "id": "orevolution:tin_ore_tuff",
+      "required": false
+    }
+  ]
+}

@@ -37,6 +37,10 @@ public class GENItemModels extends ItemModelProvider {
         return normalItem(item, "armor");
     }
 
+    private ItemModelBuilder blockitem(Supplier<? extends Item> item) {
+        return normalItem(item, "blockitem");
+    }
+
     private ItemModelBuilder compat(String modid, Supplier<? extends Item> item) {
         return normalItem(item, "compat/" + modid);
     }
@@ -47,6 +51,9 @@ public class GENItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        blockitem(RegItems.DEAD_SEED);
+        blockitem(RegItems.PETRIFIED_SEED);
+
         ingredient(RegItems.RAW_TIN);
         ingredient(RegItems.RAW_PLATINUM);
         ingredient(RegItems.RAW_TUNGSTEN);
@@ -78,7 +85,7 @@ public class GENItemModels extends ItemModelProvider {
         toolItem(RegItems.TIN_AXE);
         toolItem(RegItems.TIN_SHOVEL);
         toolItem(RegItems.TIN_HOE);
-        compat(ModCompat.FARMERSDELIGHT.getId(), RegItemsFD.TIN_KNIFE);
+        compat(ModCompat.farmersdelight(), RegItemsFD.TIN_KNIFE);
 
         trimmableArmorItem(RegItems.PLATINUM_HELMET);
         trimmableArmorItem(RegItems.PLATINUM_CHESTPLATE);
@@ -89,7 +96,7 @@ public class GENItemModels extends ItemModelProvider {
         toolItem(RegItems.PLATINUM_AXE);
         toolItem(RegItems.PLATINUM_SHOVEL);
         toolItem(RegItems.PLATINUM_HOE);
-        compat(ModCompat.FARMERSDELIGHT.getId(), RegItemsFD.PLATINUM_KNIFE);
+        compat(ModCompat.farmersdelight(), RegItemsFD.PLATINUM_KNIFE);
 
         armor(RegItems.REINFORCED_NETHERITE_HELMET);
         armor(RegItems.REINFORCED_NETHERITE_CHESTPLATE);
@@ -105,7 +112,7 @@ public class GENItemModels extends ItemModelProvider {
         toolItem(RegItems.AETHERSTEEL_AXE);
         toolItem(RegItems.AETHERSTEEL_SHOVEL);
         toolItem(RegItems.AETHERSTEEL_HOE);
-        compat(ModCompat.FARMERSDELIGHT.getId(), RegItemsFD.AETHERSTEEL_KNIFE);
+        compat(ModCompat.farmersdelight(), RegItemsFD.AETHERSTEEL_KNIFE);
 
         armor(RegItems.LIVINGSTONE_HELMET);
         armor(RegItems.LIVINGSTONE_CHESTPLATE);
@@ -116,7 +123,7 @@ public class GENItemModels extends ItemModelProvider {
         toolItem(RegItems.LIVINGSTONE_AXE);
         toolItem(RegItems.LIVINGSTONE_SHOVEL);
         toolItem(RegItems.LIVINGSTONE_HOE);
-        compat(ModCompat.FARMERSDELIGHT.getId(), RegItemsFD.LIVINGSTONE_KNIFE);
+        compat(ModCompat.farmersdelight(), RegItemsFD.LIVINGSTONE_KNIFE);
 
         armor(RegItems.VERDITE_HELMET);
         armor(RegItems.VERDITE_CHESTPLATE);
@@ -127,7 +134,7 @@ public class GENItemModels extends ItemModelProvider {
         toolItem(RegItems.VERDITE_AXE);
         toolItem(RegItems.VERDITE_SHOVEL);
         toolItem(RegItems.VERDITE_HOE);
-        compat(ModCompat.FARMERSDELIGHT.getId(), RegItemsFD.VERDITE_KNIFE);
+        compat(ModCompat.farmersdelight(), RegItemsFD.VERDITE_KNIFE);
 
         toolItem(RegItems.STEEL_DIGGER);
         toolItem(RegItems.STEEL_HAMMER);
@@ -189,5 +196,6 @@ public class GENItemModels extends ItemModelProvider {
         block(RegBlocksSK.PLATINUM_ORE_GRANITE);
         block(RegBlocksSK.PLATINUM_ORE_DIORITE);
         block(RegBlocksSK.PLATINUM_ORE_TUFF);
+        block(RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE);
     }
 }

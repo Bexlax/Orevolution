@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 75,
+  "experience": 0.4,
+  "group": "orevolution:tin_ingot",
+  "ingredient": {
+    "item": "orevolution:tin_ore_diorite"
+  },
+  "result": "orevolution:tin_ingot"
+}

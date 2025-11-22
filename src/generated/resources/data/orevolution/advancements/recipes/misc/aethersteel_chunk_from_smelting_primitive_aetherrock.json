@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_primitive_aetherrock": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orevolution:primitive_aetherrock"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "orevolution:aethersteel_chunk_from_smelting_primitive_aetherrock"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_primitive_aetherrock",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "orevolution:aethersteel_chunk_from_smelting_primitive_aetherrock"
+    ]
+  },
+  "sends_telemetry_event": false
+}
