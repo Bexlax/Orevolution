@@ -193,7 +193,7 @@ public class TierProgressRegistry {
      * @param tier The tier to look up
      * @return The tag, or null if none registered
      */
-    public static TagKey<Block> getTagForTier(Tier tier)
+    public static TagKey<Block> getExceptionsFromTier(Tier tier)
     {
         return tierTagMap.get(tier);
     }
@@ -237,49 +237,44 @@ public class TierProgressRegistry {
      * @return True if the tier is good enough
      */
     public static boolean isCorrectTierForDrops(Tier tier, BlockState state) {
+        // Resolve secondary tier -> primary tier
         Tier effectiveTier = tier;
-
-        // Handle secondary tiers by using their associated primary tier
         if (!isTierSorted(effectiveTier)) {
-            Tier associatedTier = getAssociatedTierFromSecondary(effectiveTier);
-            if (associatedTier != null) {
-                effectiveTier = associatedTier;
+            Tier associated = getAssociatedTierFromSecondary(effectiveTier);
+            if (associated != null) {
+                effectiveTier = associated;
             } else {
-                // Fallback to vanilla logic for unregistered tiers
                 return isCorrectTierVanilla(tier, state);
             }
         }
 
-        if(getTagForTier(effectiveTier) != null && state.is(getTagForTier(effectiveTier))) return false;
-
-        // Find the highest tier required by the block's tags by iterating from the top down
-        Tier requiredTier = null;
-        for (int i = sortedTiers.size() - 1; i >= 0; i--) {
-            Tier sortedTier = sortedTiers.get(i);
-            TagKey<Block> tag = sortedTier.getTag();
-            if (tag != null && !state.is(tag)) {
-                requiredTier = sortedTier;
-                break; // Found the highest required tier, no need to check lower ones
-            }
+        // Exceptions -> hard fail
+        TagKey<Block> exceptionTag = getExceptionsFromTier(effectiveTier);
+        if (exceptionTag != null && state.is(exceptionTag)) {
+            return false;
         }
 
-        // If no specific tier is required, any tool is sufficient
-        if (requiredTier == null) {
-            return true;
-        }
+        // Fetch tiers
+        List<Tier> sorted = getSortedTiers();
 
-        // Check if the effective tier is equal to or higher than the required tier
-        List<Tier> sortedTiers = getSortedTiers();
-        int effectiveTierIndex = sortedTiers.indexOf(effectiveTier);
-        int requiredTierIndex = sortedTiers.indexOf(requiredTier);
-
-        // If either tier isn't in the sorted list, something is wrong, but we can fallback to a safe check
-        if (effectiveTierIndex == -1 || requiredTierIndex == -1) {
+        int tierIndex = sorted.indexOf(effectiveTier);
+        if (tierIndex == -1) {
             return isCorrectTierVanilla(tier, state);
         }
 
-        return effectiveTierIndex >= requiredTierIndex;
+        // Look at all tier above the current one
+        for (int i = tierIndex + 1; i < sorted.size(); i++) {
+            Tier stronger = sorted.get(i);
+            TagKey<Block> tag = stronger.getTag();
+
+            if (tag != null && state.is(tag)) {
+                return false;
+            }
+        }
+
+        return true;
     }
+
 
     /**
      * Helper to query all tiers that are lower than the given tier
