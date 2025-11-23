@@ -248,13 +248,12 @@ public class TierProgressRegistry {
             }
         }
 
-        // Exceptions -> hard fail
+        // avoid harvest if block is tagged as an exception for this tier
         TagKey<Block> exceptionTag = getExceptionsFromTier(effectiveTier);
         if (exceptionTag != null && state.is(exceptionTag)) {
             return false;
         }
 
-        // Fetch tiers
         List<Tier> sorted = getSortedTiers();
 
         int tierIndex = sorted.indexOf(effectiveTier);
