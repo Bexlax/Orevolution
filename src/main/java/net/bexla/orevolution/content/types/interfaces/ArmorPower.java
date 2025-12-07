@@ -59,9 +59,9 @@ public interface ArmorPower {
     /**
      * Called when the wearer dies.
      * @param wearer The entity that died.
-     * @param killer The entity that caused the death.
+     * @param source The damage soruce
      */
-    default boolean onDeath(LivingEntity wearer, LivingEntity killer) {return false;}
+    default boolean onDeath(LivingEntity wearer, DamageSource source) {return false;}
 
     /**
      * Allows adding extra information to the item's tooltip.

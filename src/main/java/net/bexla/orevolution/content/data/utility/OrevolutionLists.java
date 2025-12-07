@@ -59,7 +59,7 @@ public class OrevolutionLists {
 
     public static final List<OrevolutionArmorPower> REINFORCED_ARMOR_POWERS = List.of(
             new ArmorGrantEffects("reinforced_netherite_armor", Conditionals.not(Conditionals.isSubmergedInLiquid(FluidTags.LAVA)), 20, 1, REINFORCED_ARMOR_GRANTS_EFFECTS),
-            new ArmorCauseEffectsOnHit("netherite_armor", "", Conditionals.isCurrentHPPercentage(0.5f), 20, 0, () -> MobEffects.WITHER, null)
+            new ArmorCauseEffectsOnHit("netherite_armor", "", Conditionals.isCurrentHPPercentage(0.5f), 80, 0, () -> MobEffects.WITHER, null)
     );
 
     public static final List<OrevolutionArmorPower> AETHERSTEEL_ARMOR_POWERS = List.of(
@@ -81,9 +81,8 @@ public class OrevolutionLists {
             new ToolIncreaseMobLoot("triplicate_loot", Conditionals.always(), 2F, 0.1)
     );
 
-
     public static final List<OrevolutionToolPower> ELECTRUM_POWERS = List.of(
-            new ToolAddEffectPerBlockAmount("grant_on_mine", Conditionals.always(), () -> MobEffects.DIG_SPEED, 6, 120, 3),
+            new ToolAddEffectPerBlockAmount("grant_on_mine", Conditionals.always(), () -> MobEffects.DIG_SPEED, 7, 120, 3),
             new OrevolutionToolPower("electrum", Conditionals.always())
     );
 }

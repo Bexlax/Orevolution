@@ -2,13 +2,17 @@ package net.bexla.orevolution.init;
 
 import com.mojang.logging.LogUtils;
 import com.teamabnormals.caverns_and_chasms.core.other.CCTiers;
+import galena.oreganized.index.OArmorMaterials;
 import galena.oreganized.index.OItemTiers;
 import net.bexla.orevolution.compatibility.ModCompat;
 import net.bexla.orevolution.content.data.Conditionals;
 import net.bexla.orevolution.content.data.OrevolutionArmorTiers;
 import net.bexla.orevolution.content.data.OrevolutionToolTiers;
 import net.bexla.orevolution.content.data.powers.armors.*;
+import net.bexla.orevolution.content.data.powers.armors.hardcoded.ArmorElectrum;
+import net.bexla.orevolution.content.data.powers.armors.hardcoded.ArmorNecromium;
 import net.bexla.orevolution.content.data.powers.tools.*;
+import net.bexla.orevolution.content.data.powers.tools.hardcoded.NecromiumTools;
 import net.bexla.orevolution.content.data.utility.OrevolutionLists;
 import net.bexla.orevolution.content.data.utility.OrevolutionTags;
 import net.bexla.orevolution.content.types.ArmorPowerRegistry;
@@ -71,7 +75,7 @@ public class RegMisc {
         ArmorPowerRegistry.register(OrevolutionArmorTiers.PLATINUM,
                 new ArmorCauseEffectsOnAttacked("", "armor_wearer_on_attacked_wearer", Conditionals.always(), 100, 1, () -> MobEffects.DAMAGE_BOOST, null));
         ArmorPowerRegistry.register(ArmorMaterials.NETHERITE,
-                new ArmorCauseEffectsOnHit("netherite_armor", "", Conditionals.isCurrentHPPercentage(0.5f), 20, 0, () -> MobEffects.WITHER, null));
+                new ArmorCauseEffectsOnHit("netherite_armor", "", Conditionals.isCurrentHPPercentage(0.5f), 40, 0, () -> MobEffects.WITHER, null));
         ArmorPowerRegistry.register(OrevolutionArmorTiers.REINFORCED_NETHERITE,
                 new ArmorMultiPower(OrevolutionLists.REINFORCED_ARMOR_POWERS));
         ArmorPowerRegistry.register(OrevolutionArmorTiers.AETHERSTEEL,
@@ -92,6 +96,18 @@ public class RegMisc {
                 new ArmorGrantEffects("armor_immunity", Conditionals.always(), 20, 0, () -> MobEffects.HERO_OF_THE_VILLAGE));
         ArmorPowerRegistry.registerItem(RegItems.BRONZE_CROWN_LAPIS,
                 new ArmorGrantEffects("armor_grants", Conditionals.always(), 30, 0, () -> MobEffects.NIGHT_VISION));
+
+        if(ModCompat.isModLoaded(ModCompat.oreganized())) {
+            ArmorPowerRegistry.register(OArmorMaterials.ELECTRUM,
+                    new ArmorElectrum("electrum_armor")
+            );
+        }
+
+        if (ModCompat.isModLoaded(ModCompat.cac())) {
+            ArmorPowerRegistry.register(CCTiers.CCArmorMaterials.NECROMIUM,
+                    new ArmorNecromium("necromium_armor")
+            );
+        }
 
         LOGGER.debug("Registered all armor powers");
     }
@@ -131,7 +147,6 @@ public class RegMisc {
         );
 
         if(ModCompat.isModLoaded(ModCompat.oreganized())) {
-            // I've also removed the kinetic damage effect to all tools except the sword via tags.
             ToolPowerRegistry.registerTier(OItemTiers.ELECTRUM,
                     new ToolMultiPower(OrevolutionLists.ELECTRUM_POWERS),
                     new ToolMultiPower(OrevolutionLists.ELECTRUM_POWERS)
@@ -145,8 +160,8 @@ public class RegMisc {
                     new ToolCauseMultipleEffectsOnHit("undead_on_hit", "", Conditionals.isTargetMobType(MobType.UNDEAD), 160, 0, OrevolutionLists.PLATINUM_TOOL_EFFECTS, null)
             );
             ToolPowerRegistry.registerTier(CCTiers.CCItemTiers.NECROMIUM,
-                    new ToolChangeDamage("copper_duplication", Conditionals.always(), 2.0F),
-                    new ToolCauseEffectOnHit("on_hit_effect_chance", "", Conditionals.isTargetHPPercentage(0.25F), 140, 0, null, () -> MobEffects.REGENERATION)
+                    new NecromiumTools("necromium"),
+                    new ToolCauseEffectOnHit("", "on_hit_effect_chance", Conditionals.isTargetHPPercentage(0.25F), 140, 0, null, () -> MobEffects.REGENERATION)
             );
         }
 

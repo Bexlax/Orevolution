@@ -7,12 +7,12 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_tungsten_ingot": {
+    "has_tungsten_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "orevolution:tungsten_ingot"
+              "orevolution:tungsten_block"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_tungsten_ingot",
+      "has_tungsten_block",
       "has_the_recipe"
     ]
   ],

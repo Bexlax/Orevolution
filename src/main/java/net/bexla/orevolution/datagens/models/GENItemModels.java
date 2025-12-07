@@ -146,7 +146,11 @@ public class GENItemModels extends ItemModelProvider {
         armor(RegItems.BRONZE_CROWN_LAPIS);
         armor(RegItems.BRONZE_CROWN_REDSTONE);
 
-        // shieldItem(RegItems.TungstenShield);
+        shieldItem(RegItems.TIN_SHIELD, "small");
+        shieldItem(RegItems.PLATINUM_SHIELD, "medium");
+        shieldItem(RegItems.AETHERSTEEL_SHIELD, "big");
+        shieldItem(RegItems.LIVINGSTONE_SHIELD, "small");
+        shieldItem(RegItems.VERDITE_SHIELD, "medium");
 
         block(RegBlocks.TIN_ORE);
         block(RegBlocks.DEEPSLATE_TIN_ORE);
@@ -179,10 +183,13 @@ public class GENItemModels extends ItemModelProvider {
         block(RegBlocks.CUT_STEEL_BLOCK);
         block(RegBlocks.CRACKED_AETHERROCK_BRICKS);
         block(RegBlocks.STEEL_PILLAR);
+        block(RegBlocks.GOLD_PILLAR);
+        block(RegBlocks.PLATINUM_PILLAR);
         block(RegBlocks.CHISELED_TUNGSTEN_BRICKS);
         block(RegBlocks.CHISELED_TUNGSTEN_BLOCK);
         block(RegBlocks.TIN_TILES);
         block(RegBlocks.TIN_BRICKS);
+        block(RegBlocks.TUNGSTEN_BRICKS);
 
         wall(RegBlocks.POLISHED_AETHERROCK_WALL, RegBlocks.POLISHED_AETHERROCK);
         block(RegBlocks.POLISHED_AETHERROCK_SLAB);

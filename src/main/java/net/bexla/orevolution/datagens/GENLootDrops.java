@@ -92,6 +92,16 @@ public class GENLootDrops extends LootTableProvider {
             dropSelf(RegBlocks.POLISHED_AETHERROCK_WALL);
             slab(RegBlocks.POLISHED_AETHERROCK_SLAB);
             dropSelf(RegBlocks.PLATINUM_TILES);
+            dropSelf(RegBlocks.GOLD_TILES);
+            dropSelf(RegBlocks.PLATINUM_BARS);
+            dropSelf(RegBlocks.GOLD_BARS);
+            dropSelf(RegBlocks.TUNGSTEN_BARS);
+            dropSelf(RegBlocks.STEEL_BARS);
+            dropSelf(RegBlocks.TIN_BARS);
+            dropSelf(RegBlocks.BRONZE_BARS);
+            dropSelf(RegBlocks.TUNGSTEN_BRICKS);
+            dropSelf(RegBlocks.GOLD_PILLAR);
+            dropSelf(RegBlocks.PLATINUM_PILLAR);
             dropSelf(RegBlocks.CHISELED_TUNGSTEN_BLOCK);
             dropSelf(RegBlocks.CHISELED_TUNGSTEN_BRICKS);
             dropSelf(RegBlocks.TIN_TILES);

@@ -1,0 +1,39 @@
+{
+  "parent": "orevolution:story/obtain_platinum",
+  "criteria": {
+    "has_platinum_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orevolution:platinum_pickaxe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.orevolution.platinum_gear.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "orevolution:platinum_pickaxe",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.orevolution.platinum_gear.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_platinum_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

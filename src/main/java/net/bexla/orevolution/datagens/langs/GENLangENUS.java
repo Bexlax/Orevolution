@@ -77,6 +77,8 @@ public class GENLangENUS extends LangProvider {
         addTooltip("avoid_damage", "Has a chance to avoid durability damage on use");
 
         addTooltip("electrum", "Inflicts kinetic damage when attacking while moving. The more momentum you have, the more damage you'll deal");
+        addTooltip("necromium", "Mining speed increases depending on durability");
+        addTooltip("necromium_explanation", "Durability is treated as a percentage for mining speed \nThe lower it is, the higher mining speed you'll have");
 
         addTooltip("full_set_bonus", "Full set bonus:");
 
@@ -93,7 +95,18 @@ public class GENLangENUS extends LangProvider {
         addTooltip("netherite_armor", "When your health is below 50%, inflicts the following effect(s) on hit:");
         addTooltip("reinforced_netherite_armor", "While not submerged in lava, grants the following effect(s):");
 
-        addTooltip("grant_on_mine", "Each %s amount (increases for every stacked level) of blocks mined, grants and increases the following effect(s):");
+        addTooltip("electrum_armor", "After traveling a certain amount of blocks without receiving damage, grants:");
+        addTooltip("electrum_armor_explanation",
+                "Jumping or flying doesn't increase the traveled distance\n" +
+                "List of required distance:\n" +
+                        " - 50 blocks -> Speed I\n" +
+                        " - 90 blocks -> Speed II\n" +
+                        " - 160 blocks -> Speed III"
+        );
+
+        addTooltip("necromium_armor", "Allows you to come back from the death. \nEach time you die, a 5 minute cooldown is applied");
+
+        addTooltip("grant_on_mine", "Each %s amount of blocks mined, grants and increases the following effect(s):");
 
         addTooltip("multi_break", "Breaks blocks in a 3x3 area");
 
@@ -117,6 +130,7 @@ public class GENLangENUS extends LangProvider {
 
         addEffect(RegMobEffects.CRUSHED, "Crushed");
         addEffect(RegMobEffects.PETRIFIED, "Petrified");
+        addEffect(RegMobEffects.WEAK_SOUL, "Weakened Soul");
 
         addItem(RegItems.DEAD_SEED, "Dead Seed");
         addBlock(RegBlocks.VERDITE_CROP, "Verdite Crop");
@@ -124,6 +138,7 @@ public class GENLangENUS extends LangProvider {
         addItem(RegItems.PETRIFIED_SEED, "Petrified Seed");
         addBlock(RegBlocks.LIVINGSTONE_CROP, "Livingstone Crop");
 
+        addItem(RegItems.PLATINUM_SHIELD, "Platinum Shield");
         addItem(RegItemsFD.PLATINUM_KNIFE, "Platinum Knife");
         addItem(RegItems.PLATINUM_SWORD, "Platinum Sword");
         addItem(RegItems.PLATINUM_SHOVEL, "Platinum Shovel");
@@ -135,6 +150,7 @@ public class GENLangENUS extends LangProvider {
         addItem(RegItems.PLATINUM_LEGGINGS, "Platinum Leggings");
         addItem(RegItems.PLATINUM_BOOTS, "Platinum Boots");
 
+        addItem(RegItems.TIN_SHIELD, "Tin Shield");
         addItem(RegItemsFD.TIN_KNIFE, "Tin Knife");
         addItem(RegItems.TIN_SWORD, "Tin Sword");
         addItem(RegItems.TIN_SHOVEL, "Tin Shovel");
@@ -142,6 +158,7 @@ public class GENLangENUS extends LangProvider {
         addItem(RegItems.TIN_AXE, "Tin Axe");
         addItem(RegItems.TIN_HOE, "Tin Hoe");
 
+        addItem(RegItems.AETHERSTEEL_SHIELD, "Aethersteel Shield");
         addItem(RegItemsFD.AETHERSTEEL_KNIFE, "Aethersteel Knife");
         addItem(RegItems.AETHERSTEEL_SWORD, "Aethersteel Sword");
         addItem(RegItems.AETHERSTEEL_SHOVEL, "Aethersteel Shovel");
@@ -158,6 +175,7 @@ public class GENLangENUS extends LangProvider {
         addItem(RegItems.REINFORCED_NETHERITE_LEGGINGS, "Reinforced Netherite Leggings");
         addItem(RegItems.REINFORCED_NETHERITE_BOOTS, "Reinforced Netherite Boots");
 
+        addItem(RegItems.LIVINGSTONE_SHIELD, "Livingstone Shield");
         addItem(RegItemsFD.LIVINGSTONE_KNIFE, "Livingstone Knife");
         addItem(RegItems.LIVINGSTONE_SWORD, "Livingstone Sword");
         addItem(RegItems.LIVINGSTONE_SHOVEL, "Livingstone Shovel");
@@ -169,6 +187,7 @@ public class GENLangENUS extends LangProvider {
         addItem(RegItems.LIVINGSTONE_LEGGINGS, "Livingstone Leggings");
         addItem(RegItems.LIVINGSTONE_BOOTS, "Livingstone Boots");
 
+        addItem(RegItems.VERDITE_SHIELD, "Verdite Shield");
         addItem(RegItemsFD.VERDITE_KNIFE, "Verdite Knife");
         addItem(RegItems.VERDITE_SWORD, "Verdite Sword");
         addItem(RegItems.VERDITE_SHOVEL, "Verdite Shovel");
@@ -183,6 +202,12 @@ public class GENLangENUS extends LangProvider {
         addItem(RegItems.STEEL_DIGGER, "Steel Digger");
         addItem(RegItems.STEEL_HAMMER, "Steel Hammer");
         addItem(RegItems.STEEL_SCYTHE, "Steel Scythe");
+
+        addItem(RegItems.BRONZE_CROWN, "Bronze Crown");
+        addItem(RegItems.BRONZE_CROWN_DIAMOND, "Bronze Crown (Diamond)");
+        addItem(RegItems.BRONZE_CROWN_EMERALD, "Bronze Crown (Emerald)");
+        addItem(RegItems.BRONZE_CROWN_LAPIS, "Bronze Crown (Lapis)");
+        addItem(RegItems.BRONZE_CROWN_REDSTONE, "Bronze Crown (Redstone)");
 
         addItem(RegItems.TIN_INGOT, "Tin Ingot");
         addItem(RegItems.RAW_TIN, "Raw Tin");
@@ -245,6 +270,19 @@ public class GENLangENUS extends LangProvider {
         addBlock(RegBlocks.STEEL_DOOR, "Steel Door");
         addBlock(RegBlocks.CHISELED_TUNGSTEN_BLOCK, "Chiseled Tungsten Block");
         addBlock(RegBlocks.CHISELED_TUNGSTEN_BRICKS, "Chiseled Tungsten Bricks");
+        addBlock(RegBlocks.TUNGSTEN_BRICKS, "Tungsten Bricks");
+        addBlock(RegBlocks.TIN_BRICKS, "Tin Bricks");
+
+        addBlock(RegBlocks.TIN_TILES, "Tin Tiles");
+        addBlock(RegBlocks.PLATINUM_TILES, "Platinum Tiles");
+        addBlock(RegBlocks.GOLD_TILES, "Gold Tiles");
+        addBlock(RegBlocks.PLATINUM_PILLAR, "Platinum Pillar");
+        addBlock(RegBlocks.GOLD_PILLAR, "Gold Pillar");
+        addBlock(RegBlocks.BRONZE_BARS, "Bronze Bars");
+        addBlock(RegBlocks.GOLD_BARS, "Gold Bars");
+        addBlock(RegBlocks.TUNGSTEN_BARS, "Tungsten Bars");
+        addBlock(RegBlocks.TIN_BARS, "Tin Bars");
+        addBlock(RegBlocks.PLATINUM_BARS, "Platinum Bars");
 
         addBlock(RegBlocks.POLISHED_AETHERROCK_WALL, "Polished Aetherrock Wall");
         addBlock(RegBlocks.POLISHED_AETHERROCK_STAIR, "Polished Aetherrock Stair");

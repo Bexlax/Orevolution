@@ -38,6 +38,8 @@ public class ToolAddEffectPerBlockAmount extends OrevolutionToolPower {
         List<Component> tips = new ArrayList<>();
         tips.add(Component.translatable("tooltip.orevolution." + getTooltipID(), minimalBlocks).withStyle(ChatFormatting.GREEN));
         tips.add(Component.literal(" - " + effect.get().getDisplayName().getString()).withStyle(ChatFormatting.AQUA));
+
+
         return tips;
     }
 
@@ -54,11 +56,10 @@ public class ToolAddEffectPerBlockAmount extends OrevolutionToolPower {
             int effectsStacked = currentEffect != null? currentEffect.getAmplifier() : 0;
 
             blocksMined++;
-            if (blocksMined >= minimalBlocks + effectsStacked) {
+            if (blocksMined >= minimalBlocks) {
                 if (effectsStacked < maxStacks) {
-                    int newDuration = effectTime * effectsStacked;
                     player.removeEffect(eff);
-                    player.addEffect(new MobEffectInstance(eff, newDuration, effectsStacked, false, true));
+                    player.addEffect(new MobEffectInstance(eff, effectTime, effectsStacked, false, true));
                 }
                 blocksMined = 0;
             }

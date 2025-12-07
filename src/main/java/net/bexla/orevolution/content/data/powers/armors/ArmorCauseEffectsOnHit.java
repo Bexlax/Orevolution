@@ -15,7 +15,10 @@ public class ArmorCauseEffectsOnHit extends ArmorPowerMobEffects {
     }
 
     public ArmorCauseEffectsOnHit(String tooltip_target_id, String tooltip_wearer_id, Conditional conditional, int duration, int amplifier, Supplier<MobEffect> effectTarget, Supplier<MobEffect> effectWearer) {
-        super(tooltip_target_id, tooltip_wearer_id, conditional, duration, amplifier, effectTarget != null ? List.of(effectTarget) : List.of(), effectWearer != null ? List.of(effectWearer) : List.of());
+        super(tooltip_target_id, tooltip_wearer_id, conditional, duration, amplifier,
+                effectTarget != null ? List.of(effectTarget) : List.of(),
+                effectWearer != null ? List.of(effectWearer) : List.of()
+        );
     }
 
     @Override

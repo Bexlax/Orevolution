@@ -1,0 +1,49 @@
+{
+  "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "shieldexp"
+    }
+  ],
+  "criteria": {
+    "has_aethersteel_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orevolution:aethersteel_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "orevolution:aethersteel_shield"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "shieldexp"
+      ]
+    }
+  ],
+  "requirements": [
+    [
+      "has_aethersteel_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "orevolution:aethersteel_shield"
+    ]
+  },
+  "sends_telemetry_event": false
+}

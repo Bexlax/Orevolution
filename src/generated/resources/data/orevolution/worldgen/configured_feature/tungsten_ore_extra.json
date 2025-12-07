@@ -2,7 +2,7 @@
   "type": "orevolution:tungsten_ore_feature",
   "config": {
     "discard_chance_on_air_exposure": 0.6,
-    "size": 10,
+    "size": 13,
     "targets": [
       {
         "state": {

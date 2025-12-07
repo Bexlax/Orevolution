@@ -2,6 +2,7 @@ package net.bexla.orevolution.content.types.providers;
 
 import com.teamabnormals.blueprint.core.data.client.BlueprintItemModelProvider;
 import net.bexla.orevolution.Orevolution;
+import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -71,16 +72,16 @@ public abstract class ItemModelProvider extends BlueprintItemModelProvider {
                 .texture("layer0", itemTex(item.get(), "tool"));
     }
 
-    /*public ItemModelBuilder shieldItem(Supplier<? extends Item> item) {
-        var texture = itemTexture(item.get());
+    public ItemModelBuilder shieldItem(Supplier<? extends Item> item, String type) {
+        var texture = itemTex(item.get(), "compat/shieldexp");
         var name = name(item.get());
 
-        var blockingModel = withExistingParent(name + "_blocking", new ResourceLocation(SHIELD_EXPANSION_ID, "item/netherite_shield_blocking"))
+        var blockingModel = withExistingParent(name + "_blocking", modLoc("item/" + type + "_shield_blocking"))
                 .guiLight(BlockModel.GuiLight.FRONT)
                 .texture("1", texture)
                 .texture("particle", texture);
 
-        return withExistingParent(name, new ResourceLocation(SHIELD_EXPANSION_ID, "item/netherite_shield"))
+        return withExistingParent(name, modLoc("item/" + type + "_shield"))
                 .guiLight(BlockModel.GuiLight.FRONT)
                 .texture("1", texture)
                 .texture("particle", texture)
@@ -88,7 +89,7 @@ public abstract class ItemModelProvider extends BlueprintItemModelProvider {
                 .predicate(new ResourceLocation("blocking"), 1.0F)
                 .model(blockingModel)
                 .end();
-    }*/
+    }
 
     public ItemModelBuilder wall(Supplier<? extends Block> wall, Supplier<? extends Block> fullBlock) {
         return wallInventory(ForgeRegistries.BLOCKS.getKey(wall.get()).getPath(), key(fullBlock.get()).withPrefix("block/decorative/"));

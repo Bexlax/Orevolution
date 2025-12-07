@@ -7,11 +7,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
@@ -39,6 +39,23 @@ public abstract class BlockStateModelProvider extends BlueprintBlockStateProvide
     public ModelFile cubeAll(Block block, String subfolder) {
         return this.models().cubeAll(name(block), this.blockTexture(block, subfolder));
     }
+
+    public void barsBlock(RegistryObject<Block> bars) {
+        this.ironBarsBlock(bars.get(), this.blockTexture(bars.get(), "decorative/bar"));
+        this.generatedItem(bars.get(), "block/decorative/bar");
+    }
+
+    public void ironBarsBlock(Block block, ResourceLocation texture) {
+        String name = name(block);
+        ModelFile post = this.ironBarsBlock(name, "post", texture).texture("bars", texture).renderType("cutout");
+        ModelFile postEnds = this.ironBarsBlock(name, "post_ends", texture).texture("edge", texture).renderType("cutout");
+        ModelFile side = (this.ironBarsBlock(name, "side", texture).texture("bars", texture)).texture("edge", texture).renderType("cutout");
+        ModelFile sideAlt = (this.ironBarsBlock(name, "side_alt", texture).texture("bars", texture)).texture("edge", texture).renderType("cutout");
+        ModelFile cap = (this.ironBarsBlock(name, "cap", texture).texture("bars", texture)).texture("edge", texture).renderType("cutout");
+        ModelFile capAlt = (this.ironBarsBlock(name, "cap_alt", texture).texture("bars", texture)).texture("edge", texture).renderType("cutout");
+        this.paneBlock(block, post, postEnds, side, sideAlt, cap, capAlt);
+    }
+
 
     public void doorBlock(Supplier<? extends Block> door) {
         Block block = door.get();
@@ -85,13 +102,13 @@ public abstract class BlockStateModelProvider extends BlueprintBlockStateProvide
         }
     }
 
-    public ModelFile cubeBottomTop(Supplier<? extends Block> block, String subfolder) {
-        BlockModelBuilder model = models().getBuilder(name(block));
-        model.parent(models().getExistingFile(new ResourceLocation("minecraft", "block" + "/cube_bottom_top")));
-        model.texture("top", suffix(this.blockTexture(block.get(), subfolder), "_top"));
-        model.texture("bottom", suffix(this.blockTexture(block.get(), subfolder), "_top"));
-        model.texture("side", suffix(this.blockTexture(block.get(), subfolder), "_side"));
-        return model;
+    public void pillar(RegistryObject<Block> block) {
+        if (block.get() instanceof RotatedPillarBlock log)
+            this.axisBlock(log, suffix(this.blockTexture(block.get(), "decorative"), "_side"), suffix(this.blockTexture(block.get(), "decorative"), "_top"));
+    }
+
+    public void cubeColumnBlock(RegistryObject<Block> block, RegistryObject<Block> topCopy) {
+        this.cubeColumnBlock(block, this.blockTexture(block.get(), "decorative"), this.blockTexture(topCopy.get(), "decorative"));
     }
 
     public void makeCrop(OreCropBlock block, String modelName, String textureName) {

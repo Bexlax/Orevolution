@@ -49,9 +49,9 @@ public class ArmorMultiPower extends OrevolutionArmorPower {
     }
 
     @Override
-    public boolean onDeath(LivingEntity wearer, LivingEntity killer) {
+    public boolean onDeath(LivingEntity wearer, DamageSource source) {
         for(OrevolutionArmorPower p : this.powers) {
-            return p.onDeath(wearer, killer);
+            return p.onDeath(wearer, source);
         }
         return false;
     }

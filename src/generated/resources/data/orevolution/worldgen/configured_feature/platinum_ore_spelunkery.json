@@ -24,7 +24,7 @@
       },
       {
         "state": {
-          "Name": "orevolution:platinum_ore_granite"
+          "Name": "orevolution:platinum_ore_diorite"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -33,7 +33,7 @@
       },
       {
         "state": {
-          "Name": "orevolution:platinum_ore_diorite"
+          "Name": "orevolution:platinum_ore_granite"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

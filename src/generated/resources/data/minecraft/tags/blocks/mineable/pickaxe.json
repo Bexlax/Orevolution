@@ -35,6 +35,17 @@
     "orevolution:polished_aetherrock_slab",
     "orevolution:verdite_crop",
     "orevolution:livingstone_crop",
+    "orevolution:platinum_pillar",
+    "orevolution:platinum_bars",
+    "orevolution:platinum_tiles",
+    "orevolution:gold_bars",
+    "orevolution:gold_tiles",
+    "orevolution:gold_pillar",
+    "orevolution:tungsten_bars",
+    "orevolution:steel_bars",
+    "orevolution:tin_bars",
+    "orevolution:bronze_bars",
+    "orevolution:tungsten_bricks",
     {
       "id": "#orevolution:spelunkery/ores",
       "required": false

@@ -67,6 +67,7 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         storage(RegBlocks.RAW_PLATINUM_BLOCK);
         storage(RegBlocks.RAW_TUNGSTEN_BLOCK);
 
+        decorative(RegBlocks.TUNGSTEN_BRICKS);
         decorative(RegBlocks.AETHERROCK);
         decorative(RegBlocks.POLISHED_AETHERROCK);
         decorative(RegBlocks.AETHERROCK_BRICKS);
@@ -76,12 +77,21 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         decorative(RegBlocks.CUT_STEEL_BLOCK);
         decorative(RegBlocks.CUT_TUNGSTEN_BLOCK);
         decorative(RegBlocks.CRACKED_AETHERROCK_BRICKS);
-        cubeBottomTop(RegBlocks.STEEL_PILLAR, "decorative");
+        pillar(RegBlocks.STEEL_PILLAR);
         decorative(RegBlocks.PLATINUM_TILES);
-        decorative(RegBlocks.CHISELED_TUNGSTEN_BLOCK);
-        decorative(RegBlocks.CHISELED_TUNGSTEN_BRICKS);
+        cubeColumnBlock(RegBlocks.CHISELED_TUNGSTEN_BLOCK, RegBlocks.POLISHED_TUNGSTEN);
+        cubeColumnBlock(RegBlocks.CHISELED_TUNGSTEN_BRICKS, RegBlocks.TUNGSTEN_BRICKS);
         decorative(RegBlocks.TIN_TILES);
         decorative(RegBlocks.TIN_BRICKS);
+        pillar(RegBlocks.PLATINUM_PILLAR);
+        pillar(RegBlocks.GOLD_PILLAR);
+
+        barsBlock(RegBlocks.GOLD_BARS);
+        barsBlock(RegBlocks.PLATINUM_BARS);
+        barsBlock(RegBlocks.TUNGSTEN_BARS);
+        barsBlock(RegBlocks.BRONZE_BARS);
+        barsBlock(RegBlocks.TIN_BARS);
+        barsBlock(RegBlocks.STEEL_BARS);
 
         stairsBlock(RegBlocks.POLISHED_AETHERROCK_STAIR, RegBlocks.POLISHED_AETHERROCK);
         slabBlock(RegBlocks.POLISHED_AETHERROCK_SLAB, RegBlocks.POLISHED_AETHERROCK);

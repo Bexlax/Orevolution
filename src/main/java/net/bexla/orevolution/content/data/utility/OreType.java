@@ -22,6 +22,9 @@ public enum OreType {
             new TagMatchTest(OrevolutionTags.Blocks.andesites),
             new TagMatchTest(OrevolutionTags.Blocks.diorites),
             new TagMatchTest(OrevolutionTags.Blocks.granites)
+    )),
+    NETHER_SPELUNKERY(List.of(
+            new TagMatchTest(OrevolutionTags.Blocks.blackstones)
     ));
 
     private final List<TagMatchTest> targets;

@@ -49,6 +49,7 @@ public class GENBlockTags extends IntrinsicHolderTagsProvider<Block> {
         tag(OrevolutionTags.Blocks.andesites).add(Blocks.ANDESITE);
         tag(OrevolutionTags.Blocks.diorites).add(Blocks.DIORITE);
         tag(OrevolutionTags.Blocks.granites).add(Blocks.GRANITE);
+        tag(OrevolutionTags.Blocks.blackstones).add(Blocks.BLACKSTONE);
 
         tag(BlockTags.NEEDS_STONE_TOOL).add(RegBlocks.TIN_ORE.get()).add(RegBlocks.DEEPSLATE_TIN_ORE.get()).add(RegBlocks.LIVINGSTONE_CROP.get())
                 .add(RegBlocks.AETHERROCK.get()).add(RegBlocks.POLISHED_AETHERROCK.get()).add(RegBlocks.AETHERROCK_BRICKS.get())
@@ -82,22 +83,32 @@ public class GENBlockTags extends IntrinsicHolderTagsProvider<Block> {
                 .add(RegBlocks.AETHERROCK_BRICKS.get()).add(RegBlocks.CRACKED_AETHERROCK_BRICKS.get()).add(RegBlocks.AETHERROCK_TILES.get()).add(RegBlocks.BRONZE_TILES.get())
                 .add(RegBlocks.CUT_TUNGSTEN_BLOCK.get()).add(RegBlocks.CUT_STEEL_BLOCK.get()).add(RegBlocks.STEEL_PILLAR.get()).add(RegBlocks.POLISHED_AETHERROCK_STAIR.get())
                 .add(RegBlocks.POLISHED_AETHERROCK_WALL.get()).add(RegBlocks.POLISHED_AETHERROCK_SLAB.get()).add(RegBlocks.VERDITE_CROP.get()).add(RegBlocks.LIVINGSTONE_CROP.get())
-                .addOptionalTag(modLocat("spelunkery/ores"));
+                .add(RegBlocks.PLATINUM_PILLAR.get()).add(RegBlocks.PLATINUM_BARS.get()).add(RegBlocks.PLATINUM_TILES.get()).add(RegBlocks.GOLD_BARS.get()).add(RegBlocks.GOLD_TILES.get())
+                .add(RegBlocks.GOLD_PILLAR.get()).add(RegBlocks.TUNGSTEN_BARS.get()).add(RegBlocks.STEEL_BARS.get()).add(RegBlocks.TIN_BARS.get()).add(RegBlocks.BRONZE_BARS.get())
+                .add(RegBlocks.TUNGSTEN_BRICKS.get()).addOptionalTag(modLocat("spelunkery/ores"));
 
         tag(OrevolutionTags.Blocks.uncommonDuplicateChance).addTags(
                 BlockTags.NEEDS_STONE_TOOL,
                 BlockTags.NEEDS_IRON_TOOL,
+                Tags.Blocks.GRAVEL
+        ).add(Blocks.CRAFTING_TABLE).add(Blocks.FURNACE).add(Blocks.SMITHING_TABLE).add(Blocks.BLAST_FURNACE).add(Blocks.SMOKER)
+                .add(Blocks.STONECUTTER).add(Blocks.BOOKSHELF);
+        tag(OrevolutionTags.Blocks.rareDuplicateChance).addTags(
+                Tags.Blocks.STORAGE_BLOCKS,
                 BlockTags.ANVIL,
-                Tags.Blocks.GRAVEL);
-        tag(OrevolutionTags.Blocks.rareDuplicateChance)
-                .addTag(Tags.Blocks.STORAGE_BLOCKS);
+                BlockTags.CROPS
+        ).add(Blocks.ENCHANTING_TABLE).add(Blocks.ENDER_CHEST);
         tag(OrevolutionTags.Blocks.alwaysDuplicateChance).addTags(
                 Tags.Blocks.OBSIDIAN,
                 OrevolutionTags.Blocks.tuffs,
                 OrevolutionTags.Blocks.andesites,
                 OrevolutionTags.Blocks.diorites,
                 OrevolutionTags.Blocks.granites,
+                OrevolutionTags.Blocks.blackstones,
                 BlockTags.LEAVES
+        );
+        tag(OrevolutionTags.Blocks.neverDuplicateChance).addTags(
+                Tags.Blocks.CHESTS
         );
 
         tag(OrevolutionTags.Blocks.woodExceptions).addTag(OrevolutionTags.Blocks.stoneExceptions);

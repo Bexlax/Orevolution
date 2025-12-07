@@ -2,7 +2,13 @@
   "values": [
     "#minecraft:needs_stone_tool",
     "#minecraft:needs_iron_tool",
-    "#minecraft:anvil",
-    "#forge:gravel"
+    "#forge:gravel",
+    "minecraft:crafting_table",
+    "minecraft:furnace",
+    "minecraft:smithing_table",
+    "minecraft:blast_furnace",
+    "minecraft:smoker",
+    "minecraft:stonecutter",
+    "minecraft:bookshelf"
   ]
 }

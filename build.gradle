@@ -15,7 +15,7 @@ version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = "$mod_id-$minecraft_version-$mod_version"
+    archivesName = "$mod_id-$minecraft_version"
 }
 
 mixin {
@@ -82,6 +82,13 @@ repositories {
     }
 
     maven {
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup("curse.maven")
+        }
+    }
+
+    maven {
         url = uri("https://registry.somethingcatchy.net/repository/maven-releases/")
         content {
             includeGroup("com.possible-triangle")
@@ -100,8 +107,8 @@ dependencies {
 
     implementation fg.deobf("maven.modrinth:blueprint:${blueprint_ver}")
 
-    compileOnly fg.deobf("maven.modrinth:oreganized:${oreganized_ver}")
-    compileOnly fg.deobf("maven.modrinth:caverns-and-chasms:${cac_ver}")
+    implementation fg.deobf("maven.modrinth:oreganized:${oreganized_ver}")
+    implementation fg.deobf("maven.modrinth:caverns-and-chasms:${cac_ver}")
     implementation fg.deobf("maven.modrinth:farmers-delight:${farmersdelight_ver}")
     implementation fg.deobf("maven.modrinth:spelunkery:${spelunkery_ver}")
     implementation fg.deobf("maven.modrinth:moonlight:1.20-2.16.15-forge")
@@ -110,7 +117,7 @@ dependencies {
     implementation fg.deobf("com.possible-triangle:multikulti-datagen-forge:1.20.1-1.0.4")
     implementation fg.deobf("com.possible-triangle:multikulti-datagen-forge-fix:1.20.1-1.0.4")
 
-    // runtimeOnly fg.deobf("maven.modrinth:shield-expansion:${shieldex_ver}")
+    implementation fg.deobf("curse.maven:shield-expansion-583318:6049267")
     runtimeOnly fg.deobf("maven.modrinth:embeddium:${embeddium_ver}")
 
     runtimeOnly fg.deobf("maven.modrinth:emi:${emi_ver}")
@@ -125,7 +132,7 @@ tasks.named('processResources', ProcessResources).configure {
             forge_version: forge_version, forge_version_range: forge_version_range,
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-            mod_authors: mod_authors, mod_description: mod_description,
+            mod_authors: mod_authors,
     ]
     inputs.properties replaceProperties
 

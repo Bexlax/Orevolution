@@ -77,36 +77,36 @@ public class GenFeatures {
         public static final List<Block> TIN_ORES = List.of(RegBlocks.TIN_ORE.get(), RegBlocks.DEEPSLATE_TIN_ORE.get());
         public static final List<Block> PLATINUM_ORES = List.of(RegBlocks.PLATINUM_ORE.get(), RegBlocks.DEEPSLATE_PLATINUM_ORE.get());
 
-        public static final List<Block> TIN_ORES_SK = List.of(RegBlocksSK.TIN_ORE_TUFF.get(), RegBlocksSK.TIN_ORE_ANDESITE.get(), RegBlocksSK.TIN_ORE_GRANITE.get(), RegBlocksSK.TIN_ORE_DIORITE.get());
-        public static final List<Block> PLATINUM_ORES_SK = List.of(RegBlocksSK.PLATINUM_ORE_TUFF.get(), RegBlocksSK.PLATINUM_ORE_ANDESITE.get(), RegBlocksSK.PLATINUM_ORE_GRANITE.get(), RegBlocksSK.PLATINUM_ORE_DIORITE.get());
+        public static final List<Block> TIN_ORES_SK = List.of(RegBlocksSK.TIN_ORE_TUFF.get(), RegBlocksSK.TIN_ORE_ANDESITE.get(), RegBlocksSK.TIN_ORE_DIORITE.get(), RegBlocksSK.TIN_ORE_GRANITE.get());
+        public static final List<Block> PLATINUM_ORES_SK = List.of(RegBlocksSK.PLATINUM_ORE_TUFF.get(), RegBlocksSK.PLATINUM_ORE_ANDESITE.get(), RegBlocksSK.PLATINUM_ORE_DIORITE.get(), RegBlocksSK.PLATINUM_ORE_GRANITE.get());
 
         public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> ctx) {
             registerOre(ctx, "tin_ore", TIN_ORE, OreType.OVERWORLD, TIN_ORES,
                     13, 0F);
             registerOre(ctx, "tin_ore_extra", TIN_ORE, OreType.OVERWORLD, TIN_ORES,
-                    12, 0F);
+                    22, 0F);
 
             registerOre(ctx, "platinum_ore", PLATINUM_ORE, OreType.OVERWORLD, PLATINUM_ORES,
-                    8, 0.2F);
+                    8, 0.1F);
             registerOre(ctx, "platinum_ore_extra", PLATINUM_ORE, OreType.OVERWORLD, PLATINUM_ORES,
-                    7, 0.3F);
+                    13, 0.2F);
 
             registerOre(ctx, "tungsten_ore", TUNGSTEN_ORE, OreType.NETHER, List.of(RegBlocks.NETHER_TUNGSTEN_ORE.get()),
                     8, 0.4F);
             registerOre(ctx, "tungsten_ore_extra", TUNGSTEN_ORE, OreType.NETHER, List.of(RegBlocks.NETHER_TUNGSTEN_ORE.get()),
-                    10, 0.6F);
+                    13, 0.6F);
 
             registerOre(ctx, "nether_experience_ore", EXPERIENCE_ORE, OreType.NETHER, List.of(RegBlocks.NETHER_XP_ORE.get()),
-                    8, 0.7F);
+                    6, 0.7F);
             registerOre(ctx, "end_experience_ore", EXPERIENCE_ORE, OreType.END, List.of(RegBlocks.END_XP_ORE.get()),
-                    6, 0.75F);
+                    9, 0.75F);
 
             registerOre(ctx, "tin_ore_spelunkery", TIN_ORE_SK, OreType.OVERWORLD_SPELUNKERY, TIN_ORES_SK,
                     13, 0F);
             registerOre(ctx, "platinum_ore_spelunkery", PLATINUM_ORE_SK, OreType.OVERWORLD_SPELUNKERY, PLATINUM_ORES_SK,
                     8, 0.2F);
-            registerOre(ctx, "tungsten_ore_spelunkery", TUNGSTEN_ORE_SK, OreType.NETHER, List.of(RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE.get()),
-                    4, 0.95F);
+            registerOre(ctx, "tungsten_ore_spelunkery", TUNGSTEN_ORE_SK, OreType.NETHER_SPELUNKERY, List.of(RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE.get()),
+                    8, 0.95F);
 
             ctx.register(Configured.create("meteorite_high"),
                     new ConfiguredFeature<>(METEORITE.get(), NoneFeatureConfiguration.INSTANCE));
@@ -138,11 +138,11 @@ public class GenFeatures {
         public static void bootstrap(BootstapContext<PlacedFeature> ctx) {
             var features = ctx.lookup(Registries.CONFIGURED_FEATURE);
 
-            registerOrePlacement(ctx, features, "tin_ore", 10, 0, 110);
-            registerOrePlacement(ctx, features, "tin_ore_extra", 10, 60, 320);
+            registerOrePlacement(ctx, features, "tin_ore", 16, 0, 115);
+            registerOrePlacement(ctx, features, "tin_ore_extra", 16, 30, 152);
 
-            registerOrePlacement(ctx, features, "platinum_ore", 7, -60, 53);
-            registerOrePlacement(ctx, features, "platinum_ore_extra", 7, -60, 53);
+            registerOrePlacement(ctx, features, "platinum_ore", 7, -20, 53);
+            registerOrePlacement(ctx, features, "platinum_ore_extra", 7, -40, 40);
 
             registerOrePlacement(ctx, features, "nether_experience_ore", 7, -40, 40);
             registerOrePlacement(ctx, features, "end_experience_ore", 9, -40, 60);
@@ -164,7 +164,7 @@ public class GenFeatures {
                     new PlacedFeature(
                             features.getOrThrow(Configured.ALL.get(name)),
                             rareOrePlacement(rarity,
-                                    HeightRangePlacement.uniform(VerticalAnchor.absolute(minY), VerticalAnchor.top()))
+                                    HeightRangePlacement.triangle(VerticalAnchor.absolute(minY), VerticalAnchor.top()))
                     )
             );
         }
@@ -175,7 +175,7 @@ public class GenFeatures {
                     new PlacedFeature(
                             features.getOrThrow(Configured.ALL.get(name)),
                             rareOrePlacement(rarity,
-                                    HeightRangePlacement.uniform(VerticalAnchor.absolute(minY), VerticalAnchor.absolute(maxY)))
+                                    HeightRangePlacement.triangle(VerticalAnchor.absolute(minY), VerticalAnchor.absolute(maxY)))
                     )
             );
         }
@@ -186,7 +186,7 @@ public class GenFeatures {
                     new PlacedFeature(
                             features.getOrThrow(Configured.ALL.get(name)),
                             commonOrePlacement(count,
-                                    HeightRangePlacement.uniform(VerticalAnchor.absolute(minY), VerticalAnchor.absolute(maxY)))
+                                    HeightRangePlacement.triangle(VerticalAnchor.absolute(minY), VerticalAnchor.absolute(maxY)))
                     )
             );
         }
@@ -197,7 +197,7 @@ public class GenFeatures {
                     new PlacedFeature(
                             features.getOrThrow(Configured.ALL.get(name)),
                             rareOrePlacement(count,
-                                    HeightRangePlacement.uniform(VerticalAnchor.absolute(minY), VerticalAnchor.absolute(maxY)))
+                                    HeightRangePlacement.triangle(VerticalAnchor.absolute(minY), VerticalAnchor.absolute(maxY)))
                     )
             );
         }

@@ -7,7 +7,6 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public class ArmorPowerMobEffects extends OrevolutionArmorPower {
     protected final int amplifier;
     protected final String tooltip_wearer_id;
 
-    public ArmorPowerMobEffects(String tooltip_target_id, String tooltip_wearer_id, @NotNull Conditional conditional, int duration, int amplifier, @Nullable List<Supplier<MobEffect>> effectsMob, @Nullable List<Supplier<MobEffect>> effectsPlayer) {
+    public ArmorPowerMobEffects(String tooltip_target_id, String tooltip_wearer_id, @NotNull Conditional conditional, int duration, int amplifier, @NotNull List<Supplier<MobEffect>> effectsMob, @NotNull List<Supplier<MobEffect>> effectsPlayer) {
         super(tooltip_target_id, conditional);
         this.effectsMob = effectsMob;
         this.effectsPlayer = effectsPlayer;
@@ -32,14 +31,14 @@ public class ArmorPowerMobEffects extends OrevolutionArmorPower {
     @Override
     public List<Component> appendTooltip(ItemStack stack, Level level, List<Component> lines) {
         List<Component> tips = new ArrayList<>();
-        if(this.effectsMob != null) {
+        if(!this.effectsMob.isEmpty()) {
             tips.add(Component.translatable("tooltip.orevolution." + getTooltipID()).withStyle(ChatFormatting.GREEN));
             for (Supplier<MobEffect> p : this.effectsMob) {
                 tips.add(Component.literal(" - " + p.get().getDisplayName().getString() + (this.amplifier > 0 ? " " + Component.translatable("potion.potency." + this.amplifier).getString() : "")).withStyle(ChatFormatting.AQUA));
             }
             tips.add(Component.empty());
         }
-        if(this.effectsPlayer != null) {
+        if(!this.effectsPlayer.isEmpty()) {
             tips.add(Component.translatable("tooltip.orevolution." + tooltip_wearer_id).withStyle(ChatFormatting.GREEN));
             for (Supplier<MobEffect> p : this.effectsPlayer) {
                 tips.add(Component.literal(" - " + p.get().getDisplayName().getString() + (this.amplifier > 0 ? " " + Component.translatable("potion.potency." + this.amplifier).getString() : "")).withStyle(ChatFormatting.AQUA));

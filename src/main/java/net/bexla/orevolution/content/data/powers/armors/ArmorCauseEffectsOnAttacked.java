@@ -16,16 +16,23 @@ public class ArmorCauseEffectsOnAttacked extends ArmorPowerMobEffects {
     }
 
     public ArmorCauseEffectsOnAttacked(String tooltip_target_id, String tooltip_wearer_id, Conditional conditional, int duration, int amplifier, Supplier<MobEffect> effectWearer, Supplier<MobEffect> effectAttacker) {
-        super(tooltip_target_id, tooltip_wearer_id, conditional, duration, amplifier, effectAttacker != null? List.of(effectAttacker) : null, effectWearer != null? List.of(effectWearer) : null);
+        super(tooltip_target_id, tooltip_wearer_id, conditional, duration, amplifier,
+                effectAttacker != null? List.of(effectAttacker) : List.of(),
+                effectWearer != null? List.of(effectWearer) : List.of()
+        );
     }
 
     @Override
     public void onAttacked(LivingEntity wearer, DamageSource source, float amount) {
-        LivingEntity attacker = (LivingEntity)source.getEntity();
+        LivingEntity attacker = null;
+
+        if(source.getEntity() instanceof LivingEntity)
+            attacker = (LivingEntity)source.getEntity();
+
 
         if(!getCBoolean(null, wearer.level(), wearer, attacker)) return;
 
-        if(this.effectsPlayer != null) {
+        if(!this.effectsPlayer.isEmpty()) {
             for(Supplier<MobEffect> p : this.effectsPlayer) {
                 MobEffectInstance instance = wearer.getEffect(p.get());
 
@@ -40,7 +47,7 @@ public class ArmorCauseEffectsOnAttacked extends ArmorPowerMobEffects {
 
         if(attacker == null) return;
 
-        if(this.effectsMob != null) {
+        if(!this.effectsMob.isEmpty()) {
             for(Supplier<MobEffect> p : this.effectsMob) {
                 MobEffectInstance instance = attacker.getEffect(p.get());
                 if(attacker.hasEffect(p.get()) && instance != null) {

@@ -54,6 +54,14 @@ public abstract class RecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(blockIn.get()), has(blockIn.get()));
     }
 
+    public ShapedRecipeBuilder makeBarsItem(Supplier<? extends Block> barsOut, Supplier<? extends Item> itemIn) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, barsOut.get(), 16)
+                .pattern("AAA")
+                .pattern("AAA")
+                .define('A', itemIn.get())
+                .unlockedBy(getHasName(itemIn.get()), has(itemIn.get()));
+    }
+
     public ShapedRecipeBuilder makeBars(Supplier<? extends Block> barsOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, barsOut.get(), 16)
                 .pattern("AAA")
@@ -74,7 +82,15 @@ public abstract class RecipesProvider extends RecipeProvider {
                 .unlockedBy(getHasName(blockIn.get()), has(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeChiseled(Supplier<? extends Block> blockOut, Supplier<? extends Item> slabIn) {
+    public ShapedRecipeBuilder quadTransformItem(Supplier<? extends Block> blockOut, Supplier<? extends Item> blockIn, int amount) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockOut.get(), amount)
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', blockIn.get())
+                .unlockedBy(getHasName(blockIn.get()), has(blockIn.get()));
+    }
+
+    public ShapedRecipeBuilder makeChiseled(Supplier<? extends Block> blockOut, Supplier<? extends Block> slabIn) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockOut.get())
                 .pattern("A")
                 .pattern("A")
@@ -170,13 +186,24 @@ public abstract class RecipesProvider extends RecipeProvider {
         return smithingRecipe(input, () -> Items.IRON_INGOT, RegItems.BASIC_TEMPLATE, result);
     }
 
-    public void toolSet(String id, Item sword, Item pickaxe, Item axe, Item shovel, Item hoe, Item knife, TagKey<Item> ingredient, Consumer<FinishedRecipe> consumer) {
+    public void toolSet(String id, Item sword, Item pickaxe, Item axe, Item shovel, Item hoe, Item knife, Item shield, TagKey<Item> ingredient, Consumer<FinishedRecipe> consumer) {
         hoe(id, hoe, ingredient).save(consumer);
         shovel(id, shovel, ingredient).save(consumer);
         axe(id, axe, ingredient).save(consumer);
         pickaxe(id, pickaxe, ingredient).save(consumer);
         sword(id, sword, ingredient).save(consumer);
         whenLoaded(knife(id, knife, ingredient), ModCompat.farmersdelight()).save(consumer);
+        whenLoaded(shield(id, shield, ingredient), ModCompat.shieldexp()).save(consumer);
+    }
+
+    public ShapedRecipeBuilder shield(String id, Item itemOut, TagKey<Item> itemIn) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, itemOut)
+                .pattern("AAA")
+                .pattern("ASA")
+                .pattern("AAA")
+                .define('A', itemIn)
+                .define('S', Items.STICK)
+                .unlockedBy("has_" + id, has(itemIn));
     }
 
     public ShapedRecipeBuilder knife(String id, Item itemOut, TagKey<Item> itemIn) {
@@ -409,8 +436,8 @@ public abstract class RecipesProvider extends RecipeProvider {
         stonecutting(blockIn, blockOut.get()).save(consumer, OrevolutionUtils.modLocat("stonecutting/" + getItemName(blockOut.get())));
     }
 
-    public void makeChiseledStonecutting(Supplier<? extends Block> blockOut, Supplier<? extends Block> blockIn, Supplier<? extends Item> matIn, Consumer<FinishedRecipe> consumer) {
-        makeChiseled(blockOut, matIn).save(consumer);
+    public void makeChiseledStonecutting(Supplier<? extends Block> blockOut, Supplier<? extends Block> blockIn, Consumer<FinishedRecipe> consumer) {
+        makeChiseled(blockOut, blockIn).save(consumer);
         stonecutting(blockIn, blockOut.get()).save(consumer, OrevolutionUtils.modLocat("stonecutting/" + getItemName(blockOut.get())));
     }
 

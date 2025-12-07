@@ -24,7 +24,7 @@ public class ArmorGrantImmunityEffects extends OrevolutionArmorPower {
 
     public ArmorGrantImmunityEffects(String tooltipId, Conditional conditional, Supplier<MobEffect> effect) {
         super(tooltipId, conditional);
-        this.effects = effect != null? List.of(effect) : null;
+        this.effects = effect != null? List.of(effect) : List.of();
     }
 
     @Override

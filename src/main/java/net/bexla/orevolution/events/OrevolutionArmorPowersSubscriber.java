@@ -54,8 +54,10 @@ public class OrevolutionArmorPowersSubscriber {
 
     @SubscribeEvent
     public static void onEntityTick(LivingEvent.LivingTickEvent event) {
-        withArmorPower(event.getEntity(), power ->
-                power.onTickWhileWorn(event.getEntity().getItemBySlot(EquipmentSlot.HEAD), event.getEntity(), EquipmentSlot.HEAD)
+        LivingEntity entity = event.getEntity();
+        if (entity.level().isClientSide() || entity.tickCount % 3 != 0) return;
+        withArmorPower(entity, power ->
+                power.onTickWhileWorn(entity.getItemBySlot(EquipmentSlot.HEAD), entity, EquipmentSlot.HEAD)
         );
     }
 
@@ -91,8 +93,7 @@ public class OrevolutionArmorPowersSubscriber {
     @SubscribeEvent
     public static void onDeath(LivingDeathEvent event) {
         withArmorPower(event.getEntity(), power -> {
-            if (event.getSource().getEntity() instanceof LivingEntity killer)
-                event.setCanceled(power.onDeath(event.getEntity(), killer));
+            event.setCanceled(power.onDeath(event.getEntity(), event.getSource()));
         });
     }
 

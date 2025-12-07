@@ -16,6 +16,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
+import org.infernalstudios.shieldexp.init.ItemsInit;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.List;
@@ -135,9 +136,24 @@ public class GENRecipes extends RecipesProvider {
 
         quadTransform(RegBlocks.AETHERROCK_TILES, RegBlocks.POLISHED_AETHERROCK).save(consumer);
 
+        quadTransformItem(RegBlocks.POLISHED_TUNGSTEN, RegItems.TUNGSTEN_INGOT, 1).save(consumer);
+        quadTransform(RegBlocks.TUNGSTEN_BRICKS, RegBlocks.POLISHED_TUNGSTEN).save(consumer);
+
         makePillarItem(RegBlocks.STEEL_PILLAR, RegItems.STEEL_ALLOY).save(consumer);
 
-        makeChiseledStonecutting(RegBlocks.CHISELED_TUNGSTEN_BLOCK, RegBlocks.TUNGSTEN_BLOCK, RegItems.TUNGSTEN_INGOT, consumer);
+        makePillarItem(RegBlocks.PLATINUM_PILLAR, RegItems.PLATINUM_INGOT).save(consumer);
+        makePillarItem(RegBlocks.GOLD_PILLAR, () -> Items.GOLD_INGOT).save(consumer);
+
+        makeBarsItem(RegBlocks.PLATINUM_BARS, RegItems.PLATINUM_INGOT);
+        makeBarsItem(RegBlocks.TUNGSTEN_BARS, RegItems.TUNGSTEN_INGOT);
+        makeBarsItem(RegBlocks.BRONZE_BARS, RegItems.BRONZE_ALLOY);
+        makeBarsItem(RegBlocks.STEEL_BARS, RegItems.STEEL_ALLOY);
+        makeBarsItem(RegBlocks.TIN_BARS, RegItems.TIN_INGOT);
+        makeBarsItem(RegBlocks.GOLD_BARS, () -> Items.GOLD_INGOT);
+
+        makeChiseledStonecutting(RegBlocks.CHISELED_TUNGSTEN_BLOCK, RegBlocks.TUNGSTEN_BLOCK, consumer);
+        stonecutting(RegBlocks.CHISELED_TUNGSTEN_BRICKS, RegBlocks.TUNGSTEN_BLOCK.get()).save(consumer);
+        makeChiseledStonecutting(RegBlocks.CHISELED_TUNGSTEN_BRICKS, RegBlocks.TUNGSTEN_BRICKS, consumer);
 
         alloyLow("tin_ingot", RegItems.BRONZE_ALLOY.get(), OrevolutionTags.Items.tinIngots, Tags.Items.INGOTS_COPPER).save(consumer);
         alloyHigh("iron_ingot", RegItems.STEEL_ALLOY.get(), Tags.Items.INGOTS_IRON, Items.COAL, Items.BLAZE_POWDER).save(consumer);
@@ -150,6 +166,7 @@ public class GENRecipes extends RecipesProvider {
                 RegItems.TIN_SHOVEL.get(),
                 RegItems.TIN_HOE.get(),
                 RegItemsFD.TIN_KNIFE.get(),
+                RegItems.TIN_SHIELD.get(),
             OrevolutionTags.Items.tinIngots, consumer);
 
         toolSet("platinum_ingot",
@@ -159,6 +176,7 @@ public class GENRecipes extends RecipesProvider {
                 RegItems.PLATINUM_SHOVEL.get(),
                 RegItems.PLATINUM_HOE.get(),
                 RegItemsFD.PLATINUM_KNIFE.get(),
+                RegItems.PLATINUM_SHIELD.get(),
             OrevolutionTags.Items.platIngots, consumer);
         armorSet("platinum_ingot",
                 RegItems.PLATINUM_HELMET.get(),
@@ -174,6 +192,7 @@ public class GENRecipes extends RecipesProvider {
                 RegItems.LIVINGSTONE_SHOVEL.get(),
                 RegItems.LIVINGSTONE_HOE.get(),
                 RegItemsFD.LIVINGSTONE_KNIFE.get(),
+                RegItems.LIVINGSTONE_SHIELD.get(),
             RegBlocks.LIVINGSTONE_BLOCK.get(), RegItems.LIVINGSTONE_SHARD.get(), consumer);
         armorSet("livingstone_block",
                 RegItems.LIVINGSTONE_HELMET.get(),
@@ -189,6 +208,7 @@ public class GENRecipes extends RecipesProvider {
                 RegItems.VERDITE_SHOVEL.get(),
                 RegItems.VERDITE_HOE.get(),
                 RegItemsFD.VERDITE_KNIFE.get(),
+                RegItems.VERDITE_SHIELD.get(),
                 OrevolutionTags.Items.verditeIngots, consumer);
         armorSet("verdite_ingot",
                 RegItems.VERDITE_HELMET.get(),
@@ -247,6 +267,7 @@ public class GENRecipes extends RecipesProvider {
         smithingAether(() -> Items.NETHERITE_SHOVEL, RegItems.AETHERSTEEL_SHOVEL).save(consumer, modLocat("aethersteel_shovel"));
         smithingAether(() -> Items.NETHERITE_HOE, RegItems.AETHERSTEEL_HOE).save(consumer, modLocat("aethersteel_hoe"));
         whenLoaded(smithingAether(ModItems.NETHERITE_KNIFE, RegItemsFD.AETHERSTEEL_KNIFE), ModCompat.farmersdelight()).save(consumer, modLocat("aethersteel_knife"));
+        whenLoaded(smithingAether(ItemsInit.NETHERITE_SHIELD, RegItems.AETHERSTEEL_SHIELD), ModCompat.shieldexp()).save(consumer, modLocat("aethersteel_shield"));
 
         smithingBasic(() -> Items.IRON_PICKAXE, RegItems.STEEL_HAMMER).save(consumer, modLocat("steel_hammer_from_smithing"));
         smithingBasic(() -> Items.IRON_SHOVEL, RegItems.STEEL_DIGGER).save(consumer, modLocat("steel_digger_from_smithing"));
@@ -258,7 +279,7 @@ public class GENRecipes extends RecipesProvider {
         smithingAether(RegItems.REINFORCED_NETHERITE_BOOTS, RegItems.AETHERSTEEL_BOOTS).save(consumer, modLocat("aethersteel_boots_smithing"));
     }
 
-    private void makeToolsExtra(ItemLike sword, ItemLike pickaxe, ItemLike axe, ItemLike shovel, ItemLike hoe, ItemLike knife, ItemLike itemIn, ItemLike itemInS, Consumer<FinishedRecipe> consumer) {
+    private void makeToolsExtra(ItemLike sword, ItemLike pickaxe, ItemLike axe, ItemLike shovel, ItemLike hoe, ItemLike knife, ItemLike shield, ItemLike itemIn, ItemLike itemInS, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hoe)
                 .pattern("AA")
                 .pattern(" S")
@@ -305,5 +326,13 @@ public class GENRecipes extends RecipesProvider {
                 .define('A', itemIn)
                 .define('S', itemInS)
                 .unlockedBy(getHasName(itemInS), has(itemInS)), ModCompat.farmersdelight()).save(consumer);
+
+        whenLoaded(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, shield)
+                .pattern("AAA")
+                .pattern("ASA")
+                .pattern("AAA")
+                .define('A', itemIn)
+                .define('S', itemInS)
+                .unlockedBy(getHasName(itemInS), has(itemInS)), ModCompat.shieldexp()).save(consumer);
     }
 }

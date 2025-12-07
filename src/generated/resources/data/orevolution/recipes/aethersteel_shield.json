@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "orevolution:aethersteel_ingot"
+  },
+  "base": {
+    "item": "shieldexp:netherite_shield"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "shieldexp"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "shieldexp"
+      ]
+    }
+  ],
+  "result": {
+    "item": "orevolution:aethersteel_shield"
+  },
+  "template": {
+    "item": "orevolution:aethersteel_smithing_template"
+  }
+}

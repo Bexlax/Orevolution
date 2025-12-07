@@ -53,6 +53,7 @@ public class RegItems {
 
 
     //~//~~Armors, Tools and Weapons~~//~//
+    public static final RegistryObject<Item> TIN_SHIELD = HELPER.createItem("tin_shield", () -> new ShieldItem(new Item.Properties().durability(98)));
     public static final RegistryObject<Item> TIN_SWORD = HELPER.createItem("tin_sword", () -> new SwordItem(OrevolutionToolTiers.TIN, 3, -2.4f, new Item.Properties()));
     public static final RegistryObject<Item> TIN_PICKAXE = HELPER.createItem("tin_pickaxe", () -> new PickaxeItem(OrevolutionToolTiers.TIN, 1, -2.6f, new Item.Properties()));
     public static final RegistryObject<Item> TIN_AXE = HELPER.createItem("tin_axe", () -> new AxeItem(OrevolutionToolTiers.TIN, 5F, -3.2f, new Item.Properties()));
@@ -64,6 +65,7 @@ public class RegItems {
     public static final RegistryObject<Item> PLATINUM_LEGGINGS = HELPER.createItem("platinum_leggings", () -> new ArmorItem(OrevolutionArmorTiers.PLATINUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<Item> PLATINUM_BOOTS = HELPER.createItem("platinum_boots", () -> new ArmorItem(OrevolutionArmorTiers.PLATINUM, ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    public static final RegistryObject<Item> PLATINUM_SHIELD = HELPER.createItem("platinum_shield", () -> new ShieldItem(new Item.Properties().durability(229)));
     public static final RegistryObject<Item> PLATINUM_SWORD = HELPER.createItem("platinum_sword", () -> new SwordItem(OrevolutionToolTiers.PLATINUM, 3, -2.4f, new Item.Properties()));
     public static final RegistryObject<Item> PLATINUM_PICKAXE = HELPER.createItem("platinum_pickaxe", () -> new PickaxeItem(OrevolutionToolTiers.PLATINUM, 1, -2.6f, new Item.Properties()));
     public static final RegistryObject<Item> PLATINUM_AXE = HELPER.createItem("platinum_axe", () -> new AxeItem(OrevolutionToolTiers.PLATINUM, 5F, -3.2f, new Item.Properties()));
@@ -80,6 +82,7 @@ public class RegItems {
     public static final RegistryObject<Item> AETHERSTEEL_LEGGINGS = HELPER.createItem("aethersteel_leggings", () -> new ArmorItem(OrevolutionArmorTiers.AETHERSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().rarity(Aether)));
     public static final RegistryObject<Item> AETHERSTEEL_BOOTS = HELPER.createItem("aethersteel_boots", () -> new ArmorItem(OrevolutionArmorTiers.AETHERSTEEL, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().rarity(Aether)));
 
+    public static final RegistryObject<Item> AETHERSTEEL_SHIELD = HELPER.createItem("aethersteel_shield", () -> new ShieldItem(new Item.Properties().durability(841)));
     public static final RegistryObject<Item> AETHERSTEEL_SWORD = HELPER.createItem("aethersteel_sword", () -> new SwordItem(OrevolutionToolTiers.AETHERSTEEL, 3, -2.4f, new Item.Properties().fireResistant().rarity(Aether)));
     public static final RegistryObject<Item> AETHERSTEEL_PICKAXE = HELPER.createItem("aethersteel_pickaxe", () -> new PickaxeItem(OrevolutionToolTiers.AETHERSTEEL, 1, -2.6f, new Item.Properties().fireResistant().rarity(Aether)));
     public static final RegistryObject<Item> AETHERSTEEL_AXE = HELPER.createItem("aethersteel_axe", () -> new AxeItem(OrevolutionToolTiers.AETHERSTEEL, 5F, -2.2f, new Item.Properties().fireResistant().rarity(Aether)));
@@ -91,17 +94,19 @@ public class RegItems {
     public static final RegistryObject<Item> LIVINGSTONE_LEGGINGS = HELPER.createItem("livingstone_leggings", () -> new ArmorItem(OrevolutionArmorTiers.LIVINGSTONE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<Item> LIVINGSTONE_BOOTS = HELPER.createItem("livingstone_boots", () -> new ArmorItem(OrevolutionArmorTiers.LIVINGSTONE, ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    public static final RegistryObject<Item> LIVINGSTONE_SHIELD = HELPER.createItem("livingstone_shield", () -> new ShieldItem(new Item.Properties().durability(98)));
     public static final RegistryObject<Item> LIVINGSTONE_SWORD = HELPER.createItem("livingstone_sword", () -> new SwordItem(OrevolutionToolTiers.LIVINGSTONE, 3, -2.4f, new Item.Properties()));
     public static final RegistryObject<Item> LIVINGSTONE_PICKAXE = HELPER.createItem("livingstone_pickaxe", () -> new PickaxeItem(OrevolutionToolTiers.LIVINGSTONE, 1, -2.6f, new Item.Properties()));
     public static final RegistryObject<Item> LIVINGSTONE_AXE = HELPER.createItem("livingstone_axe", () -> new AxeItem(OrevolutionToolTiers.LIVINGSTONE, 5F, -2.2f, new Item.Properties()));
     public static final RegistryObject<Item> LIVINGSTONE_SHOVEL = HELPER.createItem("livingstone_shovel", () -> new ShovelItem(OrevolutionToolTiers.LIVINGSTONE, 1.5f, -3f, new Item.Properties()));
     public static final RegistryObject<Item> LIVINGSTONE_HOE = HELPER.createItem("livingstone_hoe", () -> new HoeItem(OrevolutionToolTiers.LIVINGSTONE, 1, -2f, new Item.Properties()));
         /*Verdite set*/
-    public static final RegistryObject<Item> VERDITE_HELMET = HELPER.createItem("verdite_helmet", () -> new ArmorItem(OrevolutionArmorTiers.VERDITE, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> VERDITE_HELMET = HELPER.createItem("verdite_helmet", () -> new ArmorItem(OrevolutionArmorTiers.VERDITE, ArmorItem.Type.HELMET, new Item.Properties().durability(165)));
     public static final RegistryObject<Item> VERDITE_CHESTPLATE = HELPER.createItem("verdite_chestplate", () -> new ArmorItem(OrevolutionArmorTiers.VERDITE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> VERDITE_LEGGINGS = HELPER.createItem("verdite_leggings", () -> new ArmorItem(OrevolutionArmorTiers.VERDITE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<Item> VERDITE_BOOTS = HELPER.createItem("verdite_boots", () -> new ArmorItem(OrevolutionArmorTiers.VERDITE, ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    public static final RegistryObject<Item> VERDITE_SHIELD = HELPER.createItem("verdite_shield", () -> new ShieldItem(new Item.Properties().durability(153)));
     public static final RegistryObject<Item> VERDITE_SWORD = HELPER.createItem("verdite_sword", () -> new SwordItem(OrevolutionToolTiers.VERDITE, 3, -2.4f, new Item.Properties()));
     public static final RegistryObject<Item> VERDITE_PICKAXE = HELPER.createItem("verdite_pickaxe", () -> new PickaxeItem(OrevolutionToolTiers.VERDITE, 1, -2.6f, new Item.Properties()));
     public static final RegistryObject<Item> VERDITE_AXE = HELPER.createItem("verdite_axe", () -> new AxeItem(OrevolutionToolTiers.VERDITE, 5F, -2.2f, new Item.Properties()));

@@ -3,6 +3,7 @@
   "biomes": "#minecraft:is_overworld",
   "features": [
     "orevolution:tin_ore",
+    "orevolution:tin_ore_extra",
     "orevolution:platinum_ore",
     "orevolution:tin_ore_spelunkery",
     "orevolution:platinum_ore_spelunkery"

@@ -5,6 +5,7 @@ import net.bexla.orevolution.content.data.utility.OrevolutionTags;
 import net.bexla.orevolution.content.types.TierProgressRegistry;
 import net.bexla.orevolution.content.types.ToolPowerRegistry;
 import net.bexla.orevolution.content.types.interfaces.ToolPower;
+import net.bexla.orevolution.init.RegItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -14,6 +15,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -60,7 +62,6 @@ public class ItemMixin {
                 tip.add(Component.literal(" - " + Component.translatable("tiers.orevolution." + return_string.toLowerCase()).getString()).withStyle(ChatFormatting.YELLOW));
             }
 
-
             lines.addAll(1, tip);
         }
     }
@@ -93,6 +94,15 @@ public class ItemMixin {
                 ToolPower power = ToolPowerRegistry.getToolPowerForTier(tier);
                 power.onInventoryTick(stack, level, entity, slotIndex, selectedIndex);
             }
+        }
+    }
+
+    @Inject(method = "isValidRepairItem", at = @At("RETURN"), cancellable = true)
+    private void isValidRepairItem(ItemStack item, ItemStack repairIngredient, CallbackInfoReturnable<Boolean> cir) {
+        if(!OrevolutionConfig.COMMON.tinRepair.get()) return;
+
+        if (repairIngredient.is(RegItems.TIN_INGOT.get()) && !item.is(OrevolutionTags.Items.repairableTin)) {
+            cir.setReturnValue(true);
         }
     }
 }

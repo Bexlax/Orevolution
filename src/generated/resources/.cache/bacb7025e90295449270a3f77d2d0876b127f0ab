@@ -1,5 +1,6 @@
-// 1.20.1	2025-11-20T22:48:02.1862797	Orevolution Block Tags
+// 1.20.1	2025-12-07T01:56:19.5019577	Orevolution Block Tags
 411f6180b37eea00f0069105f932d6024ebc8cfd data/forge/tags/blocks/andesites.json
+f9ef47a782cc8ff167eb9aec22b0fc78f96cff8e data/forge/tags/blocks/blackstones.json
 bb23c35771e96cc866b5387d5569746e64c23a4c data/forge/tags/blocks/diorites.json
 277febcb81e6cdedb2c430d51bcd1850d597779d data/forge/tags/blocks/granites.json
 b99d69287a1bd68cceecc58f4d24a2c44c6ebfbb data/forge/tags/blocks/ores.json
@@ -19,17 +20,18 @@ c3ea9fdc84d3e6e092ad4c946e87cb02efa0fc35 data/forge/tags/blocks/storage_blocks/r
 6c7298679c0ffe71918437bca8c694f475e5a244 data/forge/tags/blocks/storage_blocks/verdite.json
 a9d9ea4becab53f2ae18b53a28175f1dae5fcaf4 data/forge/tags/blocks/tuffs.json
 1c0ae2625ef9015b2a34127484f5eb0454d9b76f data/minecraft/tags/blocks/crops.json
-fae9ee285ef9c67722116a9185faebaf9b29e64e data/minecraft/tags/blocks/mineable/pickaxe.json
+b27c74501806060e96e3eab92f0e642cd689676b data/minecraft/tags/blocks/mineable/pickaxe.json
 2481642a22ea059e1ce53be283872c29b4ecdb41 data/minecraft/tags/blocks/needs_diamond_tool.json
 e04eddaf415f898fda9c4ca96f1e2843dfe87628 data/minecraft/tags/blocks/needs_iron_tool.json
 97bac566bb2aff4bfd10085bbb96a9e49fbe5e49 data/minecraft/tags/blocks/needs_stone_tool.json
-822571a3007fc63340aaba5cc4c84ab9cc1e8bb7 data/orevolution/tags/blocks/always_duplicate.json
+dcf5ed18cf3b8cba33f0e784facb2634bc9b4895 data/orevolution/tags/blocks/always_duplicate.json
 d0a0ea6c5a0f303f829917d69b8d5cdfb7f838b1 data/orevolution/tags/blocks/exceptions/diamond_tiered.json
 d18f6d3cb218e80af46abe0bd7a32d56d35211e7 data/orevolution/tags/blocks/exceptions/iron_tiered.json
 1314ca89d9277d509f5cb3e4267638f0a4f1329c data/orevolution/tags/blocks/exceptions/platinum_tiered.json
 ed990cb28977a336531e8b72d722254e5ca06d59 data/orevolution/tags/blocks/exceptions/stone_tiered.json
 98a52d38b9d845e95729f22473f122e56941de54 data/orevolution/tags/blocks/exceptions/tin_tiered.json
 9126393274f7e7c86847b4b90c2030ca6066e3aa data/orevolution/tags/blocks/exceptions/wood_tiered.json
-42d663b58bc761fe398d4c9b6e60283b7bfbea5b data/orevolution/tags/blocks/rare_duplicate_chance.json
+0ddba9dcb9a0e019d6415f95d15b67173286c12f data/orevolution/tags/blocks/never_duplicate.json
+384a6396372ff5906a4d6b74a273cc5a01a07466 data/orevolution/tags/blocks/rare_duplicate_chance.json
 74c61b66fda2d8d836a6579501a4215e93ace41c data/orevolution/tags/blocks/spelunkery/ores.json
-ff83f4d793e16ec5ae1d0b37c2d9a8f70513a80b data/orevolution/tags/blocks/uncommon_duplicate_chance.json
+7881c45655c4d80fb49b010600cfff14a64307d5 data/orevolution/tags/blocks/uncommon_duplicate_chance.json

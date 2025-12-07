@@ -11,6 +11,7 @@
       "hurtEnemy": "Lnet/minecraft/world/item/DiggerItem;m_7579_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z"
     },
     "net/bexla/orevolution/mixins/ItemMixin": {
+      "isValidRepairItem": "Lnet/minecraft/world/item/Item;m_6832_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z",
       "inventoryTick": "Lnet/minecraft/world/item/Item;m_6883_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;IZ)V",
       "appendHoverText": "Lnet/minecraft/world/item/Item;m_7373_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V"
     },
@@ -33,6 +34,7 @@
         "hurtEnemy": "Lnet/minecraft/world/item/DiggerItem;m_7579_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z"
       },
       "net/bexla/orevolution/mixins/ItemMixin": {
+        "isValidRepairItem": "Lnet/minecraft/world/item/Item;m_6832_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z",
         "inventoryTick": "Lnet/minecraft/world/item/Item;m_6883_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;IZ)V",
         "appendHoverText": "Lnet/minecraft/world/item/Item;m_7373_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V"
       },

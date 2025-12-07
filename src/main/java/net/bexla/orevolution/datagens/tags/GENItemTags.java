@@ -33,6 +33,12 @@ public class GENItemTags extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         tag(Tags.Items.SEEDS).add(RegItems.DEAD_SEED.get()).add(RegItems.PETRIFIED_SEED.get());
 
+        tag(OrevolutionTags.Items.shields).add(RegItems.AETHERSTEEL_SHIELD.get()).add(RegItems.TIN_SHIELD.get()).add(RegItems.PLATINUM_SHIELD.get())
+                .add(RegItems.VERDITE_SHIELD.get()).add(RegItems.LIVINGSTONE_SHIELD.get());
+
+        tag(OrevolutionTags.Items.shieldsSE).add(RegItems.AETHERSTEEL_SHIELD.get()).add(RegItems.TIN_SHIELD.get()).add(RegItems.PLATINUM_SHIELD.get())
+                .add(RegItems.VERDITE_SHIELD.get()).add(RegItems.LIVINGSTONE_SHIELD.get());
+
         tag(OrevolutionTags.Items.toolsKnives).addOptional(modLocat("tin_knife")).addOptional(modLocat("platinum_knife"))
                 .addOptional(modLocat("aethersteel_knife")).addOptional(modLocat("livingstone_knife")).addOptional(modLocat("verdite_knife"));
 

@@ -27,6 +27,8 @@ public class OrevolutionConfig
         public final ConfigValue<Boolean> generateAethersteelOre;
         public final ConfigValue<Boolean> generateAetherrockMeteor;
 
+        public final ConfigValue<Boolean> tinRepair;
+
         public final ConfigValue<Boolean> safeOreBreaking;
 
         public final ConfigValue<Boolean> modProgression;
@@ -45,7 +47,7 @@ public class OrevolutionConfig
         public final ConfigValue<Integer> steelMaxUses;
 
         private Common(ForgeConfigSpec.Builder builder) {
-            builder.push("powers");
+            builder.push("Gameplay - Powers");
 
             toolsPowers = builder
                     .comment("Defines if tools will have their special characteristic (aka power), like tin's drop duplication")
@@ -59,23 +61,31 @@ public class OrevolutionConfig
 
             builder.pop();
 
-            builder.push("gameplay_general");
+            builder.push("Gameplay - General Changes");
+
+            tinRepair = builder
+                    .comment("Defines if tin can be used to repair other items")
+                    .define("tin_repairs_items", true);
 
             generateTinOre = builder
                     .comment("Defines if tin ore will generate in your world")
                     .define("generate_tin_ore", true);
 
+
             generatePlatOre = builder
                     .comment("Defines if platinum ore will generate in your world")
                     .define("generate_platinum_ore", true);
+
 
             generateTungstenOre = builder
                     .comment("Defines if tungsten ore will generate in your world")
                     .define("generate_tungsten_ore", true);
 
+
             generateExperienceOre = builder
                     .comment("Defines if experience ore will generate in your world")
                     .define("generate_experience_ore", true);
+
 
             generateAethersteelOre = builder.
                     comment("Defines if aethersteel ore will generate in your world")
@@ -96,7 +106,7 @@ public class OrevolutionConfig
             builder.pop();
 
 
-            builder.push("gameplay_durability");
+            builder.push("Gameplay - Item Durability");
 
             woodMaxUses = builder
                     .comment("Modifies the max uses of wood tools and weapons. vanilla is 59")
@@ -135,7 +145,6 @@ public class OrevolutionConfig
             steelMaxUses = builder
                     .comment("Modifies the max uses of steel tools. vanilla is 1152")
                     .defineInRange("steel_max_uses", 1152, 1, Integer.MAX_VALUE);
-
 
             builder.pop();
         }

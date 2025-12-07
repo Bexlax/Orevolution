@@ -1,13 +1,13 @@
 modLoader="javafml"
 loaderVersion="[47,)"
 
-license="None"
+license="Attribution-NonCommercial-ShareAlike 4.0 International"
 issueTrackerURL="https://github.com/Bexlax/Orevolution/issues"
 repository="https://github.com/Bexlax/Orevolution"
 
 [[mods]]
 modId="orevolution"
-version="3.1.0"
+version="3.2.0"
 displayName="Orevolution!"
 authors="BeXla"
 logoFile="logo.png"

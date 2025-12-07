@@ -9,10 +9,7 @@ import net.bexla.orevolution.compatibility.spelunkery.RegBlocksSK;
 import net.bexla.orevolution.compatibility.spelunkery.RegItemsSK;
 import net.bexla.orevolution.content.data.AddLootModifier;
 import net.bexla.orevolution.content.data.DataRegistries;
-import net.bexla.orevolution.datagens.GENLootDrops;
-import net.bexla.orevolution.datagens.GENRecipes;
-import net.bexla.orevolution.datagens.GenFeatures;
-import net.bexla.orevolution.datagens.OrevolutionSpriteSourceProvider;
+import net.bexla.orevolution.datagens.*;
 import net.bexla.orevolution.datagens.langs.GENLangENUS;
 import net.bexla.orevolution.datagens.langs.GENLangESAR;
 import net.bexla.orevolution.datagens.models.GENBlockStateModels;
@@ -30,7 +27,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.world.item.CreativeModeTab;
@@ -52,6 +48,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.infernalstudios.shieldexp.init.ItemsInit;
 import org.slf4j.Logger;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
@@ -117,6 +114,7 @@ public class Orevolution
         generator.addProvider(client, new OrevolutionSpriteSourceProvider(output, helper));
         generator.addProvider(client, new GENLootDrops(output));
         generator.addProvider(client, new GENRecipes(output));
+        generator.addProvider(server, new GenAdvancements(output, future, helper, lang));
 
         DatapackBuiltinEntriesProvider datapackProvider = new DataRegistries(output, future);
         CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
@@ -139,17 +137,27 @@ public class Orevolution
 
         if(tab == CreativeModeTabs.COMBAT) {
             putAfter(entries, Items.STONE_SWORD, RegItems.TIN_SWORD);
-            putAfter(entries, RegItems.TIN_SWORD.get(), RegItems.LIVINGSTONE_SWORD);
+            putBefore(entries, Items.WOODEN_SWORD, RegItems.LIVINGSTONE_SWORD);
             putAfter(entries, RegItems.LIVINGSTONE_SWORD.get(), RegItems.VERDITE_SWORD);
             putAfter(entries, Items.IRON_SWORD, RegItems.STEEL_SCYTHE);
             putBefore(entries, Items.DIAMOND_SWORD, RegItems.PLATINUM_SWORD);
             putAfter(entries, Items.NETHERITE_SWORD, RegItems.AETHERSTEEL_SWORD);
 
             putAfter(entries, Items.STONE_AXE, RegItems.TIN_AXE);
-            putAfter(entries, RegItems.TIN_AXE.get(), RegItems.LIVINGSTONE_AXE);
+            putBefore(entries, Items.WOODEN_AXE, RegItems.LIVINGSTONE_AXE);
             putAfter(entries, RegItems.LIVINGSTONE_AXE.get(), RegItems.VERDITE_AXE);
             putBefore(entries, Items.DIAMOND_AXE, RegItems.PLATINUM_AXE);
             putAfter(entries, Items.NETHERITE_AXE, RegItems.AETHERSTEEL_AXE);
+
+            putBefore(entries, Items.LEATHER_HELMET, RegItems.LIVINGSTONE_HELMET);
+            putAfter(entries, RegItems.LIVINGSTONE_HELMET.get(), RegItems.LIVINGSTONE_CHESTPLATE);
+            putAfter(entries, RegItems.LIVINGSTONE_CHESTPLATE.get(), RegItems.LIVINGSTONE_LEGGINGS);
+            putAfter(entries, RegItems.LIVINGSTONE_LEGGINGS.get(), RegItems.LIVINGSTONE_BOOTS);
+
+            putAfter(entries, RegItems.LIVINGSTONE_BOOTS.get(), RegItems.VERDITE_HELMET);
+            putAfter(entries, RegItems.VERDITE_HELMET.get(), RegItems.VERDITE_CHESTPLATE);
+            putAfter(entries, RegItems.VERDITE_CHESTPLATE.get(), RegItems.VERDITE_LEGGINGS);
+            putAfter(entries, RegItems.VERDITE_LEGGINGS.get(), RegItems.VERDITE_BOOTS);
 
             putAfter(entries, Items.CHAINMAIL_BOOTS, RegItems.BRONZE_CROWN);
             putAfter(entries, RegItems.BRONZE_CROWN.get(), RegItems.BRONZE_CROWN_EMERALD);
@@ -171,6 +179,15 @@ public class Orevolution
             putAfter(entries, RegItems.AETHERSTEEL_HELMET.get(), RegItems.AETHERSTEEL_CHESTPLATE);
             putAfter(entries, RegItems.AETHERSTEEL_CHESTPLATE.get(), RegItems.AETHERSTEEL_LEGGINGS);
             putAfter(entries, RegItems.AETHERSTEEL_LEGGINGS.get(), RegItems.AETHERSTEEL_BOOTS);
+
+            if(ModCompat.isModLoaded(ModCompat.shieldexp())) {
+                putAfter(entries, ItemsInit.NETHERITE_SHIELD.get(), RegItems.AETHERSTEEL_SHIELD);
+                putBefore(entries, ItemsInit.DIAMOND_SHIELD.get(), RegItems.PLATINUM_SHIELD);
+                putAfter(entries, ItemsInit.WOODEN_SHIELD.get(), RegItems.TIN_SHIELD);
+
+                putBefore(entries, ItemsInit.WOODEN_SHIELD.get(), RegItems.LIVINGSTONE_SHIELD);
+                putAfter(entries, RegItems.LIVINGSTONE_SHIELD.get(), RegItems.VERDITE_SHIELD);
+            }
         }
         else if(tab == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             putBefore(entries, Items.WOODEN_SHOVEL, RegItems.LIVINGSTONE_SHOVEL);
@@ -232,6 +249,16 @@ public class Orevolution
             putAfter(entries, RegBlocks.BRONZE_BLOCK.get(), RegBlocks.BRONZE_TILES);
             putAfter(entries, RegBlocks.BRONZE_BLOCK.get(), RegBlocks.STEEL_BLOCK);
 
+            putAfter(entries, RegBlocks.PLATINUM_BLOCK.get(), RegBlocks.PLATINUM_PILLAR);
+            putAfter(entries, RegBlocks.PLATINUM_PILLAR.get(), RegBlocks.PLATINUM_TILES);
+            putAfter(entries, RegBlocks.PLATINUM_TILES.get(), RegBlocks.PLATINUM_BARS);
+            putAfter(entries, Blocks.GOLD_BLOCK, RegBlocks.GOLD_PILLAR);
+            putAfter(entries, RegBlocks.GOLD_PILLAR.get(), RegBlocks.GOLD_TILES);
+            putAfter(entries, RegBlocks.GOLD_TILES.get(), RegBlocks.GOLD_BARS);
+            putAfter(entries, RegBlocks.TIN_BLOCK.get(), RegBlocks.TIN_BRICKS);
+            putAfter(entries, RegBlocks.TIN_BRICKS.get(), RegBlocks.TIN_TILES);
+            putAfter(entries, RegBlocks.TIN_TILES.get(), RegBlocks.TIN_BARS);
+            putAfter(entries, RegBlocks.BRONZE_BLOCK.get(), RegBlocks.BRONZE_BARS);
             putAfter(entries, Blocks.RED_NETHER_BRICK_WALL, RegBlocks.AETHERROCK);
             putAfter(entries, RegBlocks.AETHERROCK.get(), RegBlocks.POLISHED_AETHERROCK);
             putAfter(entries, RegBlocks.POLISHED_AETHERROCK.get(), RegBlocks.POLISHED_AETHERROCK_STAIR);
@@ -241,12 +268,16 @@ public class Orevolution
             putAfter(entries, RegBlocks.AETHERROCK_BRICKS.get(), RegBlocks.CRACKED_AETHERROCK_BRICKS);
             putAfter(entries, RegBlocks.CRACKED_AETHERROCK_BRICKS.get(), RegBlocks.AETHERROCK_TILES);
             putAfter(entries, RegBlocks.TUNGSTEN_BLOCK.get(), RegBlocks.POLISHED_TUNGSTEN);
-            putAfter(entries, RegBlocks.POLISHED_TUNGSTEN.get(), RegBlocks.CUT_TUNGSTEN_BLOCK);
+            putAfter(entries, RegBlocks.POLISHED_TUNGSTEN.get(), RegBlocks.TUNGSTEN_BRICKS);
+            putAfter(entries, RegBlocks.TUNGSTEN_BRICKS.get(), RegBlocks.CUT_TUNGSTEN_BLOCK);
             putAfter(entries, RegBlocks.CUT_TUNGSTEN_BLOCK.get(), RegBlocks.CHISELED_TUNGSTEN_BLOCK);
             putAfter(entries, RegBlocks.CHISELED_TUNGSTEN_BLOCK.get(), RegBlocks.CHISELED_TUNGSTEN_BRICKS);
+            putAfter(entries, RegBlocks.CHISELED_TUNGSTEN_BLOCK.get(), RegBlocks.CHISELED_TUNGSTEN_BRICKS);
+            putAfter(entries, RegBlocks.CHISELED_TUNGSTEN_BRICKS.get(), RegBlocks.TUNGSTEN_BARS);
             putAfter(entries, RegBlocks.STEEL_BLOCK.get(), RegBlocks.CUT_STEEL_BLOCK);
             putAfter(entries, RegBlocks.CUT_STEEL_BLOCK.get(), RegBlocks.STEEL_PILLAR);
             putAfter(entries, RegBlocks.STEEL_PILLAR.get(), RegBlocks.STEEL_DOOR);
+            putAfter(entries, RegBlocks.STEEL_DOOR.get(), RegBlocks.STEEL_BARS);
         }
         else if(tab == CreativeModeTabs.NATURAL_BLOCKS) {
             putBefore(entries, Items.IRON_ORE, RegBlocks.DEEPSLATE_TIN_ORE);
@@ -281,9 +312,7 @@ public class Orevolution
         putAfter(entries, Items.WHEAT_SEEDS, RegItems.PETRIFIED_SEED);
         putAfter(entries, RegItems.PETRIFIED_SEED.get(), RegItems.DEAD_SEED);
 
-        ResourceLocation FD_TAB = new ResourceLocation(ModCompat.farmersdelight(), ModCompat.farmersdelight());
-
-        if (ModCompat.isModLoaded(ModCompat.farmersdelight()) && tab.location().equals(FD_TAB)) {
+        if (ModCompat.isModLoaded(ModCompat.farmersdelight())) {
             putAfter(entries, ModItems.FLINT_KNIFE.get(), RegItemsFD.TIN_KNIFE);
             putAfter(entries, RegItemsFD.TIN_KNIFE.get(), RegItemsFD.LIVINGSTONE_KNIFE);
             putAfter(entries, RegItemsFD.LIVINGSTONE_KNIFE.get(), RegItemsFD.VERDITE_KNIFE);

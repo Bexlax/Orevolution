@@ -47,6 +47,8 @@ public class OrevolutionTags {
         public static final TagKey<Item> livingstoneStorages = forgeTag("storage_blocks/livingstone");
         public static final TagKey<Item> verditeStorages = forgeTag("storage_blocks/verdite");
 
+        public static final TagKey<Item> repairableTin = tag("repairable_with_tin");
+
         public static final TagKey<Item> toolsKnives = forgeTag("tools/knives");
         public static final TagKey<Item> toolsKnivesFD = ItemTags.create(new ResourceLocation(ModCompat.farmersdelight(), "tools/knives"));
         public static final TagKey<Item> shields = forgeTag("shields");
@@ -79,6 +81,7 @@ public class OrevolutionTags {
         public static final TagKey<Block> diorites = forgeTag("diorites");
         public static final TagKey<Block> granites = forgeTag("granites");
         public static final TagKey<Block> deepslates = forgeTag("deepslates");
+        public static final TagKey<Block> blackstones = forgeTag("blackstones");
 
         public static final TagKey<Block> tinStorages = forgeTag("storage_blocks/tin");
         public static final TagKey<Block> platStorages = forgeTag("storage_blocks/platinum");

@@ -96,35 +96,45 @@ public class RegBlocks {
 
     //~//~~ Decorative Blocks ~~//~//
     public static final RegistryObject<Block> AETHERROCK = register("aetherrock", () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).isValidSpawn((p_187421_, p_187422_, p_187423_, p_187424_) -> false).strength(10F, 30F).requiresCorrectToolForDrops()));
-        /* Polished */
+
     public static final RegistryObject<Block> POLISHED_AETHERROCK = register("polished_aetherrock", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
     public static final RegistryObject<Block> POLISHED_TUNGSTEN = register("polished_tungsten_block", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
-        /* Bricks */
+
+    public static final RegistryObject<Block> TUNGSTEN_BRICKS = register("tungsten_bricks", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
     public static final RegistryObject<Block> AETHERROCK_BRICKS = register("aetherrock_bricks", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
     public static final RegistryObject<Block> TIN_BRICKS = register("tin_bricks", () -> new Block(BlockBehaviour.Properties.copy(TIN_BLOCK.get())));
     public static final RegistryObject<Block> CRACKED_AETHERROCK_BRICKS = register("cracked_aetherrock_bricks", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
-        /* Tiles */
+
     public static final RegistryObject<Block> BRONZE_TILES = register("bronze_tiles", () -> new Block(BlockBehaviour.Properties.copy(BRONZE_BLOCK.get())));
     public static final RegistryObject<Block> AETHERROCK_TILES = register("aetherrock_tiles", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
     public static final RegistryObject<Block> TIN_TILES = register("tin_tiles", () -> new Block(BlockBehaviour.Properties.copy(TIN_BLOCK.get())));
     public static final RegistryObject<Block> PLATINUM_TILES = register("platinum_tiles", () -> new Block(BlockBehaviour.Properties.copy(PLATINUM_BLOCK.get())));
-        /* Cut */
+    public static final RegistryObject<Block> GOLD_TILES = register("gold_tiles", () -> new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK)));
+
     public static final RegistryObject<Block> CUT_TUNGSTEN_BLOCK = register("cut_tungsten_block", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
     public static final RegistryObject<Block> CUT_STEEL_BLOCK = register("cut_steel_block", () -> new Block(BlockBehaviour.Properties.copy(STEEL_BLOCK.get())));
-        /* Pillars */
-    public static final RegistryObject<Block> STEEL_PILLAR = register("steel_pillar", () -> new Block(BlockBehaviour.Properties.copy(STEEL_BLOCK.get())));
-        /* Chiseled */
+
+    public static final RegistryObject<Block> STEEL_PILLAR = register("steel_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(STEEL_BLOCK.get())));
+    public static final RegistryObject<Block> PLATINUM_PILLAR = register("platinum_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(PLATINUM_BLOCK.get())));
+    public static final RegistryObject<Block> GOLD_PILLAR = register("gold_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK)));
+
     public static final RegistryObject<Block> CHISELED_TUNGSTEN_BLOCK = register("chiseled_tungsten_block", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
     public static final RegistryObject<Block> CHISELED_TUNGSTEN_BRICKS = register("chiseled_tungsten_bricks", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
-        /* Stairs */
+
     public static final RegistryObject<Block> POLISHED_AETHERROCK_STAIR = register("polished_aetherrock_stair", () -> new StairBlock(POLISHED_AETHERROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_AETHERROCK.get())));
-        /* Slabs */
+
     public static final RegistryObject<Block> POLISHED_AETHERROCK_SLAB = register("polished_aetherrock_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_AETHERROCK.get())));
-        /* Wall */
+
     public static final RegistryObject<Block> POLISHED_AETHERROCK_WALL = register("polished_aetherrock_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_AETHERROCK.get())));
-        /* Doors */
+
     public static final RegistryObject<Block> STEEL_DOOR = register("steel_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(STEEL_BLOCK.get()).noOcclusion().pushReaction(PushReaction.DESTROY), BlockSetType.IRON));
-        /* Bars */
-        /* Trapdoors */
+
+    public static final RegistryObject<Block> STEEL_BARS = register("steel_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(STEEL_BLOCK.get()).noOcclusion()));
+    public static final RegistryObject<Block> BRONZE_BARS = register("bronze_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(BRONZE_BLOCK.get()).noOcclusion()));
+    public static final RegistryObject<Block> TIN_BARS = register("tin_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(TIN_BLOCK.get()).noOcclusion()));
+    public static final RegistryObject<Block> PLATINUM_BARS = register("platinum_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(PLATINUM_BLOCK.get()).noOcclusion()));
+    public static final RegistryObject<Block> TUNGSTEN_BARS = register("tungsten_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get()).noOcclusion()));
+    public static final RegistryObject<Block> GOLD_BARS = register("gold_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK).noOcclusion()));
+
     public static final RegistryObject<Block> STEEL_TRAPDOOR = register("steel_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(STEEL_BLOCK.get()).noOcclusion().pushReaction(PushReaction.DESTROY), BlockSetType.IRON));
 }

@@ -1,5 +1,9 @@
 {
   "values": [
-    "#forge:storage_blocks"
+    "#forge:storage_blocks",
+    "#minecraft:anvil",
+    "#minecraft:crops",
+    "minecraft:enchanting_table",
+    "minecraft:ender_chest"
   ]
 }

@@ -13,11 +13,11 @@ import java.util.function.Supplier;
 
 public class ArmorGrantEffects extends ArmorPowerMobEffects {
     public ArmorGrantEffects(String tooltipId, Conditional conditional, int duration, int amplifier, List<Supplier<MobEffect>> effect) {
-        super("", tooltipId, conditional, duration, amplifier, null, effect);
+        super("", tooltipId, conditional, duration, amplifier, List.of(), effect);
     }
 
     public ArmorGrantEffects(String tooltipId, Conditional conditional, int duration, int amplifier, Supplier<MobEffect> effect) {
-        super("", tooltipId, conditional, duration, amplifier, null, effect != null? List.of(effect) : null);
+        super("", tooltipId, conditional, duration, amplifier, List.of(), effect != null? List.of(effect) : List.of());
     }
 
     @Override

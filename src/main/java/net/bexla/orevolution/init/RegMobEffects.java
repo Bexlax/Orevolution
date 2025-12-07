@@ -2,6 +2,7 @@ package net.bexla.orevolution.init;
 
 import net.bexla.orevolution.Orevolution;
 import net.bexla.orevolution.content.types.effects.CrushEffect;
+import net.bexla.orevolution.content.types.effects.DebuffEffect;
 import net.bexla.orevolution.content.types.effects.PetrifiedEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,5 +18,9 @@ public class RegMobEffects {
 
     public static final RegistryObject<MobEffect> CRUSHED = EFFECTS.register("crushed",
             CrushEffect::new
+    );
+
+    public static final RegistryObject<MobEffect> WEAK_SOUL = EFFECTS.register("weak_soul",
+            DebuffEffect::new
     );
 }

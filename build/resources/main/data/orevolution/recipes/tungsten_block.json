@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "orevolution:chiseled_tungsten_bricks"
+  },
+  "result": "orevolution:tungsten_block"
+}

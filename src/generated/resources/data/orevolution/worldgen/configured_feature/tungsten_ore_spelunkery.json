@@ -2,7 +2,7 @@
   "type": "orevolution:tungsten_ore_spelunkery_feature",
   "config": {
     "discard_chance_on_air_exposure": 0.95,
-    "size": 4,
+    "size": 8,
     "targets": [
       {
         "state": {
@@ -10,7 +10,7 @@
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "forge:netherrack"
+          "tag": "forge:blackstones"
         }
       }
     ]
