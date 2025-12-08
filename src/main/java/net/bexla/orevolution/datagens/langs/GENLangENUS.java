@@ -109,6 +109,12 @@ public class GENLangENUS extends LangProvider {
         addTooltip("grant_on_mine", "Each %s amount of blocks mined, grants and increases the following effect(s):");
 
         addTooltip("multi_break", "Breaks blocks in a 3x3 area");
+        addTooltip("multi_break_explanation",
+                "Each block you mine will reduce durability by 1\n" +
+                        "Breaking 9 blocks results in losing 9 points of durability\n" +
+                        "Loses 4 points of durability per efficiency level\n" +
+                        "Breaking 9 blocks with efficiency I results in losing 36 points of durability"
+        );
 
         add("actionbar.orevolution.cant_harvest_ore", "You can't harvest this block yet");
 

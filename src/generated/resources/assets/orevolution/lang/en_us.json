@@ -206,6 +206,7 @@
   "tooltip.orevolution.increase_loot": "Has a chance of %s to increase mob loot",
   "tooltip.orevolution.iron_tool_tooltip": "Breaking speed increased by 2.5X on Deepslate, Planks and Dirt",
   "tooltip.orevolution.multi_break": "Breaks blocks in a 3x3 area",
+  "tooltip.orevolution.multi_break_explanation": "Each block you mine will reduce durability by 1\nBreaking 9 blocks results in losing 9 points of durability\nLoses 4 points of durability per efficiency level\nBreaking 9 blocks with efficiency I results in losing 36 points of durability",
   "tooltip.orevolution.necromium": "Mining speed increases depending on durability",
   "tooltip.orevolution.necromium_armor": "Allows you to come back from the death. \nEach time you die, a 5 minute cooldown is applied",
   "tooltip.orevolution.necromium_explanation": "Durability is treated as a percentage for mining speed \nThe lower it is, the higher mining speed you'll have",

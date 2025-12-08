@@ -206,6 +206,7 @@
   "tooltip.orevolution.increase_loot": "Tiene una probabilidad del %s de aumentar el botin de los mobs",
   "tooltip.orevolution.iron_tool_tooltip": "Velocidad de mineria incrementada en Pizarra Profunda, Tablones de madera y Tierra",
   "tooltip.orevolution.multi_break": "Rompe bloques en un area de 3x3",
+  "tooltip.orevolution.multi_break_explanation": "Cada bloque que rompas reduce la durabilidad en 1 punto\nRomper 9 bloques resulta en perder 9 puntos de durabilidad\nPierde 4 puntos de durabilidad por cada nivel de eficiencia\nRomper 9 bloques con eficiencia I resulta en perder 36 puntos de durabilidad",
   "tooltip.orevolution.necromium": "La velocidad de mineria incrementa dependiendo del desgaste",
   "tooltip.orevolution.necromium_armor": "Te permite volver de la muerte \nTras morir, la abilidad se recargara por 5 minutos",
   "tooltip.orevolution.necromium_explanation": "La durabilidad funciona como un porcentaje de la velocidad base \nMientras menos durabilidad tenga, mayor será la velocidad de mineria",

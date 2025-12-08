@@ -4,8 +4,11 @@ import net.bexla.orevolution.content.types.interfaces.Conditional;
 import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -13,6 +16,11 @@ public class ToolMultiBreaking extends OrevolutionToolPower {
 
     public ToolMultiBreaking(String tooltip_id, Conditional conditional) {
         super(tooltip_id, conditional);
+    }
+
+    @Override
+    public MutableComponent ctrlTooltip() {
+        return Component.translatable("tooltip.orevolution." + getTooltipID() + "_explanation");
     }
 
     @Override
@@ -51,9 +59,10 @@ public class ToolMultiBreaking extends OrevolutionToolPower {
 
                 if (!targetState.isAir() && stack.isCorrectToolForDrops(targetState)) { // Check if the tool can break this block
                     if (!offsetPos.equals(pos)) {
-                        int dam = stack.getDamageValue();
+                        int efficLevel = stack.getEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY);
+                        int extradamage = efficLevel > 0 ? (efficLevel * 4) : 1; // if tool has efficiency, increase durability damage by 4 per level
                         level.destroyBlock(offsetPos, true, player);
-                        stack.setDamageValue(dam - 1);
+                        stack.setDamageValue(stack.getDamageValue() + extradamage);
                     }
                 }
             }

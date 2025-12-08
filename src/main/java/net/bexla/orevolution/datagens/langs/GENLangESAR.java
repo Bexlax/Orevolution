@@ -157,6 +157,12 @@ public class GENLangESAR extends LangProvider {
         addTooltip("grant_on_mine", "Cada %s cantidad de bloques, causa y aumenta los siguientes efecto(s):");
 
         addTooltip("multi_break", "Rompe bloques en un area de 3x3");
+        addTooltip("multi_break_explanation",
+                "Cada bloque que rompas reduce la durabilidad en 1 punto\n" +
+                        "Romper 9 bloques resulta en perder 9 puntos de durabilidad\n" +
+                        "Pierde 4 puntos de durabilidad por cada nivel de eficiencia\n" +
+                        "Romper 9 bloques con eficiencia I resulta en perder 36 puntos de durabilidad"
+        );
 
         add("actionbar.orevolution.cant_harvest_ore", "No podes destruir este bloque todavia");
 
