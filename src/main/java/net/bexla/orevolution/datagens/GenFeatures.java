@@ -82,19 +82,19 @@ public class GenFeatures {
 
         public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> ctx) {
             registerOre(ctx, "tin_ore", TIN_ORE, OreType.OVERWORLD, TIN_ORES,
-                    13, 0F);
+                    12, 0F);
             registerOre(ctx, "tin_ore_extra", TIN_ORE, OreType.OVERWORLD, TIN_ORES,
-                    22, 0F);
+                    17, 0F);
 
             registerOre(ctx, "platinum_ore", PLATINUM_ORE, OreType.OVERWORLD, PLATINUM_ORES,
                     8, 0.1F);
             registerOre(ctx, "platinum_ore_extra", PLATINUM_ORE, OreType.OVERWORLD, PLATINUM_ORES,
-                    13, 0.2F);
+                    14, 0.2F);
 
             registerOre(ctx, "tungsten_ore", TUNGSTEN_ORE, OreType.NETHER, List.of(RegBlocks.NETHER_TUNGSTEN_ORE.get()),
                     8, 0.4F);
             registerOre(ctx, "tungsten_ore_extra", TUNGSTEN_ORE, OreType.NETHER, List.of(RegBlocks.NETHER_TUNGSTEN_ORE.get()),
-                    13, 0.6F);
+                    16, 0.6F);
 
             registerOre(ctx, "nether_experience_ore", EXPERIENCE_ORE, OreType.NETHER, List.of(RegBlocks.NETHER_XP_ORE.get()),
                     6, 0.7F);
@@ -138,24 +138,24 @@ public class GenFeatures {
         public static void bootstrap(BootstapContext<PlacedFeature> ctx) {
             var features = ctx.lookup(Registries.CONFIGURED_FEATURE);
 
-            registerOrePlacement(ctx, features, "tin_ore", 16, 0, 115);
-            registerOrePlacement(ctx, features, "tin_ore_extra", 16, 30, 152);
+            registerOrePlacement(ctx, features, "tin_ore", 14, 0, 115);
+            registerOrePlacement(ctx, features, "tin_ore_extra", 14, 30, 115);
 
-            registerOrePlacement(ctx, features, "platinum_ore", 7, -20, 53);
-            registerOrePlacement(ctx, features, "platinum_ore_extra", 7, -40, 40);
+            registerOrePlacement(ctx, features, "platinum_ore", 9, -40, 35);
+            registerOrePlacement(ctx, features, "platinum_ore_extra", 9, -40, 35);
 
             registerOrePlacement(ctx, features, "nether_experience_ore", 7, -40, 40);
             registerOrePlacement(ctx, features, "end_experience_ore", 9, -40, 60);
 
-            registerOrePlacement(ctx, features, "tungsten_ore", 12, -15, 40);
-            registerRareOrePlacement(ctx, features, "tungsten_ore_extra", 20, -40, -10);
+            registerOrePlacement(ctx, features, "tungsten_ore", 8, -15, 40);
+            registerRareOrePlacement(ctx, features, "tungsten_ore_extra", 8, -40, -10);
 
             registerMeteoritePlacementTop(ctx, features, "meteorite_high", 120, 180);
             registerMeteoritePlacementRange(ctx, features, "meteorite_low", 210, 95, 140);
 
-            registerOrePlacement(ctx, features, "tin_ore_spelunkery", 9, 0, 110);
-            registerOrePlacement(ctx, features, "platinum_ore_spelunkery", 6, -20, 53);
-            registerOrePlacement(ctx, features, "tungsten_ore_spelunkery", 12, -15, 40);
+            registerOrePlacement(ctx, features, "tin_ore_spelunkery", 14, 0, 115);
+            registerOrePlacement(ctx, features, "platinum_ore_spelunkery", 9, -40, 35);
+            registerOrePlacement(ctx, features, "tungsten_ore_spelunkery", 8, -15, 40);
         }
 
         private static void registerMeteoritePlacementTop(BootstapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> features, String name, int rarity, int minY) {
