@@ -13,5 +13,5 @@ A clear and concise description of what the bug is.
 # **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-# **Logs**
-Add important/relevant logs if necessary
+# **Additional info**
+Add important/relevant info if necessary (Crash logs, mod list, etc)
