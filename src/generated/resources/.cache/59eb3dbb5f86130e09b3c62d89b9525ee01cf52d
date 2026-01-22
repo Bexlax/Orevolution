@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-07T01:56:19.506975	Loot Tables
+// 1.20.1	2026-01-22T03:50:55.3879362	Loot Tables
 9933311cb5319e1f1e407178617329eab9032026 data/orevolution/loot_tables/blocks/aetherrock.json
 ec346fcd6911f6dff859b61c7b0e88971200d6bc data/orevolution/loot_tables/blocks/aetherrock_bricks.json
 60f491dba6dd427d1ee7c245b7a4a61536bac66f data/orevolution/loot_tables/blocks/aetherrock_tiles.json
@@ -16,6 +16,7 @@ dd3fcb28a3a1c4e70167a9634024a876f572b558 data/orevolution/loot_tables/blocks/dee
 b2b7ded729a44ac32bb8f3d106bd61dcd7d97d48 data/orevolution/loot_tables/blocks/gold_bars.json
 edfb6ae8805620bf7eb407f7254134ae48e053bc data/orevolution/loot_tables/blocks/gold_pillar.json
 5d3a67df5928762b462066bddfdbaa3e11edbd72 data/orevolution/loot_tables/blocks/gold_tiles.json
+97a03cac15c24df678118f2effef5d58b1cd2141 data/orevolution/loot_tables/blocks/hot_tungsten_sponge.json
 054ba909d9f3e7303c84a2b28b909b4ec85c2783 data/orevolution/loot_tables/blocks/livingstone_block.json
 61c1ee9e546d8ab513bacb9488e16c7b5e7b513d data/orevolution/loot_tables/blocks/livingstone_crop.json
 a1dac214a126ec1df9d497e22335975678b9ae11 data/orevolution/loot_tables/blocks/nether_tungsten_ore.json
@@ -46,5 +47,6 @@ b8f8a4cdb8a6273257b19b229731959bc6dbfa19 data/orevolution/loot_tables/blocks/tin
 b0c3a361ea3204b5a9c2300515558029b5fe69bd data/orevolution/loot_tables/blocks/tungsten_bars.json
 f28495d71a7efc789decacf1b1af5386591edf82 data/orevolution/loot_tables/blocks/tungsten_block.json
 3ff86e49a992481b0272567c7ba657e76e3ee49d data/orevolution/loot_tables/blocks/tungsten_bricks.json
+995f64d63949838ab5b6d915bdfdfdf0a4cb7c51 data/orevolution/loot_tables/blocks/tungsten_sponge.json
 1267cad3155ab2ee4dbc070f07cc516344df001e data/orevolution/loot_tables/blocks/verdite_block.json
 02d9e1c9df704cfed34b7640c23b9fb7caa86a1a data/orevolution/loot_tables/blocks/verdite_crop.json

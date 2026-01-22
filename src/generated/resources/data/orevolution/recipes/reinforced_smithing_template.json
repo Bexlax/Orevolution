@@ -18,6 +18,7 @@
     "AAA"
   ],
   "result": {
+    "count": 2,
     "item": "orevolution:reinforced_smithing_template"
   },
   "show_notification": true

@@ -36,6 +36,10 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         simpleBlock(block, "decorative");
     }
 
+    private void functional(Supplier<? extends Block> block) {
+        simpleBlock(block, "functional");
+    }
+
     private void compat(String modid, Supplier<? extends Block> block) {
         simpleBlock(block, "compat/" + modid);
     }
@@ -85,6 +89,9 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         decorative(RegBlocks.TIN_BRICKS);
         pillar(RegBlocks.PLATINUM_PILLAR);
         pillar(RegBlocks.GOLD_PILLAR);
+
+        functional(RegBlocks.TUNGSTEN_SPONGE);
+        functional(RegBlocks.HOT_TUNGSTEN_SPONGE);
 
         barsBlock(RegBlocks.GOLD_BARS);
         barsBlock(RegBlocks.PLATINUM_BARS);

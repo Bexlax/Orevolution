@@ -191,6 +191,9 @@ public class GENItemModels extends ItemModelProvider {
         block(RegBlocks.TIN_BRICKS);
         block(RegBlocks.TUNGSTEN_BRICKS);
 
+        block(RegBlocks.TUNGSTEN_SPONGE);
+        block(RegBlocks.HOT_TUNGSTEN_SPONGE);
+
         wall(RegBlocks.POLISHED_AETHERROCK_WALL, RegBlocks.POLISHED_AETHERROCK);
         block(RegBlocks.POLISHED_AETHERROCK_SLAB);
         block(RegBlocks.POLISHED_AETHERROCK_STAIR);

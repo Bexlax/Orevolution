@@ -108,6 +108,8 @@ public class GENLootDrops extends LootTableProvider {
             dropSelf(RegBlocks.TIN_BRICKS);
             add(RegBlocks.LIVINGSTONE_CROP.get(), createCropDrops(RegBlocks.LIVINGSTONE_CROP.get(), RegItems.LIVINGSTONE_SHARD.get(), RegItems.PETRIFIED_SEED.get(), LootItemBlockStatePropertyCondition.hasBlockStateProperties(RegBlocks.LIVINGSTONE_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlockStateProperties.AGE_4, 4))));
             add(RegBlocks.VERDITE_CROP.get(), createCropDrops(RegBlocks.VERDITE_CROP.get(), RegItems.VERDITE_NUGGET.get(), RegItems.DEAD_SEED.get(), LootItemBlockStatePropertyCondition.hasBlockStateProperties(RegBlocks.VERDITE_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(AGE_6, 6))));
+            dropSelf(RegBlocks.TUNGSTEN_SPONGE);
+            dropSelf(RegBlocks.HOT_TUNGSTEN_SPONGE);
         }
 
         private static final IntegerProperty AGE_6 = IntegerProperty.create("age", 0, 6);
