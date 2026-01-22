@@ -40,11 +40,11 @@ public class GENLangENUS extends LangProvider {
         addTooltip("triplication", "Has a chance (Max of %s) to triplicate most block drops");
 
         addTooltip("duplication_explanation",
-                "List of chances depending on blocks:\n" +
-                        " - 'Always' blocks (eg. Any Leave Block) -> 100% chance\n" +
+                "List of chances depending on block types:\n" +
+                        " - Always duplicated (eg. Oak Leaves) -> 100% chance\n" +
                         " - Uncommon blocks (eg. Anvil) -> half of Max\n" +
-                        " - Rare blocks (eg. Any Ore Block) -> fifth of Max\n" +
-                        " - Any Ore (eg. Copper Ore) -> tenth of Max\n" +
+                        " - Any Ore (eg. Coal Ore) -> fifth of Max\n" +
+                        " - Rare blocks (eg. Iron Block) -> tenth of Max\n" +
                         " - 'Never' blocks (eg. Aethersteel Block) -> 0% chance"
         );
 
@@ -137,6 +137,9 @@ public class GENLangENUS extends LangProvider {
         addEffect(RegMobEffects.CRUSHED, "Crushed");
         addEffect(RegMobEffects.PETRIFIED, "Petrified");
         addEffect(RegMobEffects.WEAK_SOUL, "Weakened Soul");
+
+        addBlock(RegBlocks.TUNGSTEN_SPONGE, "Tungsten Sponge");
+        addBlock(RegBlocks.HOT_TUNGSTEN_SPONGE, "Hot Tungsten Sponge");
 
         addItem(RegItems.DEAD_SEED, "Dead Seed");
         addBlock(RegBlocks.VERDITE_CROP, "Verdite Crop");

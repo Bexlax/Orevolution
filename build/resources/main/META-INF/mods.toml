@@ -7,7 +7,7 @@ repository="https://github.com/Bexlax/Orevolution"
 
 [[mods]]
 modId="orevolution"
-version="3.2.1"
+version="3.2.3"
 displayName="Orevolution!"
 authors="BeXla"
 logoFile="logo.png"

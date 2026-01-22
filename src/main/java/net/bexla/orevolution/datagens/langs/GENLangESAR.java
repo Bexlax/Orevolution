@@ -43,8 +43,8 @@ public class GENLangESAR extends LangProvider {
     @Override
     protected void addTranslations() {
         addAdvancemente("aethersteel_hoe",
-                "Herramienta sin motivo",
-                "Gasta 1 Lingote de acero étereo para mejorar tu azada de netherita sin ningun motivo aparente"
+                "Herramienta sin sentido",
+                "Malgasta 1 Lingote de acero étereo para mejorar tu azada de netherita sin ningun motivo aparente"
         );
         addAdvancemente("aethersteel_armor",
                 "Fuerza imparable",
@@ -87,21 +87,21 @@ public class GENLangESAR extends LangProvider {
         addTooltip("triplication", "Tiene una probabilidad (Maxima de %s) de triplicar los drops de los bloques");
 
         addTooltip("duplication_explanation",
-                "Lista de probabilidades dependiendo de los bloques:\n" +
-                        " - Cualquier mineral (ej. Mineral de cobre) -> prob. del 5%\n" +
-                        " - Bloques inusuales (ej. Yunque) -> mitad de la prob. maxima\n" +
-                        " - Bloques raros (ej. Cualquier bloque de mineral) -> un quinto de la prob. maxima\n" +
-                        " - Bloques 'siempre' (ej. Cualquier hoja de arbol) -> prob. del 100%\n" +
-                        " - Bloques 'nunca' (ej. Bloque de acero ètereo) -> prob. del 0%"
+                "Lista de chances dependiendo del tipo de bloque:\n" +
+                        " - Siempre duplicados. (ej. Hojas de arbol) -> 100%\n" +
+                        " - Inusualmente duplicados. (ej. Mesa de crafteo) -> Mitad del Max\n" +
+                        " - Cualquier mineral (ej. Mineral de carbon) -> Un quinto del Max\n" +
+                        " - Raramente duplicados. (ej. Bloque de hierro) -> Una decima del Max\n" +
+                        " - Nunca duplicados (ej. Bloque de acero etereo) -> 0%"
         );
 
         addTooltip("triplication_explanation",
-                "Lista de probabilidades dependiendo de los bloques:\n" +
-                        " - Bloques 'siempre' (ej. Cualquier hoja de arbol) -> prob. del 100%\n" +
-                        " - Bloques inusuales (ej Yunque) -> mitad de la prob. maxima\n" +
-                        " - Bloques raros (ej. Cualquier bloque de mineral) -> un quinto de la prob. maxima\n" +
-                        " - Cualquier mineral (ej. Mineral de cobre) -> prob. del 5%\n" +
-                        " - Bloques 'nunca' (ej. Bloque de acero ètereo) -> prob. del 0%"
+                "Lista de chances dependiendo del tipo de bloque:\n" +
+                        " - Siempre duplicados. (ej. Hojas de arbol) -> 100%\n" +
+                        " - Inusualmente duplicados. (ej. Mesa de crafteo) -> Mitad del Max\n" +
+                        " - Cualquier mineral (ej. Mineral de carbon) -> Un quinto del Max\n" +
+                        " - Raramente duplicados. (ej. Bloque de hierro) -> Una decima del Max\n" +
+                        " - Nunca duplicados (ej. Bloque de acero etereo) -> 0%"
         );
 
         addTooltip("duplication_crops", "Tiene una probabilidad (Maxima de %s porciento) de duplicar los drops de las plantas");
@@ -185,6 +185,9 @@ public class GENLangESAR extends LangProvider {
         addEffect(RegMobEffects.CRUSHED, "Aplastado");
         addEffect(RegMobEffects.PETRIFIED, "Petrificado");
         addEffect(RegMobEffects.WEAK_SOUL, "Alma debilitada");
+
+        addBlock(RegBlocks.TUNGSTEN_SPONGE, "Esponja de tungsteno");
+        addBlock(RegBlocks.HOT_TUNGSTEN_SPONGE, "Esponja de tungsteno caliente");
 
         addItem(RegItems.DEAD_SEED, "Semilla muerta");
         addBlock(RegBlocks.VERDITE_CROP, "Cultivo de verdita");
