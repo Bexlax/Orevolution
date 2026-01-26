@@ -136,22 +136,20 @@ public class GENRecipes extends RecipesProvider {
 
         quadTransform(RegBlocks.AETHERROCK_TILES, RegBlocks.POLISHED_AETHERROCK).save(consumer);
 
-        quadTransformItem(RegBlocks.POLISHED_TUNGSTEN, RegItems.TUNGSTEN_INGOT, 2).save(consumer);
+        quadTransformItem(RegBlocks.POLISHED_TUNGSTEN, RegItems.TUNGSTEN_INGOT, 1).save(consumer);
         quadTransform(RegBlocks.TUNGSTEN_BRICKS, RegBlocks.POLISHED_TUNGSTEN).save(consumer);
 
         makePillarItem(RegBlocks.STEEL_PILLAR, RegItems.STEEL_ALLOY).save(consumer);
 
-        quadTransformItem(RegBlocks.PLATINUM_TILES, RegItems.PLATINUM_INGOT, 2).save(consumer);
-        quadTransformItem(RegBlocks.GOLD_TILES, () -> Items.GOLD_INGOT, 2).save(consumer);
         makePillarItem(RegBlocks.PLATINUM_PILLAR, RegItems.PLATINUM_INGOT).save(consumer);
         makePillarItem(RegBlocks.GOLD_PILLAR, () -> Items.GOLD_INGOT).save(consumer);
 
-        makeBarsItem(RegBlocks.PLATINUM_BARS, RegItems.PLATINUM_INGOT).save(consumer);
-        makeBarsItem(RegBlocks.TUNGSTEN_BARS, RegItems.TUNGSTEN_INGOT).save(consumer);
-        makeBarsItem(RegBlocks.BRONZE_BARS, RegItems.BRONZE_ALLOY).save(consumer);
-        makeBarsItem(RegBlocks.STEEL_BARS, RegItems.STEEL_ALLOY).save(consumer);
-        makeBarsItem(RegBlocks.TIN_BARS, RegItems.TIN_INGOT).save(consumer);
-        makeBarsItem(RegBlocks.GOLD_BARS, () -> Items.GOLD_INGOT).save(consumer);
+        makeBarsItem(RegBlocks.PLATINUM_BARS, RegItems.PLATINUM_INGOT);
+        makeBarsItem(RegBlocks.TUNGSTEN_BARS, RegItems.TUNGSTEN_INGOT);
+        makeBarsItem(RegBlocks.BRONZE_BARS, RegItems.BRONZE_ALLOY);
+        makeBarsItem(RegBlocks.STEEL_BARS, RegItems.STEEL_ALLOY);
+        makeBarsItem(RegBlocks.TIN_BARS, RegItems.TIN_INGOT);
+        makeBarsItem(RegBlocks.GOLD_BARS, () -> Items.GOLD_INGOT);
 
         makeChiseledStonecutting(RegBlocks.CHISELED_TUNGSTEN_BLOCK, RegBlocks.TUNGSTEN_BLOCK, consumer);
         stonecutting(RegBlocks.CHISELED_TUNGSTEN_BRICKS, RegBlocks.TUNGSTEN_BLOCK.get()).save(consumer);
@@ -240,7 +238,7 @@ public class GENRecipes extends RecipesProvider {
         bronzeCrown(RegItems.BRONZE_CROWN_EMERALD, () -> Items.EMERALD).save(consumer);
         bronzeCrown(RegItems.BRONZE_CROWN_LAPIS, () -> Items.LAPIS_LAZULI).save(consumer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegItems.AETHERSTEEL_TEMPLATE.get(), 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegItems.AETHERSTEEL_TEMPLATE.get())
                 .pattern("ACA")
                 .pattern("ABA")
                 .pattern("AAA")
@@ -249,7 +247,7 @@ public class GENRecipes extends RecipesProvider {
                 .define('C', RegItems.AETHERSTEEL_TEMPLATE.get())
                 .unlockedBy("has_aethersteel_template", has(RegItems.AETHERSTEEL_TEMPLATE.get())).save(consumer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegItems.REINFORCED_TEMPLATE.get(), 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegItems.REINFORCED_TEMPLATE.get())
                 .pattern("ACA")
                 .pattern("ABA")
                 .pattern("AAA")
@@ -257,14 +255,6 @@ public class GENRecipes extends RecipesProvider {
                 .define('B', Items.DIAMOND)
                 .define('C', RegItems.REINFORCED_TEMPLATE.get())
                 .unlockedBy("has_reinforced_template", has(RegItems.REINFORCED_TEMPLATE.get())).save(consumer);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegBlocks.TUNGSTEN_SPONGE.get(), 1)
-                .pattern(" A ")
-                .pattern("AXA")
-                .pattern(" A ")
-                .define('A', RegItems.TUNGSTEN_INGOT.get())
-                .define('X', Items.SPONGE)
-                .unlockedBy("has_sponge", has(Items.SPONGE)).save(consumer);
 
         smithingReinforced(() -> Items.NETHERITE_HELMET, RegItems.REINFORCED_NETHERITE_HELMET).save(consumer, modLocat("reinforced_netherite_helmet"));
         smithingReinforced(() -> Items.NETHERITE_CHESTPLATE, RegItems.REINFORCED_NETHERITE_CHESTPLATE).save(consumer, modLocat("reinforced_netherite_chestplate"));

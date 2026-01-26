@@ -183,8 +183,6 @@ public class GENItemModels extends ItemModelProvider {
         block(RegBlocks.CUT_STEEL_BLOCK);
         block(RegBlocks.CRACKED_AETHERROCK_BRICKS);
         block(RegBlocks.STEEL_PILLAR);
-        block(RegBlocks.PLATINUM_TILES);
-        block(RegBlocks.GOLD_TILES);
         block(RegBlocks.GOLD_PILLAR);
         block(RegBlocks.PLATINUM_PILLAR);
         block(RegBlocks.CHISELED_TUNGSTEN_BRICKS);
@@ -192,9 +190,6 @@ public class GENItemModels extends ItemModelProvider {
         block(RegBlocks.TIN_TILES);
         block(RegBlocks.TIN_BRICKS);
         block(RegBlocks.TUNGSTEN_BRICKS);
-
-        block(RegBlocks.TUNGSTEN_SPONGE);
-        block(RegBlocks.HOT_TUNGSTEN_SPONGE);
 
         wall(RegBlocks.POLISHED_AETHERROCK_WALL, RegBlocks.POLISHED_AETHERROCK);
         block(RegBlocks.POLISHED_AETHERROCK_SLAB);

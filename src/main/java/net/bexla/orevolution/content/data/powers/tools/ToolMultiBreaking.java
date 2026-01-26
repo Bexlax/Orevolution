@@ -1,6 +1,5 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.OrevolutionConfig;
 import net.bexla.orevolution.content.types.interfaces.Conditional;
 import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
 import net.minecraft.core.BlockPos;
@@ -21,7 +20,7 @@ public class ToolMultiBreaking extends OrevolutionToolPower {
 
     @Override
     public MutableComponent ctrlTooltip() {
-        return OrevolutionConfig.COMMON.steelEfficiencyNerf.get() ? Component.translatable("tooltip.orevolution." + getTooltipID() + "_explanation") : null;
+        return Component.translatable("tooltip.orevolution." + getTooltipID() + "_explanation");
     }
 
     @Override
@@ -61,7 +60,7 @@ public class ToolMultiBreaking extends OrevolutionToolPower {
                 if (!targetState.isAir() && stack.isCorrectToolForDrops(targetState)) { // Check if the tool can break this block
                     if (!offsetPos.equals(pos)) {
                         int efficLevel = stack.getEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY);
-                        int extradamage = OrevolutionConfig.COMMON.steelEfficiencyNerf.get() && efficLevel > 0 ? (efficLevel * 4) : 1; // if tool has efficiency, increase durability damage by 4 per level
+                        int extradamage = efficLevel > 0 ? (efficLevel * 4) : 1; // if tool has efficiency, increase durability damage by 4 per level
                         level.destroyBlock(offsetPos, true, player);
                         stack.setDamageValue(stack.getDamageValue() + extradamage);
                     }

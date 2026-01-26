@@ -46,8 +46,6 @@ public class OrevolutionConfig
         public final ConfigValue<Integer> verditeMaxUses;
         public final ConfigValue<Integer> steelMaxUses;
 
-        public final ConfigValue<Boolean> steelEfficiencyNerf;
-
         private Common(ForgeConfigSpec.Builder builder) {
             builder.push("Gameplay - Powers");
 
@@ -149,12 +147,6 @@ public class OrevolutionConfig
                     .defineInRange("steel_max_uses", 1152, 1, Integer.MAX_VALUE);
 
             builder.pop();
-
-            builder.push("Gameplay - Other Changes and Balances");
-
-            steelEfficiencyNerf = builder
-                    .comment("Defines if steel tools will increase their durability cost for each mined block per efficiency level")
-                    .define("steel_efficiency_nerf", true);
         }
     }
 

@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-22T03:50:55.3809122	orevolution Item Models
+// 1.20.1	2025-12-07T01:56:19.5039636	orevolution Item Models
 91b4da5ec7f75ef045509b8dfb4da69c769c5d44 assets/orevolution/models/item/aetherrock.json
 1c9f8fb1d84079321282d5bee4524c22ce6f7c64 assets/orevolution/models/item/aetherrock_bricks.json
 096830346ffc98d5007ec8e130110ce4a07fe185 assets/orevolution/models/item/aetherrock_tiles.json
@@ -37,7 +37,6 @@ a94aa1fb46877e64b953caba72207bf15f805dda assets/orevolution/models/item/dead_see
 9d14cdd7a2b2fcfe083d483e2df36026f2afeab2 assets/orevolution/models/item/deepslate_tin_ore.json
 e6c73fd50bcdb693b6cc30cffdf555286cebf35c assets/orevolution/models/item/end_experience_ore.json
 3adba357cbb3c1394757054e10abd697788b78e4 assets/orevolution/models/item/gold_pillar.json
-246d276aa46092e6058a467d4b41335d23456ab5 assets/orevolution/models/item/hot_tungsten_sponge.json
 b44272fbb36575f0b0c98ff11a3fdf843a71a83d assets/orevolution/models/item/livingstone_axe.json
 654212eceb949ce162fc4585b2f5c0432a9f0f2f assets/orevolution/models/item/livingstone_block.json
 b516a8fbba444fee8a3d921ae5932eaf48cf9425 assets/orevolution/models/item/livingstone_boots.json
@@ -162,7 +161,6 @@ bd43a589bd2847b4005a68f1eb34eb85c8723cc0 assets/orevolution/models/item/tin_shie
 b02e1126aca60d9b40b0b8b14d49fcfa7d01cddb assets/orevolution/models/item/tungsten_bricks.json
 e430dd43e77da5e3f70bb39aa207f26f318a728b assets/orevolution/models/item/tungsten_ingot.json
 3533e7851addb6a23cf5f3540e0cb4c0ad969ef4 assets/orevolution/models/item/tungsten_nugget.json
-89f18bde7bb26c692e6771960fb2993862ce1da4 assets/orevolution/models/item/tungsten_sponge.json
 e9bf5f5716c6c5d819521a3636daa1a88cdade68 assets/orevolution/models/item/verdite_apple.json
 24170d62ec0c68128e12d17d231642009c93c540 assets/orevolution/models/item/verdite_axe.json
 bb0eeac2586741ce0d040216cb9f5f3f5e3b29ab assets/orevolution/models/item/verdite_block.json

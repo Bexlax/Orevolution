@@ -1,12 +1,9 @@
 package net.bexla.orevolution.mixins;
 
-import com.google.common.collect.ImmutableMap;
 import net.bexla.orevolution.OrevolutionConfig;
-import net.bexla.orevolution.content.data.OrevolutionToolTiers;
 import net.bexla.orevolution.content.types.ToolPowerRegistry;
 import net.bexla.orevolution.content.types.interfaces.ToolPower;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -69,33 +66,30 @@ public class ItemstackMixin {
         }
     }
 
-    private static final Map<Tier, Supplier<Integer>> BALANCED_DURABILITIES = ImmutableMap.<Tier, Supplier<Integer>>builder()
-            .put(Tiers.IRON, OrevolutionConfig.COMMON.ironMaxUses)
-            .put(Tiers.DIAMOND, OrevolutionConfig.COMMON.diamondMaxUses)
-            .put(Tiers.GOLD, OrevolutionConfig.COMMON.goldMaxUses)
-            .put(Tiers.NETHERITE, OrevolutionConfig.COMMON.netheriteMaxUses)
-            .put(Tiers.STONE, OrevolutionConfig.COMMON.stoneMaxUses)
-            .put(Tiers.WOOD, OrevolutionConfig.COMMON.woodMaxUses)
-            .put(OrevolutionToolTiers.TIN, OrevolutionConfig.COMMON.tinMaxUses)
-            .put(OrevolutionToolTiers.PLATINUM, OrevolutionConfig.COMMON.platMaxUses)
-            .put(OrevolutionToolTiers.AETHERSTEEL, OrevolutionConfig.COMMON.aetherMaxUses)
-            .put(OrevolutionToolTiers.STEEL, OrevolutionConfig.COMMON.steelMaxUses)
-            .put(OrevolutionToolTiers.LIVINGSTONE, OrevolutionConfig.COMMON.livingstoneMaxUses)
-            .put(OrevolutionToolTiers.VERDITE, OrevolutionConfig.COMMON.verditeMaxUses)
-            .build();
+    private static final Map<Tier, Supplier<Integer>> BALANCED_DURABILITIES = Map.of(
+            Tiers.IRON, OrevolutionConfig.COMMON.ironMaxUses,
+            Tiers.DIAMOND, OrevolutionConfig.COMMON.diamondMaxUses,
+            Tiers.GOLD, OrevolutionConfig.COMMON.goldMaxUses,
+            Tiers.NETHERITE, OrevolutionConfig.COMMON.netheriteMaxUses,
+            Tiers.STONE, OrevolutionConfig.COMMON.stoneMaxUses,
+            Tiers.WOOD, OrevolutionConfig.COMMON.woodMaxUses
+    );
+
 
     @Inject(method = "getMaxDamage", at = @At("RETURN"), cancellable = true)
     private void orevolution$injectModifierMaxUses(CallbackInfoReturnable<Integer> cir) {
         ItemStack stack = (ItemStack)(Object)this;
 
-        if (!(stack.getItem() instanceof TieredItem tiered)) return;
-
         int uses = cir.getReturnValue();
+
+        if (!(stack.getItem() instanceof TieredItem tiered)) return;
 
         Supplier<Integer> override = BALANCED_DURABILITIES.get(tiered.getTier());
         if (override != null) {
             uses = override.get();
         }
+
+        if(uses == tiered.getTier().getUses()) return;
 
         if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
             uses = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
@@ -105,55 +99,5 @@ public class ItemstackMixin {
         }
 
         cir.setReturnValue(uses);
-    }
-
-    // bar width fix
-    @Inject(method = "getBarWidth", at = @At("RETURN"), cancellable = true)
-    public void orevolution$injectBarWidth(CallbackInfoReturnable<Integer> cir) {
-        ItemStack stack = (ItemStack)(Object)this;
-
-        if (!(stack.getItem() instanceof TieredItem tiered)) return;
-
-        int uses = tiered.getDefaultInstance().getMaxDamage();
-
-        Supplier<Integer> override = BALANCED_DURABILITIES.get(tiered.getTier());
-        if (override != null) {
-            uses = override.get();
-        }
-
-        if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
-            uses = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
-        }
-        else if (tiered instanceof DiggerItem && OrevolutionConfig.COMMON.toolsPowers.get()) {
-            uses = ToolPowerRegistry.getToolPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
-        }
-
-        cir.setReturnValue(Math.round(13.0F - (float)stack.getDamageValue() * 13.0F / (float)uses));
-    }
-
-    // bar color fix
-    @Inject(method = "getBarColor", at = @At("RETURN"), cancellable = true)
-    public void orevolution$injectBarColor(CallbackInfoReturnable<Integer> cir) {
-        ItemStack stack = (ItemStack)(Object)this;
-
-        if (!(stack.getItem() instanceof TieredItem tiered)) return;
-
-        int stackMaxDamage = tiered.getDefaultInstance().getMaxDamage();
-
-        Supplier<Integer> override = BALANCED_DURABILITIES.get(tiered.getTier());
-        if (override != null) {
-            stackMaxDamage = override.get();
-        }
-
-        if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
-            stackMaxDamage = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier()).setMaxUses(stack, stackMaxDamage);
-        }
-        else if (tiered instanceof DiggerItem && OrevolutionConfig.COMMON.toolsPowers.get()) {
-            stackMaxDamage = ToolPowerRegistry.getToolPowerForTier(tiered.getTier()).setMaxUses(stack, stackMaxDamage);
-        }
-
-        float ratio = (float)Math.max(0, stackMaxDamage - stack.getDamageValue()) / (float)stackMaxDamage;
-        float f = Math.max(0.0F, ratio);
-        cir.setReturnValue(Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F));
     }
 }

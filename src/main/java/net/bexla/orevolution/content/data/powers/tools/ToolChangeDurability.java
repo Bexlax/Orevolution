@@ -29,6 +29,7 @@ public class ToolChangeDurability extends OrevolutionToolPower {
     public int setMaxUses(ItemStack stack, int defaultUses) {
         if(!getCBoolean(stack, null, null, null, null)) return defaultUses;
 
+        stack.setDamageValue(stack.getDamageValue() + durability);
         return replaceOriginalValue? durability : defaultUses + durability;
     }
 }

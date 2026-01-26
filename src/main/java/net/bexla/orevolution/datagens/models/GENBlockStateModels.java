@@ -36,10 +36,6 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         simpleBlock(block, "decorative");
     }
 
-    private void functional(Supplier<? extends Block> block) {
-        simpleBlock(block, "functional");
-    }
-
     private void compat(String modid, Supplier<? extends Block> block) {
         simpleBlock(block, "compat/" + modid);
     }
@@ -83,16 +79,12 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         decorative(RegBlocks.CRACKED_AETHERROCK_BRICKS);
         pillar(RegBlocks.STEEL_PILLAR);
         decorative(RegBlocks.PLATINUM_TILES);
-        decorative(RegBlocks.GOLD_TILES);
         cubeColumnBlock(RegBlocks.CHISELED_TUNGSTEN_BLOCK, RegBlocks.POLISHED_TUNGSTEN);
         cubeColumnBlock(RegBlocks.CHISELED_TUNGSTEN_BRICKS, RegBlocks.TUNGSTEN_BRICKS);
         decorative(RegBlocks.TIN_TILES);
         decorative(RegBlocks.TIN_BRICKS);
         pillar(RegBlocks.PLATINUM_PILLAR);
         pillar(RegBlocks.GOLD_PILLAR);
-
-        functional(RegBlocks.TUNGSTEN_SPONGE);
-        functional(RegBlocks.HOT_TUNGSTEN_SPONGE);
 
         barsBlock(RegBlocks.GOLD_BARS);
         barsBlock(RegBlocks.PLATINUM_BARS);
