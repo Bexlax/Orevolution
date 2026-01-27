@@ -1,9 +1,7 @@
 package net.bexla.orevolution.content.types.providers;
 
-import galena.oreganized.data.ConditionalData;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
@@ -63,9 +61,4 @@ public abstract class BlockLootProvider extends BlockLootSubProvider {
     public void dropNothing(Supplier<? extends Block> block) {
         dropOther(block, Blocks.AIR);
     }
-
-    public void dyed(DyeColor color, Runnable block) {
-        ConditionalData.dyed(color, this, block);
-    }
-
 }
