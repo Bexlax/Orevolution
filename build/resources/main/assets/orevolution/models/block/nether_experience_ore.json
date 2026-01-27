@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "orevolution:block/ore/nether_experience_ore"
-  }
-}

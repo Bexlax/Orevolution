@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/iron_bars_side",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "bars": "orevolution:block/decorative/bar/gold_bars",
-    "edge": "orevolution:block/decorative/bar/gold_bars",
-    "particle": "orevolution:block/decorative/bar/gold_bars"
-  }
-}

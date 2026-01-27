@@ -1,7 +1,0 @@
-Java Launcher: C:\Users\Quinteros\.gradle\jdks\eclipse_adoptium-22-amd64-windows\jdk-22.0.2+9\bin\java.exe
-Arguments: '--inJar, C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.4\forge-1.20.1-47.4.4-injected.jar, --outJar, C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.4_mapped_official_1.20.1\forge-1.20.1-47.4.4_mapped_official_1.20.1.jar, --logFile, accesstransform.log, --atFile, Z:\Benja\Intellij Projects\Orevolution\build\_atJar_4\parent_at.cfg'
-Classpath:
- - C:\Users\Quinteros\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\accesstransformers\8.2.1\accesstransformers-8.2.1-fatjar.jar
-Working directory: Z:\Benja\Intellij Projects\Orevolution\build\_atJar_4
-Main class: net.minecraftforge.accesstransformer.TransformerProcessor
-====================================
