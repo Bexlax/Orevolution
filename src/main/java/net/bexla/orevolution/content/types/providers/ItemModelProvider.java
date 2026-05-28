@@ -5,12 +5,16 @@ import net.bexla.orevolution.Orevolution;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
@@ -48,6 +52,30 @@ public abstract class ItemModelProvider extends BlueprintItemModelProvider {
     public ItemModelBuilder generated(String name, ResourceLocation texture) {
         return withExistingParent(name, mcLoc("item/generated"))
                 .texture("layer0", texture);
+    }
+
+    @SafeVarargs
+    public final void trimArmorItem(RegistryObject<? extends ItemLike>... items) {
+        for(RegistryObject<? extends ItemLike> item : items) {
+            Item var7 = ((ItemLike)item.get()).asItem();
+            if (var7 instanceof ArmorItem armor) {
+                ResourceLocation location = ForgeRegistries.ITEMS.getKey(armor);
+                ItemModelBuilder itemModel = this.withExistingParent(name((ItemLike)item.get()), "item/generated").texture("layer0", new ResourceLocation(this.modid, "item/armor/" + name(armor)));
+                int trimType = 1;
+
+                for(String trim : new String[]{"quartz", "iron", "netherite", "redstone", "copper", "gold", "emerald", "diamond", "lapis", "amethyst"}) {
+                    String var10002 = location.getNamespace();
+                    String var10003 = location.getPath();
+                    ResourceLocation name = new ResourceLocation(var10002, "item/armor/" + var10003 + "_" + trim + "_trim");
+                    itemModel.override().model(new ModelFile.UncheckedModelFile(name)).predicate(new ResourceLocation("trim_type"), (float)((double)trimType / (double)10.0F));
+                    var10002 = armor.getType().getName();
+                    ResourceLocation texture = new ResourceLocation("trims/items/" + var10002 + "_trim_" + trim);
+                    this.existingFileHelper.trackGenerated(texture, PackType.CLIENT_RESOURCES, ".png", "textures");
+                    ((ItemModelBuilder)((ItemModelBuilder)this.withExistingParent(name.getPath(), "item/generated")).texture("layer0", new ResourceLocation(this.modid, "item/armor/" + location.getPath()))).texture("layer1", texture);
+                    ++trimType;
+                }
+            }
+        }
     }
 
     public ItemModelBuilder generated(Supplier<? extends ItemLike> itemLike, ResourceLocation texture) {

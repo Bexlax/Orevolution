@@ -1,8 +1,9 @@
 package net.bexla.orevolution.content.types;
 
 import com.mojang.logging.LogUtils;
-import net.bexla.orevolution.content.types.interfaces.ToolPower;
+import net.bexla.orevolution.content.types.interfaces.IToolPower;
 import net.minecraft.world.item.Tier;
+import net.minecraftforge.common.ForgeConfigSpec;
 import org.slf4j.Logger;
 
 import java.util.HashMap;
@@ -13,33 +14,36 @@ public class ToolPowerRegistry {
 
     private static final Map<Tier, ToolPowerPair> tierTagMap = new HashMap<>();
 
-    public record ToolPowerPair(ToolPower toolPower, ToolPower swordPower) {}
+    public record ToolPowerPair(ForgeConfigSpec.ConfigValue<Boolean> toolsEnabled, ForgeConfigSpec.ConfigValue<Boolean> swordsEnabled, IToolPower toolPower, IToolPower swordPower) {}
 
-    /**
-     * Registers a ToolPower and SwordPower for a given Tier.
-     *
-     * @param tier       The material tier to associate with the powers.
-     * @param toolPower  The ToolPower to register for tools of this tier.
-     * @param swordPower The ToolPower to register for swords of this tier.
-     */
-    public static void registerTier(Tier tier, ToolPower toolPower, ToolPower swordPower) {
+    public static void register(Tier tier, ForgeConfigSpec.ConfigValue<Boolean> toolsEnabled, ForgeConfigSpec.ConfigValue<Boolean> swordsEnabled, IToolPower toolPower, IToolPower swordPower) {
         if (tierTagMap.containsKey(tier)) {
-            LOGGER.warn("Overriding existing ToolPower registration for tier: {}", tier);
+            LOGGER.warn("Overriding existing IToolPower registration for tier: {}", tier);
         }
 
-        tierTagMap.put(tier, new ToolPowerPair(toolPower, swordPower));
+        tierTagMap.put(tier, new ToolPowerPair(toolsEnabled, swordsEnabled, toolPower, swordPower));
 
-        LOGGER.debug("Registered powers for tier {} -> Tool: {}, Sword: {}",
-                tier, toolPower.getClass().getSimpleName(), swordPower.getClass().getSimpleName());
+        LOGGER.debug("Registered powers for tier {} -> Tool: {}, Sword: {}", tier, toolPower.getClass().getSimpleName(), swordPower.getClass().getSimpleName()
+        );
     }
 
-    public static ToolPower getToolPowerForTier(Tier tier) {
+    public static IToolPower getToolPower(Tier tier) {
         ToolPowerPair pair = tierTagMap.get(tier);
-        return pair != null ? pair.toolPower() : ToolPower.EMPTY;
+
+        if (pair == null || !pair.toolsEnabled().get()) {
+            return IToolPower.EMPTY;
+        }
+
+        return pair.toolPower();
     }
 
-    public static ToolPower getSwordPowerForTier(Tier tier) {
+    public static IToolPower getWeaponPower(Tier tier) {
         ToolPowerPair pair = tierTagMap.get(tier);
-        return pair != null ? pair.swordPower() : ToolPower.EMPTY;
+
+        if (pair == null || !pair.swordsEnabled().get()) {
+            return IToolPower.EMPTY;
+        }
+
+        return pair.swordPower();
     }
 }

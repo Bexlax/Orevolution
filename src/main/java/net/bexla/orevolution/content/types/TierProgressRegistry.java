@@ -48,10 +48,10 @@ import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-// Credits to Forge/Mojang for the majority of this code, as it's heavily based on their tier sorting system (TierSortingRegistry).
+// Credits to Forge/Mojang for the majority of this code, as it's heavily based on their tier sorting system (net.minecraftforge.common.TierSortingRegistry), though mine is better ofc
 public class TierProgressRegistry {
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final ResourceLocation ITEM_TIER_ORDERING_JSON = new ResourceLocation("forge", "item_tier_ordering.json");
+    private static final ResourceLocation ITEM_TIER_ORDERING_JSON = new ResourceLocation("orevolution", "item_tier_ordering.json");
     private static final Map<Tier, TagKey<Block>> tierTagMap = new HashMap<>();
     private static final Map<Tier, Tier> secondaryTiers = new HashMap<>();
 
@@ -300,11 +300,7 @@ public class TierProgressRegistry {
         {
             return false;
         }
-        else if (i < 1 && state.is(BlockTags.NEEDS_STONE_TOOL))
-        {
-            return false;
-        }
-        return true;
+        else return i >= 1 || !state.is(BlockTags.NEEDS_STONE_TOOL);
     }
 
     private static void processTier(Tier tier, ResourceLocation name, List<Object> afters, List<Object> befores)

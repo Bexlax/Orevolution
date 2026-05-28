@@ -2,6 +2,7 @@ package net.bexla.orevolution.content.data;
 
 import net.bexla.orevolution.content.data.utility.OrevolutionTags;
 import net.bexla.orevolution.init.RegItems;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -17,7 +18,8 @@ public enum OrevolutionToolTiers implements Tier {
     AETHERSTEEL(5,3520,10F,5F,22, () -> Ingredient.of(RegItems.AETHERSTEEL_INGOT.get()), OrevolutionTags.Blocks.needsAethersteelTool),
     STEEL(2, 1152, 3F, 4F, 12, () -> Ingredient.of(RegItems.STEEL_ALLOY.get()), OrevolutionTags.Blocks.needsPlatinumTool),
     LIVINGSTONE(1, 192, 4F, 1F, 8, () -> Ingredient.of(OrevolutionTags.Items.livingstoneFragments), OrevolutionTags.Blocks.needsTinTool),
-    VERDITE(2, 448, 6F, 2F, 16, () -> Ingredient.of(OrevolutionTags.Items.verditeIngots), OrevolutionTags.Blocks.needsPlatinumTool);
+    VERDITE(2, 448, 6F, 2F, 16, () -> Ingredient.of(OrevolutionTags.Items.verditeIngots), OrevolutionTags.Blocks.needsPlatinumTool),
+    AMBER(4, 1600, 8F, 3F, 12, () -> Ingredient.of(OrevolutionTags.Items.verditeIngots), BlockTags.NEEDS_DIAMOND_TOOL);
 
     private final int level;
     private final int durability;

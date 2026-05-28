@@ -17,8 +17,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.bexla.orevolution.content.data.utility.OrevolutionUtils.modLocat;
-
 public class GENBlockTags extends IntrinsicHolderTagsProvider<Block> {
 
     public GENBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future, @Nullable ExistingFileHelper helper) {
@@ -58,20 +56,14 @@ public class GENBlockTags extends IntrinsicHolderTagsProvider<Block> {
 
         tag(BlockTags.NEEDS_IRON_TOOL).add(RegBlocks.PLATINUM_ORE.get()).add(RegBlocks.DEEPSLATE_PLATINUM_ORE.get()).add(RegBlocks.VERDITE_CROP.get())
                 .add(RegBlocks.STEEL_TRAPDOOR.get()).add(RegBlocks.STEEL_BLOCK.get()).add(RegBlocks.STEEL_DOOR.get()).add(RegBlocks.STEEL_PILLAR.get())
-                .add(RegBlocks.PLATINUM_TILES.get()).add(RegBlocks.RAW_PLATINUM_BLOCK.get()).add(RegBlocks.PLATINUM_BLOCK.get());
+                .add(RegBlocks.PLATINUM_TILES.get()).add(RegBlocks.RAW_PLATINUM_BLOCK.get()).add(RegBlocks.PLATINUM_BLOCK.get()).add(RegBlocks.STEEL_ANVIL.get());
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL).add(RegBlocks.NETHER_TUNGSTEN_ORE.get()).add(RegBlocks.TUNGSTEN_BLOCK.get()).add(RegBlocks.RAW_TUNGSTEN_BLOCK.get())
                 .add(RegBlocks.POLISHED_TUNGSTEN.get()).add(RegBlocks.CHISELED_TUNGSTEN_BLOCK.get()).add(RegBlocks.CUT_TUNGSTEN_BLOCK.get());
 
-        tag(OrevolutionTags.Blocks.spelunkeryOres).addOptional(modLocat("nether_tungsten_ore_blackstone")).addOptional(modLocat("tin_ore_andesite")).addOptional(modLocat("tin_ore_diorite"))
-                .addOptional(modLocat("tin_ore_granite")).addOptional(modLocat("tin_ore_tuff")).addOptional(modLocat("platinum_ore_andesite"))
-                .addOptional(modLocat("platinum_ore_diorite")).addOptional(modLocat("platinum_ore_granite")).addOptional(modLocat("platinum_ore_tuff"));
-
-        tag(OrevolutionTags.Blocks.tinOres).add(RegBlocks.TIN_ORE.get()).add(RegBlocks.DEEPSLATE_TIN_ORE.get())
-                .addOptional(modLocat("tin_ore_andesite")).addOptional(modLocat("tin_ore_diorite")).addOptional(modLocat("tin_ore_granite")).addOptional(modLocat("tin_ore_tuff"));
-        tag(OrevolutionTags.Blocks.tungsOres).add(RegBlocks.NETHER_TUNGSTEN_ORE.get()).addOptional(modLocat("nether_tungsten_ore_blackstone"));
-        tag(OrevolutionTags.Blocks.platOres).add(RegBlocks.PLATINUM_ORE.get()).add(RegBlocks.DEEPSLATE_PLATINUM_ORE.get())
-                .addOptional(modLocat("platinum_ore_andesite")).addOptional(modLocat("platinum_ore_diorite")).addOptional(modLocat("platinum_ore_granite")).addOptional(modLocat("platinum_ore_tuff"));
+        tag(OrevolutionTags.Blocks.tinOres).add(RegBlocks.TIN_ORE.get()).add(RegBlocks.DEEPSLATE_TIN_ORE.get());
+        tag(OrevolutionTags.Blocks.tungsOres).add(RegBlocks.NETHER_TUNGSTEN_ORE.get());
+        tag(OrevolutionTags.Blocks.platOres).add(RegBlocks.PLATINUM_ORE.get()).add(RegBlocks.DEEPSLATE_PLATINUM_ORE.get());
         tag(OrevolutionTags.Blocks.XPOres).add(RegBlocks.END_XP_ORE.get()).add(RegBlocks.NETHER_XP_ORE.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(RegBlocks.TIN_ORE.get()).add(RegBlocks.PLATINUM_ORE.get()).add(RegBlocks.NETHER_TUNGSTEN_ORE.get())
@@ -85,7 +77,7 @@ public class GENBlockTags extends IntrinsicHolderTagsProvider<Block> {
                 .add(RegBlocks.POLISHED_AETHERROCK_WALL.get()).add(RegBlocks.POLISHED_AETHERROCK_SLAB.get()).add(RegBlocks.VERDITE_CROP.get()).add(RegBlocks.LIVINGSTONE_CROP.get())
                 .add(RegBlocks.PLATINUM_PILLAR.get()).add(RegBlocks.PLATINUM_BARS.get()).add(RegBlocks.PLATINUM_TILES.get()).add(RegBlocks.GOLD_BARS.get()).add(RegBlocks.GOLD_TILES.get())
                 .add(RegBlocks.GOLD_PILLAR.get()).add(RegBlocks.TUNGSTEN_BARS.get()).add(RegBlocks.STEEL_BARS.get()).add(RegBlocks.TIN_BARS.get()).add(RegBlocks.BRONZE_BARS.get())
-                .add(RegBlocks.TUNGSTEN_BRICKS.get()).addOptionalTag(modLocat("spelunkery/ores"));
+                .add(RegBlocks.TUNGSTEN_BRICKS.get());
 
         tag(OrevolutionTags.Blocks.uncommonDuplicateChance).addTags(
                 BlockTags.NEEDS_STONE_TOOL,
@@ -127,6 +119,9 @@ public class GENBlockTags extends IntrinsicHolderTagsProvider<Block> {
         tag(OrevolutionTags.Blocks.platExceptions).add(RegBlocks.NETHER_TUNGSTEN_ORE.get()).add(RegBlocks.RAW_TUNGSTEN_BLOCK.get()).add(RegBlocks.END_XP_ORE.get())
                 .add(RegBlocks.TUNGSTEN_BLOCK.get()).addTag(OrevolutionTags.Blocks.diamondExceptions);
 
+        tag(OrevolutionTags.Blocks.elecExceptions).add(RegBlocks.NETHER_TUNGSTEN_ORE.get()).add(RegBlocks.RAW_TUNGSTEN_BLOCK.get()).add(RegBlocks.END_XP_ORE.get())
+                .add(RegBlocks.TUNGSTEN_BLOCK.get()).addTag(OrevolutionTags.Blocks.diamondExceptions);
+
         tag(OrevolutionTags.Blocks.diamondExceptions).add(RegBlocks.PRIMITIVE_AETHERROCK.get()).add(RegBlocks.AETHERSTEEL_BLOCK.get());
 
         tag(Tags.Blocks.STORAGE_BLOCKS).addTags(
@@ -146,7 +141,6 @@ public class GENBlockTags extends IntrinsicHolderTagsProvider<Block> {
                 OrevolutionTags.Blocks.platOres,
                 OrevolutionTags.Blocks.tungsOres,
                 OrevolutionTags.Blocks.XPOres
-        ).add(RegBlocks.NETHER_TUNGSTEN_ORE.get()).add(RegBlocks.PRIMITIVE_AETHERROCK.get())
-                .addOptionalTag(modLocat("spelunkery/ores"));
+        ).add(RegBlocks.NETHER_TUNGSTEN_ORE.get()).add(RegBlocks.PRIMITIVE_AETHERROCK.get());
     }
 }

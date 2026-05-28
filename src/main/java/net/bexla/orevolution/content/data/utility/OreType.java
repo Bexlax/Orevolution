@@ -1,6 +1,7 @@
 package net.bexla.orevolution.content.data.utility;
 
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraftforge.common.Tags;
 
@@ -17,23 +18,17 @@ public enum OreType {
     END(List.of(
             new TagMatchTest(Tags.Blocks.END_STONES)
     )),
-    OVERWORLD_SPELUNKERY(List.of(
-            new TagMatchTest(OrevolutionTags.Blocks.tuffs),
-            new TagMatchTest(OrevolutionTags.Blocks.andesites),
-            new TagMatchTest(OrevolutionTags.Blocks.diorites),
-            new TagMatchTest(OrevolutionTags.Blocks.granites)
-    )),
-    NETHER_SPELUNKERY(List.of(
-            new TagMatchTest(OrevolutionTags.Blocks.blackstones)
+    STONE(List.of(
+            new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES)
     ));
 
-    private final List<TagMatchTest> targets;
+    private final List<? extends RuleTest> targets;
 
-    OreType(List<TagMatchTest> targets) {
+    OreType(List<? extends RuleTest> targets) {
         this.targets = targets;
     }
 
-    public List<TagMatchTest> getTargets() {
+    public List<? extends RuleTest> getTargets() {
         return targets;
     }
 }

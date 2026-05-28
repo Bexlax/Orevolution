@@ -3,7 +3,6 @@ package net.bexla.orevolution.datagens.models;
 import net.bexla.orevolution.Orevolution;
 import net.bexla.orevolution.compatibility.ModCompat;
 import net.bexla.orevolution.compatibility.farmersdelight.RegItemsFD;
-import net.bexla.orevolution.compatibility.spelunkery.RegBlocksSK;
 import net.bexla.orevolution.content.types.providers.ItemModelProvider;
 import net.bexla.orevolution.init.RegBlocks;
 import net.bexla.orevolution.init.RegItems;
@@ -53,6 +52,7 @@ public class GENItemModels extends ItemModelProvider {
     protected void registerModels() {
         blockitem(RegItems.DEAD_SEED);
         blockitem(RegItems.PETRIFIED_SEED);
+//        blockitem(RegItems.AMBER_SEED);
 
         ingredient(RegItems.RAW_TIN);
         ingredient(RegItems.RAW_PLATINUM);
@@ -74,11 +74,20 @@ public class GENItemModels extends ItemModelProvider {
         ingredient(RegItems.VERDITE_NUGGET);
         ingredient(RegItems.LIVINGSTONE_SHARD);
 
+        ingredient(RegItems.CRUSHED_AETHERSTEEL);
+        ingredient(RegItems.CRUSHED_TUNGSTEN);
+
+//        ingredient(RegItems.AMBER);
+
         ingredient(RegItems.AETHERSTEEL_TEMPLATE);
         ingredient(RegItems.REINFORCED_TEMPLATE);
         ingredient(RegItems.BASIC_TEMPLATE);
 
         consumable(RegItems.VERDITE_APPLE);
+        consumable(RegItems.CAVE_CARROT);
+        consumable(RegItems.SHINY_CARROT);
+        consumable(RegItems.VERDITE_SPIDER_EYE);
+        consumable(RegItems.PLATINUM_BERRIES);
 
         toolItem(RegItems.TIN_SWORD);
         toolItem(RegItems.TIN_PICKAXE);
@@ -87,10 +96,10 @@ public class GENItemModels extends ItemModelProvider {
         toolItem(RegItems.TIN_HOE);
         compat(ModCompat.farmersdelight(), RegItemsFD.TIN_KNIFE);
 
-        trimmableArmorItem(RegItems.PLATINUM_HELMET);
-        trimmableArmorItem(RegItems.PLATINUM_CHESTPLATE);
-        trimmableArmorItem(RegItems.PLATINUM_LEGGINGS);
-        trimmableArmorItem(RegItems.PLATINUM_BOOTS);
+        trimArmorItem(RegItems.PLATINUM_HELMET);
+        trimArmorItem(RegItems.PLATINUM_CHESTPLATE);
+        trimArmorItem(RegItems.PLATINUM_LEGGINGS);
+        trimArmorItem(RegItems.PLATINUM_BOOTS);
         toolItem(RegItems.PLATINUM_SWORD);
         toolItem(RegItems.PLATINUM_PICKAXE);
         toolItem(RegItems.PLATINUM_AXE);
@@ -125,10 +134,10 @@ public class GENItemModels extends ItemModelProvider {
         toolItem(RegItems.LIVINGSTONE_HOE);
         compat(ModCompat.farmersdelight(), RegItemsFD.LIVINGSTONE_KNIFE);
 
-        armor(RegItems.VERDITE_HELMET);
-        armor(RegItems.VERDITE_CHESTPLATE);
-        armor(RegItems.VERDITE_LEGGINGS);
-        armor(RegItems.VERDITE_BOOTS);
+        trimArmorItem(RegItems.VERDITE_HELMET);
+        trimArmorItem(RegItems.VERDITE_CHESTPLATE);
+        trimArmorItem(RegItems.VERDITE_LEGGINGS);
+        trimArmorItem(RegItems.VERDITE_BOOTS);
         toolItem(RegItems.VERDITE_SWORD);
         toolItem(RegItems.VERDITE_PICKAXE);
         toolItem(RegItems.VERDITE_AXE);
@@ -136,21 +145,43 @@ public class GENItemModels extends ItemModelProvider {
         toolItem(RegItems.VERDITE_HOE);
         compat(ModCompat.farmersdelight(), RegItemsFD.VERDITE_KNIFE);
 
+//        trimArmorItem(RegItems.AMBER_HELMET);
+//        trimArmorItem(RegItems.AMBER_CHESTPLATE);
+//        trimArmorItem(RegItems.AMBER_LEGGINGS);
+//        trimArmorItem(RegItems.AMBER_BOOTS);
+//        toolItem(RegItems.AMBER_SWORD);
+//        toolItem(RegItems.AMBER_PICKAXE);
+//        toolItem(RegItems.AMBER_AXE);
+//        toolItem(RegItems.AMBER_SHOVEL);
+//        toolItem(RegItems.AMBER_HOE);
+//        compat(ModCompat.farmersdelight(), RegItemsFD.AMBER_KNIFE);
+
         toolItem(RegItems.STEEL_DIGGER);
         toolItem(RegItems.STEEL_HAMMER);
         toolItem(RegItems.STEEL_SCYTHE);
+        toolItem(RegItems.STEEL_BROADAXE);
 
-        armor(RegItems.BRONZE_CROWN);
-        armor(RegItems.BRONZE_CROWN_EMERALD);
-        armor(RegItems.BRONZE_CROWN_DIAMOND);
-        armor(RegItems.BRONZE_CROWN_LAPIS);
-        armor(RegItems.BRONZE_CROWN_REDSTONE);
+        armor(RegItems.BRONZE_HELMET);
+        armor(RegItems.BRONZE_CHESTPLATE);
+        armor(RegItems.BRONZE_LEGGINGS);
+        armor(RegItems.BRONZE_BOOTS);
+        toolItem(RegItems.BRONZE_RADAR);
+        toolItem(RegItems.BRONZE_TOTEM);
+        toolItem(RegItems.BRONZE_TOTEM_DIAMOND);
+        toolItem(RegItems.BRONZE_TOTEM_EMERALD);
+        toolItem(RegItems.BRONZE_TOTEM_LAPIS_LAZULI);
+
+        armor(RegItems.TUNGSTEN_HELMET);
+        armor(RegItems.TUNGSTEN_CHESTPLATE);
+        armor(RegItems.TUNGSTEN_LEGGINGS);
+        armor(RegItems.TUNGSTEN_BOOTS);
 
         shieldItem(RegItems.TIN_SHIELD, "small");
         shieldItem(RegItems.PLATINUM_SHIELD, "medium");
         shieldItem(RegItems.AETHERSTEEL_SHIELD, "big");
         shieldItem(RegItems.LIVINGSTONE_SHIELD, "small");
         shieldItem(RegItems.VERDITE_SHIELD, "medium");
+//        shieldItem(RegItems.AMBER_SHIELD, "big");
 
         block(RegBlocks.TIN_ORE);
         block(RegBlocks.DEEPSLATE_TIN_ORE);
@@ -172,12 +203,18 @@ public class GENItemModels extends ItemModelProvider {
         block(RegBlocks.RAW_TIN_BLOCK);
         block(RegBlocks.RAW_PLATINUM_BLOCK);
         block(RegBlocks.RAW_TUNGSTEN_BLOCK);
+//        block(RegBlocks.AMBER_BLOCK);
 
+        block(RegBlocks.VERDITE_BRICKS);
+        block(RegBlocks.LIVINGSTONE_BRICKS);
         block(RegBlocks.AETHERROCK);
         block(RegBlocks.POLISHED_AETHERROCK);
         block(RegBlocks.AETHERROCK_BRICKS);
         block(RegBlocks.AETHERROCK_TILES);
         block(RegBlocks.BRONZE_TILES);
+        block(RegBlocks.LIMESTONE);
+        block(RegBlocks.POLISHED_LIMESTONE);
+        block(RegBlocks.LIMESTONE_PILLAR);
         block(RegBlocks.POLISHED_TUNGSTEN);
         block(RegBlocks.CUT_TUNGSTEN_BLOCK);
         block(RegBlocks.CUT_STEEL_BLOCK);
@@ -200,14 +237,8 @@ public class GENItemModels extends ItemModelProvider {
         block(RegBlocks.POLISHED_AETHERROCK_SLAB);
         block(RegBlocks.POLISHED_AETHERROCK_STAIR);
 
-        block(RegBlocksSK.TIN_ORE_ANDESITE);
-        block(RegBlocksSK.TIN_ORE_GRANITE);
-        block(RegBlocksSK.TIN_ORE_DIORITE);
-        block(RegBlocksSK.TIN_ORE_TUFF);
-        block(RegBlocksSK.PLATINUM_ORE_ANDESITE);
-        block(RegBlocksSK.PLATINUM_ORE_GRANITE);
-        block(RegBlocksSK.PLATINUM_ORE_DIORITE);
-        block(RegBlocksSK.PLATINUM_ORE_TUFF);
-        block(RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE);
+        wall(RegBlocks.POLISHED_LIMESTONE_WALL, RegBlocks.POLISHED_LIMESTONE);
+        block(RegBlocks.POLISHED_LIMESTONE_SLAB);
+        block(RegBlocks.POLISHED_LIMESTONE_STAIR);
     }
 }

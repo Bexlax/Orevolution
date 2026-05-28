@@ -2,10 +2,7 @@ package net.bexla.orevolution.init;
 
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import net.bexla.orevolution.Orevolution;
-import net.bexla.orevolution.content.types.block.HotLavaSponge;
-import net.bexla.orevolution.content.types.block.LavaSponge;
-import net.bexla.orevolution.content.types.block.LivingstoneCrop;
-import net.bexla.orevolution.content.types.block.VerditeCrop;
+import net.bexla.orevolution.content.types.block.*;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -39,8 +36,6 @@ public class RegBlocks {
     private static <T extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<T> block) {
         return () -> new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties());
     }
-
-    // todo: add missing blocks
 
     public static VoxelShape cropSize(double width, double height, double lenght) {
         return Shapes.box(0.0D / 16.0D, 0.0D / 16.0D, 0.0D / 16.0D, width / 16.0D, height / 16.0D, lenght / 16.0D);
@@ -78,9 +73,18 @@ public class RegBlocks {
                     cropHeight(13.0D),
                     cropHeight(14.0D)
             }, BlockBehaviour.Properties.copy(Blocks.WHEAT).requiresCorrectToolForDrops()));
+//    public static final RegistryObject<Block> AMBER_CROP = HELPER.createBlockNoItem("amber_crop", () -> new AmberCrop(RegItems.AMBER_SEED,
+//            new VoxelShape[]{
+//                    cropHeight(4.0D),
+//                    cropHeight(6.0D),
+//                    cropHeight(6.0D),
+//                    cropHeight(7.0D),
+//                    cropHeight(9.0D),
+//                    cropHeight(11.0D)
+//            }, BlockBehaviour.Properties.copy(Blocks.WHEAT).requiresCorrectToolForDrops()));
 
     //~//~~ Storage Blocks ~~//~//
-    /* Ore Blocks */
+            /* Ore Blocks */
     public static final RegistryObject<Block> TIN_BLOCK = register("tin_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)));
     public static final RegistryObject<Block> PLATINUM_BLOCK = register("platinum_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(4.5F)));
     public static final RegistryObject<Block> TUNGSTEN_BLOCK = register("tungsten_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_BLOCK)));
@@ -88,22 +92,27 @@ public class RegBlocks {
     public static final RegistryObject<Block> BRONZE_BLOCK = register("bronze_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)));
     public static final RegistryObject<Block> STEEL_BLOCK = register("steel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_BLOCK)));
     public static final RegistryObject<Block> LIVINGSTONE_BLOCK = register("livingstone_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)));
-    public static final RegistryObject<Block> VERDITE_BLOCK = register("verdite_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)));
-    /* Raw Ore Blocks */
+    public static final RegistryObject<Block> VERDITE_BLOCK = register("verdite_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+//    public static final RegistryObject<Block> AMBER_BLOCK = register("amber_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_BLOCK)));
+            /* Raw Ore Blocks */
     public static final RegistryObject<Block> RAW_TIN_BLOCK = register("raw_tin_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)));
     public static final RegistryObject<Block> RAW_PLATINUM_BLOCK = register("raw_platinum_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(4.5F)));
     public static final RegistryObject<Block> RAW_TUNGSTEN_BLOCK = register("raw_tungsten_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_BLOCK)));
 
 
     //~//~~ Decorative Blocks ~~//~//
+    public static final RegistryObject<Block> LIMESTONE = register("limestone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
     public static final RegistryObject<Block> AETHERROCK = register("aetherrock", () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).isValidSpawn((p_187421_, p_187422_, p_187423_, p_187424_) -> false).strength(10F, 30F).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> POLISHED_AETHERROCK = register("polished_aetherrock", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
     public static final RegistryObject<Block> POLISHED_TUNGSTEN = register("polished_tungsten_block", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
+    public static final RegistryObject<Block> POLISHED_LIMESTONE = register("polished_limestone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
 
     public static final RegistryObject<Block> TUNGSTEN_BRICKS = register("tungsten_bricks", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
     public static final RegistryObject<Block> AETHERROCK_BRICKS = register("aetherrock_bricks", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
     public static final RegistryObject<Block> TIN_BRICKS = register("tin_bricks", () -> new Block(BlockBehaviour.Properties.copy(TIN_BLOCK.get())));
+    public static final RegistryObject<Block> LIVINGSTONE_BRICKS = register("livingstone_bricks", () -> new Block(BlockBehaviour.Properties.copy(LIVINGSTONE_BLOCK.get())));
+    public static final RegistryObject<Block> VERDITE_BRICKS = register("verdite_bricks", () -> new Block(BlockBehaviour.Properties.copy(VERDITE_BLOCK.get())));
     public static final RegistryObject<Block> CRACKED_AETHERROCK_BRICKS = register("cracked_aetherrock_bricks", () -> new Block(BlockBehaviour.Properties.copy(AETHERROCK.get())));
 
     public static final RegistryObject<Block> BRONZE_TILES = register("bronze_tiles", () -> new Block(BlockBehaviour.Properties.copy(BRONZE_BLOCK.get())));
@@ -118,15 +127,19 @@ public class RegBlocks {
     public static final RegistryObject<Block> STEEL_PILLAR = register("steel_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(STEEL_BLOCK.get())));
     public static final RegistryObject<Block> PLATINUM_PILLAR = register("platinum_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(PLATINUM_BLOCK.get())));
     public static final RegistryObject<Block> GOLD_PILLAR = register("gold_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK)));
+    public static final RegistryObject<Block> LIMESTONE_PILLAR = register("limestone_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
 
     public static final RegistryObject<Block> CHISELED_TUNGSTEN_BLOCK = register("chiseled_tungsten_block", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
     public static final RegistryObject<Block> CHISELED_TUNGSTEN_BRICKS = register("chiseled_tungsten_bricks", () -> new Block(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
 
     public static final RegistryObject<Block> POLISHED_AETHERROCK_STAIR = register("polished_aetherrock_stair", () -> new StairBlock(POLISHED_AETHERROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_AETHERROCK.get())));
+    public static final RegistryObject<Block> POLISHED_LIMESTONE_STAIR = register("polished_limestone_stair", () -> new StairBlock(POLISHED_LIMESTONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_LIMESTONE.get())));
 
     public static final RegistryObject<Block> POLISHED_AETHERROCK_SLAB = register("polished_aetherrock_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_AETHERROCK.get())));
+    public static final RegistryObject<Block> POLISHED_LIMESTONE_SLAB = register("polished_limestone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_LIMESTONE.get())));
 
     public static final RegistryObject<Block> POLISHED_AETHERROCK_WALL = register("polished_aetherrock_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_AETHERROCK.get())));
+    public static final RegistryObject<Block> POLISHED_LIMESTONE_WALL = register("polished_limestone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_LIMESTONE.get())));
 
     public static final RegistryObject<Block> STEEL_DOOR = register("steel_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(STEEL_BLOCK.get()).noOcclusion().pushReaction(PushReaction.DESTROY), BlockSetType.IRON));
 
@@ -138,6 +151,9 @@ public class RegBlocks {
     public static final RegistryObject<Block> GOLD_BARS = register("gold_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK).noOcclusion()));
 
     public static final RegistryObject<Block> STEEL_TRAPDOOR = register("steel_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(STEEL_BLOCK.get()).noOcclusion().pushReaction(PushReaction.DESTROY), BlockSetType.IRON));
+
+    public static final RegistryObject<Block> STEEL_ANVIL = register("steel_anvil", () -> new SteelAnvilBlock(BlockBehaviour.Properties.copy(STEEL_BLOCK.get()).noOcclusion()));
+    //public static final RegistryObject<Block> TUNGSTEN_FURNACE = register("tungsten_furnace", () -> new SteelAnvilBlock(BlockBehaviour.Properties.copy(TUNGSTEN_BLOCK.get())));
 
     public static final RegistryObject<Block> TUNGSTEN_SPONGE = register("tungsten_sponge", () -> new LavaSponge(BlockBehaviour.Properties.copy(Blocks.SPONGE).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> HOT_TUNGSTEN_SPONGE = register("hot_tungsten_sponge", () -> new HotLavaSponge(BlockBehaviour.Properties.copy(TUNGSTEN_SPONGE.get()).lightLevel((p_152684_) -> 6)));

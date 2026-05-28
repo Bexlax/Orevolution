@@ -2,8 +2,11 @@ package net.bexla.orevolution.content.data.powers.tools;
 
 import net.bexla.orevolution.content.data.Conditionals;
 import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -21,16 +24,18 @@ public class ToolMultiPower extends OrevolutionToolPower {
         this.powers = powers;
     }
 
-    public void onHitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public float onHitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker, DamageSource source, float dmgAmount) {
         for(OrevolutionToolPower p : this.powers) {
-            p.onHitEntity(stack, target, attacker);
+            return p.onHitEntity(stack, target, attacker, source, dmgAmount);
         }
+        return super.onHitEntity(stack, target, attacker, source, dmgAmount);
     }
 
-    public void onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state) {
+    public boolean onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state, int xpToDrop) {
         for(OrevolutionToolPower p : this.powers) {
-            p.onMineBlock(stack, level, pos, player, state);
+            return p.onMineBlock(stack, level, pos, player, state, xpToDrop);
         }
+        return false;
     }
 
     public void onInventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
@@ -39,10 +44,16 @@ public class ToolMultiPower extends OrevolutionToolPower {
         }
     }
 
+    @Override
     public List<Component> appendTooltip(ItemStack stack, Level level, List<Component> lines) {
         List<Component> tips = new ArrayList<>();
-        for(OrevolutionToolPower p : this.powers) {
-            tips.addAll(p.appendTooltip(stack, level, lines));
+        if(Screen.hasAltDown()) {
+            for (OrevolutionToolPower p : this.powers) {
+                tips.addAll(p.appendTooltip(stack, level, lines));
+            }
+        }
+        else {
+            tips.add(Component.translatable("tooltip.orevolution.press_key", Component.translatable("key.keyboard.left.alt").getString()).withStyle(ChatFormatting.DARK_GRAY));
         }
         return tips;
     }

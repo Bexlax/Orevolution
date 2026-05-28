@@ -1,6 +1,6 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -9,13 +9,13 @@ public class ToolChangeBreakSpeed extends OrevolutionToolPower {
     private final float speedIncrease;
     private final boolean replaceOriginalValue;
 
-    public ToolChangeBreakSpeed(String tooltipId, Conditional conditional, float speedIncrease, boolean replaceOriginalValue) {
+    public ToolChangeBreakSpeed(String tooltipId, IConditional conditional, float speedIncrease, boolean replaceOriginalValue) {
         super(tooltipId, conditional);
         this.speedIncrease = speedIncrease;
         this.replaceOriginalValue = replaceOriginalValue;
     }
 
-    public ToolChangeBreakSpeed(String tooltipId, Conditional conditional, float speedIncrease) {
+    public ToolChangeBreakSpeed(String tooltipId, IConditional conditional, float speedIncrease) {
         super(tooltipId, conditional);
         this.speedIncrease = speedIncrease;
         this.replaceOriginalValue = false;

@@ -89,6 +89,17 @@ repositories {
     }
 
     maven {
+        url = uri("https://maven.createmod.net")
+        content {
+            includeGroup("com.simibubi.create")
+            includeGroup("net.createmod.ponder")
+            includeGroup("dev.engine-room.flywheel")
+        }
+    }
+
+    maven { url = "https://maven.ithundxr.dev/mirror" }
+
+    maven {
         url = uri("https://registry.somethingcatchy.net/repository/maven-releases/")
         content {
             includeGroup("com.possible-triangle")
@@ -105,25 +116,29 @@ dependencies {
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
+    // Required by orevolution
     implementation fg.deobf("maven.modrinth:blueprint:${blueprint_ver}")
 
-    compileOnly fg.deobf("maven.modrinth:oreganized:${oreganized_ver}")
-    implementation fg.deobf("maven.modrinth:caverns-and-chasms:${cac_ver}")
+    // compat mods
+    implementation fg.deobf("maven.modrinth:oreganized:${oreganized_ver}")
     implementation fg.deobf("maven.modrinth:farmers-delight:${farmersdelight_ver}")
-    implementation fg.deobf("maven.modrinth:spelunkery:${spelunkery_ver}")
-    implementation fg.deobf("maven.modrinth:moonlight:1.20-2.16.15-forge")
+    implementation fg.deobf("maven.modrinth:backport-copper-age:BeVdLB9R")
+    implementation fg.deobf("curse.maven:shield-expansion-583318:7742039")
+    runtimeOnly fg.deobf("maven.modrinth:architectury-api:9.2.14+forge")
+
+    implementation(fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false })
+    implementation(fg.deobf("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}"))
+    compileOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-api-${minecraft_version}:${flywheel_version}"))
+    runtimeOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}"))
+    implementation(fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}"))
 
     implementation fg.deobf("com.possible-triangle:multikulti-core-forge:1.20.1-1.0.4")
     implementation fg.deobf("com.possible-triangle:multikulti-datagen-forge:1.20.1-1.0.4")
     implementation fg.deobf("com.possible-triangle:multikulti-datagen-forge-fix:1.20.1-1.0.4")
 
-    implementation fg.deobf("curse.maven:shield-expansion-583318:7532079")
     runtimeOnly fg.deobf("maven.modrinth:embeddium:${embeddium_ver}")
-
     runtimeOnly fg.deobf("maven.modrinth:emi:${emi_ver}")
-
-    runtimeOnly fg.deobf("maven.modrinth:scannable:MC1.20.1-forge-1.7.12")
-    runtimeOnly fg.deobf("maven.modrinth:architectury-api:9.2.14+forge")
+    runtimeOnly fg.deobf("curse.maven:jei-238222:7920915")
 }
 
 tasks.named('processResources', ProcessResources).configure {

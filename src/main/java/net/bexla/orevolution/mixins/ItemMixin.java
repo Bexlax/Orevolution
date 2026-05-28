@@ -4,8 +4,7 @@ import net.bexla.orevolution.OrevolutionConfig;
 import net.bexla.orevolution.content.data.utility.OrevolutionTags;
 import net.bexla.orevolution.content.types.TierProgressRegistry;
 import net.bexla.orevolution.content.types.ToolPowerRegistry;
-import net.bexla.orevolution.content.types.interfaces.ToolPower;
-import net.bexla.orevolution.init.RegItems;
+import net.bexla.orevolution.content.types.interfaces.IToolPower;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -15,7 +14,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -46,12 +44,12 @@ public class ItemMixin {
             List<Component> tip = new ArrayList<>();
 
             if (tieredItem instanceof SwordItem && OrevolutionConfig.CLIENT.weaponsPowersTip.get()) {
-                ToolPower power = ToolPowerRegistry.getSwordPowerForTier(tier);
+                IToolPower power = ToolPowerRegistry.getWeaponPower(tier);
                 if (power != null) {
                     tip.addAll(power.appendTooltip(stack, level, lines));
                 }
             } else if (tieredItem instanceof DiggerItem && OrevolutionConfig.CLIENT.weaponsPowersTip.get()) {
-                ToolPower power = ToolPowerRegistry.getToolPowerForTier(tier);
+                IToolPower power = ToolPowerRegistry.getToolPower(tier);
                 if (power != null) {
                     tip.addAll(power.appendTooltip(stack, level, lines));
                 }
@@ -70,10 +68,10 @@ public class ItemMixin {
     {
         int i = tier.getLevel();
         return switch (i) {
-            case 1 -> "wood";
-            case 2 -> "tin";
-            case 3 -> "platinum";
-            case 4 -> "diamond";
+            case 0 -> "wood";
+            case 1 -> "tin";
+            case 2 -> "platinum";
+            case 3 -> "diamond";
             default -> "netherite";
         };
     }
@@ -81,28 +79,21 @@ public class ItemMixin {
     @Inject(method = "inventoryTick", at = @At("HEAD"))
     private void orevolution$injectInventoryTick(ItemStack stack, Level level, Entity entity, int slotIndex, boolean selectedIndex, CallbackInfo cir) {
         if(stack.getItem() instanceof TieredItem tieredItem) {
+
             Tier tier = tieredItem.getTier();
+            
             if (tieredItem instanceof SwordItem) {
                 if (!OrevolutionConfig.COMMON.weaponsPowers.get()) return;
 
-                ToolPower power = ToolPowerRegistry.getSwordPowerForTier(tier);
+                IToolPower power = ToolPowerRegistry.getWeaponPower(tier);
                 power.onInventoryTick(stack, level, entity, slotIndex, selectedIndex);
             }
             if(stack.getItem() instanceof DiggerItem) {
                 if (!OrevolutionConfig.COMMON.toolsPowers.get()) return;
 
-                ToolPower power = ToolPowerRegistry.getToolPowerForTier(tier);
+                IToolPower power = ToolPowerRegistry.getToolPower(tier);
                 power.onInventoryTick(stack, level, entity, slotIndex, selectedIndex);
             }
-        }
-    }
-
-    @Inject(method = "isValidRepairItem", at = @At("RETURN"), cancellable = true)
-    private void isValidRepairItem(ItemStack item, ItemStack repairIngredient, CallbackInfoReturnable<Boolean> cir) {
-        if(!OrevolutionConfig.COMMON.tinRepair.get()) return;
-
-        if (repairIngredient.is(RegItems.TIN_INGOT.get()) && !item.is(OrevolutionTags.Items.repairableTin)) {
-            cir.setReturnValue(true);
         }
     }
 }

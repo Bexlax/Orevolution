@@ -1,5 +1,5 @@
-Java Launcher: C:\Users\Quinteros\.gradle\jdks\eclipse_adoptium-22-amd64-windows\jdk-22.0.2+9\bin\java.exe
-Arguments: '--clean, C:\Users\Quinteros\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\joined\1.20.1-20230612.114412\joined-1.20.1-20230612.114412-srg.jar, --output, C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.4\forge-1.20.1-47.4.4-binpatched.jar, --apply, C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.4\forge-1.20.1-47.4.4-binpatches.lzma'
+Java Launcher: C:\Users\Quinteros\.gradle\jdks\eclipse_adoptium-17-amd64-windows\jdk-17.0.16+8\bin\java.exe
+Arguments: '--clean, C:\Users\Quinteros\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\joined\1.20.1-20230612.114412\joined-1.20.1-20230612.114412-srg.jar, --output, C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.20\forge-1.20.1-47.4.20-binpatched.jar, --apply, C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.20\forge-1.20.1-47.4.20-binpatches.lzma'
 Classpath:
  - C:\Users\Quinteros\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\binarypatcher\1.1.1\binarypatcher-1.1.1-fatjar.jar
 Working directory: Z:\Benja\Intellij Projects\Orevolution\build\_applyBinpatches_2
@@ -7,12 +7,12 @@ Main class: net.minecraftforge.binarypatcher.ConsoleTool
 ====================================
 Applying: 
   Clean:     C:\Users\Quinteros\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\joined\1.20.1-20230612.114412\joined-1.20.1-20230612.114412-srg.jar
-  Output:    C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.4\forge-1.20.1-47.4.4-binpatched.jar
+  Output:    C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.20\forge-1.20.1-47.4.20-binpatched.jar
   KeepData:  false
   Unpatched: false
   Pack200:   false
   Legacy:    false
-Loading patches file: C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.4\forge-1.20.1-47.4.4-binpatches.lzma
+Loading patches file: C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.20\forge-1.20.1-47.4.20-binpatches.lzma
   Reading patch com.mojang.blaze3d.pipeline.RenderTarget.binpatch
     Checksum: 151eb55a Exists: true
   Reading patch com.mojang.blaze3d.platform.GlStateManager$BlendState.binpatch
@@ -859,6 +859,12 @@ Loading patches file: C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_u
     Checksum: 424d7f36 Exists: true
   Reading patch net.minecraft.commands.Commands.binpatch
     Checksum: 46dd7307 Exists: true
+  Reading patch net.minecraft.commands.SharedSuggestionProvider$ElementSuggestionType.binpatch
+    Checksum: 4c5b8df9 Exists: true
+  Reading patch net.minecraft.commands.SharedSuggestionProvider$TextCoordinates.binpatch
+    Checksum: d992c7a2 Exists: true
+  Reading patch net.minecraft.commands.SharedSuggestionProvider.binpatch
+    Checksum: 9ebaa69a Exists: true
   Reading patch net.minecraft.commands.arguments.EntityArgument$Info$Template.binpatch
     Checksum: 8299f2e2 Exists: true
   Reading patch net.minecraft.commands.arguments.EntityArgument$Info.binpatch
@@ -1491,6 +1497,8 @@ Loading patches file: C:\Users\Quinteros\.gradle\caches\forge_gradle\minecraft_u
     Checksum: 384fa7b8 Exists: true
   Reading patch net.minecraft.world.entity.Entity$1.binpatch
     Checksum: c7effbf6 Exists: true
+  Reading patch net.minecraft.world.entity.Entity$FluidCalcs.binpatch
+    Checksum: 0 Exists: false
   Reading patch net.minecraft.world.entity.Entity$MoveFunction.binpatch
     Checksum: d39366a4 Exists: true
   Reading patch net.minecraft.world.entity.Entity$MovementEmission.binpatch
@@ -3311,6 +3319,9 @@ Processing: C:\Users\Quinteros\.gradle\caches\forge_gradle\mcp_repo\net\minecraf
   Patching net/minecraft/commands/Commands$CommandSelection 1/1
   Patching net/minecraft/commands/Commands$ParseFunction 1/1
   Patching net/minecraft/commands/Commands 1/1
+  Patching net/minecraft/commands/SharedSuggestionProvider$ElementSuggestionType 1/1
+  Patching net/minecraft/commands/SharedSuggestionProvider$TextCoordinates 1/1
+  Patching net/minecraft/commands/SharedSuggestionProvider 1/1
   Patching net/minecraft/commands/arguments/EntityArgument$Info$Template 1/1
   Patching net/minecraft/commands/arguments/EntityArgument$Info 1/1
   Patching net/minecraft/commands/arguments/EntityArgument 1/1
@@ -4326,5 +4337,6 @@ Processing: C:\Users\Quinteros\.gradle\caches\forge_gradle\mcp_repo\net\minecraf
   Patching net/minecraft/world/level/biome/BiomeSpecialEffects$GrassColorModifier$ColorModifier 1/1
   Patching net/minecraft/Util$3 1/1
   Patching net/minecraft/Util$4 1/1
+  Patching net/minecraft/world/entity/Entity$FluidCalcs 1/1
   Patching net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity$2 1/1
   Patching net/minecraft/world/item/Items$1 1/1

@@ -1,7 +1,10 @@
 package net.bexla.orevolution.events;
 
 import net.bexla.orevolution.Orevolution;
+import net.bexla.orevolution.content.types.menu.SteelAnvilScreen;
 import net.bexla.orevolution.init.RegItems;
+import net.bexla.orevolution.init.RegMenus;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,6 +17,13 @@ public class ClientSubscriber {
     @SubscribeEvent
     public static void setup(FMLClientSetupEvent event) {
         ClientSubscriber.registerItemProperties();
+
+        event.enqueueWork(() -> {
+            MenuScreens.register(
+                    RegMenus.STEEL_ANVIL.get(),
+                    SteelAnvilScreen::new
+            );
+        });
     }
 
     private static void registerItemProperties() {

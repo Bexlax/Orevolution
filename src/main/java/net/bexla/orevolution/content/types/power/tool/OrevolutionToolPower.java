@@ -1,8 +1,8 @@
 package net.bexla.orevolution.content.types.power.tool;
 
 import com.mojang.logging.LogUtils;
-import net.bexla.orevolution.content.types.interfaces.Conditional;
-import net.bexla.orevolution.content.types.interfaces.ToolPower;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
+import net.bexla.orevolution.content.types.interfaces.IToolPower;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -16,12 +16,12 @@ import org.slf4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrevolutionToolPower implements ToolPower {
+public class OrevolutionToolPower implements IToolPower {
     protected static final Logger LOGGER = LogUtils.getLogger();
     private final String tooltip_id;
-    private final Conditional conditional;
+    private final IConditional conditional;
 
-    public OrevolutionToolPower(String tooltipId, Conditional conditional) {
+    public OrevolutionToolPower(String tooltipId, IConditional conditional) {
         this.tooltip_id = tooltipId;
         this.conditional = conditional;
     }

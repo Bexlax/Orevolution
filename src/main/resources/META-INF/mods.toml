@@ -18,19 +18,19 @@ description='''
 Orevolution focuses on adding more value to the mining aspect of minecraft, doing so by adding new ores, rebalancing tools and implementing new mechanics for them.
 '''
 
-[[dependencies.${mod_id}]]
+[[dependencies.orevoltion]]
     modId="forge"
     mandatory=true
     versionRange="${forge_version_range}"
     ordering="NONE"
     side="BOTH"
-[[dependencies.${mod_id}]]
+[[dependencies.orevolution]]
     modId="minecraft"
     mandatory=true
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
-[[dependencies.${mod_id}]]
+[[dependencies.orevolution]]
     modId="blueprint"
     mandatory=true
     versionRange="[7.1.0,)"
@@ -38,43 +38,29 @@ Orevolution focuses on adding more value to the mining aspect of minecraft, doin
     side="BOTH"
 
 
-[[dependencies.${mod_id}]]
+[[dependencies.orevolution]]
     modId="oreganized"
     mandatory=false
     versionRange="*"
     ordering="AFTER"
     side="BOTH"
 
-[[dependencies.${mod_id}]]
-    modId="galosphere"
-    mandatory=false
-    versionRange="*"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.${mod_id}]]
-    modId="caverns_and_chasms"
-    mandatory=false
-    versionRange="*"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.${mod_id}]]
+[[dependencies.orevolution]]
     modId="farmersdelight"
     mandatory=false
     versionRange="*"
     ordering="AFTER"
     side="BOTH"
 
-[[dependencies.${mod_id}]]
-    modId="spelunkery"
+[[dependencies.orevolution]]
+    modId="shieldexp"
     mandatory=false
     versionRange="*"
     ordering="AFTER"
     side="BOTH"
 
-[[dependencies.${mod_id}]]
-    modId="shieldexp"
+[[dependencies.orevolution]]
+    modId="create"
     mandatory=false
     versionRange="*"
     ordering="AFTER"

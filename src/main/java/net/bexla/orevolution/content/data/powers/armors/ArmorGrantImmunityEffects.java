@@ -1,6 +1,6 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.bexla.orevolution.content.types.power.armor.OrevolutionArmorPower;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -17,12 +17,12 @@ import java.util.function.Supplier;
 public class ArmorGrantImmunityEffects extends OrevolutionArmorPower {
     private final List<Supplier<MobEffect>> effects;
 
-    public ArmorGrantImmunityEffects(String tooltipId, Conditional conditional, List<Supplier<MobEffect>> effects) {
+    public ArmorGrantImmunityEffects(String tooltipId, IConditional conditional, List<Supplier<MobEffect>> effects) {
         super(tooltipId, conditional);
         this.effects = effects;
     }
 
-    public ArmorGrantImmunityEffects(String tooltipId, Conditional conditional, Supplier<MobEffect> effect) {
+    public ArmorGrantImmunityEffects(String tooltipId, IConditional conditional, Supplier<MobEffect> effect) {
         super(tooltipId, conditional);
         this.effects = effect != null? List.of(effect) : List.of();
     }

@@ -36,6 +36,35 @@ public abstract class BlockStateModelProvider extends BlueprintBlockStateProvide
         this.simpleBlock(block.get(), this.cubeAll(block.get(), subfolder));
     }
 
+    public void cropModel(Supplier<? extends Block> block) {
+        this.models().crop(name(block.get()), modLoc("block/crops/" + name(block.get()))).renderType("cutout");
+    }
+
+    public void complexBlock(Supplier<? extends Block> block, String subfolder, int weightF, int weightS) {
+        Block b = block.get();
+        ResourceLocation name = this.key(b);
+
+        ModelFile model1 = this.models().cubeAll(name(b), blockTexture(b, subfolder));
+        ModelFile model2 = this.models().cubeAll(name(b) + "_alt", new ResourceLocation(name.getNamespace(), blockTexture(b, subfolder).getPath() + "_alt"));
+
+        getVariantBuilder(b)
+                .partialState()
+                .addModels(
+                        new ConfiguredModel(model1, 0, 0, false, weightF),
+                        new ConfiguredModel(model2, 0, 0, false, weightS)
+                );
+    }
+
+    public void makeCrop(OreCropBlock block, String modelName, String textureName) {
+        getVariantBuilder(block).forAllStates(state -> {
+            IntegerProperty ageProperty = block.getAgeProperty();
+            int age = state.getValue(ageProperty);
+            String stage = "_" + age;
+            return ConfiguredModel.builder()
+                    .modelFile(this.models().crop(modelName + stage, modLoc("block/crops/" + textureName + stage)).renderType("cutout")).build();
+        });
+    }
+
     public ModelFile cubeAll(Block block, String subfolder) {
         return this.models().cubeAll(name(block), this.blockTexture(block, subfolder));
     }
@@ -74,7 +103,6 @@ public abstract class BlockStateModelProvider extends BlueprintBlockStateProvide
         }
     }
 
-
     public ResourceLocation blockTexture(Block block, String subfolder) {
         ResourceLocation name = this.key(block);
         return new ResourceLocation(name.getNamespace(), "block/" + subfolder + "/" + name.getPath());
@@ -109,16 +137,6 @@ public abstract class BlockStateModelProvider extends BlueprintBlockStateProvide
 
     public void cubeColumnBlock(RegistryObject<Block> block, RegistryObject<Block> topCopy) {
         this.cubeColumnBlock(block, this.blockTexture(block.get(), "decorative"), this.blockTexture(topCopy.get(), "decorative"));
-    }
-
-    public void makeCrop(OreCropBlock block, String modelName, String textureName) {
-        getVariantBuilder(block).forAllStates(state -> {
-            IntegerProperty ageProperty = block.getAgeProperty();
-            int age = state.getValue(ageProperty);
-            String stage = "_" + age;
-            return ConfiguredModel.builder()
-                    .modelFile(models().crop(modelName + stage, modLoc("block/crops/" + textureName + stage)).renderType("cutout")).build();
-        });
     }
 
     public ModelFile directionalBlockModel(Supplier<? extends Block> block, String name, String side, String front, String back, String top) {

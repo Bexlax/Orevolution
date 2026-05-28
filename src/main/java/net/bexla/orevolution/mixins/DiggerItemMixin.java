@@ -2,12 +2,11 @@ package net.bexla.orevolution.mixins;
 
 import net.bexla.orevolution.OrevolutionConfig;
 import net.bexla.orevolution.content.types.ToolPowerRegistry;
-import net.bexla.orevolution.content.types.interfaces.ToolPower;
+import net.bexla.orevolution.content.types.interfaces.IToolPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,12 +27,8 @@ public class DiggerItemMixin {
 
         float dmg = cir.getReturnValue();
 
-        if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
-            ToolPower power = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier());
-            dmg = power.setAttackDamage(stack, cir.getReturnValue());
-        }
-        else if (tiered instanceof DiggerItem && OrevolutionConfig.COMMON.toolsPowers.get()) {
-            ToolPower power = ToolPowerRegistry.getToolPowerForTier(tiered.getTier());
+        if (OrevolutionConfig.COMMON.toolsPowers.get()) {
+            IToolPower power = ToolPowerRegistry.getToolPower(item.getTier());
             dmg = power.setAttackDamage(stack, cir.getReturnValue());
         }
 
@@ -46,10 +41,8 @@ public class DiggerItemMixin {
         if(stack.getItem() instanceof DiggerItem tieredItem) {
             if (!OrevolutionConfig.COMMON.toolsPowers.get()) return;
 
-            ToolPower power = ToolPowerRegistry.getToolPowerForTier(tieredItem.getTier());
-            if (power == null) return;
-            power.onMineBlock(stack, level, pos, entity, state);
-            if(power.onUseOverride(stack, level, entity) && cir.isCancellable()) {
+            IToolPower power = ToolPowerRegistry.getToolPower(tieredItem.getTier());
+            if(power != null && power.onUseOverride(stack, level, entity) && cir.isCancellable()) {
                 cir.setReturnValue(true);
                 cir.cancel();
             }
@@ -61,10 +54,8 @@ public class DiggerItemMixin {
         if(stack.getItem() instanceof DiggerItem tieredItem) {
             if (!OrevolutionConfig.COMMON.toolsPowers.get()) return;
 
-            ToolPower power = ToolPowerRegistry.getToolPowerForTier(tieredItem.getTier());
-            if (power == null) return;
-            power.onHitEntity(stack, target, attacker);
-            if(power.onUseOverride(stack, attacker.level(), attacker) && cir.isCancellable()) {
+            IToolPower power = ToolPowerRegistry.getToolPower(tieredItem.getTier());
+            if(power != null && power.onUseOverride(stack, attacker.level(), attacker) && cir.isCancellable()) {
                 cir.setReturnValue(true);
                 cir.cancel();
             }

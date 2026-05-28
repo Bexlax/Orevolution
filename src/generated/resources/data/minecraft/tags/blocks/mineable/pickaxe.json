@@ -45,10 +45,6 @@
     "orevolution:steel_bars",
     "orevolution:tin_bars",
     "orevolution:bronze_bars",
-    "orevolution:tungsten_bricks",
-    {
-      "id": "#orevolution:spelunkery/ores",
-      "required": false
-    }
+    "orevolution:tungsten_bricks"
   ]
 }

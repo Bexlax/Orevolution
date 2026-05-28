@@ -2,8 +2,6 @@ package net.bexla.orevolution.datagens;
 
 import net.bexla.orevolution.Orevolution;
 import net.bexla.orevolution.OrevolutionConfig;
-import net.bexla.orevolution.compatibility.ModCompat;
-import net.bexla.orevolution.compatibility.spelunkery.RegBlocksSK;
 import net.bexla.orevolution.content.data.utility.OreType;
 import net.bexla.orevolution.content.data.utility.OrevolutionUtils;
 import net.bexla.orevolution.content.types.features.MeteoriteFeature;
@@ -42,26 +40,17 @@ public class GenFeatures {
             FEATURES.register("platinum_ore_feature",
                     () -> new OreConditionalFeature(OreConfiguration.CODEC, OrevolutionConfig.COMMON.generatePlatOre));
 
-    public static final RegistryObject<Feature<OreConfiguration>> TIN_ORE_SK =
-            FEATURES.register("tin_ore_spelunkery_feature",
-                    () -> new OreConditionalFeature(OreConfiguration.CODEC, () -> (OrevolutionConfig.COMMON.generateTinOre.get() && ModCompat.isModLoaded(ModCompat.spelunkery()))));
-
-    public static final RegistryObject<Feature<OreConfiguration>> PLATINUM_ORE_SK =
-            FEATURES.register("platinum_ore_spelunkery_feature",
-                    () -> new OreConditionalFeature(OreConfiguration.CODEC, () -> (OrevolutionConfig.COMMON.generatePlatOre.get() && ModCompat.isModLoaded(ModCompat.spelunkery()))));
-
     public static final RegistryObject<Feature<OreConfiguration>> TUNGSTEN_ORE =
             FEATURES.register("tungsten_ore_feature",
                     () -> new OreConditionalFeature(OreConfiguration.CODEC, OrevolutionConfig.COMMON.generateTungstenOre));
-
-    public static final RegistryObject<Feature<OreConfiguration>> TUNGSTEN_ORE_SK =
-            FEATURES.register("tungsten_ore_spelunkery_feature",
-                    () -> new OreConditionalFeature(OreConfiguration.CODEC, () -> (OrevolutionConfig.COMMON.generateTungstenOre.get() && ModCompat.isModLoaded(ModCompat.spelunkery()))));
 
     public static final RegistryObject<Feature<OreConfiguration>> EXPERIENCE_ORE =
             FEATURES.register("experience_ore_feature",
                     () -> new OreConditionalFeature(OreConfiguration.CODEC, OrevolutionConfig.COMMON.generateExperienceOre));
 
+    public static final RegistryObject<Feature<OreConfiguration>> LIMESTONE_PATCH =
+            FEATURES.register("limestone_patch",
+                    () -> new OreConditionalFeature(OreConfiguration.CODEC, OrevolutionConfig.COMMON.generateLimestone));
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> METEORITE =
             FEATURES.register("meteorite_feature", () -> new MeteoriteFeature(NoneFeatureConfiguration.CODEC));
@@ -74,22 +63,20 @@ public class GenFeatures {
             return ALL.computeIfAbsent(name, n -> ResourceKey.create(Registries.CONFIGURED_FEATURE, OrevolutionUtils.modLocat(n)));
         }
 
+
         public static final List<Block> TIN_ORES = List.of(RegBlocks.TIN_ORE.get(), RegBlocks.DEEPSLATE_TIN_ORE.get());
         public static final List<Block> PLATINUM_ORES = List.of(RegBlocks.PLATINUM_ORE.get(), RegBlocks.DEEPSLATE_PLATINUM_ORE.get());
 
-        public static final List<Block> TIN_ORES_SK = List.of(RegBlocksSK.TIN_ORE_TUFF.get(), RegBlocksSK.TIN_ORE_ANDESITE.get(), RegBlocksSK.TIN_ORE_DIORITE.get(), RegBlocksSK.TIN_ORE_GRANITE.get());
-        public static final List<Block> PLATINUM_ORES_SK = List.of(RegBlocksSK.PLATINUM_ORE_TUFF.get(), RegBlocksSK.PLATINUM_ORE_ANDESITE.get(), RegBlocksSK.PLATINUM_ORE_DIORITE.get(), RegBlocksSK.PLATINUM_ORE_GRANITE.get());
-
         public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> ctx) {
             registerOre(ctx, "tin_ore", TIN_ORE, OreType.OVERWORLD, TIN_ORES,
-                    12, 0F);
+                    10, 0F);
             registerOre(ctx, "tin_ore_extra", TIN_ORE, OreType.OVERWORLD, TIN_ORES,
-                    17, 0F);
+                    16, 0.3F);
 
             registerOre(ctx, "platinum_ore", PLATINUM_ORE, OreType.OVERWORLD, PLATINUM_ORES,
-                    8, 0.1F);
+                    8, 0.43F);
             registerOre(ctx, "platinum_ore_extra", PLATINUM_ORE, OreType.OVERWORLD, PLATINUM_ORES,
-                    14, 0.2F);
+                    14, 0.65F);
 
             registerOre(ctx, "tungsten_ore", TUNGSTEN_ORE, OreType.NETHER, List.of(RegBlocks.NETHER_TUNGSTEN_ORE.get()),
                     8, 0.4F);
@@ -99,14 +86,9 @@ public class GenFeatures {
             registerOre(ctx, "nether_experience_ore", EXPERIENCE_ORE, OreType.NETHER, List.of(RegBlocks.NETHER_XP_ORE.get()),
                     6, 0.7F);
             registerOre(ctx, "end_experience_ore", EXPERIENCE_ORE, OreType.END, List.of(RegBlocks.END_XP_ORE.get()),
-                    9, 0.75F);
+                    9, 0.8F);
 
-            registerOre(ctx, "tin_ore_spelunkery", TIN_ORE_SK, OreType.OVERWORLD_SPELUNKERY, TIN_ORES_SK,
-                    13, 0F);
-            registerOre(ctx, "platinum_ore_spelunkery", PLATINUM_ORE_SK, OreType.OVERWORLD_SPELUNKERY, PLATINUM_ORES_SK,
-                    8, 0.2F);
-            registerOre(ctx, "tungsten_ore_spelunkery", TUNGSTEN_ORE_SK, OreType.NETHER_SPELUNKERY, List.of(RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE.get()),
-                    8, 0.95F);
+            registerOre(ctx, "limestone_patch", LIMESTONE_PATCH, OreType.OVERWORLD, List.of(RegBlocks.LIMESTONE.get()), 33, 0);
 
             ctx.register(Configured.create("meteorite_high"),
                     new ConfiguredFeature<>(METEORITE.get(), NoneFeatureConfiguration.INSTANCE));
@@ -153,9 +135,7 @@ public class GenFeatures {
             registerMeteoritePlacementTop(ctx, features, "meteorite_high", 120, 180);
             registerMeteoritePlacementRange(ctx, features, "meteorite_low", 210, 95, 140);
 
-            registerOrePlacement(ctx, features, "tin_ore_spelunkery", 14, 0, 115);
-            registerOrePlacement(ctx, features, "platinum_ore_spelunkery", 9, -40, 35);
-            registerOrePlacement(ctx, features, "tungsten_ore_spelunkery", 8, -15, 40);
+            registerOrePlacement(ctx, features, "limestone_patch", 19, -30, 80);
         }
 
         private static void registerMeteoritePlacementTop(BootstapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> features, String name, int rarity, int minY) {

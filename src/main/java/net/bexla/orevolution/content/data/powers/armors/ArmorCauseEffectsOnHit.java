@@ -1,6 +1,6 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.bexla.orevolution.content.types.power.armor.ArmorPowerMobEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class ArmorCauseEffectsOnHit extends ArmorPowerMobEffects {
-    public ArmorCauseEffectsOnHit(String tooltip_target_id, String tooltip_wearer_id, Conditional conditional, int duration, int amplifier, List<Supplier<MobEffect>> effectsTarget, List<Supplier<MobEffect>> effectsWearer) {
+    public ArmorCauseEffectsOnHit(String tooltip_target_id, String tooltip_wearer_id, IConditional conditional, int duration, int amplifier, List<Supplier<MobEffect>> effectsTarget, List<Supplier<MobEffect>> effectsWearer) {
         super(tooltip_target_id, tooltip_wearer_id, conditional, duration, amplifier, effectsTarget, effectsWearer);
     }
 
-    public ArmorCauseEffectsOnHit(String tooltip_target_id, String tooltip_wearer_id, Conditional conditional, int duration, int amplifier, Supplier<MobEffect> effectTarget, Supplier<MobEffect> effectWearer) {
+    public ArmorCauseEffectsOnHit(String tooltip_target_id, String tooltip_wearer_id, IConditional conditional, int duration, int amplifier, Supplier<MobEffect> effectTarget, Supplier<MobEffect> effectWearer) {
         super(tooltip_target_id, tooltip_wearer_id, conditional, duration, amplifier,
                 effectTarget != null ? List.of(effectTarget) : List.of(),
                 effectWearer != null ? List.of(effectWearer) : List.of()

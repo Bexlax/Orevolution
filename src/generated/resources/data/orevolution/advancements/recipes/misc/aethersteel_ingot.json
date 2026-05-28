@@ -1,7 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:mod_loaded",
+        "modid": "create"
+      }
+    }
+  ],
   "criteria": {
-    "has_aethersteel_chunk": {
+    "has_aethersteel_ingot": {
       "conditions": {
         "items": [
           {
@@ -20,9 +29,20 @@
       "trigger": "minecraft:recipe_unlocked"
     }
   },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:any_mods_loaded",
+        "values": [
+          "create"
+        ]
+      }
+    }
+  ],
   "requirements": [
     [
-      "has_aethersteel_chunk",
+      "has_aethersteel_ingot",
       "has_the_recipe"
     ]
   ],

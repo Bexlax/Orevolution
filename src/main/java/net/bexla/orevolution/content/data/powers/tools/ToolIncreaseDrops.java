@@ -2,7 +2,7 @@ package net.bexla.orevolution.content.data.powers.tools;
 
 import net.bexla.orevolution.content.data.utility.OrevolutionTags;
 import net.bexla.orevolution.content.types.TierProgressRegistry;
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -18,12 +18,12 @@ import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 
 public class ToolIncreaseDrops extends OrevolutionToolPower {
-    private final int dropIncrement;
+    private final int extraDrops;
     private final double baseChance;
 
-    public ToolIncreaseDrops(String tooltip_id, Conditional conditional, int dropIncrement, double baseChance) {
+    public ToolIncreaseDrops(String tooltip_id, IConditional conditional, int extraDrops, double baseChance) {
         super(tooltip_id, conditional);
-        this.dropIncrement = dropIncrement;
+        this.extraDrops = extraDrops;
         this.baseChance = baseChance;
     }
 
@@ -34,12 +34,12 @@ public class ToolIncreaseDrops extends OrevolutionToolPower {
 
     @Override
     public MutableComponent ctrlTooltip() {
-        return Component.translatable("tooltip.orevolution." + getTooltipID() + "_explanation");
+        return Component.translatable("tooltip.orevolution.duplication_explanation");
     }
 
     @Override
-    public void onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state) {
-        if(!getCBoolean(stack, state, level, player, null)) return;
+    public boolean onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state, int xpToDrop) {
+        if(!getCBoolean(stack, state, level, player, null)) return super.onMineBlock(stack, level, pos, player, state, xpToDrop);
 
         double chance = baseChance;
         Item item = stack.getItem();
@@ -62,10 +62,11 @@ public class ToolIncreaseDrops extends OrevolutionToolPower {
             }
 
             if(Math.random() < chance) {
-                for(int i = 0; i < dropIncrement; i++) {
+                for(int i = 0; i < extraDrops; i++) {
                     Block.dropResources(state, level, pos);
                 }
             }
         }
+        return super.onMineBlock(stack, level, pos, player, state, xpToDrop);
     }
 }

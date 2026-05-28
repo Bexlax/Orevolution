@@ -1,6 +1,6 @@
 package net.bexla.orevolution.content.types.power.armor;
 
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
@@ -19,7 +19,7 @@ public class ArmorPowerMobEffects extends OrevolutionArmorPower {
     protected final int amplifier;
     protected final String tooltip_wearer_id;
 
-    public ArmorPowerMobEffects(String tooltip_target_id, String tooltip_wearer_id, @NotNull Conditional conditional, int duration, int amplifier, @NotNull List<Supplier<MobEffect>> effectsMob, @NotNull List<Supplier<MobEffect>> effectsPlayer) {
+    public ArmorPowerMobEffects(String tooltip_target_id, String tooltip_wearer_id, @NotNull IConditional conditional, int duration, int amplifier, @NotNull List<Supplier<MobEffect>> effectsMob, @NotNull List<Supplier<MobEffect>> effectsPlayer) {
         super(tooltip_target_id, conditional);
         this.effectsMob = effectsMob;
         this.effectsPlayer = effectsPlayer;

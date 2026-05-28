@@ -1,8 +1,11 @@
 {
   "mappings": {
+    "net/bexla/orevolution/mixins/ServerGamePacketListenerImplMixin": {
+      "handleRenameItem": "Lnet/minecraft/server/network/ServerGamePacketListenerImpl;m_5591_(Lnet/minecraft/network/protocol/game/ServerboundRenameItemPacket;)V"
+    },
     "net/bexla/orevolution/mixins/ItemstackMixin": {
-      "mineBlock": "Lnet/minecraft/world/item/ItemStack;m_41686_(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;)V",
-      "hurtEnemy": "Lnet/minecraft/world/item/ItemStack;m_41640_(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/player/Player;)V",
+      "getBarColor": "Lnet/minecraft/world/item/ItemStack;m_150949_()I",
+      "getBarWidth": "Lnet/minecraft/world/item/ItemStack;m_150948_()I",
       "getMaxDamage": "Lnet/minecraft/world/item/ItemStack;m_41776_()I"
     },
     "net/bexla/orevolution/mixins/DiggerItemMixin": {
@@ -11,7 +14,6 @@
       "hurtEnemy": "Lnet/minecraft/world/item/DiggerItem;m_7579_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z"
     },
     "net/bexla/orevolution/mixins/ItemMixin": {
-      "isValidRepairItem": "Lnet/minecraft/world/item/Item;m_6832_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z",
       "inventoryTick": "Lnet/minecraft/world/item/Item;m_6883_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;IZ)V",
       "appendHoverText": "Lnet/minecraft/world/item/Item;m_7373_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V"
     },
@@ -23,9 +25,12 @@
   },
   "data": {
     "searge": {
+      "net/bexla/orevolution/mixins/ServerGamePacketListenerImplMixin": {
+        "handleRenameItem": "Lnet/minecraft/server/network/ServerGamePacketListenerImpl;m_5591_(Lnet/minecraft/network/protocol/game/ServerboundRenameItemPacket;)V"
+      },
       "net/bexla/orevolution/mixins/ItemstackMixin": {
-        "mineBlock": "Lnet/minecraft/world/item/ItemStack;m_41686_(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;)V",
-        "hurtEnemy": "Lnet/minecraft/world/item/ItemStack;m_41640_(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/player/Player;)V",
+        "getBarColor": "Lnet/minecraft/world/item/ItemStack;m_150949_()I",
+        "getBarWidth": "Lnet/minecraft/world/item/ItemStack;m_150948_()I",
         "getMaxDamage": "Lnet/minecraft/world/item/ItemStack;m_41776_()I"
       },
       "net/bexla/orevolution/mixins/DiggerItemMixin": {
@@ -34,7 +39,6 @@
         "hurtEnemy": "Lnet/minecraft/world/item/DiggerItem;m_7579_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z"
       },
       "net/bexla/orevolution/mixins/ItemMixin": {
-        "isValidRepairItem": "Lnet/minecraft/world/item/Item;m_6832_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z",
         "inventoryTick": "Lnet/minecraft/world/item/Item;m_6883_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;IZ)V",
         "appendHoverText": "Lnet/minecraft/world/item/Item;m_7373_(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V"
       },

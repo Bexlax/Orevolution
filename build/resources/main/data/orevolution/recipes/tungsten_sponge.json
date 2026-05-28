@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "orevolution:tungsten_ingot"
+    },
+    "X": {
+      "item": "minecraft:sponge"
+    }
+  },
+  "pattern": [
+    " A ",
+    "AXA",
+    " A "
+  ],
+  "result": {
+    "item": "orevolution:tungsten_sponge"
+  },
+  "show_notification": true
+}

@@ -1,6 +1,6 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.bexla.orevolution.content.types.power.armor.ArmorPowerMobEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class ArmorGrantEffects extends ArmorPowerMobEffects {
-    public ArmorGrantEffects(String tooltipId, Conditional conditional, int duration, int amplifier, List<Supplier<MobEffect>> effect) {
+    public ArmorGrantEffects(String tooltipId, IConditional conditional, int duration, int amplifier, List<Supplier<MobEffect>> effect) {
         super("", tooltipId, conditional, duration, amplifier, List.of(), effect);
     }
 
-    public ArmorGrantEffects(String tooltipId, Conditional conditional, int duration, int amplifier, Supplier<MobEffect> effect) {
+    public ArmorGrantEffects(String tooltipId, IConditional conditional, int duration, int amplifier, Supplier<MobEffect> effect) {
         super("", tooltipId, conditional, duration, amplifier, List.of(), effect != null? List.of(effect) : List.of());
     }
 

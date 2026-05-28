@@ -2,6 +2,8 @@ package net.bexla.orevolution.content.data.powers.armors;
 
 import net.bexla.orevolution.content.data.Conditionals;
 import net.bexla.orevolution.content.types.power.armor.OrevolutionArmorPower;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -23,8 +25,13 @@ public class ArmorMultiPower extends OrevolutionArmorPower {
     @Override
     public List<Component> appendTooltip(ItemStack stack, Level level, List<Component> lines) {
         List<Component> tips = new ArrayList<>();
-        for(OrevolutionArmorPower p : this.powers) {
-            tips.addAll(p.appendTooltip(stack, level, lines));
+        if(Screen.hasAltDown()) {
+            for (OrevolutionArmorPower p : this.powers) {
+                tips.addAll(p.appendTooltip(stack, level, lines));
+            }
+        }
+        else {
+            tips.add(Component.translatable("tooltip.orevolution.press_key", Component.translatable("key.keyboard.left.alt").getString()).withStyle(ChatFormatting.DARK_GRAY));
         }
         return tips;
     }
@@ -35,10 +42,11 @@ public class ArmorMultiPower extends OrevolutionArmorPower {
         }
     }
 
-    public void onAttacked(LivingEntity wearer, DamageSource source, float amount) {
+    public float onDamaged(LivingEntity wearer, DamageSource source, float amount) {
         for(OrevolutionArmorPower p : this.powers) {
-            p.onAttacked(wearer, source, amount);
+            return p.onDamaged(wearer, source, amount);
         }
+        return super.onDamaged(wearer, source, amount);
     }
 
     @Override
@@ -68,6 +76,20 @@ public class ArmorMultiPower extends OrevolutionArmorPower {
     public void onKnockback(LivingEntity wearer, float strength, double ratioX, double ratioZ) {
         for(OrevolutionArmorPower p : this.powers) {
             p.onKnockback(wearer, strength, ratioX, ratioZ);
+        }
+    }
+
+    @Override
+    public void onEquip(LivingEntity wearer) {
+        for(OrevolutionArmorPower p : this.powers) {
+            p.onEquip(wearer);
+        }
+    }
+
+    @Override
+    public void onUnequip(LivingEntity wearer) {
+        for(OrevolutionArmorPower p : this.powers) {
+            p.onUnequip(wearer);
         }
     }
 }

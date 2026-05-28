@@ -1,6 +1,6 @@
 package net.bexla.orevolution.content.data.powers.armors;
 
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.bexla.orevolution.content.types.power.armor.ArmorPowerMobEffects;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class ArmorCauseEffectsOnAttacked extends ArmorPowerMobEffects {
-    public ArmorCauseEffectsOnAttacked(String tooltip_target_id, String tooltip_wearer_id, Conditional conditional, int duration, int amplifier, List<Supplier<MobEffect>> effectsWearer, List<Supplier<MobEffect>> effectsAttacker) {
+    public ArmorCauseEffectsOnAttacked(String tooltip_target_id, String tooltip_wearer_id, IConditional conditional, int duration, int amplifier, List<Supplier<MobEffect>> effectsWearer, List<Supplier<MobEffect>> effectsAttacker) {
         super(tooltip_target_id, tooltip_wearer_id, conditional, duration, amplifier, effectsAttacker, effectsWearer);
     }
 
-    public ArmorCauseEffectsOnAttacked(String tooltip_target_id, String tooltip_wearer_id, Conditional conditional, int duration, int amplifier, Supplier<MobEffect> effectWearer, Supplier<MobEffect> effectAttacker) {
+    public ArmorCauseEffectsOnAttacked(String tooltip_target_id, String tooltip_wearer_id, IConditional conditional, int duration, int amplifier, Supplier<MobEffect> effectWearer, Supplier<MobEffect> effectAttacker) {
         super(tooltip_target_id, tooltip_wearer_id, conditional, duration, amplifier,
                 effectAttacker != null? List.of(effectAttacker) : List.of(),
                 effectWearer != null? List.of(effectWearer) : List.of()
@@ -23,14 +23,14 @@ public class ArmorCauseEffectsOnAttacked extends ArmorPowerMobEffects {
     }
 
     @Override
-    public void onAttacked(LivingEntity wearer, DamageSource source, float amount) {
+    public float onDamaged(LivingEntity wearer, DamageSource source, float amount) {
         LivingEntity attacker = null;
 
         if(source.getEntity() instanceof LivingEntity)
             attacker = (LivingEntity)source.getEntity();
 
 
-        if(!getCBoolean(null, wearer.level(), wearer, attacker)) return;
+        if(!getCBoolean(null, wearer.level(), wearer, attacker)) return super.onDamaged(wearer, source, amount);
 
         if(!this.effectsPlayer.isEmpty()) {
             for(Supplier<MobEffect> p : this.effectsPlayer) {
@@ -45,7 +45,7 @@ public class ArmorCauseEffectsOnAttacked extends ArmorPowerMobEffects {
             }
         }
 
-        if(attacker == null) return;
+        if(attacker == null) return super.onDamaged(wearer, source, amount);
 
         if(!this.effectsMob.isEmpty()) {
             for(Supplier<MobEffect> p : this.effectsMob) {
@@ -58,5 +58,6 @@ public class ArmorCauseEffectsOnAttacked extends ArmorPowerMobEffects {
                 }
             }
         }
+        return super.onDamaged(wearer, source, amount);
     }
 }

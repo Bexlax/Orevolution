@@ -2,20 +2,14 @@ package net.bexla.orevolution.mixins;
 
 import com.google.common.collect.ImmutableMap;
 import net.bexla.orevolution.OrevolutionConfig;
+import net.bexla.orevolution.compatibility.ModCompat;
 import net.bexla.orevolution.content.data.OrevolutionToolTiers;
 import net.bexla.orevolution.content.types.ToolPowerRegistry;
-import net.bexla.orevolution.content.types.interfaces.ToolPower;
-import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
@@ -23,70 +17,24 @@ import java.util.function.Supplier;
 
 @Mixin(ItemStack.class)
 public class ItemstackMixin {
-    @Inject(method = "mineBlock", at = @At("HEAD"))
-    private void orevolution$injectPowerMining(Level level, BlockState state, BlockPos pos, Player entity, CallbackInfo cir) {
-        ItemStack stack = (ItemStack)(Object)this;
-
-        if(stack.getItem() instanceof TieredItem tieredItem) {
-            if (tieredItem instanceof SwordItem) {
-                if (!OrevolutionConfig.COMMON.weaponsPowers.get()) return;
-
-                ToolPower power = ToolPowerRegistry.getSwordPowerForTier(tieredItem.getTier());
-                if (power == null) return;
-
-                power.onMineBlock(stack, level, pos, entity, state);
-            } else if (tieredItem instanceof DiggerItem) {
-                if (!OrevolutionConfig.COMMON.toolsPowers.get()) return;
-
-                ToolPower power = ToolPowerRegistry.getToolPowerForTier(tieredItem.getTier());
-                if (power == null) return;
-
-                power.onMineBlock(stack, level, pos, entity, state);
-            }
-        }
-    }
-
-    @Inject(method = "hurtEnemy", at = @At("HEAD"))
-    private void orevolution$injectPowerAttackEnemy(LivingEntity target, Player attacker, CallbackInfo cir) {
-        ItemStack stack = (ItemStack)(Object)this;
-
-        if(stack.getItem() instanceof TieredItem tieredItem) {
-            if (tieredItem instanceof SwordItem) {
-                if (!OrevolutionConfig.COMMON.weaponsPowers.get()) return;
-
-                ToolPower power = ToolPowerRegistry.getSwordPowerForTier(tieredItem.getTier());
-                if (power == null) return;
-
-                power.onHitEntity(stack, target, attacker);
-            } else if (tieredItem instanceof DiggerItem) {
-                if (!OrevolutionConfig.COMMON.toolsPowers.get()) return;
-
-                ToolPower power = ToolPowerRegistry.getToolPowerForTier(tieredItem.getTier());
-                if (power == null) return;
-
-                power.onHitEntity(stack, target, attacker);
-            }
-        }
-    }
-
     private static final Map<Tier, Supplier<Integer>> BALANCED_DURABILITIES = ImmutableMap.<Tier, Supplier<Integer>>builder()
-            .put(Tiers.IRON, OrevolutionConfig.COMMON.ironMaxUses)
-            .put(Tiers.DIAMOND, OrevolutionConfig.COMMON.diamondMaxUses)
-            .put(Tiers.GOLD, OrevolutionConfig.COMMON.goldMaxUses)
-            .put(Tiers.NETHERITE, OrevolutionConfig.COMMON.netheriteMaxUses)
-            .put(Tiers.STONE, OrevolutionConfig.COMMON.stoneMaxUses)
-            .put(Tiers.WOOD, OrevolutionConfig.COMMON.woodMaxUses)
-            .put(OrevolutionToolTiers.TIN, OrevolutionConfig.COMMON.tinMaxUses)
-            .put(OrevolutionToolTiers.PLATINUM, OrevolutionConfig.COMMON.platMaxUses)
-            .put(OrevolutionToolTiers.AETHERSTEEL, OrevolutionConfig.COMMON.aetherMaxUses)
-            .put(OrevolutionToolTiers.STEEL, OrevolutionConfig.COMMON.steelMaxUses)
-            .put(OrevolutionToolTiers.LIVINGSTONE, OrevolutionConfig.COMMON.livingstoneMaxUses)
-            .put(OrevolutionToolTiers.VERDITE, OrevolutionConfig.COMMON.verditeMaxUses)
+            .put(Tiers.IRON, OrevolutionConfig.TOOLSTATS.ironMaxUses)
+            .put(Tiers.DIAMOND, OrevolutionConfig.TOOLSTATS.diamondMaxUses)
+            .put(Tiers.GOLD, OrevolutionConfig.TOOLSTATS.goldMaxUses)
+            .put(Tiers.NETHERITE, OrevolutionConfig.TOOLSTATS.netheriteMaxUses)
+            .put(Tiers.STONE, OrevolutionConfig.TOOLSTATS.stoneMaxUses)
+            .put(Tiers.WOOD, OrevolutionConfig.TOOLSTATS.woodMaxUses)
+            .put(OrevolutionToolTiers.TIN, OrevolutionConfig.TOOLSTATS.tinMaxUses)
+            .put(OrevolutionToolTiers.PLATINUM, OrevolutionConfig.TOOLSTATS.platMaxUses)
+            .put(OrevolutionToolTiers.AETHERSTEEL, OrevolutionConfig.TOOLSTATS.aetherMaxUses)
+            .put(OrevolutionToolTiers.STEEL, OrevolutionConfig.TOOLSTATS.steelMaxUses)
+            .put(OrevolutionToolTiers.LIVINGSTONE, OrevolutionConfig.TOOLSTATS.livingstoneMaxUses)
+            .put(OrevolutionToolTiers.VERDITE, OrevolutionConfig.TOOLSTATS.verditeMaxUses)
             .build();
 
     @Inject(method = "getMaxDamage", at = @At("RETURN"), cancellable = true)
     private void orevolution$injectModifierMaxUses(CallbackInfoReturnable<Integer> cir) {
-        ItemStack stack = (ItemStack)(Object)this;
+        ItemStack stack = (ItemStack) (Object) this;
 
         if (!(stack.getItem() instanceof TieredItem tiered)) return;
 
@@ -97,11 +45,34 @@ public class ItemstackMixin {
             uses = override.get();
         }
 
+        if (ModCompat.isModLoaded(ModCompat.oreganized())) {
+            try {
+                Class<?> c = Class.forName("galena.oreganized.index.OItemTiers");
+
+                Tier electrum = (Tier) c.getField("ELECTRUM").get(null);
+
+                if (tiered.getTier() == electrum) {
+                    uses = OrevolutionConfig.MODCOMPAT.electrumMaxUses.get();
+                }
+            } catch (Exception ignored) { }
+        }
+        if (ModCompat.isModLoaded(ModCompat.backport())) {
+            try {
+                Class<?> c = Class.forName("com.github.smallinger.copperagebackport.item.tools.CopperTier");
+
+                Tier copper = (Tier) c.getField("INSTANCE").get(null);
+
+                if (tiered.getTier() == copper) {
+                    uses = OrevolutionConfig.MODCOMPAT.electrumMaxUses.get();
+                }
+            } catch (Exception ignored) { }
+        }
+
         if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
-            uses = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
+            uses = ToolPowerRegistry.getWeaponPower(tiered.getTier()).setMaxUses(stack, uses);
         }
         else if (tiered instanceof DiggerItem && OrevolutionConfig.COMMON.toolsPowers.get()) {
-            uses = ToolPowerRegistry.getToolPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
+            uses = ToolPowerRegistry.getToolPower(tiered.getTier()).setMaxUses(stack, uses);
         }
 
         cir.setReturnValue(uses);
@@ -122,10 +93,10 @@ public class ItemstackMixin {
         }
 
         if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
-            uses = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
+            uses = ToolPowerRegistry.getWeaponPower(tiered.getTier()).setMaxUses(stack, uses);
         }
         else if (tiered instanceof DiggerItem && OrevolutionConfig.COMMON.toolsPowers.get()) {
-            uses = ToolPowerRegistry.getToolPowerForTier(tiered.getTier()).setMaxUses(stack, uses);
+            uses = ToolPowerRegistry.getToolPower(tiered.getTier()).setMaxUses(stack, uses);
         }
 
         cir.setReturnValue(Math.round(13.0F - (float)stack.getDamageValue() * 13.0F / (float)uses));
@@ -146,10 +117,10 @@ public class ItemstackMixin {
         }
 
         if (tiered instanceof SwordItem && OrevolutionConfig.COMMON.weaponsPowers.get()) {
-            stackMaxDamage = ToolPowerRegistry.getSwordPowerForTier(tiered.getTier()).setMaxUses(stack, stackMaxDamage);
+            stackMaxDamage = ToolPowerRegistry.getWeaponPower(tiered.getTier()).setMaxUses(stack, stackMaxDamage);
         }
         else if (tiered instanceof DiggerItem && OrevolutionConfig.COMMON.toolsPowers.get()) {
-            stackMaxDamage = ToolPowerRegistry.getToolPowerForTier(tiered.getTier()).setMaxUses(stack, stackMaxDamage);
+            stackMaxDamage = ToolPowerRegistry.getToolPower(tiered.getTier()).setMaxUses(stack, stackMaxDamage);
         }
 
         float ratio = (float)Math.max(0, stackMaxDamage - stack.getDamageValue()) / (float)stackMaxDamage;

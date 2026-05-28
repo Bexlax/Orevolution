@@ -19,6 +19,10 @@ public class OrevolutionTags {
         public static final TagKey<Item> tungsOres = forgeTag("ores/tungsten");
         public static final TagKey<Item> XPOres = forgeTag("ores/experience");
 
+        public static final TagKey<Item> rawTinStorages = forgeTag("storage_blocks/raw_tin");
+        public static final TagKey<Item> rawPlatStorages = forgeTag("storage_blocks/raw_platinum");
+        public static final TagKey<Item> rawTungsStorages = forgeTag("storage_blocks/raw_tungsten");
+
         public static final TagKey<Item> tinProgFollow = tag("tools/tin_progress_followers");
         public static final TagKey<Item> platProgFollow = tag("tools/platinum_progress_followers");
         public static final TagKey<Item> tinProgExcept = tag("tools/tin_progress_exceptions");
@@ -30,15 +34,20 @@ public class OrevolutionTags {
         public static final TagKey<Item> enderiteIngots = forgeTag("ingots/enderite");
         public static final TagKey<Item> verditeIngots = forgeTag("ingots/verdite");
 
+        public static final TagKey<Item> bronzeIngots = forgeTag("ingots/bronze");
+        public static final TagKey<Item> steelIngots = forgeTag("ingots/steel");
+
+//        public static final TagKey<Item> amber = forgeTag("gems/amber");
+
         public static final TagKey<Item> tinNuggets = forgeTag("nuggets/tin");
         public static final TagKey<Item> platNuggets = forgeTag("nuggets/platinum");
         public static final TagKey<Item> tungsNuggets = forgeTag("nuggets/tungsten");
         public static final TagKey<Item> livingstoneFragments = forgeTag("nuggets/livingstone");
         public static final TagKey<Item> verditeNuggets = forgeTag("nuggets/verdite");
 
-        public static final TagKey<Item> tinRaws = forgeTag("raw_materials/raw_tin");
-        public static final TagKey<Item> platRaws = forgeTag("raw_materials/raw_platinum");
-        public static final TagKey<Item> tungsRaws = forgeTag("raw_materials/raw_tungsten");
+        public static final TagKey<Item> tinRaws = forgeTag("raw_materials/tin");
+        public static final TagKey<Item> platRaws = forgeTag("raw_materials/platinum");
+        public static final TagKey<Item> tungsRaws = forgeTag("raw_materials/tungsten");
 
         public static final TagKey<Item> tinStorages = forgeTag("storage_blocks/tin");
         public static final TagKey<Item> platStorages = forgeTag("storage_blocks/platinum");
@@ -106,6 +115,8 @@ public class OrevolutionTags {
         public static final TagKey<Block> tinExceptions = tag("exceptions/tin_tiered");
         public static final TagKey<Block> platExceptions = tag("exceptions/platinum_tiered");
         public static final TagKey<Block> aetherExceptions = tag("exceptions/aethersteel_tiered");
+
+        public static final TagKey<Block> elecExceptions = tag("exceptions/electrum_tiered");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(modLocat(name));

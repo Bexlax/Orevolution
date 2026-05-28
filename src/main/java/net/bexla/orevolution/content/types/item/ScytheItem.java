@@ -1,8 +1,6 @@
 package net.bexla.orevolution.content.types.item;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -11,15 +9,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public class ScytheItem extends SwordItem {
     public ScytheItem(Tier tier, int attackDamage, float attackSpeed, Properties properties) {
@@ -27,52 +20,53 @@ public class ScytheItem extends SwordItem {
     }
 
     @Override
-    public @NotNull InteractionResult useOn(UseOnContext p_41341_) {
-        Level level = p_41341_.getLevel();
-        BlockPos blockpos = p_41341_.getClickedPos();
-        BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(p_41341_, net.minecraftforge.common.ToolActions.HOE_TILL, false);
-        Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of(ctx -> true, changeIntoState(toolModifiedState));
-        if (pair == null) {
-            return InteractionResult.PASS;
-        } else {
-            Predicate<UseOnContext> predicate = pair.getFirst();
-            Consumer<UseOnContext> consumer = pair.getSecond();
-            if (predicate.test(p_41341_)) {
-                Player player = p_41341_.getPlayer();
-                level.playSound(player, blockpos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                if (!level.isClientSide) {
-                    consumer.accept(p_41341_);
-                    if (player != null) {
-                        p_41341_.getItemInHand().hurtAndBreak(1, player, (p_150845_) -> {
-                            p_150845_.broadcastBreakEvent(p_41341_.getHand());
-                        });
-                    }
-                }
+    public @NotNull InteractionResult useOn(UseOnContext ctx) {
+        Level level = ctx.getLevel();
+        BlockPos center = ctx.getClickedPos();
+        Player player = ctx.getPlayer();
 
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            } else {
-                return InteractionResult.PASS;
+        int blocksTilled = 0;
+
+        for (int x = -1; x <= 1; x++) {
+            for (int z = -1; z <= 1; z++) {
+                BlockPos pos = center.offset(x, 0, z);
+                BlockState state = level.getBlockState(pos);
+
+                if (!level.isEmptyBlock(pos.above())) continue;
+
+                BlockState modified = state.getToolModifiedState(
+                        ctx,
+                        net.minecraftforge.common.ToolActions.HOE_TILL,
+                        false
+                );
+
+                if (modified != null) {
+                    if (!level.isClientSide) {
+                        level.setBlock(pos, modified, 11);
+                        level.gameEvent(
+                                GameEvent.BLOCK_CHANGE,
+                                pos,
+                                GameEvent.Context.of(player, modified)
+                        );
+                    }
+                    blocksTilled++;
+                }
             }
         }
-    }
 
-    public static Consumer<UseOnContext> changeIntoState(BlockState p_150859_) {
-        return (p_238241_) -> {
-            p_238241_.getLevel().setBlock(p_238241_.getClickedPos(), p_150859_, 11);
-            p_238241_.getLevel().gameEvent(GameEvent.BLOCK_CHANGE, p_238241_.getClickedPos(), GameEvent.Context.of(p_238241_.getPlayer(), p_150859_));
-        };
-    }
+        if (blocksTilled > 0) {
+            level.playSound(player, center, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
 
-    public static Consumer<UseOnContext> changeIntoStateAndDropItem(BlockState p_150850_, ItemLike p_150851_) {
-        return (p_238246_) -> {
-            p_238246_.getLevel().setBlock(p_238246_.getClickedPos(), p_150850_, 11);
-            p_238246_.getLevel().gameEvent(GameEvent.BLOCK_CHANGE, p_238246_.getClickedPos(), GameEvent.Context.of(p_238246_.getPlayer(), p_150850_));
-            Block.popResourceFromFace(p_238246_.getLevel(), p_238246_.getClickedPos(), p_238246_.getClickedFace(), new ItemStack(p_150851_));
-        };
-    }
+            if (!level.isClientSide && player != null) {
+                ctx.getItemInHand().hurtAndBreak(blocksTilled, player, (p) -> {
+                    p.broadcastBreakEvent(ctx.getHand());
+                });
+            }
 
-    public static boolean onlyIfAirAbove(UseOnContext p_150857_) {
-        return p_150857_.getClickedFace() != Direction.DOWN && p_150857_.getLevel().getBlockState(p_150857_.getClickedPos().above()).isAir();
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        return InteractionResult.PASS;
     }
 
     @Override

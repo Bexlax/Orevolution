@@ -65,8 +65,9 @@ public class ArmorElectrum extends OrevolutionArmorPower {
     }
 
     @Override
-    public void onAttacked(LivingEntity wearer, DamageSource source, float amount) {
+    public float onDamaged(LivingEntity wearer, DamageSource source, float amount) {
         distanceTraveled = 0;
         wearer.removeEffect(MobEffects.MOVEMENT_SPEED);
+        return super.onDamaged(wearer, source, amount);
     }
 }

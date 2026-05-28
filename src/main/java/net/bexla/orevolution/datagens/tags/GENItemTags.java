@@ -53,6 +53,10 @@ public class GENItemTags extends ItemTagsProvider {
         tag(OrevolutionTags.Items.tungsIngots).add(RegItems.TUNGSTEN_INGOT.get());
         tag(OrevolutionTags.Items.enderiteIngots).add(RegItems.AETHERSTEEL_INGOT.get());
         tag(OrevolutionTags.Items.verditeIngots).add(RegItems.VERDITE_INGOT.get());
+        tag(OrevolutionTags.Items.bronzeIngots).add(RegItems.BRONZE_ALLOY.get());
+        tag(OrevolutionTags.Items.steelIngots).add(RegItems.STEEL_ALLOY.get());
+
+//        tag(OrevolutionTags.Items.amber).add(RegItems.AMBER.get());
 
         tag(OrevolutionTags.Items.tinNuggets).add(RegItems.TIN_NUGGET.get());
         tag(OrevolutionTags.Items.platNuggets).add(RegItems.PLATINUM_NUGGET.get());
@@ -69,8 +73,13 @@ public class GENItemTags extends ItemTagsProvider {
                 OrevolutionTags.Items.platIngots,
                 OrevolutionTags.Items.tungsIngots,
                 OrevolutionTags.Items.enderiteIngots,
-                OrevolutionTags.Items.verditeIngots
+                OrevolutionTags.Items.verditeIngots,
+                OrevolutionTags.Items.bronzeIngots,
+                OrevolutionTags.Items.steelIngots
         );
+//        tag(Tags.Items.GEMS).addTags(
+//                OrevolutionTags.Items.amber
+//        );
         tag(Tags.Items.NUGGETS).addTags(
                 OrevolutionTags.Items.tinNuggets,
                 OrevolutionTags.Items.platNuggets,
@@ -83,9 +92,17 @@ public class GENItemTags extends ItemTagsProvider {
                 OrevolutionTags.Items.tungsRaws
         );
 
-        tag(ItemTags.BEACON_PAYMENT_ITEMS).add(RegItems.TIN_INGOT.get(), RegItems.PLATINUM_INGOT.get(), RegItems.TUNGSTEN_INGOT.get());
-        tag(ItemTags.TRIMMABLE_ARMOR).add(RegItems.PLATINUM_HELMET.get()).add(RegItems.PLATINUM_CHESTPLATE.get())
-                .add(RegItems.PLATINUM_LEGGINGS.get()).add(RegItems.PLATINUM_BOOTS.get());
+        tag(ItemTags.BEACON_PAYMENT_ITEMS).add(
+                RegItems.TIN_INGOT.get(),
+                RegItems.PLATINUM_INGOT.get(),
+                RegItems.TUNGSTEN_INGOT.get(),
+                RegItems.VERDITE_INGOT.get()
+        );
+        tag(ItemTags.TRIMMABLE_ARMOR)
+                .add(RegItems.PLATINUM_HELMET.get()).add(RegItems.PLATINUM_CHESTPLATE.get())
+                .add(RegItems.PLATINUM_LEGGINGS.get()).add(RegItems.PLATINUM_BOOTS.get())
+                .add(RegItems.VERDITE_HELMET.get()).add(RegItems.VERDITE_CHESTPLATE.get())
+                .add(RegItems.VERDITE_LEGGINGS.get()).add(RegItems.VERDITE_BOOTS.get());
 
         copy(OrevolutionTags.Blocks.tinStorages, OrevolutionTags.Items.tinStorages);
         copy(OrevolutionTags.Blocks.platStorages, OrevolutionTags.Items.platStorages);
@@ -98,6 +115,10 @@ public class GENItemTags extends ItemTagsProvider {
         copy(OrevolutionTags.Blocks.tinOres, OrevolutionTags.Items.tinOres);
         copy(OrevolutionTags.Blocks.tungsOres, OrevolutionTags.Items.tungsOres);
         copy(OrevolutionTags.Blocks.XPOres, OrevolutionTags.Items.XPOres);
+
+        copy(OrevolutionTags.Blocks.rawTinStorages, OrevolutionTags.Items.rawTinStorages);
+        copy(OrevolutionTags.Blocks.rawPlatStorages, OrevolutionTags.Items.rawPlatStorages);
+        copy(OrevolutionTags.Blocks.rawTungsStorages, OrevolutionTags.Items.rawTungsStorages);
 
         tag(Tags.Items.STORAGE_BLOCKS).addTags(
                 OrevolutionTags.Items.tinStorages,

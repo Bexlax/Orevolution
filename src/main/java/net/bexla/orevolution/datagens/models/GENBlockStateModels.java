@@ -1,8 +1,6 @@
 package net.bexla.orevolution.datagens.models;
 
 import net.bexla.orevolution.Orevolution;
-import net.bexla.orevolution.compatibility.ModCompat;
-import net.bexla.orevolution.compatibility.spelunkery.RegBlocksSK;
 import net.bexla.orevolution.content.types.block.OreCropBlock;
 import net.bexla.orevolution.content.types.providers.BlockStateModelProvider;
 import net.bexla.orevolution.init.RegBlocks;
@@ -71,7 +69,11 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         storage(RegBlocks.RAW_PLATINUM_BLOCK);
         storage(RegBlocks.RAW_TUNGSTEN_BLOCK);
 
+//        decorative(RegBlocks.AMBER_BLOCK);
+        decorative(RegBlocks.VERDITE_BRICKS);
+        decorative(RegBlocks.LIVINGSTONE_BRICKS);
         decorative(RegBlocks.TUNGSTEN_BRICKS);
+        complexBlock(RegBlocks.LIMESTONE, "decorative", 1, 1);
         decorative(RegBlocks.AETHERROCK);
         decorative(RegBlocks.POLISHED_AETHERROCK);
         decorative(RegBlocks.AETHERROCK_BRICKS);
@@ -81,7 +83,9 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         decorative(RegBlocks.CUT_STEEL_BLOCK);
         decorative(RegBlocks.CUT_TUNGSTEN_BLOCK);
         decorative(RegBlocks.CRACKED_AETHERROCK_BRICKS);
+        decorative(RegBlocks.POLISHED_LIMESTONE);
         pillar(RegBlocks.STEEL_PILLAR);
+        pillar(RegBlocks.LIMESTONE_PILLAR);
         decorative(RegBlocks.PLATINUM_TILES);
         decorative(RegBlocks.GOLD_TILES);
         cubeColumnBlock(RegBlocks.CHISELED_TUNGSTEN_BLOCK, RegBlocks.POLISHED_TUNGSTEN);
@@ -104,22 +108,15 @@ public class GENBlockStateModels extends BlockStateModelProvider {
         stairsBlock(RegBlocks.POLISHED_AETHERROCK_STAIR, RegBlocks.POLISHED_AETHERROCK);
         slabBlock(RegBlocks.POLISHED_AETHERROCK_SLAB, RegBlocks.POLISHED_AETHERROCK);
         wallBlock(RegBlocks.POLISHED_AETHERROCK_WALL, RegBlocks.POLISHED_AETHERROCK);
-
+        stairsBlock(RegBlocks.POLISHED_LIMESTONE_STAIR, RegBlocks.POLISHED_LIMESTONE);
+        slabBlock(RegBlocks.POLISHED_LIMESTONE_SLAB, RegBlocks.POLISHED_LIMESTONE);
+        wallBlock(RegBlocks.POLISHED_LIMESTONE_WALL, RegBlocks.POLISHED_LIMESTONE);
+        
         doorBlock(RegBlocks.STEEL_DOOR);
         trapdoorBlock(RegBlocks.STEEL_TRAPDOOR);
 
         makeCrop(RegBlocks.VERDITE_CROP, "verdite_crop_stage", "verdite_crop_stage");
         makeCrop(RegBlocks.LIVINGSTONE_CROP, "livingstone_crop_stage", "livingstone_crop_stage");
-
-        compat(ModCompat.spelunkery(), RegBlocksSK.TIN_ORE_ANDESITE);
-        compat(ModCompat.spelunkery(), RegBlocksSK.TIN_ORE_GRANITE);
-        compat(ModCompat.spelunkery(), RegBlocksSK.TIN_ORE_DIORITE);
-        compat(ModCompat.spelunkery(), RegBlocksSK.TIN_ORE_TUFF);
-        compat(ModCompat.spelunkery(), RegBlocksSK.PLATINUM_ORE_ANDESITE);
-        compat(ModCompat.spelunkery(), RegBlocksSK.PLATINUM_ORE_GRANITE);
-        compat(ModCompat.spelunkery(), RegBlocksSK.PLATINUM_ORE_DIORITE);
-        compat(ModCompat.spelunkery(), RegBlocksSK.PLATINUM_ORE_TUFF);
-
-        compat(ModCompat.spelunkery(), RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE);
+//        makeCrop(RegBlocks.AMBER_CROP, "amber_crop_stage", "amber_crop_stage");
     }
 }

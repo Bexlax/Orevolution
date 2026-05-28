@@ -1,69 +1,50 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.TierProgressRegistry;
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.bexla.orevolution.content.types.power.tool.OrevolutionToolPower;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Supplier;
 
 public class ToolAddEffectPerBlockAmount extends OrevolutionToolPower {
-    private final int minimalBlocks;
     private final Supplier<MobEffect> effect;
+    private final int minHits;
     private final int effectTime;
-    private final int maxStacks;
+    private final int maxAmplifier;
 
-    public ToolAddEffectPerBlockAmount(String id, Conditional condition, Supplier<MobEffect> effect, int minBlocks, int minEffectTime, int maxStacks) {
-        super(id, condition);
-        this.minimalBlocks = minBlocks;
+    public ToolAddEffectPerBlockAmount(String tooltipId, IConditional conditional, Supplier<MobEffect> effect, int minHits, int effectTime, int maxAmplifier) {
+        super(tooltipId, conditional);
         this.effect = effect;
-        this.effectTime = minEffectTime;
-        this.maxStacks = maxStacks;
+        this.minHits = minHits;
+        this.effectTime = effectTime;
+        this.maxAmplifier = maxAmplifier;
     }
 
     @Override
-    public List<Component> appendTooltip(ItemStack stack, Level level, List<Component> lines) {
-        List<Component> tips = new ArrayList<>();
-        tips.add(Component.translatable("tooltip.orevolution." + getTooltipID(), minimalBlocks).withStyle(ChatFormatting.GREEN));
-        tips.add(Component.literal(" - " + effect.get().getDisplayName().getString()).withStyle(ChatFormatting.AQUA));
-
-
-        return tips;
-    }
-
-    @Override
-    public void onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity player, BlockState state) {
-        if(!getCBoolean(stack, state, level, player, null)) return;
+    public boolean onMineBlock(ItemStack stack, Level level, BlockPos pos, LivingEntity entity, BlockState state, int xpToDrop) {
+        if(!getCBoolean(stack, null, level, entity, null)) return super.onMineBlock(stack, level, pos, entity, state, xpToDrop);
 
         MobEffect eff = effect.get();
 
-        Item item = stack.getItem();
-        if (item instanceof TieredItem tieredItem && TierProgressRegistry.isCorrectTierForDrops(tieredItem.getTier(), state)) {
-            int blocksMined = stack.getOrCreateTag().getInt("blocksMined");
-            MobEffectInstance currentEffect = player.getEffect(eff);
-            int effectsStacked = currentEffect != null? currentEffect.getAmplifier() : 0;
+        int blocksMined = stack.getOrCreateTag().getInt("hits");
+        MobEffectInstance currentEffect = entity.getEffect(eff);
+        int effectsStacked = currentEffect != null? currentEffect.getAmplifier() : 0;
 
-            blocksMined++;
-            if (blocksMined >= minimalBlocks) {
-                if (effectsStacked < maxStacks) {
-                    player.removeEffect(eff);
-                    player.addEffect(new MobEffectInstance(eff, effectTime, effectsStacked, false, true));
-                }
-                blocksMined = 0;
+        blocksMined++;
+        if (blocksMined >= minHits) {
+            if (effectsStacked < maxAmplifier) {
+                entity.removeEffect(eff);
+                entity.addEffect(new MobEffectInstance(eff, effectTime, effectsStacked, false, true));
             }
-            stack.getOrCreateTag().putInt("blocksMined", blocksMined);
+            blocksMined = 0;
         }
+        stack.getOrCreateTag().putInt("hits", blocksMined);
+        return super.onMineBlock(stack, level, pos, entity, state, xpToDrop);
     }
 }

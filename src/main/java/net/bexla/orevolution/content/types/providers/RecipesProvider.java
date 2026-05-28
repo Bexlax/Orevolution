@@ -3,9 +3,10 @@ package net.bexla.orevolution.content.types.providers;
 import com.possible_triangle.multikulti.datagen.conditions.Conditional;
 import com.possible_triangle.multikulti.datagen.conditions.Inverted;
 import com.possible_triangle.multikulti.datagen.conditions.ModLoaded;
+import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
+import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import net.bexla.orevolution.compatibility.ModCompat;
 import net.bexla.orevolution.content.data.utility.OrevolutionTags;
-import net.bexla.orevolution.content.data.utility.OrevolutionUtils;
 import net.bexla.orevolution.init.RegItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -24,10 +25,19 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import static net.bexla.orevolution.content.data.utility.OrevolutionUtils.modLocat;
+
 // Credits to Oreganized (Team Galena)
 public abstract class RecipesProvider extends RecipeProvider {
     public RecipesProvider(PackOutput output) {
         super(output);
+    }
+
+    public <T extends ProcessingRecipe<?>> ProcessingRecipeBuilder<T> processing(ProcessingRecipeBuilder.ProcessingRecipeFactory<T> factory, String id) {
+        return whenLoaded(
+                new ProcessingRecipeBuilder<>(factory, modLocat(id)),
+                ModCompat.create()
+        );
     }
 
     public ShapedRecipeBuilder makeSlab(Supplier<? extends Block> slabOut, Supplier<? extends Block> blockIn) {
@@ -112,14 +122,6 @@ public abstract class RecipesProvider extends RecipeProvider {
                 .pattern("A")
                 .define('A', matIn.get())
                 .unlockedBy(getHasName(matIn.get()), has(matIn.get()));
-    }
-
-    public ShapedRecipeBuilder bronzeCrown(Supplier<? extends Item> crownResult, Supplier<? extends Item> gem) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, crownResult.get())
-                .pattern("AB")
-                .define('A', RegItems.BRONZE_CROWN.get())
-                .define('B', gem.get())
-                .unlockedBy(getHasName(gem.get()), has(gem.get()));
     }
 
     public void armorSet(String id, Item helmet, Item chestplate, Item leggings, Item boots, TagKey<Item> ingredient, Consumer<FinishedRecipe> consumer) {
@@ -275,12 +277,12 @@ public abstract class RecipesProvider extends RecipeProvider {
     }
 
     public ShapelessRecipeBuilder alloyLow(String has, Item itemOut, TagKey<Item> firstItem, TagKey<Item> secondItem) {
-        return ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, itemOut, 1)
+        return unlessLoaded(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, itemOut, 1)
                 .requires(firstItem)
                 .requires(firstItem)
                 .requires(secondItem)
                 .requires(secondItem)
-                .unlockedBy("has_" + has, has(firstItem));
+                .unlockedBy("has_" + has, has(firstItem)), ModCompat.create());
     }
 
     public ShapelessRecipeBuilder alloyLow(String has, Item itemOut, TagKey<Item> firstItem, TagKey<Item> secondItem, Item requirement) {
@@ -317,8 +319,8 @@ public abstract class RecipesProvider extends RecipeProvider {
     }
 
     public void autoCompact(Item itemOut, Item itemIn, Consumer<FinishedRecipe> consumer) {
-        compact(itemOut, itemIn).save(consumer, OrevolutionUtils.modLocat(getItemName(itemOut) + "_from_" + getItemName(itemIn)));
-        unCompact(itemIn, itemOut).save(consumer, OrevolutionUtils.modLocat(getItemName(itemIn) + "_from_" + getItemName(itemOut)));
+        compact(itemOut, itemIn).save(consumer, modLocat(getItemName(itemOut) + "_from_" + getItemName(itemIn)));
+        unCompact(itemIn, itemOut).save(consumer, modLocat(getItemName(itemIn) + "_from_" + getItemName(itemOut)));
     }
 
     public ShapelessRecipeBuilder unCompact(Item itemOut, Item itemIn) {
@@ -332,32 +334,13 @@ public abstract class RecipesProvider extends RecipeProvider {
         oreBlastingRecipe(result, ingredients, time / 2, xp, group, consumer);
     }
 
-    public void oreSK(ItemLike result, List<ItemLike> ingredients, float xp, String group, Consumer<FinishedRecipe> consumer) {
-        for (ItemLike ingredient : ingredients) {
-            smeltingRecipeX(result, ingredient, xp, 1).group(group).save(consumer, OrevolutionUtils.modLocat(getItemName(result) + "_from_smelting_" + getItemName(ingredient)));
-        }
-        for (ItemLike ingredient : ingredients) {
-            blastingRecipeX(result, ingredient, xp, 1).group(group).save(consumer, OrevolutionUtils.modLocat(getItemName(result) + "_from_blasting_" + getItemName(ingredient)));
-        }
-    }
-
-    public SimpleCookingRecipeBuilder smeltingRecipeX(ItemLike result, ItemLike ingredient, float exp, int count) {
-        return whenLoaded(SimpleCookingRecipeBuilder.smelting(Ingredient.of(new ItemStack(ingredient, count)), RecipeCategory.MISC, result, exp, 200)
-                .unlockedBy(getHasName(ingredient), has(ingredient)), ModCompat.spelunkery());
-    }
-
-    public SimpleCookingRecipeBuilder blastingRecipeX(ItemLike result, ItemLike ingredient, float exp, int count) {
-        return whenLoaded(SimpleCookingRecipeBuilder.blasting(Ingredient.of(new ItemStack(ingredient, count)), RecipeCategory.MISC, result, exp, 200)
-                .unlockedBy(getHasName(ingredient), has(ingredient)), ModCompat.spelunkery());
-    }
-
     public SimpleCookingRecipeBuilder smeltingRecipe(ItemLike result, ItemLike ingredient, int time, float exp) {
         return smeltingRecipe(result, ingredient, time, exp, 1);
     }
 
     private void oreSmeltingRecipe(ItemLike result, List<ItemLike> ingredients, int time, float xp, String group, Consumer<FinishedRecipe> consumer) {
         for (ItemLike ingredient : ingredients) {
-            smeltingRecipe(result, ingredient, time, xp, 1).group(group).save(consumer, OrevolutionUtils.modLocat(getItemName(result) + "_from_smelting_" + getItemName(ingredient)));
+            smeltingRecipe(result, ingredient, time, xp, 1).group(group).save(consumer, modLocat(getItemName(result) + "_from_smelting_" + getItemName(ingredient)));
         }
     }
 
@@ -381,7 +364,7 @@ public abstract class RecipesProvider extends RecipeProvider {
 
     private void oreBlastingRecipe(ItemLike result, List<ItemLike> ingredients, int time, float xp, String group, Consumer<FinishedRecipe> consumer) {
         for (ItemLike ingredient : ingredients) {
-            blastingRecipe(result, ingredient, time, xp, 1).group(group).save(consumer, OrevolutionUtils.modLocat(getItemName(result) + "_from_blasting_" + getItemName(ingredient)));
+            blastingRecipe(result, ingredient, time, xp, 1).group(group).save(consumer, modLocat(getItemName(result) + "_from_blasting_" + getItemName(ingredient)));
         }
     }
 
@@ -423,22 +406,22 @@ public abstract class RecipesProvider extends RecipeProvider {
 
     public void makeSlabStonecutting(Supplier<? extends Block> blockOut, Supplier<? extends Block> blockIn, Consumer<FinishedRecipe> consumer) {
         makeSlab(blockOut, blockIn).save(consumer);
-        stonecutting(blockIn, blockOut.get(), 2).save(consumer, OrevolutionUtils.modLocat("stonecutting/" + getItemName(blockOut.get())));
+        stonecutting(blockIn, blockOut.get(), 2).save(consumer, modLocat("stonecutting/" + getItemName(blockOut.get())));
     }
 
     public void makeStairsStonecutting(Supplier<? extends Block> blockOut, Supplier<? extends Block> blockIn, Consumer<FinishedRecipe> consumer) {
         makeStairs(blockOut, blockIn).save(consumer);
-        stonecutting(blockIn, blockOut.get()).save(consumer, OrevolutionUtils.modLocat("stonecutting/" + getItemName(blockOut.get())));
+        stonecutting(blockIn, blockOut.get()).save(consumer, modLocat("stonecutting/" + getItemName(blockOut.get())));
     }
 
     public void makeWallStonecutting(Supplier<? extends Block> blockOut, Supplier<? extends Block> blockIn, Consumer<FinishedRecipe> consumer) {
         makeWall(blockOut, blockIn).save(consumer);
-        stonecutting(blockIn, blockOut.get()).save(consumer, OrevolutionUtils.modLocat("stonecutting/" + getItemName(blockOut.get())));
+        stonecutting(blockIn, blockOut.get()).save(consumer, modLocat("stonecutting/" + getItemName(blockOut.get())));
     }
 
     public void makeChiseledStonecutting(Supplier<? extends Block> blockOut, Supplier<? extends Block> blockIn, Consumer<FinishedRecipe> consumer) {
         makeChiseled(blockOut, blockIn).save(consumer);
-        stonecutting(blockIn, blockOut.get()).save(consumer, OrevolutionUtils.modLocat("stonecutting/" + getItemName(blockOut.get())));
+        stonecutting(blockIn, blockOut.get()).save(consumer, modLocat("stonecutting/" + getItemName(blockOut.get())));
     }
 
     public void flowerDye(Supplier<? extends ItemLike> flower, ItemLike primary, Consumer<FinishedRecipe> consumer) {
@@ -447,12 +430,12 @@ public abstract class RecipesProvider extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, primary)
                 .requires(flower.get())
                 .unlockedBy(getHasName(flower.get()), has(flower.get()))
-                .save(consumer, OrevolutionUtils.modLocat("dye_from_" + name));
+                .save(consumer, modLocat("dye_from_" + name));
 
         ConditionalRecipe.builder()
                 .addCondition(new ModLoadedCondition(ModCompat.farmersdelight()))
                 .addRecipe(CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(flower.get()), Ingredient.of(OrevolutionTags.Items.toolsKnives), primary, 2)::build)
-                .build(consumer, OrevolutionUtils.modLocat("cutting/" + getItemName(flower.get())));
+                .build(consumer, modLocat("cutting/" + getItemName(flower.get())));
     }
 
     public <T> T unlessLoaded(T value, String... modIds) {

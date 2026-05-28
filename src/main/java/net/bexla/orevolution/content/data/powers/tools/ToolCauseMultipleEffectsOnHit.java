@@ -1,7 +1,8 @@
 package net.bexla.orevolution.content.data.powers.tools;
 
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.bexla.orevolution.content.types.power.tool.ToolPowerMobEffects;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,13 +12,13 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class ToolCauseMultipleEffectsOnHit extends ToolPowerMobEffects {
-    public ToolCauseMultipleEffectsOnHit(String tooltip_target_id, String tooltip_attacker_id, Conditional conditional, int duration, int amplifier, List<Supplier<MobEffect>> effectTarget, List<Supplier<MobEffect>> effectAttacker) {
+    public ToolCauseMultipleEffectsOnHit(String tooltip_target_id, String tooltip_attacker_id, IConditional conditional, int duration, int amplifier, List<Supplier<MobEffect>> effectTarget, List<Supplier<MobEffect>> effectAttacker) {
         super(tooltip_target_id, tooltip_attacker_id, conditional, duration, amplifier, effectTarget, effectAttacker);
     }
 
     @Override
-    public void onHitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if(!getCBoolean(stack, null, attacker.level(), attacker, target)) return;
+    public float onHitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker, DamageSource source, float dmgAmount) {
+        if(!getCBoolean(stack, null, attacker.level(), attacker, target)) return super.onHitEntity(stack, target, attacker, source, dmgAmount);
 
         if(this.effectTarget != null) {
             for(Supplier<MobEffect> p : this.effectTarget) {
@@ -42,5 +43,6 @@ public class ToolCauseMultipleEffectsOnHit extends ToolPowerMobEffects {
                 }
             }
         }
+        return super.onHitEntity(stack, target, attacker, source, dmgAmount);
     }
 }

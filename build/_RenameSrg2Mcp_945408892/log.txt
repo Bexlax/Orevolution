@@ -1,0 +1,20 @@
+Java Launcher: C:\Users\Quinteros\.gradle\jdks\eclipse_adoptium-17-amd64-windows\jdk-17.0.16+8\bin\java.exe
+Arguments: '--task, SRG_TO_MCP, --input, C:\Users\Quinteros\.gradle\caches\modules-2\files-2.1\maven.modrinth\oreganized\4.3.1\46bef0665cd2c1edfa3301b8964d5e4d0a02a683\oreganized-4.3.1.jar, --output, C:\Users\Quinteros\.gradle\caches\forge_gradle\deobf_dependencies\maven\modrinth\oreganized\4.3.1_mapped_official_1.20.1\oreganized-4.3.1_mapped_official_1.20.1.jar, --mcp, C:\Users\Quinteros\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\mapping\1.20.1\mapping-1.20.1-mapping.zip, --strip-signatures'
+Classpath:
+ - C:\Users\Quinteros\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\installertools\1.4.4\installertools-1.4.4-fatjar.jar
+Working directory: Z:\Benja\Intellij Projects\Orevolution\build\_RenameSrg2Mcp_945408892
+Main class: net.minecraftforge.installertools.ConsoleTool
+====================================
+Task: SRG_TO_MCP
+Input:  C:\Users\Quinteros\.gradle\caches\modules-2\files-2.1\maven.modrinth\oreganized\4.3.1\46bef0665cd2c1edfa3301b8964d5e4d0a02a683\oreganized-4.3.1.jar
+Output: C:\Users\Quinteros\.gradle\caches\forge_gradle\deobf_dependencies\maven\modrinth\oreganized\4.3.1_mapped_official_1.20.1\oreganized-4.3.1_mapped_official_1.20.1.jar
+MCP:    C:\Users\Quinteros\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\mapping\1.20.1\mapping-1.20.1-mapping.zip
+Loading MCP Data
+Processing ZIP file
+Stripped Manifest of sha digests
+Stripped Manifest of sha digests
+Stripped Manifest of sha digests
+Stripped Manifest of sha digests
+Stripped Manifest of sha digests
+Stripped Manifest of sha digests
+Process complete

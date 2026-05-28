@@ -1,8 +1,8 @@
 package net.bexla.orevolution.content.types.power.armor;
 
 import com.mojang.logging.LogUtils;
-import net.bexla.orevolution.content.types.interfaces.ArmorPower;
-import net.bexla.orevolution.content.types.interfaces.Conditional;
+import net.bexla.orevolution.content.types.interfaces.IArmorPower;
+import net.bexla.orevolution.content.types.interfaces.IConditional;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,12 +14,12 @@ import org.slf4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrevolutionArmorPower implements ArmorPower {
+public class OrevolutionArmorPower implements IArmorPower {
     protected static final Logger LOGGER = LogUtils.getLogger();
     private final String tooltip_id;
-    private final Conditional conditional;
+    private final IConditional conditional;
 
-    public OrevolutionArmorPower(String tooltipId, @NotNull Conditional conditional) {
+    public OrevolutionArmorPower(String tooltipId, @NotNull IConditional conditional) {
         this.tooltip_id = tooltipId;
         this.conditional = conditional;
     }

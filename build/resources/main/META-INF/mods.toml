@@ -7,9 +7,9 @@ repository="https://github.com/Bexlax/Orevolution"
 
 [[mods]]
 modId="orevolution"
-version="3.2.1"
+version="4.0.0"
 displayName="Orevolution!"
-authors="BeXla"
+authors="BexLa"
 logoFile="logo.png"
 logoBlur=false
 itemIcon="orevolution:platinum_ingot"
@@ -18,7 +18,7 @@ description='''
 Orevolution focuses on adding more value to the mining aspect of minecraft, doing so by adding new ores, rebalancing tools and implementing new mechanics for them.
 '''
 
-[[dependencies.orevolution]]
+[[dependencies.orevoltion]]
     modId="forge"
     mandatory=true
     versionRange="[47,)"
@@ -46,20 +46,6 @@ Orevolution focuses on adding more value to the mining aspect of minecraft, doin
     side="BOTH"
 
 [[dependencies.orevolution]]
-    modId="galosphere"
-    mandatory=false
-    versionRange="*"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.orevolution]]
-    modId="caverns_and_chasms"
-    mandatory=false
-    versionRange="*"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.orevolution]]
     modId="farmersdelight"
     mandatory=false
     versionRange="*"
@@ -67,14 +53,14 @@ Orevolution focuses on adding more value to the mining aspect of minecraft, doin
     side="BOTH"
 
 [[dependencies.orevolution]]
-    modId="spelunkery"
+    modId="shieldexp"
     mandatory=false
     versionRange="*"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.orevolution]]
-    modId="shieldexp"
+    modId="create"
     mandatory=false
     versionRange="*"
     ordering="AFTER"

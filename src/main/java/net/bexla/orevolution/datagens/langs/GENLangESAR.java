@@ -2,7 +2,6 @@ package net.bexla.orevolution.datagens.langs;
 
 import net.bexla.orevolution.Orevolution;
 import net.bexla.orevolution.compatibility.farmersdelight.RegItemsFD;
-import net.bexla.orevolution.compatibility.spelunkery.RegBlocksSK;
 import net.bexla.orevolution.content.types.providers.LangProvider;
 import net.bexla.orevolution.init.RegBlocks;
 import net.bexla.orevolution.init.RegItems;
@@ -83,20 +82,26 @@ public class GENLangESAR extends LangProvider {
                 "Crea un pico de estaño"
         );
 
+        addTooltip("regenerates_daylight", "Mejora su durabilidad cada %s segundo(s) mientras recibas luz solar");
+
         addTooltip("duplication", "Tiene una probabilidad (Maxima de %s) de duplicar los drops de los bloques");
         addTooltip("triplication", "Tiene una probabilidad (Maxima de %s) de triplicar los drops de los bloques");
 
         addTooltip("duplication_explanation",
-                "Lista de chances dependiendo del tipo de bloque:\n" +
-                        " - Siempre duplicados. (ej. Hojas de arbol) -> 100%\n" +
-                        " - Inusualmente duplicados. (ej. Mesa de crafteo) -> Mitad del Max\n" +
+                "Lista de probabilidades dependiendo del tipo de bloque:\n" +
+                        " - Siempre duplicados (ej. Hojas de arbol) -> prob. del 100%\n" +
+                        " - Inusualmente duplicados (ej. Mesa de crafteo) -> Mitad del Max\n" +
                         " - Cualquier mineral (ej. Mineral de carbon) -> Un quinto del Max\n" +
-                        " - Raramente duplicados. (ej. Bloque de hierro) -> Una decima del Max\n" +
-                        " - Nunca duplicados (ej. Bloque de acero etereo) -> 0%"
+                        " - Raramente duplicados (ej. Bloque de hierro) -> Una decima del Max\n" +
+                        " - Nunca duplicados (ej. Bloque de acero etereo) -> prob. del 0%"
         );
 
-        addTooltip("triplication_explanation",
-                "Lista de chances dependiendo del tipo de bloque:\n" +
+        addTooltip("autosmelt_explanation",
+                "Este efecto se deshabilita mientras te agachas");
+
+        addTooltip("aethersteel_autosmelt_explanation",
+                "Este efecto se deshabilita mientras te agachas\n" +
+                        "Lista de probabilidades dependiendo del tipo de bloque:\n" +
                         " - Siempre duplicados. (ej. Hojas de arbol) -> 100%\n" +
                         " - Inusualmente duplicados. (ej. Mesa de crafteo) -> Mitad del Max\n" +
                         " - Cualquier mineral (ej. Mineral de carbon) -> Un quinto del Max\n" +
@@ -107,13 +112,6 @@ public class GENLangESAR extends LangProvider {
         addTooltip("duplication_crops", "Tiene una probabilidad (Maxima de %s porciento) de duplicar los drops de las plantas");
         addTooltip("triplication_crops", "Tiene una probabilidad (Maxima de %s porciento) de triplicar los drops de las plantas");
 
-        addTooltip("iron_tool_tooltip", "Velocidad de mineria incrementada en Pizarra Profunda, Tablones de madera y Tierra");
-        addTooltip("gold_tool_tooltip", "Durabilidad incrementada por 160 cuando el objeto esta encantado");
-
-        addTooltip("increase_loot", "Tiene una probabilidad del %s de aumentar el botin de los mobs");
-
-        addTooltip("aethersteel_loot", "Tiene una probabilidad del %s de triplicar el botin de los mobs");
-
         addTooltip("on_hit_effect", "Causa el siguiente efecto(s) al atacar:");
         addTooltip("attacker_on_hit_effect", "Te causa el siguiente efecto(s) a vos al atacar");
 
@@ -122,28 +120,41 @@ public class GENLangESAR extends LangProvider {
 
         addTooltip("undead_on_hit", "Tiene una probabilidad de causar los siguientes efecto(s) al atacar a los no-muertos:");
 
-        addTooltip("avoid_damage", "Tiene una probabilidad de evitar la perdida de durabilidad");
+        addTooltip("avoid_damage_chance", "Tiene una probabilidad de evitar la perdida de durabilidad");
+
+        addTooltip("xp_duplicate", "Los bloques dan el doble de Puntos de Experiencia");
+        addTooltip("xp_looting", "Los mobs daran %s Puntos de Experiencia al morir");
+
+        addTooltip("durability_speed", "Velocidad al minar aumenta dependiendo la durabilidad de la herramienta");
+        addTooltip("on_hit_effect_armored", "Daño a enemigos con defensa aumenta en %s");
 
         addTooltip("electrum", "Causa daño cinético al atacar y moverte. Cuanto más impulso tengas, más daño causará");
-        addTooltip("necromium", "La velocidad de mineria incrementa dependiendo del desgaste");
-        addTooltip("necromium_explanation", "La durabilidad funciona como un porcentaje de la velocidad base \nMientras menos durabilidad tenga, mayor será la velocidad de mineria");
 
         addTooltip("full_set_bonus", "Bono por set completo:");
 
-        addTooltip("armor_wearer_grants", "Da los siguientes efecto(s):");
-        addTooltip("armor_wearer_on_attacked", "Da los siguientes efecto(s) al recibir daño:");
-        addTooltip("armor_wearer_on_attacked_target", "Da los siguientes efecto(s) al enemigo cuando te atacan:");
+        addTooltip("armor_wearer_grants", "Te da los siguientes efecto(s):");
+        addTooltip("armor_wearer_grants_daylight", "Te da los siguientes efecto(s) si recibes la luz solar:");
+        addTooltip("armor_wearer_grants_on_hit_wearer_daylight", "te da los siguientes efecto(s) al atacar y si recibes luz solar:");
+        addTooltip("armor_wearer_on_attacked", "te da los siguientes efecto(s) al recibir daño:");
+        addTooltip("armor_wearer_on_attacked_target", "te da los siguientes efecto(s) al enemigo cuando te atacan:");
 
-        addTooltip("armor_wearer_on_hit_wearer", "Da los siguientes efecto(s) al atacar:");
+        addTooltip("armor_wearer_on_hit_wearer", "Te da los siguientes efecto(s) al atacar:");
         addTooltip("armor_wearer_on_hit_target", "Causa los siguientes efecto(s) al enemigo al atacarlo:");
 
-        addTooltip("armor_immunity", "Da los siguientes efecto(s):");
-        addTooltip("armor_immunity_daylight", "Da inmunidad los siguientes efecto(s):");
+        addTooltip("armor_immunity", "Te da los siguientes efecto(s):");
+        addTooltip("armor_immunity_daylight", "Te da inmunidad a los siguientes efecto(s) si recibes luz solar:");
+
+        addTooltip("armor_extended_pickup", "Aumenta el rango de recoleccion de items por %s bloques");
+        addTooltip("copper_armor", "Aumenta el alcance de construccion por %s bloques");
 
         addTooltip("netherite_armor", "Cuando tu vida esta a menos del 50%, inflije los siguientes efecto(s) al atacar:");
-        addTooltip("reinforced_netherite_armor", "Mientras no esta sumergido en lava, da los siguientes efecto(s):");
+        addTooltip("reinforced_netherite_armor", "Mientras no estas sumergido en lava, te da los siguientes efecto(s):");
+        addTooltip("iron_armor", "Tiene una probabilidad del 25% de ignorar el daño por flechas");
+        addTooltip("diamond_armor", "Reduce el daño de las caidas, explosiones y bloques que caen por %s");
+        addTooltip("bronze_armor", "Mientras no estas sumergido en agua, te da los siguientes efecto(s):");
+        addTooltip("tungsten_armor", "Mientras no estas sumergido en lava, te da los siguientes efecto(s):");
 
-        addTooltip("electrum_armor", "Da los siguientes efecto(s) despues de recorrer cierta cantidad de bloques sin recibir daño:");
+        addTooltip("electrum_armor", "Te da los siguientes efecto(s) despues de recorrer cierta cantidad de bloques sin recibir daño:");
         addTooltip("electrum_armor_explanation",
                 "Saltar o volar no aumenta la distancia recorrida\n" +
                         "Lista de distancia requerida para cada amplificador:\n" +
@@ -154,7 +165,15 @@ public class GENLangESAR extends LangProvider {
 
         addTooltip("necromium_armor", "Te permite volver de la muerte \nTras morir, la abilidad se recargara por 5 minutos");
 
-        addTooltip("grant_on_mine", "Cada %s cantidad de bloques, causa y aumenta los siguientes efecto(s):");
+        addTooltip("grant_on_mine", "Cada %s bloques, causa y aumenta los siguientes efecto(s):");
+
+        addTooltip("tool_cause_effect_on_hits", "Cada %s golpes, causa los siguientes efecto(s) al atacar:");
+        addTooltip("tool_grant_effect_on_hits", "Cada %s golpes, te da los siguientes efecto(s)");
+
+        addTooltip("autosmelt", "Cocina la mayoria de los minerales, arenas, troncos y cultivos automaticamente");
+        addTooltip("fire_on_hit", "Incendia a los enemigos por %s segundos al atacar");
+
+        addTooltip("aethersteel", "Tras morir, regresa a tu inventario");
 
         addTooltip("multi_break", "Rompe bloques en un area de 3x3");
         addTooltip("multi_break_explanation",
@@ -164,13 +183,30 @@ public class GENLangESAR extends LangProvider {
                         "Romper 9 bloques con eficiencia I resulta en perder 36 puntos de durabilidad"
         );
 
+        addTooltip("steel_durability", "Durabilidad infinita en cambio de menor Daño y Velocidad de ataque");
+        addTooltip("steel_scythe",
+                "Labra bloques en un area de 3x3\n" +
+                        "Tiene una probabilidad de causar el siguiente efecto(s) al atacar:");
+
+        add("item.orevolution.bronze_radar.tooltip",
+                        "Presiona click derecho mientras te agachas para cambiar entre el modo amigos/personal\n" +
+                        "Mientras este en el modo amigos, presione click derecho para cambiar el jugador mostrado"
+        );
+
+        add("item.orevolution.totem_diamond", "(Diamante) - (%s)");
+        add("item.orevolution.totem_emerald", "(Esmeralda) - (%s)");
+        add("item.orevolution.totem_lapis_lazuli", "(Lapis lazuli) - (%s)");
+
         add("actionbar.orevolution.cant_harvest_ore", "No podes destruir este bloque todavia");
+
+        add("actionbar.orevolution.bronze_radar_normal_mode", "Ubicacion actual: %s");
+        add("actionbar.orevolution.bronze_radar_friends_mode", "Ubicacion actual de %s");
 
         add("trim_material.orevolution.platinum", "Material de platino");
         add("trim_material.orevolution.tin", "Material de estaño");
         add("trim_material.orevolution.tungsten", "Material de tungsteno");
 
-        addTooltip("press_key", "Presiona %s para ver mas informacion");
+        addTooltip("press_key", "Manten presionado %s para ver mas informacion");
 
         addTooltip("harvest_tier", "Nivel de mineria:");
         addTier("wood", "Piedra");
@@ -182,18 +218,39 @@ public class GENLangESAR extends LangProvider {
         addTier("netherite", "Acero étereo");
         addTier("aethersteel", "Acero étereo");
 
-        addEffect(RegMobEffects.CRUSHED, "Aplastado");
         addEffect(RegMobEffects.PETRIFIED, "Petrificado");
         addEffect(RegMobEffects.WEAK_SOUL, "Alma debilitada");
 
         addBlock(RegBlocks.TUNGSTEN_SPONGE, "Esponja de tungsteno");
         addBlock(RegBlocks.HOT_TUNGSTEN_SPONGE, "Esponja de tungsteno caliente");
 
+        addItem(RegItems.BRONZE_TOTEM, "Tótem de bronce");
+        addItem(RegItems.BRONZE_TOTEM_EMERALD, "Tótem de bronce");
+        addItem(RegItems.BRONZE_TOTEM_DIAMOND, "Tótem de bronce");
+        addItem(RegItems.BRONZE_TOTEM_LAPIS_LAZULI, "Tótem de bronce");
+        addItem(RegItems.BRONZE_RADAR, "Radar");
+
         addItem(RegItems.DEAD_SEED, "Semilla muerta");
         addBlock(RegBlocks.VERDITE_CROP, "Cultivo de verdita");
+
         addBlock(RegBlocks.LIVINGSTONE_BLOCK, "Bloque de piedra viva");
         addItem(RegItems.PETRIFIED_SEED, "Semilla petrificada");
         addBlock(RegBlocks.LIVINGSTONE_CROP, "Cultivo de piedra viva");
+
+//        addItem(RegItems.AMBER_SEED, "Semilla de ambar");
+//        addBlock(RegBlocks.AMBER_CROP, "Cultivo de ambar");
+//        addBlock(RegBlocks.AMBER_BLOCK, "Bloque de ambar");
+//        addItem(RegItems.AMBER, "Ambar");
+
+        addItem(RegItems.CAVE_CARROT, "Zanahoria de cueva");
+        addItem(RegItems.SHINY_CARROT, "Zanahoria brillante");
+
+        addBlock(RegBlocks.LIMESTONE, "Piedra caliza");
+        addBlock(RegBlocks.LIMESTONE_PILLAR, "Pilar de piedra caliza");
+        addBlock(RegBlocks.POLISHED_LIMESTONE, "Piedra caliza pulida");
+
+        addItem(RegItems.CRUSHED_TUNGSTEN, "Trozos de tungsteno crudo");
+        addItem(RegItems.CRUSHED_AETHERSTEEL, "Trozos de acero étereo crudo");
 
         addItem(RegItems.PLATINUM_SHIELD, "Escudo de platino");
         addItem(RegItemsFD.PLATINUM_KNIFE, "Cuchillo de platino");
@@ -256,16 +313,34 @@ public class GENLangESAR extends LangProvider {
         addItem(RegItems.VERDITE_LEGGINGS, "Pantalones de verdita");
         addItem(RegItems.VERDITE_BOOTS, "Botas de verdita");
 
+//        addItem(RegItems.AMBER_SHIELD, "Escudo de ambar");
+//        addItem(RegItemsFD.AMBER_KNIFE, "Cuchillo de ambar");
+//        addItem(RegItems.AMBER_SWORD, "Espada de ambar");
+//        addItem(RegItems.AMBER_SHOVEL, "Pala de ambar");
+//        addItem(RegItems.AMBER_PICKAXE, "Pico de ambar");
+//        addItem(RegItems.AMBER_AXE, "Hacha de ambar");
+//        addItem(RegItems.AMBER_HOE, "Azada de ambar");
+//        addItem(RegItems.AMBER_HELMET, "Casco de ambar");
+//        addItem(RegItems.AMBER_CHESTPLATE, "Pechera de ambar");
+//        addItem(RegItems.AMBER_LEGGINGS, "Pantalones de ambar");
+//        addItem(RegItems.AMBER_BOOTS, "Botas de ambar");
+
         addItem(RegItems.STEEL_DIGGER, "Excavador de acero");
         addItem(RegItems.STEEL_HAMMER, "Martillo de acero");
         addItem(RegItems.STEEL_SCYTHE, "Guadaña de acero");
+        addItem(RegItems.STEEL_BROADAXE, "Hacha larga de acero");
+        addBlock(RegBlocks.STEEL_ANVIL, "Yunque pesado");
 
-        addItem(RegItems.BRONZE_CROWN, "Corona de bronce");
-        addItem(RegItems.BRONZE_CROWN_DIAMOND, "Corona de bronce (Diamond)");
-        addItem(RegItems.BRONZE_CROWN_EMERALD, "Corona de bronce (Emerald)");
-        addItem(RegItems.BRONZE_CROWN_LAPIS, "Corona de bronce (Lapis)");
-        addItem(RegItems.BRONZE_CROWN_REDSTONE, "Corona de bronce (Redstone)");
+        addItem(RegItems.BRONZE_HELMET, "Mascara de bronce de buceo");
+        addItem(RegItems.BRONZE_CHESTPLATE, "Pechera de bronce");
+        addItem(RegItems.BRONZE_LEGGINGS, "Pantalones de bronce");
+        addItem(RegItems.BRONZE_BOOTS, "Botas de bronce");
 
+        addItem(RegItems.TUNGSTEN_HELMET, "Mascara de tungsteno de buceo");
+        addItem(RegItems.TUNGSTEN_CHESTPLATE, "Pechera de tungsteno");
+        addItem(RegItems.TUNGSTEN_LEGGINGS, "Pantalones de tungsteno");
+        addItem(RegItems.TUNGSTEN_BOOTS, "Botas de tungsteno");
+        
         addItem(RegItems.TIN_INGOT, "Lingote de estaño");
         addItem(RegItems.RAW_TIN, "Estaño crudo");
         addBlock(RegBlocks.TIN_BLOCK, "Bloque de estaño");
@@ -305,7 +380,12 @@ public class GENLangESAR extends LangProvider {
         addItem(RegItems.LIVINGSTONE_SHARD, "Fragmento de piedra viva");
 
         addItem(RegItems.VERDITE_APPLE, "Manzana de verdita");
+        addItem(RegItems.VERDITE_SPIDER_EYE, "Ojo de araña de verdita");
 
+        addItem(RegItems.PLATINUM_BERRIES, "Bayas de platino");
+
+        addBlock(RegBlocks.VERDITE_BRICKS, "Ladrillos de verdita");
+        addBlock(RegBlocks.LIVINGSTONE_BRICKS, "Ladrillos de piedra viva");
         addBlock(RegBlocks.TIN_ORE, "Mineral de estaño");
         addBlock(RegBlocks.DEEPSLATE_TIN_ORE, "Mineral de estaño de pizarra profunda");
         addBlock(RegBlocks.PLATINUM_ORE, "Mineral de platino");
@@ -324,6 +404,7 @@ public class GENLangESAR extends LangProvider {
         addBlock(RegBlocks.BRONZE_TILES, "Losetas de bronce");
         addBlock(RegBlocks.STEEL_PILLAR, "Pilar de acero");
         addBlock(RegBlocks.STEEL_DOOR, "Puerta de acero");
+        addBlock(RegBlocks.STEEL_TRAPDOOR, "Trampilla de acero");
         addBlock(RegBlocks.CHISELED_TUNGSTEN_BLOCK, "Bloque de tungsteno cinselado");
         addBlock(RegBlocks.CHISELED_TUNGSTEN_BRICKS, "Ladrillos de tungsteno cinselado");
         addBlock(RegBlocks.TUNGSTEN_BRICKS, "Ladrillos de tungsteno");
@@ -343,15 +424,5 @@ public class GENLangESAR extends LangProvider {
         addBlock(RegBlocks.POLISHED_AETHERROCK_WALL, "Muro de piedra éterea pulida");
         addBlock(RegBlocks.POLISHED_AETHERROCK_STAIR, "Escalera de piedra éterea pulida");
         addBlock(RegBlocks.POLISHED_AETHERROCK_SLAB, "Baldosa de piedra éterea pulida");
-
-        addBlock(RegBlocksSK.TIN_ORE_ANDESITE, "Mineral de estaño de andesita");
-        addBlock(RegBlocksSK.TIN_ORE_GRANITE, "Mineral de estaño de granito");
-        addBlock(RegBlocksSK.TIN_ORE_DIORITE, "Mineral de estaño de diorita");
-        addBlock(RegBlocksSK.TIN_ORE_TUFF, "Mineral de estaño de toba");
-        addBlock(RegBlocksSK.PLATINUM_ORE_ANDESITE, "Mineral de platino de andesita");
-        addBlock(RegBlocksSK.PLATINUM_ORE_GRANITE, "Mineral de platino de granito");
-        addBlock(RegBlocksSK.PLATINUM_ORE_DIORITE, "Mineral de platino de diorita");
-        addBlock(RegBlocksSK.PLATINUM_ORE_TUFF, "Mineral de platino de toba");
-        addBlock(RegBlocksSK.NETHER_TUNGSTEN_ORE_BLACKSTONE, "Mineral de tungsteno del Nether de piedra negra");
     }
 }

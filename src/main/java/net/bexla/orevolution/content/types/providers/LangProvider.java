@@ -63,7 +63,6 @@ public abstract class LangProvider implements DataProvider {
     }
 
     private CompletableFuture<?> save(CachedOutput cache, Path target) {
-        // TODO: DataProvider.saveStable handles the caching and hashing already, but creating the JSON Object this way seems unreliable. -C
         JsonObject json = new JsonObject();
         this.data.forEach(json::addProperty);
 

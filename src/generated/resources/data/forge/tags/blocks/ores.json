@@ -5,10 +5,6 @@
     "#forge:ores/tungsten",
     "#forge:ores/experience",
     "orevolution:nether_tungsten_ore",
-    "orevolution:primitive_aetherrock",
-    {
-      "id": "#orevolution:spelunkery/ores",
-      "required": false
-    }
+    "orevolution:primitive_aetherrock"
   ]
 }

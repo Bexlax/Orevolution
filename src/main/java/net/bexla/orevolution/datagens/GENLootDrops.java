@@ -4,10 +4,13 @@ import net.bexla.orevolution.Orevolution;
 import net.bexla.orevolution.content.types.providers.BlockLootProvider;
 import net.bexla.orevolution.init.RegBlocks;
 import net.bexla.orevolution.init.RegItems;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -19,6 +22,8 @@ import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import org.jetbrains.annotations.NotNull;
 
@@ -81,6 +86,8 @@ public class GENLootDrops extends LootTableProvider {
             dropSelf(RegBlocks.CUT_STEEL_BLOCK);
             dropSelf(RegBlocks.STEEL_PILLAR);
             dropSelf(RegBlocks.BRONZE_TILES);
+            dropSelf(RegBlocks.LIVINGSTONE_BRICKS);
+            dropSelf(RegBlocks.VERDITE_BRICKS);
             add(RegBlocks.STEEL_DOOR.get(), LootTable.lootTable()
                     .withPool(applyExplosionCondition(RegBlocks.STEEL_DOOR.get(), LootPool.lootPool()
                             .setRolls(ConstantValue.exactly(1.0F))
@@ -91,6 +98,9 @@ public class GENLootDrops extends LootTableProvider {
             dropSelf(RegBlocks.POLISHED_AETHERROCK_STAIR);
             dropSelf(RegBlocks.POLISHED_AETHERROCK_WALL);
             slab(RegBlocks.POLISHED_AETHERROCK_SLAB);
+            dropSelf(RegBlocks.POLISHED_LIMESTONE_STAIR);
+            dropSelf(RegBlocks.POLISHED_LIMESTONE_WALL);
+            slab(RegBlocks.POLISHED_LIMESTONE_SLAB);
             dropSelf(RegBlocks.PLATINUM_TILES);
             dropSelf(RegBlocks.GOLD_TILES);
             dropSelf(RegBlocks.PLATINUM_BARS);
@@ -106,10 +116,22 @@ public class GENLootDrops extends LootTableProvider {
             dropSelf(RegBlocks.CHISELED_TUNGSTEN_BRICKS);
             dropSelf(RegBlocks.TIN_TILES);
             dropSelf(RegBlocks.TIN_BRICKS);
+            dropSelf(RegBlocks.LIMESTONE);
+            dropSelf(RegBlocks.LIMESTONE_PILLAR);
+            dropSelf(RegBlocks.POLISHED_LIMESTONE);
+            dropSelf(RegBlocks.STEEL_ANVIL);
             add(RegBlocks.LIVINGSTONE_CROP.get(), createCropDrops(RegBlocks.LIVINGSTONE_CROP.get(), RegItems.LIVINGSTONE_SHARD.get(), RegItems.PETRIFIED_SEED.get(), LootItemBlockStatePropertyCondition.hasBlockStateProperties(RegBlocks.LIVINGSTONE_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlockStateProperties.AGE_4, 4))));
             add(RegBlocks.VERDITE_CROP.get(), createCropDrops(RegBlocks.VERDITE_CROP.get(), RegItems.VERDITE_NUGGET.get(), RegItems.DEAD_SEED.get(), LootItemBlockStatePropertyCondition.hasBlockStateProperties(RegBlocks.VERDITE_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(AGE_6, 6))));
+//            add(RegBlocks.AMBER_CROP.get(), createCropDrops(RegBlocks.AMBER_CROP.get(), RegItems.AMBER.get(), RegItems.AMBER_SEED.get(), LootItemBlockStatePropertyCondition.hasBlockStateProperties(RegBlocks.AMBER_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlockStateProperties.AGE_5, 5))));
             dropSelf(RegBlocks.TUNGSTEN_SPONGE);
             dropSelf(RegBlocks.HOT_TUNGSTEN_SPONGE);
+//            dropSelf(RegBlocks.AMBER_BLOCK);
+        }
+
+        protected static final LootItemCondition.Builder HAS_PICKAXE = MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.PICKAXES));
+
+        protected static LootTable.Builder createPickaxeOnlyDrops(ItemLike drop) {
+            return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(3.0F)).when(HAS_PICKAXE).add(LootItem.lootTableItem(drop)));
         }
 
         private static final IntegerProperty AGE_6 = IntegerProperty.create("age", 0, 6);

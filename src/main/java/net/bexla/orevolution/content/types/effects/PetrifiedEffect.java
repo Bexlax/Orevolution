@@ -28,12 +28,6 @@ public class PetrifiedEffect extends MobEffect {
             entity.hurt(entity.damageSources().magic(), damage);
     }
 
-    /**
-     * Control the tick frequency of applyEffectTick.
-     * duration is remaining duration (in ticks), amplifier is the effect level.
-     *
-     * We want damage every 40 ticks (2 seconds). Higher amplifiers can increase tick rate if desired.
-     */
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {
         int interval = 40 >> amplifier;

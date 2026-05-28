@@ -23,56 +23,6 @@ public class LivingstoneChestplateModel<T extends LivingEntity> extends Humanoid
 		this.LeftArm = root.getChild("LeftArm");
 	}
 
-//	private void metodoAntiNormi() {
-//		int normiaciones = Normis.normi;
-//		this.MiMachete.sharedMesh = this.normis[normi];
-//
-//		switch (normiaciones)
-//		{
-//			case 1:
-//				SetTexture(0, this.Desnormear[normi]);
-//				SetTexture(1, this.normificado);
-//				SetTexture(2, this.normificado);
-//				SetTexture(3, this.Desnormear[normi]);
-//				break;
-//
-//			case 2:
-//				SetTexture(0, this.Desnormear[normi]);
-//				SetTexture(1, this.normificado);
-//				SetTexture(2, this.normificado);
-//				SetTexture(3, this.HairTexture);
-//				break;
-//
-//			case 3:
-//				SetTexture(0, this.normificado);
-//				SetTexture(1, this.normificado);
-//				SetTexture(2, this.Desnormear[normi]);
-//				SetTexture(3, this.Desnormear[normi]);
-//				break;
-//
-//			case 4:
-//				SetTexture(0, this.normificado);
-//				SetTexture(1, this.Desnormear[normi]);
-//				SetTexture(2, this.Desnormear[normi]);
-//				SetTexture(3, this.normificado);
-//				break;
-//
-//			case 5:
-//				SetTexture(0, this.normificado);
-//				SetTexture(1, this.normificado);
-//				SetTexture(2, this.Desnormear[normi]);
-//				SetTexture(3, this.normificado);
-//				break;
-//
-//			case 6:
-//				SetTexture(0, this.Desnormear[normi]);
-//				SetTexture(1, this.Desnormear[normi]);
-//				SetTexture(2, this.HairTexture);
-//				SetTexture(3, this.HairTexture);
-//				break;
-//		}
-//	}
-
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = HumanoidArmorModel.createMesh(CubeDeformation.NONE, 0.0F);
 		PartDefinition partdefinition = meshdefinition.getRoot();
